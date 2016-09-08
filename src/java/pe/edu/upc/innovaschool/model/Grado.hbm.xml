@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-sep-2016 10:42:16 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upc.innovaschool.model.Grado" table="Grado" schema="gp" catalog="InnovaSchool" optimistic-lock="version">
+        <id name="idGrado" type="int">
+            <column name="IdGrado" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="nivel" class="pe.edu.upc.innovaschool.model.Nivel" fetch="select">
+            <column name="IdNivel" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="100" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="200" />
+        </property>
+        <set name="solicitudAdmisions" table="SolicitudAdmision" schema="gaa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idGrado" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.SolicitudAdmision" />
+        </set>
+    </class>
+</hibernate-mapping>

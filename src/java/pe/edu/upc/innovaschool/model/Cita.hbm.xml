@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-sep-2016 10:42:16 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upc.innovaschool.model.Cita" table="Cita" schema="gaa" catalog="InnovaSchool" optimistic-lock="version">
+        <id name="idCita" type="int">
+            <column name="idCita" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="alumno" class="pe.edu.upc.innovaschool.model.Alumno" fetch="select">
+            <column name="idAlumno" />
+        </many-to-one>
+        <many-to-one name="proceso" class="pe.edu.upc.innovaschool.model.Proceso" fetch="select">
+            <column name="idProceso" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sede" class="pe.edu.upc.innovaschool.model.Sede" fetch="select">
+            <column name="idSede" />
+        </many-to-one>
+        <property name="estado" type="string">
+            <column name="Estado" length="20" />
+        </property>
+        <property name="fechaCita" type="timestamp">
+            <column name="fechaCita" length="23" />
+        </property>
+        <property name="horaCita" type="string">
+            <column name="horaCita" length="20" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="20" />
+        </property>
+        <property name="idEmpleado" type="int">
+            <column name="idEmpleado" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

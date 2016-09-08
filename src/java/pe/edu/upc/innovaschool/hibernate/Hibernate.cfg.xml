@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://201.131.220.39\InnovaSchool:1433;databaseName=InnovaSchool</property>
+    <property name="hibernate.connection.username">upc</property>
+    <property name="hibernate.connection.password">1nn0v4sch0ll</property>
+    <mapping resource="pe/edu/upc/innovaschool/model/Alumno.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Cronograma.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Proceso.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/DocumentoIdentidad.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Grado.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Persona.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Nivel.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Apoderado.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Cita.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/ExpedienteAdmision.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/Sede.hbm.xml"/>
+    <mapping resource="pe/edu/upc/innovaschool/model/SolicitudAdmision.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

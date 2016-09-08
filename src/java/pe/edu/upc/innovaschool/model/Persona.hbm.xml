@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-sep-2016 10:42:16 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upc.innovaschool.model.Persona" table="Persona" schema="gsp" catalog="InnovaSchool" optimistic-lock="version">
+        <id name="idPersona" type="int">
+            <column name="idPersona" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="documentoIdentidad" class="pe.edu.upc.innovaschool.model.DocumentoIdentidad" fetch="select">
+            <column name="tipoDocumentoIdentidad" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="15" />
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column name="apellidoPaterno" length="50" />
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column name="apellidoMaterno" length="50" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="50" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="50" />
+        </property>
+        <property name="correoElectronico" type="string">
+            <column name="correoElectronico" length="50" />
+        </property>
+        <property name="documentoIdentidad_1" type="string">
+            <column name="documentoIdentidad" length="15" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" length="15" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="1" />
+        </property>
+        <property name="telefonoEmergencia" type="string">
+            <column name="telefonoEmergencia" length="15" />
+        </property>
+        <property name="contactoEmergencia" type="string">
+            <column name="contactoEmergencia" length="15" />
+        </property>
+        <property name="fechaNacimiento" type="timestamp">
+            <column name="fechaNacimiento" length="23" />
+        </property>
+        <property name="gradoEstudios" type="string">
+            <column name="gradoEstudios" length="15" />
+        </property>
+        <property name="celular" type="string">
+            <column name="celular" length="50" />
+        </property>
+        <property name="usuarioCreacion" type="string">
+            <column name="usuarioCreacion" length="30" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fechaCreacion" length="23" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="usuarioModificacion" length="30" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="23" />
+        </property>
+        <set name="apoderados" table="Apoderado" schema="gaa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPersona" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.Apoderado" />
+        </set>
+        <set name="alumnos" table="Alumno" schema="gaa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPersona" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.Alumno" />
+        </set>
+    </class>
+</hibernate-mapping>
