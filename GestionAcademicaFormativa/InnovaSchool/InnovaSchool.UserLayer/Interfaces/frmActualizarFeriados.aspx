@@ -1,5 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MaterPage/SiteInnovaSchool.Master" AutoEventWireup="true" CodeBehind="frmActualizarFeriados.aspx.cs" Inherits="InnovaSchool.UserLayer.Interfaces.frmActualizarFeriados" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function limpiarControles() {
+            document.getElementById("ContentPlaceHolder2_txtDescripcion").value = "";
+            document.getElementById("ContentPlaceHolder2_txtFechaInicio").value = "";
+            document.getElementById("ContentPlaceHolder2_txtFechaFin").value = "";
+            document.getElementById("ContentPlaceHolder2_chkRepiteCadaAnio").checked = false;
+            $('#ContentPlaceHolder2_chkRepiteCadaAnio').attr('checked', false)
+            alert(document.getElementById("ContentPlaceHolder2_chkRepiteCadaAnio").checked);
+
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
@@ -105,9 +116,10 @@
                         </div>
                         <div class="form-actions">
                             <asp:Button ID="btnGuardar" runat="server" type="submit" Text="Guardar" class="btn btn-primary"  ValidationGroup="SolicitudValid" OnClick="btnGuardar_Click"  />
-                            <asp:Button ID="btnCargarFeriado" runat="server" type="submit" Text="Cargar Feriados" class="btn btn-primary" Visible="false" />
-                            <asp:Button ID="btnLimpiar" runat="server" type="submit" Text="Limpiar" class="btn btn-warning" />                            
-                            <a href="../Index.aspx" class="btn btn-success">Cancelar</a>
+                             <asp:Button ID="btnLimpiar" runat="server" type="submit" Text="Limpiar" class="btn btn-warning" OnClick="btnLimpiar_Click"  /> 
+                            <!--<input type="button" value="Limpiar" onclick="limpiarControles();" id="btnLimpiar" class="btn btn-warning">-->
+                            <a href="../Index.aspx" class="btn btn-success">Cancelar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            
+                            <input type="button" value="Cargar Feriados" onclick="$('#myModalRepetitivo').modal('show');" id="btnCargar" class="btn btn-primary">
                         </div>                      
                     </fieldset>
                 </div>                 
@@ -135,10 +147,14 @@
                                 CssClass="table table-striped table-bordered bootstrap-datatable datatable dataTable"                                                                                             
                                 AutoGenerateColumns="False" ShowHeaderWhenEmpty="True"
                                 
-                                DataKeyNames="IdFeriado,Motivo">
+                                DataKeyNames="IdFeriado,Motivo" OnRowCommand="gvConsultaFeriados_RowCommand" OnRowDataBound="gvConsultaFeriados_RowDataBound">
                                 <Columns>                                    
+                                    <asp:BoundField DataField="IdFeriado" HeaderText="IdFeriado" Visible="false" >
+                                    <HeaderStyle Width="10%" />
+                                    <ItemStyle CssClass="align-cen" />
+                                    </asp:BoundField>
 <asp:TemplateField Visible="False"><ItemTemplate>
-                                            <asp:Label id="lblIdActividad" runat ="server" text='<%# Eval("IdFeriado")%>' />
+                                            <asp:Label id="lblIdFeriado" runat ="server" text='<%# Eval("IdFeriado")%>' />
                                         
 </ItemTemplate>
 </asp:TemplateField>
@@ -147,14 +163,15 @@
                                             <asp:Label id="lblDescripcion" runat ="server" text='<%# Eval("Motivo")%>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="IdFeriado" HeaderText="IdFeriado" Visible="false" >
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle CssClass="align-cen" />
-                                    </asp:BoundField>
+                                    <asp:TemplateField Visible="false">
+                                        <ItemTemplate>
+                                            <asp:Label id="lblReptitivo" runat ="server" text='<%# Eval("Repetitivo")%>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="Motivo" HeaderText="Descripción" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" >
-<HeaderStyle Width="10%"></HeaderStyle>
+<HeaderStyle Width="25%"></HeaderStyle>
 
-<ItemStyle CssClass="align-cen" HorizontalAlign="Left"></ItemStyle>
+<ItemStyle CssClass="align-izq" HorizontalAlign="Left"></ItemStyle>
                                     </asp:BoundField>
                                     <asp:BoundField DataField="FechaInicio" HeaderText="Fecha Inicio" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" >
 <HeaderStyle Width="10%"></HeaderStyle>
@@ -170,8 +187,8 @@
                                             <ItemTemplate><%# (Eval("Repetitivo").ToString() == "1") ? "Si" : "No" %></ItemTemplate>
                                             <ControlStyle Width="50px" />
                                             <FooterStyle Width="50px" />
-                                            <HeaderStyle Width="50px" />
-                                            <ItemStyle Width="50px" />
+                                            <HeaderStyle Width="10%" CssClass="align-cen" />
+                                            <ItemStyle Width="10%" CssClass="align-cen" />
                                     </asp:TemplateField>
                                     <asp:TemplateField Visible="false">
                                         <ItemTemplate>
@@ -183,7 +200,7 @@
                                         <asp:LinkButton ID="lbtEditar" CommandName="Editar" CssClass="btn btn-primary btn-gv" runat="server" ToolTip="Editar" >
                                             <i class="halflings-icon white edit"></i>
                                         </asp:LinkButton> 
-                                        <asp:LinkButton ID="lbtEliminar" CommandName="Eliminar" CssClass="btn btn-danger btn-gv" runat="server" ToolTip="Eliminar" Visible="false">
+                                        <asp:LinkButton ID="lbtEliminar" CommandName="Eliminar" CssClass="btn btn-danger btn-gv" runat="server" ToolTip="Eliminar">
                                             <i class="halflings-icon white trash"></i>
                                         </asp:LinkButton>
                                         </ItemTemplate> 
@@ -215,17 +232,47 @@
             <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
         </div>
     </div>
-    <%-- Mensaje de Confirmación Generar de Agenda --%>
-    <div class="modal hide fade in" id="myModalGenerar">
+    <%-- Mensaje de Confirmación de Registro Feriado --%>
+    <div class="modal hide fade in" id="mensaje">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
-            <h2>Generar Agenda</h2>
+            <!-- <h2>Registro Feriado</h2> -->
         </div>
         <div class="modal-body">
-            <p>¿Está seguro de generar la agenda escolar para el año escolar vigente?</p>
+            <p>El feriado se guardó con éxito.</p>
         </div>
         <div class="modal-footer">
-            <asp:Button ID="btnGenerar" runat="server" type="submit" Text="Si" class="btn btn-primary" OnClick="btnGenerar_Click" />
+            <a href="#" class="btn btn-success" data-dismiss="modal">Aceptar</a>
+        </div>
+    </div>
+    <asp:HiddenField runat="server" ID="hfIdFeriado" />
+
+    <%-- Mensaje de Confirmación de Eliminación de Feriado --%>
+    <div class="modal hide fade in" id="myModalRepetitivo">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          <!--  <h2>Eliminar Feriado</h2> -->
+        </div>
+        <div class="modal-body">
+            <p>¿Está seguro de cargar los feriados repetitivos del año escolar?</p>
+        </div>
+        <div class="modal-footer">
+            <asp:Button ID="btnCargarFeriado" runat="server" type="submit" Text="Si" class="btn btn-primary" OnClick="btnCargarFeriado_Click" />        
+            <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
+        </div>
+    </div>
+    
+<%-- Mensaje de Confirmación de Carga de Feriados Repetitivos--%>
+    <div class="modal hide fade in" id="myModalEliminar">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          <!--  <h2>Eliminar Feriado</h2> -->
+        </div>
+        <div class="modal-body">
+            <p>¿Está seguro de eliminar este feriado?</p>
+        </div>
+        <div class="modal-footer">
+            <asp:Button ID="Button2" runat="server" type="submit" Text="Si" class="btn btn-primary" UseSubmitBehavior="False" OnClick="btnEliminar_Click"  />
             <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
         </div>
     </div>

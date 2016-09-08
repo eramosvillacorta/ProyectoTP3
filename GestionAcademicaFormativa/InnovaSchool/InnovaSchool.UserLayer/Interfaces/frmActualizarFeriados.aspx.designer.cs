@@ -139,15 +139,6 @@ namespace InnovaSchool.UserLayer.Interfaces {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// Control btnCargarFeriado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCargarFeriado;
-        
-        /// <summary>
         /// Control btnLimpiar.
         /// </summary>
         /// <remarks>
@@ -193,12 +184,30 @@ namespace InnovaSchool.UserLayer.Interfaces {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Control btnGenerar.
+        /// Control hfIdFeriado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGenerar;
+        protected global::System.Web.UI.WebControls.HiddenField hfIdFeriado;
+        
+        /// <summary>
+        /// Control btnCargarFeriado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCargarFeriado;
+        
+        /// <summary>
+        /// Control Button2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

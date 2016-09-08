@@ -38,6 +38,8 @@ namespace InnovaSchool.UserLayer.Interfaces
 
         private void IniciarValidacion()
         {
+            txtAnioEscolarVigente.Text = DateTime.Today.Year.ToString();
+
             var FecIniAnio = "01/01/" + DateTime.Today.Year.ToString();
             var FecFinAnio = "31/12/" + DateTime.Today.Year.ToString();
             var FecActual = DateTime.Today.ToShortDateString();
@@ -58,14 +60,14 @@ namespace InnovaSchool.UserLayer.Interfaces
             {
                 EFeriado eFeriado = new EFeriado();
                 eFeriado.IdAgenda = ddlAnio.SelectedValue;
-                eFeriado = bFeriado.ConsultarFeriado(eFeriado);
+                /*eFeriado = bFeriado.ConsultarFeriado(eFeriado);
                 if (eFeriado != null)
                 {
                     txtFechaInicio.Text = string.Format("{0:dd/MM/yyyy}", eFeriado.FechaInicio);
                     txtFechaFin.Text = string.Format("{0:dd/MM/yyyy}", eFeriado.FechaTermino);
                     txtAnioEscolarVigente.Text = eFeriado.IdAgenda;
                     txtDescripcion.Text = eFeriado.Motivo;
-                }
+                }*/
 
                 List<EFeriado> ListECalendario;
                 ListECalendario = bFeriado.ConsultarFeriadoLista(eFeriado);
@@ -84,8 +86,15 @@ namespace InnovaSchool.UserLayer.Interfaces
             try
             {
                 EUsuario EUsuario = (EUsuario)Session["Usuario"];
+
+                int IdFeriado = 0;
+                if (!hfIdFeriado.Value.Equals(string.Empty))
+                    IdFeriado = int.Parse(hfIdFeriado.Value);
+
                 EFeriado eFeriado = new EFeriado
                 {
+                    IdFeriado = IdFeriado,
+                    IdAgenda = txtAnioEscolarVigente.Text,
                     Motivo = txtDescripcion.Text,
                     FechaInicio = objResources.GetDateFromTextBox(txtFechaInicio),
                     FechaTermino = objResources.GetDateFromTextBox(txtFechaFin),
@@ -94,10 +103,11 @@ namespace InnovaSchool.UserLayer.Interfaces
                 int result = 0;
                 result = bFeriado.RegistrarFeriado(eFeriado, EUsuario);
                 if (result != 0)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "<script>$('#mensaje').html(GenerarMensaje('" + Constant.TituloRegistroFeriado + "','" + Constant.MensajeRegistroFeriado + "'))</script>");
-                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>myModalShow();</script>");
+                {                    
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#mensaje').modal('show');</script>");
+
                     objResources.LimpiarControles(this.Controls);
+                    txtAnioEscolarVigente.Text = DateTime.Today.Year.ToString();
                     CargarAniosAgenda();
                     //(VerificarAperturaAgenda();
                 }
@@ -112,5 +122,125 @@ namespace InnovaSchool.UserLayer.Interfaces
                 Response.Redirect("../Error/NoAccess.html");
             }
         }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarControles();
+        }
+
+        private void LimpiarControles() 
+        {
+            txtAnioEscolarVigente.Text = DateTime.Today.Year.ToString();
+            txtDescripcion.Text = "";
+            txtFechaFin.Text = "";
+            txtFechaInicio.Text = "";
+            chkRepiteCadaAnio.Checked = false;
+        }
+
+        protected void gvConsultaFeriados_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            int rowIndex;
+            EFeriado eFeriado = new EFeriado();
+            ESolicitudActividad ESolicitudActividad = new ESolicitudActividad();
+
+            switch (e.CommandName)
+            {
+                case "Editar":
+                    //btnEnviar.Visible = true;
+                    rowIndex = (((GridViewRow)((TableCell)((LinkButton)e.CommandSource).Parent).Parent)).RowIndex;
+                    GridViewRow gvr = (((GridViewRow)((TableCell)((LinkButton)e.CommandSource).Parent).Parent));
+
+                    //eFeriado.IdFeriado = int.Parse(gvConsultaFeriados.DataKeys[rowIndex][0].ToString());
+                    //string id = ((Label)gvr.FindControl("lblIdFeriado")).Text;
+                    eFeriado.IdFeriado = int.Parse(((Label)gvr.FindControl("lblIdFeriado")).Text);
+                    eFeriado.IdAgenda = txtAnioEscolarVigente.Text;
+                    hfIdFeriado.Value = eFeriado.IdFeriado.ToString();
+                    txtDescripcion.Text = ((Label)gvr.FindControl("lblDescripcion")).Text;
+                    
+                    bool repiteCadaAnio = (((Label)gvr.FindControl("lblReptitivo")).Text == "1" ? true:false);
+                    chkRepiteCadaAnio.Checked = repiteCadaAnio;
+                    txtFechaInicio.Text = string.Format("{0:dd/MM/yyyy}", gvConsultaFeriados.Rows[rowIndex].Cells[5].Text);
+                    txtFechaFin.Text = string.Format("{0:dd/MM/yyyy}", gvConsultaFeriados.Rows[rowIndex].Cells[6].Text);
+                    
+                    gvConsultaFeriados.DataSource = bFeriado.ConsultarFeriadoLista(eFeriado);;
+                    gvConsultaFeriados.DataBind();
+                    break;
+                case "Eliminar":
+                    rowIndex = (((GridViewRow)((TableCell)((LinkButton)e.CommandSource).Parent).Parent)).RowIndex;
+                    eFeriado.IdFeriado = (int)gvConsultaFeriados.DataKeys[rowIndex][0];
+                    hfIdFeriado.Value = eFeriado.IdFeriado.ToString();
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalEliminar').modal('show');</script>");
+                    break;
+            }
+        }
+
+        protected void gvConsultaFeriados_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EFeriado eFeriado = new EFeriado()
+                {
+                    IdFeriado = int.Parse(hfIdFeriado.Value),
+                    IdAgenda = txtAnioEscolarVigente.Text
+                };
+                int result = 0;
+                result = bFeriado.EliminarFeriado(eFeriado);
+                if (result != 0)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "<script>$('#mensaje').html(GenerarMensaje('" + Constant.TituloEliminarActividad + "','" + Constant.MensajeEliminarActividadAcademica + "'))</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>myModalShow();</script>");
+                    gvConsultaFeriados.DataSource = bFeriado.ConsultarFeriadoLista(eFeriado); ;
+                    gvConsultaFeriados.DataBind();
+                    LimpiarControles();
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "<script>$('#mensaje').html(GenerarMensaje('" + Constant.TituloEliminarActividad + "','" + Constant.MensajeErrorEliminarActividadAcademica + "'))</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>myModalShow();</script>");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("../Error/NoAccess.html");
+            }
+        }
+
+        protected void btnCargarFeriado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EUsuario EUsuario = (EUsuario)Session["Usuario"];
+
+                List<EFeriado> ListaFeriadoRepetitivos;
+                ListaFeriadoRepetitivos = bFeriado.CargarFeriadoRepetitivos(EUsuario);
+                gvConsultaFeriados.DataSource = ListaFeriadoRepetitivos;
+                gvConsultaFeriados.DataBind();
+
+                LimpiarControles();
+
+                /*if (ListaFeriadoRepetitivos.Count != 0)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#mensaje').modal('show');</script>");
+                    CargarAniosAgenda();
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "<script>$('#mensaje').html(GenerarMensaje('" + Constant.TituloErrorFeriado + "','" + Constant.MensajeErrorRegistrarFeriado + "'))</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>myModalShow();</script>");
+                }*/
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("../Error/NoAccess.html");
+            }
+        }
+
+     
     }
 }

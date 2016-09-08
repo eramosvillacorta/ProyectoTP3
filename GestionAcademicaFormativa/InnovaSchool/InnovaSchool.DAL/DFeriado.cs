@@ -52,6 +52,7 @@ namespace InnovaSchool.DAL
                     {
                         retval = new EFeriado()
                         {
+                            IdFeriado = int.Parse(reader["IdFeriado"].ToString()),
                             IdAgenda = reader["IdAgenda"].ToString(),
                             Motivo = reader["Motivo"].ToString(),
                             FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
@@ -82,15 +83,17 @@ namespace InnovaSchool.DAL
                     {
                         retval.Add( new EFeriado
                         {
+                            IdFeriado = int.Parse(reader["IdFeriado"].ToString()),
                             IdAgenda = reader["IdAgenda"].ToString(),
                             Motivo = reader["Motivo"].ToString(),
-                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),                            
-                            FechaTermino = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            //FechaTermino = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             Repetitivo = int.Parse(reader["Repetitivo"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString(),
                             FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString()),
                             UsuModificacion = reader["UsuModificacion"].ToString(),
-                            FecModificacion = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FecModificacion"].ToString())
+                            //FecModificacion = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FecModificacion"].ToString())
                         });
                     }
                 }
@@ -106,15 +109,101 @@ namespace InnovaSchool.DAL
             using (SqlCommand cmd = new SqlCommand("SP_RegistrarFeriado", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@idFeriado", EFeriado.IdFeriado));
+                cmd.Parameters.Add(new SqlParameter("@idAgenda", EFeriado.IdAgenda));
                 cmd.Parameters.Add(new SqlParameter("@motivo", EFeriado.Motivo));
-                cmd.Parameters.Add(new SqlParameter("@repetitivo", EFeriado.Repetitivo));
                 cmd.Parameters.Add(new SqlParameter("@fechaInicio", EFeriado.FechaInicio));
                 cmd.Parameters.Add(new SqlParameter("@fechaTermino", EFeriado.FechaTermino));
+                cmd.Parameters.Add(new SqlParameter("@repetitivo", EFeriado.Repetitivo));
                 cmd.Parameters.Add(new SqlParameter("@usuCreacion", EUsuario.Usuario));
+                cmd.Parameters.Add(new SqlParameter("@usuModificacion", EUsuario.Usuario));
                 retval = cmd.ExecuteNonQuery();
             }
             cn.Close();
             return retval;
         }
+
+        public int EliminarFeriado(EFeriado EFeriado)
+        {
+            int retval = 0;
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_EliminarFeriado", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@idFeriado", EFeriado.IdFeriado));
+                retval = cmd.ExecuteNonQuery();
+            }
+            cn.Close();
+            return retval;
+        }
+
+        public List<EFeriado> CargarFeriadoRepetitivos(EUsuario EUsuario)
+        {
+            List<EFeriado> retval = new List<EFeriado>();
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_CargarFeriados", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@usuCreacion", EUsuario.Usuario));
+                cmd.Parameters.Add(new SqlParameter("@usuCreacion", EUsuario.Usuario));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        retval.Add(new EFeriado
+                        {
+                            IdFeriado = int.Parse(reader["IdFeriado"].ToString()),
+                            IdAgenda = reader["IdAgenda"].ToString(),
+                            Motivo = reader["Motivo"].ToString(),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            //FechaTermino = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            Repetitivo = int.Parse(reader["Repetitivo"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
+                            FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString()),
+                            UsuModificacion = reader["UsuModificacion"].ToString(),
+                            //FecModificacion = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FecModificacion"].ToString())
+                        });
+                    }
+                }
+            }
+            cn.Close();
+            return retval;
+        }
+
+        public List<EFeriado> ValidarExistenciaFeriado(EFeriado EFeriado, EUsuario EUsuario)
+        {
+            List<EFeriado> retval = new List<EFeriado>();
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_ValidarExistenciaFeriado", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@fechaInicio", EFeriado.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@fechaTermino", EFeriado.FechaTermino));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        retval.Add(new EFeriado
+                        {
+                            IdFeriado = int.Parse(reader["IdFeriado"].ToString()),
+                            IdAgenda = reader["IdAgenda"].ToString(),
+                            Motivo = reader["Motivo"].ToString(),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            //FechaTermino = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            Repetitivo = int.Parse(reader["Repetitivo"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
+                            FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString()),
+                            UsuModificacion = reader["UsuModificacion"].ToString(),
+                            //FecModificacion = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FecModificacion"].ToString())
+                        });
+                    }
+                }
+            }
+            cn.Close();
+            return retval;
+        }
+
     }
 }

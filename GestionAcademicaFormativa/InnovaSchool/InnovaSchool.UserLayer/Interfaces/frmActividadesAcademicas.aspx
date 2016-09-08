@@ -90,7 +90,7 @@
                             </div>
                             <div class="form-actions">
                                 <asp:Button ID="btnOperGuardar" runat="server" type="submit" Text="Guardar" class="btn btn-primary" ValidationGroup="ActividadValid" OnClick="btnOperGuardar_Click" />
-                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" type="reset" class="btn btn-warning" UseSubmitBehavior="False" OnClick="btnLimpiar_Click"/>
+                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" type="reset" class="btn btn-warning" UseSubmitBehavior="False" OnClick="btnLimpiar_Click"/>                                
                                 <a href="../Interfaces/frmMantenerCalendarioAcademico.aspx" class="btn btn-success">Cancelar</a>
                             </div>
                             <div class="control-group">

@@ -30,5 +30,13 @@ namespace InnovaSchool.BL
         {
             return DFeriado.RegistrarFeriado(EFeriado, EUsuario);
         }
+        public int EliminarFeriado(EFeriado EFeriado)
+        {
+            return DFeriado.EliminarFeriado(EFeriado);
+        }
+        public List<EFeriado> CargarFeriadoRepetitivos(EUsuario EUsuario)
+        {
+            return DFeriado.CargarFeriadoRepetitivos(EUsuario);
+        }
     }
 }
