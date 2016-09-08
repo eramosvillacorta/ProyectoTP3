@@ -171,7 +171,7 @@ namespace InnovaSchool.DAL
             return retval;
         }
 
-        public List<EFeriado> ValidarExistenciaFeriado(EFeriado EFeriado, EUsuario EUsuario)
+        public List<EFeriado> ValidarExistenciaFeriado(EFeriado EFeriado)
         {
             List<EFeriado> retval = new List<EFeriado>();
             cn.Open();
@@ -190,13 +190,11 @@ namespace InnovaSchool.DAL
                             IdAgenda = reader["IdAgenda"].ToString(),
                             Motivo = reader["Motivo"].ToString(),
                             FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
-                            FechaTermino = Convert.ToDateTime(reader["FechaTermino"].ToString()),
-                            //FechaTermino = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            FechaTermino = Convert.ToDateTime(reader["FechaTermino"].ToString()),                            
                             Repetitivo = int.Parse(reader["Repetitivo"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString(),
                             FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString()),
-                            UsuModificacion = reader["UsuModificacion"].ToString(),
-                            //FecModificacion = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FecModificacion"].ToString())
+                            UsuModificacion = reader["UsuModificacion"].ToString(),                            
                         });
                     }
                 }

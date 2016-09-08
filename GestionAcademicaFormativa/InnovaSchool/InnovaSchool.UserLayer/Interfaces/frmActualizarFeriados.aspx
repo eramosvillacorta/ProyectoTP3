@@ -56,47 +56,31 @@
                             <label class="control-label" for="txtFechaInicio">Fecha de Inicio:</label>
                             <div class="controls">
                                 <asp:TextBox ID="txtFechaInicio" runat="server" type="text" class="input-medium datepicker"
-                                    title="Se necesita una fecha de inicio"></asp:TextBox>
+                                    title="Se necesita una fecha de inicio" BackColor="White" MaxLength="10" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvFechaInicio" runat="server"
-                                    ValidationGroup="FechaValid"
+                                    ValidationGroup="SolicitudValid"
                                     ControlToValidate="txtFechaInicio"
                                     ForeColor="Red"
                                     Font-Size="Small"
                                     Display="Dynamic"
-                                    ErrorMessage="<div><i>*Se necesita una fecha de inicio</i></div>"> </asp:RequiredFieldValidator>
-                                <asp:RangeValidator ID="rvFechaInicio" runat="server" 
-                                    ValidationGroup="FechaValid"
-                                    ControlToValidate="txtFechaInicio"
-                                    
-                                    ForeColor="Red"
-                                    Font-Size="Small"
-                                    Display="Dynamic"
-                                    MaximumValue="01/01/2100"
-                                    ErrorMessage="<div><i>*La fecha de la actividad se encuentra fuera del rango del año escolar vigente o es menor a la actual.</i></div>" MinimumValue="01/01/2000"></asp:RangeValidator>
+                                    ErrorMessage="<div><i>*Se necesita una fecha de inicio</i></div>"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="txtFechaFin">Fecha de Termino:</label>
                             <div class="controls">
                                 <asp:TextBox ID="txtFechaFin" runat="server" type="text" class="input-medium datepicker"
-                                    title="Se necesita una fecha de fin"></asp:TextBox>
+                                    title="Se necesita una fecha de fin" MaxLength="10"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvFechaFin" runat="server"
-                                    ValidationGroup="FechaValid"
+                                    ValidationGroup="SolicitudValid"
                                     ControlToValidate="txtFechaFin"
                                     ForeColor="Red"
                                     Font-Size="Small"
                                     Display="Dynamic"
-                                    ErrorMessage="<div><i>*Se necesita una fecha de fin</i></div>"> </asp:RequiredFieldValidator>
-                                <asp:RangeValidator ID="rvFechaFin" runat="server" 
-                                    ValidationGroup="FechaValid"
-                                    ControlToValidate="txtFechaFin"
-                                    
-                                    ForeColor="Red"
-                                    Font-Size="Small"
-                                    Display="Dynamic"
-                                    ErrorMessage="<div><i>*La fecha de la actividad se encuentra fuera del rango del año escolar vigente o es menor a la actual.</i></div>"> </asp:RangeValidator>
+                                    ErrorMessage="<div><i>*Se necesita una fecha de termino</i></div>"> </asp:RequiredFieldValidator>
+
                                 <asp:CompareValidator ID="cvFechaFin" runat="server"  
-                                    ValidationGroup="FechaValid"
+                                    ValidationGroup="SolicitudValid"
                                     ControlToValidate="txtFechaFin"
                                     ControlToCompare="txtFechaInicio"
                                     Operator="GreaterThanEqual"
@@ -273,6 +257,35 @@
         </div>
         <div class="modal-footer">
             <asp:Button ID="Button2" runat="server" type="submit" Text="Si" class="btn btn-primary" UseSubmitBehavior="False" OnClick="btnEliminar_Click"  />
+            <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
+        </div>
+    </div>
+
+<%-- Mensaje de Existe Feriado--%>
+    <div class="modal hide fade in" id="myModalExisteFeriado">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          <!--  <h2>Eliminar Feriado</h2> -->
+        </div>
+        <div class="modal-body">
+            <p>Ya existe un feriado registrado para esta fecha.</p>
+        </div>
+        <div class="modal-footer">            
+            <a href="#" class="btn btn-success" data-dismiss="modal">Aceptar</a>
+        </div>
+    </div>
+
+<%-- Mensaje de Rango Feriados excede 3 dias--%>
+    <div class="modal hide fade in" id="myModalExcedeFeriado">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          <!--  <h2>Eliminar Feriado</h2> -->
+        </div>
+        <div class="modal-body">
+            <p>Este rango de feriados excede los 03 días. ¿Está seguro de registrarlo?</p>
+        </div>
+        <div class="modal-footer">
+            <asp:Button ID="btnRegistrarExceso" runat="server" type="submit" Text="Si" class="btn btn-primary" UseSubmitBehavior="False" OnClick="btnRegistrarExceso_Click"  />
             <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
         </div>
     </div>
