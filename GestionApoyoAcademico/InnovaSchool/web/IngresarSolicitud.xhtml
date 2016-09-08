@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./templates/Template.xhtml">
+            <ui:define name="content">
+                <br/>
+                <h1 class="text-center">Ingresar Solicitud de Admisión</h1>
+                <!--<h:outputLabel value="Datos del Apoderado" styleClass="text-left"/>-->
+                <h:form>
+                     <b:panelGrid columns="2">
+                    <b:panel title="Datos del Apoderado" look="primary" collapsible="false">   
+                        <b:panelGrid columns="2">
+                            <b:inputText id="nombres" label="Nombres" render-label="true" value="#{ingresarSolicitudBean.apoderado.nombre}"/>
+                            <b:selectOneMenu value="#{ingresarSolicitudBean.apoderado.tipDocIde}"  label="Tipo Documento" render-label="true">
+                                <f:selectItems value="#{ingresarSolicitudBean.cbxTipDoc}"/>
+                            </b:selectOneMenu>
+                            <b:inputText id="apPaterno" label="Apellido Paterno" render-label="true" value="#{ingresarSolicitudBean.apoderado.apellidoPaterno}"/>
+                            <b:inputText id="nroDoc" label="Nro. Documento" render-label="true" value="#{ingresarSolicitudBean.apoderado.nroDocIde}"/>   
+                            <b:inputText id="apMaterno" label="Apellido Materno" render-label="true" value="#{ingresarSolicitudBean.apoderado.apellidoMaterno}"/>
+                            <b:inputText id="telefono" label="Nro. Telefono" render-label="true" value="#{ingresarSolicitudBean.apoderado.telefono}"/>                  
+                            <b:inputText id="parentesco" label="Parentesco" render-label="true" value="#{ingresarSolicitudBean.apoderado.parentesco}"/>                  
+                            <b:inputText id="email" label="Correo Electronico" render-label="true" value="#{ingresarSolicitudBean.apoderado.email}"/>                  
+                            <b:inputText id="direccion" label="Dirección" render-label="true" value="#{ingresarSolicitudBean.apoderado.direccion}" span="25"/> 
+                            <b:selectOneMenu value="#{ingresarSolicitudBean.apoderado.idSede}"  label="Sede" render-label="true">
+                                <f:selectItems value="#{ingresarSolicitudBean.getCbxSedes}"/>
+                            </b:selectOneMenu>
+                        </b:panelGrid>
+                            
+                         </b:panel>    
+                        <b:panel title="Datos del Postulante" look="primary" collapsible="false" id="postulante">
+                            <b:panelGrid columns="2">
+                                <b:inputText id="nombres1" label="Nombres" render-label="true" value="#{ingresarSolicitudBean.alumno.nombre}"/>
+                                <b:selectOneMenu value="#{ingresarSolicitudBean.alumno.tipDocIde}"  label="Tipo Documento" render-label="true">
+                                    <f:selectItems value="#{ingresarSolicitudBean.cbxTipDoc}"/>
+                                </b:selectOneMenu>
+                                <b:inputText id="apPaterno1" label="Apellido Paterno" render-label="true" value="#{ingresarSolicitudBean.alumno.apellidoPaterno}"/>
+                                <b:inputText id="nroDoc1" label="Nro. Documento" render-label="true" value="#{ingresarSolicitudBean.alumno.nroDocIde}"/>   
+                                <b:inputText id="apMaterno1" label="Apellido Materno" render-label="true" value="#{ingresarSolicitudBean.alumno.apellidoMaterno}"/>
+                                <b:selectOneMenu id="genero" label="Genero" render-label="true" value="#{ingresarSolicitudBean.alumno.genero}">
+                                    <f:selectItem itemLabel="Seleccione" itemValue=""></f:selectItem>
+                                     <f:selectItem itemLabel="Masculino" itemValue="M"></f:selectItem>
+                                      <f:selectItem itemLabel="Femenino" itemValue="F"></f:selectItem>
+                                </b:selectOneMenu>                
+                                <h:outputLabel value="Fecha Nacimiento" styleClass="bf-no-message"><b:datepicker id="fecnac" mode="icon-popup" value="#{ingresarSolicitudBean.alumno.fechaNacimiento}" showButtonPanel="true" changeYear="true" changeMonth="true" /> </h:outputLabel>                                                            
+                                <b:inputText id="direccion1" label="Dirección" render-label="true" value="#{ingresarSolicitudBean.apoderado.direccion}" span="25"/> 
+                                <b:selectOneMenu value="#{ingresarSolicitudBean.alumno.idGrado}"  label="Grado al que postula" render-label="true">
+                                    <f:selectItems value="#{ingresarSolicitudBean.cbxGrados}"/>
+                                </b:selectOneMenu>                                
+                            </b:panelGrid>
+                            <b:commandButton value="Agregar Postulante" look="primary" >
+                                    <f:ajax listener="#" execute="@form"  /> 
+                            </b:commandButton>
+                        </b:panel>   
+                         </b:panelGrid> 
+                    <b:panel title="Resumen de Postulantes"  collapsible="false" id="rsmpostul">
+                    <b:dataTable value="#{ingresarSolicitudBean.alumnos}"
+                                var="alu"
+                                id="tblalumno"
+                                fixedHeader="true"
+                                scroll-size="400px"
+                                scroll-x="false"
+                                responsive="true"
+                                customLangUrl="//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json"
+                                searching="false">
+                        <b:dataTableColumn label="Grado">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Nombre">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Apellido Paterno">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Apellido Materno">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Genero">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Tipo Documento">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Fecha Nacimiento">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Dirección">
+                            <h:outputText value="#{alu.grado}"/>
+                        </b:dataTableColumn>
+                        </b:dataTable>       
+                    </b:panel>
+                     <b:commandButton value="Grabar" look="primary" >
+                                    <f:ajax listener="#" execute="@form"  /> 
+                     </b:commandButton>
+                    <span></span>
+                     <b:commandButton value="Salir" look="primary" >
+                                    <f:ajax listener="#" execute="@form"  /> 
+                     </b:commandButton>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

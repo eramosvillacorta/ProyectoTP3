@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-sep-2016 10:42:16 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upc.innovaschool.model.Apoderado" table="Apoderado" schema="gaa" catalog="InnovaSchool" optimistic-lock="version">
+        <id name="idApoderado" type="int">
+            <column name="idApoderado" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="persona" class="pe.edu.upc.innovaschool.model.Persona" fetch="select">
+            <column name="idPersona" />
+        </many-to-one>
+        <property name="parentesco" type="string">
+            <column name="parentesco" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="20" />
+        </property>
+        <property name="telefono2" type="string">
+            <column name="telefono_2" length="10" />
+        </property>
+        <set name="alumnos" table="Alumno" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idApoderado" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.Alumno" />
+        </set>
+    </class>
+</hibernate-mapping>

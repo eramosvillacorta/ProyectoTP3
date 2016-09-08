@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-sep-2016 10:42:16 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upc.innovaschool.model.Proceso" table="Proceso" schema="gaa" catalog="InnovaSchool" optimistic-lock="version">
+        <id name="idProceso" type="int">
+            <column name="idProceso" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cronograma" class="pe.edu.upc.innovaschool.model.Cronograma" fetch="select">
+            <column name="idCronograma" />
+        </many-to-one>
+        <property name="tipo" type="string">
+            <column name="tipo" length="50" />
+        </property>
+        <property name="fechaInicio" type="timestamp">
+            <column name="fechaInicio" length="23" />
+        </property>
+        <property name="fechaFin" type="timestamp">
+            <column name="fechaFin" length="23" />
+        </property>
+        <set name="citas" table="Cita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProceso" not-null="true" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.Cita" />
+        </set>
+    </class>
+</hibernate-mapping>
