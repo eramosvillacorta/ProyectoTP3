@@ -1,14 +1,59 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <body>
 
         <ui:composition template="./templates/Template.xhtml">
 
             <ui:define name="content">
-                content
+                <br/>
+                <h1 class="text-center">Citas</h1>
+              <h:form>
+                <b:panel title="Filtros"  collapsible="false" id="sadmi">
+                    
+                    <b:dataTable value="#{ingresarSolicitudBean.alumnos}"
+                                var="alu"
+                                id="tblalumno"
+                                fixedHeader="true"
+                                scroll-size="400px"
+                                scroll-x="false"
+                                responsive="true"                                
+                                customLangUrl="//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json"
+                                searching="true">
+                        <b:dataTableColumn label="Codigo">
+                            
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Fecha Solicitud">
+                            
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Solicitante">
+                            
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Nro. Documento">
+                            
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Sede">
+                            
+                        </b:dataTableColumn>                        
+                        <b:dataTableColumn label="Estado">
+                            
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Acciones">
+                            <b:commandButton iconAwesome="pencil" value="" tooltip="Editar" >
+                                 <f:ajax listener="#" execute="@form"  /> 
+                            </b:commandButton>
+                            <b:commandButton iconAwesome="search" value="" tooltip="Consultar" >
+                                 <f:ajax listener="#" execute="@form"  /> 
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                        </b:dataTable>       
+                    </b:panel>
+                    </h:form>
             </ui:define>
 
         </ui:composition>
