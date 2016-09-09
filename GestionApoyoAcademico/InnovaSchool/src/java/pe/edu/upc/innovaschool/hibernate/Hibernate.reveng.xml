@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="InnovaSchool"/>
+  <table-filter match-name="Proceso" match-schema="gaa"/>
+  <table-filter match-name="SolicitudAdmision" match-schema="gaa"/>
+  <table-filter match-name="Apoderado" match-schema="gaa"/>
+  <table-filter match-name="Alumno" match-schema="gaa"/>
+  <table-filter match-name="Cronograma" match-schema="gaa"/>
+  <table-filter match-name="DocumentoIdentidad" match-schema="gaa"/>
+  <table-filter match-name="ExpedienteAdmision" match-schema="gaa"/>
+  <table-filter match-name="Sede" match-schema="gaa"/>
+  <table-filter match-name="Cita" match-schema="gaa"/>
+  <table-filter match-name="Persona" match-schema="gaa"/>
+  <table-filter match-name="Nivel" match-schema="gp"/>
+  <table-filter match-name="Grado" match-schema="gp"/>  
+  <table-filter match-name="Persona" match-schema="gsp"/>
+</hibernate-reverse-engineering>

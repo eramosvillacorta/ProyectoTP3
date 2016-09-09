@@ -1,0 +1,109 @@
+﻿@using Innova.Models;
+
+@model Curso
+
+@{
+    List<SelectListItem> listaEstado = new List<SelectListItem>();
+    List<SelectListItem> listaArea = GestionPedagogica.ListarAreaCurricular().Select(x => new SelectListItem() { Value = x.IdAreaCurricular.ToString(), Text = x.Nombre, Selected = (x.IdAreaCurricular == Model.IdAreaCurricular ? true : false) }).ToList();
+    List<SelectListItem> listaNivel = GestionPedagogica.ListarNivel().Select(x => new SelectListItem() { Value = x.IdNivel.ToString(), Text = x.Nombre, Selected = (x.IdNivel == Model.Grado.IdNivel ? true : false) }).ToList();
+    List<SelectListItem> listaGrado = GestionPedagogica.ListarGrado(Model.Grado.IdNivel).Select(x => new SelectListItem() { Value = x.IdGrado.ToString(), Text = x.Nombre, Selected = (x.IdGrado == Model.IdGrado ? true : false) }).ToList();
+    List<SelectListItem> listaCoordinador = GestionPedagogica.ListarCoordinador().Select(x => new SelectListItem() { Value = x.idEmpleado.ToString(), Text = x.Persona.nombre, Selected = (x.idEmpleado == Model.IdEmpleado ? true : false) }).ToList();
+    List<SelectListItem> listaUnidad = GestionPedagogica.ListarUnidad().Select(x => new SelectListItem() { Value = x.IdUnidad.ToString(), Text = x.Nombre }).ToList();
+
+    listaEstado.Add(new SelectListItem() { Text = "Activo", Value = "1", Selected = (Model.Estado ? true : false) });
+    listaEstado.Add(new SelectListItem() { Text = "Inactivo", Value = "0", Selected = (Model.Estado ? false : true) });
+
+    listaArea.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+    listaGrado.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+    listaCoordinador.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+}
+
+<div class="modal fade" id="pnlRegistro" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:80%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">@ViewBag.TituloCurso</h4>
+            </div>
+            <div class="modal-body form-horizontal">
+                @Html.Hidden("txhID", Model.IdCurso)
+                <div class="form-group">
+                    <label for="txtCod" class="col-lg-3 control-label text-right">Codigo:</label>
+                    <div class="col-lg-4">@Html.TextBox("txtCod", Model.Codigo, new { @class = "form-control input-sm" })</div>
+                    <label for="ddlEstado" class="col-lg-3 control-label text-right">Estado:</label>
+                    <div class="col-lg-2">@Html.DropDownList("ddlEstado", listaEstado, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="txtNom" class="col-lg-3 control-label text-right">Nombre:</label>
+                    <div class="col-lg-9">@Html.TextBox("txtNom", Model.Nombre, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlArea" class="col-lg-3 control-label text-right">Area Curricular:</label>
+                    <div class="col-lg-9">@Html.DropDownList("ddlArea", listaArea, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="txtSum" class="col-lg-3 control-label text-right">Sumilla:</label>
+                    <div class="col-lg-9">@Html.TextArea("txtSum", Model.Sumilla, new { @class = "form-control input-sm", rows = 2 })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlNivel" class="col-lg-3 control-label text-right">Nivel:</label>
+                    <div class="col-lg-9">@Html.DropDownList("ddlNivel", listaNivel, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlGrado" class="col-lg-3 control-label text-right">Grado:</label>
+                    <div class="col-lg-9">@Html.DropDownList("ddlGrado", listaGrado, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlCoord" class="col-lg-3 control-label text-right">Coordinador del Curso:</label>
+                    <div class="col-lg-9">@Html.DropDownList("ddlCoord", listaCoordinador, new { @class = "form-control input-sm" })</div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Temario Base</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="ddlUnidad" class="col-lg-2 control-label text-right">Unidad:</label>
+                            <div class="col-lg-8">@Html.DropDownList("ddlUnidad", listaUnidad, new { @class = "form-control input-sm" })</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTemTit" class="col-lg-2 control-label text-right">Temario:</label>
+                            <div class="col-lg-8">@Html.TextBox("txtTemTit", "", new { @class = "form-control input-sm" })</div>
+                            <button type="button" id="btnAgregar" class="btn btn-sm btn-primary">Agregar</button>
+                        </div>
+                        <table id="tblTemario" class="table table-bordered table-condensed">
+                            <thead>
+                                <tr class="active">
+                                    <th>Unidad</th>
+                                    <th>Temario</th>
+                                    <th>Modificar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (CursoTema item in Model.CursoTema)
+                                {
+                                    <tr>
+                                        <td data-value="@item.IdUnidad">@item.Unidad.Nombre</td>
+                                        <td>@item.Temario</td>
+                                        <td><button type="button" name="btnModificar" class="btn btn-xs btn-default">
+                                            @*Modificar*@
+                                                <img src="~/Content/Images/editar.png" alt="Editar" />
+                                            </button></td>
+                                        <td><button type="button" id="btnEliminar" class="btn btn-xs btn-default">
+                                            @*Eliminar*@
+                                                <img src="~/Content/Images/eliminar.png" alt="Eliminar" />
+                                            </button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnGuardar" class="btn btn-primary" type="button">Guardar</button>
+                <button data-dismiss="modal" class="btn btn-primary" type="button">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

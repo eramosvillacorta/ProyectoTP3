@@ -1,0 +1,38 @@
+﻿@using System.Collections.Generic;
+@using System.Linq;
+@using Innova.Models;
+
+@model List<Curso>
+
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr class="active">
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Nivel</th>
+            <th>Grado</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Curso item in Model)
+        {
+            <tr>
+                <td data-value="@item.IdCurso">@item.Codigo</td>
+                <td>@item.Nombre</td>
+                <td>@item.Grado.Nivel.Nombre</td>
+                <td>@item.Grado.Nombre</td>
+                <td>
+                    @{ string estado = item.Estado ? "Activo" : "Inactivo"; }
+
+                    @estado
+                </td>
+                <td><button type="button" class="btn btn-xs btn-default">
+                    @*Modificar*@
+                        <img src="~/Content/Images/editar.png" alt="Detalles de Curricula Base" />
+                    </button></td>
+            </tr>
+        }
+    </tbody>
+</table>

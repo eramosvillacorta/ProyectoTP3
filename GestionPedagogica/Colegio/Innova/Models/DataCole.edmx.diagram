@@ -4,32 +4,44 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5b8f275db415459cb26e5bcb3d2fb136" Name="Diagram1">
-        <EntityTypeShape EntityType="InnovaModel.AreaCurricular" Width="1.5" PointX="3" PointY="11" />
-        <EntityTypeShape EntityType="InnovaModel.Capacidad" Width="1.5" PointX="5.25" PointY="1.125" />
-        <EntityTypeShape EntityType="InnovaModel.Competencia" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="InnovaModel.Curricula" Width="1.5" PointX="3" PointY="4.625" />
-        <EntityTypeShape EntityType="InnovaModel.CurriculaBase" Width="1.5" PointX="0.75" PointY="1.625" />
-        <EntityTypeShape EntityType="InnovaModel.CurriculaBaseCompetencia" Width="1.5" PointX="5.25" PointY="11.625" />
-        <EntityTypeShape EntityType="InnovaModel.Curso" Width="1.5" PointX="5.25" PointY="7.625" />
+      <Diagram DiagramId="5b8f275db415459cb26e5bcb3d2fb136" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="InnovaModel.AreaCurricular" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="InnovaModel.Capacidad" Width="1.5" PointX="5.25" PointY="20.875" />
+        <EntityTypeShape EntityType="InnovaModel.Competencia" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="InnovaModel.Contrato" Width="1.5" PointX="5.25" PointY="16.5" />
+        <EntityTypeShape EntityType="InnovaModel.Curricula" Width="1.5" PointX="3" PointY="5.75" />
+        <EntityTypeShape EntityType="InnovaModel.CurriculaBase" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="InnovaModel.CurriculaBaseCompetencia" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="InnovaModel.Curso" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="InnovaModel.CursoTema" Width="1.5" PointX="7.5" PointY="9" />
         <EntityTypeShape EntityType="InnovaModel.DetalleCurricula" Width="1.5" PointX="5.25" PointY="4.875" />
-        <EntityTypeShape EntityType="InnovaModel.Docente" Width="1.5" PointX="7.5" PointY="10.75" />
-        <EntityTypeShape EntityType="InnovaModel.Grado" Width="1.5" PointX="3" PointY="7.875" />
-        <EntityTypeShape EntityType="InnovaModel.Nivel" Width="1.5" PointX="0.75" PointY="4.875" />
-        <EntityTypeShape EntityType="InnovaModel.PlanEstudiosBase" Width="1.5" PointX="7.5" PointY="8" />
-        <EntityTypeShape EntityType="InnovaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.625" />
+        <EntityTypeShape EntityType="InnovaModel.Docente" Width="1.5" PointX="7.5" PointY="14.625" />
+        <EntityTypeShape EntityType="InnovaModel.DocumentoIdentidad" Width="1.5" PointX="1.5" PointY="21.5" />
+        <EntityTypeShape EntityType="InnovaModel.Empleado" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="InnovaModel.Grado" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="InnovaModel.Nivel" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="InnovaModel.Persona" Width="1.5" PointX="0.75" PointY="15" />
+        <EntityTypeShape EntityType="InnovaModel.PlanEstudiosBase" Width="1.5" PointX="7.5" PointY="6" />
+        <EntityTypeShape EntityType="InnovaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.125" />
+        <EntityTypeShape EntityType="InnovaModel.Unidad" Width="1.5" PointX="5.25" PointY="13.25" />
         <AssociationConnector Association="InnovaModel.FK_CurriculaBaseCompetencia_AreaCurricular" />
         <AssociationConnector Association="InnovaModel.FK_Curso_AreaCurricular" />
         <AssociationConnector Association="InnovaModel.FK_Capacidad_Competencia" />
         <AssociationConnector Association="InnovaModel.FK_CurriculaBaseCompetencia_Competencia" />
         <AssociationConnector Association="InnovaModel.FK_DetalleCurricula_Competencia" />
+        <AssociationConnector Association="InnovaModel.FK_Contrato_Empleado1" />
         <AssociationConnector Association="InnovaModel.FK_Curricula_CurriculaBase" />
         <AssociationConnector Association="InnovaModel.FK_Curricula_Nivel" />
         <AssociationConnector Association="InnovaModel.FK_DetalleCurricula_Curricula" />
         <AssociationConnector Association="InnovaModel.FK_CurriculaBaseCompetencia_CurriculaBase" />
         <AssociationConnector Association="InnovaModel.FK_PlanEstudiosBase_CurriculaBaseCompetencia" />
+        <AssociationConnector Association="InnovaModel.FK_Curso_Empleado" />
         <AssociationConnector Association="InnovaModel.FK_Curso_Grado" />
+        <AssociationConnector Association="InnovaModel.FK_CursoTema_Curso" />
         <AssociationConnector Association="InnovaModel.FK_PlanEstudiosBase_Curso" />
+        <AssociationConnector Association="InnovaModel.FK_CursoTema_Unidad" />
+        <AssociationConnector Association="InnovaModel.FK_Persona_DocumentoIdentidad" />
+        <AssociationConnector Association="InnovaModel.FK_Empleado_Persona" />
         <AssociationConnector Association="InnovaModel.FK_Grado_Nivel" />
         <AssociationConnector Association="InnovaModel.DocenteCurso" />
       </Diagram>

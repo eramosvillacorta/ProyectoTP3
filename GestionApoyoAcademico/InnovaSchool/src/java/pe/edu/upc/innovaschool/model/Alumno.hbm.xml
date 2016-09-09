@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-sep-2016 10:42:16 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upc.innovaschool.model.Alumno" table="Alumno" schema="gaa" catalog="InnovaSchool" optimistic-lock="version">
+        <id name="idAlumno" type="int">
+            <column name="idAlumno" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="apoderado" class="pe.edu.upc.innovaschool.model.Apoderado" fetch="select">
+            <column name="idApoderado" />
+        </many-to-one>
+        <many-to-one name="sede" class="pe.edu.upc.innovaschool.model.Sede" fetch="select">
+            <column name="idSede" />
+        </many-to-one>
+        <many-to-one name="persona" class="pe.edu.upc.innovaschool.model.Persona" fetch="select">
+            <column name="idPersona" />
+        </many-to-one>
+        <property name="estado" type="string">
+            <column name="estado" length="20" />
+        </property>
+        <set name="solicitudAdmisions" table="SolicitudAdmision" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAlumno" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.SolicitudAdmision" />
+        </set>
+        <set name="expedienteAdmisions" table="ExpedienteAdmision" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAlumno" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.ExpedienteAdmision" />
+        </set>
+        <set name="citas" table="Cita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAlumno" />
+            </key>
+            <one-to-many class="pe.edu.upc.innovaschool.model.Cita" />
+        </set>
+    </class>
+</hibernate-mapping>

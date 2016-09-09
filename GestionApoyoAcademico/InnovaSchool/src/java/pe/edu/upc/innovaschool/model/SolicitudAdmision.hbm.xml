@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-sep-2016 10:42:16 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pe.edu.upc.innovaschool.model.SolicitudAdmision" table="SolicitudAdmision" schema="gaa" catalog="InnovaSchool" optimistic-lock="version">
+        <id name="nroSolicitud" type="int">
+            <column name="nroSolicitud" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="alumno" class="pe.edu.upc.innovaschool.model.Alumno" fetch="select">
+            <column name="idAlumno" />
+        </many-to-one>
+        <many-to-one name="expedienteAdmision" class="pe.edu.upc.innovaschool.model.ExpedienteAdmision" fetch="select">
+            <column name="idExpedienteAdmision" />
+        </many-to-one>
+        <many-to-one name="grado" class="pe.edu.upc.innovaschool.model.Grado" fetch="select">
+            <column name="idGrado" />
+        </many-to-one>
+        <property name="fechaSolicitud" type="timestamp">
+            <column name="fechaSolicitud" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

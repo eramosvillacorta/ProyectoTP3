@@ -1,0 +1,225 @@
+﻿@{
+    ViewBag.Title = "Consulta de Curso";
+}
+
+<h3 class="text-info">Consulta de Curso</h3>
+
+<div id="lista"></div>
+
+<div id="registro"></div>
+
+<script type="text/javascript">
+    var Curso = function () {
+        thiss = this;
+
+        this.Iniciar = function () {
+            $.ajax({
+                url: '/curso/Consultar',
+                contentType: 'application/html; charset=utf-8',
+                data: {},
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#lista').html(data);
+
+                    $('#btnRegistrar').click(function () {
+                        thiss.Obtener('0');
+                    });
+
+                    $('#btnBuscar').click(function () {
+                        thiss.Listar();
+                    });
+
+                    $('#btnLimpiar').click(function () {
+                        thiss.Limpiar();
+                    });
+
+                    $('#ddlBusNivel').change(function () {
+                        thiss.ListarGrado('ddlBusGrado', $('#ddlBusNivel').val());
+                    });
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+        this.Limpiar = function () {
+            $('#txtBusCod').val('');
+            $('#txtBusNom').val('');
+            $('#ddlBusArea').val('0');
+            $('#ddlBusNivel').val('0');
+            $('#ddlBusGrado').val('0');
+            $('#rbnEstadoActivo').prop('checked', 'checked');
+        };
+        this.Listar = function () {
+            var data = {
+                codigo: $('#txtBusCod').val(),
+                nombre: $('#txtBusNom').val(),
+                area: $('#ddlBusArea').val(),
+                nivel: $('#ddlBusNivel').val(),
+                grado: $('#ddlBusGrado').val(),
+                estado: $('#rbnEstadoActivo').is(':checked')
+            };
+
+            $.ajax({
+                url: '/curso/listar',
+                contentType: 'application/html; charset=utf-8',
+                data: data,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#pnlLista').html(data);
+
+                    $('#pnlLista button').click(function () {
+                        thiss.Obtener($(this).parent().parent().find('td').eq(0).attr('data-value'));
+                    });
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+        this.Obtener = function (valor) {
+            $.ajax({
+                url: '/curso/obtener',
+                contentType: 'application/html; charset=utf-8',
+                data: { v: valor },
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#registro').html(data);
+
+                    $('#pnlRegistro').modal('show');
+
+                    $('#btnGuardar').click(function () {
+                        thiss.Guardar();
+                    });
+
+                    $('#btnAgregar').click(function () {
+                        thiss.AgregarTemario();
+                    });
+
+                    $('#ddlNivel').change(function () {
+                        thiss.ListarGrado('ddlGrado', $('#ddlNivel').val());
+                    });
+
+                    $('#tblTemario button').click(function () {
+                        if ($(this).attr('name') == 'btnModificar') {
+                            thiss.ModificarTemario(this);
+                        } else {
+                            thiss.EliminarTemario(this);
+                        }
+                    });
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+        this.Guardar = function () {
+            var tema = '';
+
+            $('#tblTemario tbody > tr').each(function (i, item) {
+                var uni = $(item).find('td').eq(0).attr('data-value');
+                var tit = $(item).find('td').eq(1).html();
+                tema += uni + '|' + tit + '~';
+            });
+            if (tema.length > 0) tema = tema.substr(0, tema.length - 1);
+
+            var data = {
+                id: $('#txhID').val(),
+                codigo: $('#txtCod').val(),
+                nombre: $('#txtNom').val(),
+                area: $('#ddlArea option:selected').val(),
+                sumilla: $('#txtSum').val(),
+                grado: $('#ddlGrado option:selected').val(),
+                coordinador: $('#ddlCoord option:selected').val(),
+                estado: ($('#ddlEstado option:selected').val() == '1' ? true : false),
+                tema: tema
+            };
+
+            $.ajax({
+                url: '/curso/guardar',
+                contentType: 'application/html; charset=utf-8',
+                data: data,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    alert(data);
+
+                    $('#pnlRegistro').modal('hide');
+
+                    thiss.Listar();
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+
+        this.ListarGrado = function (control, nivel) {
+            $.ajax({
+                url: '/curso/listargrado',
+                contentType: 'application/html; charset=utf-8',
+                data: { nivel: nivel },
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#' + control).empty();
+                    $('#' + control).html(data);
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+
+        this.AgregarTemario = function () {
+            var uni = $('#ddlUnidad option:selected').val();
+            var uniDes = $('#ddlUnidad option:selected').text();
+            var tit = $('#txtTemTit').val();
+            var boEncontrado = false;
+
+            $('#tblTemario tbody > tr').each(function (i, item) {
+                if ($(item).find('td').eq(0).attr('data-value') == uni) {
+                    $(item).find('td').eq(0).html(uniDes);
+                    $(item).find('td').eq(1).html(tit);
+                    boEncontrado = true;
+                    return;
+                }
+            });
+
+            if (boEncontrado) return;
+
+            $('#tblTemario tbody').append('<tr>' +
+                '<td data-value="' + uni + '">' + uniDes + '</td>' +
+                '<td>' + tit + '</td>' +
+                '<td><button type="button" name="btnModificar" class="btn btn-xs btn-default">Modificar</button></td>' +
+                '<td><button type="button" id="btnEliminar" class="btn btn-xs btn-default">Eliminar</button></td></tr>');
+
+            $('#tblTemario button').click(function () {
+                if ($(this).attr('name') == 'btnModificar') {
+                    thiss.ModificarTemario(this);
+                } else {
+                    thiss.EliminarTemario(this);
+                }
+            });
+
+            $('#txtTemTit').val('');
+        };
+        this.ModificarTemario = function (obj) {
+            var fila = $(obj).parent().parent().find('td');
+
+            $('#ddlUnidad').val(fila.eq(0).attr('data-value'));
+            $('#txtTemTit').val(fila.eq(1).text());
+        };
+        this.EliminarTemario = function (obj) {
+            $(obj).parent().parent().remove();
+        };
+    }
+
+    $(document).ready(function () {
+        var curso = new Curso();
+        curso.Iniciar();
+    });
+</script>
