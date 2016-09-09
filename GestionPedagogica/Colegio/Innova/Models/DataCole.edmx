@@ -29,6 +29,24 @@
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+            <PropertyRef Name="numeroContrato" />
+          </Key>
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="numeroContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoContrato" Type="char" MaxLength="1" />
+          <Property Name="fechaInicioContrato" Type="datetime" />
+          <Property Name="fechaFinContrato" Type="datetime" />
+          <Property Name="salario" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="estadoContrato" Type="char" MaxLength="1" />
+          <Property Name="idPuesto" Type="int" Nullable="false" />
+          <Property Name="usuarioCreacion" Type="varchar" MaxLength="30" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="usuarioModificacion" Type="varchar" MaxLength="30" />
+          <Property Name="fechaModificacion" Type="datetime" />
+        </EntityType>
         <EntityType Name="Curricula">
           <Key>
             <PropertyRef Name="IdCurricula" />
@@ -61,11 +79,23 @@
           <Key>
             <PropertyRef Name="IdCurso" />
           </Key>
-          <Property Name="IdCurso" Type="int" Nullable="false" />
+          <Property Name="IdCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Descripción" Type="varchar" MaxLength="200" />
+          <Property Name="Sumilla" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="IdGrado" Type="int" Nullable="false" />
           <Property Name="IdAreaCurricular" Type="int" Nullable="false" />
+          <Property Name="IdEmpleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoTema">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+            <PropertyRef Name="IdUnidad" />
+          </Key>
+          <Property Name="IdCurso" Type="int" Nullable="false" />
+          <Property Name="IdUnidad" Type="int" Nullable="false" />
+          <Property Name="Temario" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="DetalleCurricula">
           <Key>
@@ -91,6 +121,36 @@
           <Property Name="IdDocente" Type="int" Nullable="false" />
           <Property Name="IdCurso" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DocumentoIdentidad">
+          <Key>
+            <PropertyRef Name="idDocumentoIdentidad" />
+          </Key>
+          <Property Name="idDocumentoIdentidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="fondoPensiones" Type="varchar" MaxLength="15" />
+          <Property Name="fechaIngreso" Type="datetime" />
+          <Property Name="estadoEmpleado" Type="char" MaxLength="1" />
+          <Property Name="usuarioCreacion" Type="varchar" MaxLength="30" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="usuarioModificacion" Type="varchar" MaxLength="30" />
+          <Property Name="fechaModificacion" Type="datetime" />
+          <Property Name="cantHijos" Type="int" />
+          <Property Name="estadoCivil" Type="varchar" MaxLength="1" />
+          <Property Name="numeroEPS" Type="int" />
+          <Property Name="idBanco" Type="int" />
+          <Property Name="numeroCuentaHaberes" Type="decimal" Precision="14" Scale="0" />
+          <Property Name="telefonoEmergencia" Type="varchar" MaxLength="20" />
+          <Property Name="contactoEmergencia" Type="varchar" MaxLength="50" />
+          <Property Name="gradoEstudios" Type="varchar" MaxLength="15" />
+          <Property Name="indicadorEPS" Type="char" MaxLength="1" />
+        </EntityType>
         <EntityType Name="Grado">
           <Key>
             <PropertyRef Name="IdGrado" />
@@ -107,6 +167,28 @@
           <Property Name="IdNivel" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="15" />
+          <Property Name="apellidoPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="apellidoMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="correoElectronico" Type="varchar" MaxLength="50" />
+          <Property Name="tipoDocumentoIdentidad" Type="int" />
+          <Property Name="documentoIdentidad" Type="varchar" MaxLength="15" />
+          <Property Name="nacionalidad" Type="varchar" MaxLength="15" />
+          <Property Name="genero" Type="varchar" MaxLength="1" />
+          <Property Name="fechaNacimiento" Type="datetime" />
+          <Property Name="celular" Type="varchar" MaxLength="50" />
+          <Property Name="usuarioCreacion" Type="varchar" MaxLength="30" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="usuarioModificacion" Type="varchar" MaxLength="30" />
+          <Property Name="fechaModificacion" Type="datetime" />
         </EntityType>
         <EntityType Name="PlanEstudiosBase">
           <Key>
@@ -127,6 +209,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Unidad">
+          <Key>
+            <PropertyRef Name="IdUnidad" />
+          </Key>
+          <Property Name="IdUnidad" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+        </EntityType>
         <Association Name="FK_Capacidad_Competencia">
           <End Role="Competencia" Type="Self.Competencia" Multiplicity="1" />
           <End Role="Capacidad" Type="Self.Capacidad" Multiplicity="*" />
@@ -136,6 +225,18 @@
             </Principal>
             <Dependent Role="Capacidad">
               <PropertyRef Name="IdCompetencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contrato_Empleado1">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="idEmpleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -211,6 +312,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Curso_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Curso_Grado">
           <End Role="Grado" Type="Self.Grado" Multiplicity="1" />
           <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
@@ -220,6 +333,30 @@
             </Principal>
             <Dependent Role="Curso">
               <PropertyRef Name="IdGrado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoTema_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="CursoTema" Type="Self.CursoTema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="CursoTema">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoTema_Unidad">
+          <End Role="Unidad" Type="Self.Unidad" Multiplicity="1" />
+          <End Role="CursoTema" Type="Self.CursoTema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidad">
+              <PropertyRef Name="IdUnidad" />
+            </Principal>
+            <Dependent Role="CursoTema">
+              <PropertyRef Name="IdUnidad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -271,6 +408,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Empleado_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Grado_Nivel">
           <End Role="Nivel" Type="Self.Nivel" Multiplicity="1" />
           <End Role="Grado" Type="Self.Grado" Multiplicity="*" />
@@ -280,6 +429,18 @@
             </Principal>
             <Dependent Role="Grado">
               <PropertyRef Name="IdNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_DocumentoIdentidad">
+          <End Role="DocumentoIdentidad" Type="Self.DocumentoIdentidad" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentoIdentidad">
+              <PropertyRef Name="idDocumentoIdentidad" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="tipoDocumentoIdentidad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -311,20 +472,30 @@
           <EntitySet Name="AreaCurricular" EntityType="Self.AreaCurricular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Capacidad" EntityType="Self.Capacidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Competencia" EntityType="Self.Competencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contrato" EntityType="Self.Contrato" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Curricula" EntityType="Self.Curricula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CurriculaBase" EntityType="Self.CurriculaBase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CurriculaBaseCompetencia" EntityType="Self.CurriculaBaseCompetencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoTema" EntityType="Self.CursoTema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleCurricula" EntityType="Self.DetalleCurricula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocenteCurso" EntityType="Self.DocenteCurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentoIdentidad" EntityType="Self.DocumentoIdentidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grado" EntityType="Self.Grado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nivel" EntityType="Self.Nivel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlanEstudiosBase" EntityType="Self.PlanEstudiosBase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unidad" EntityType="Self.Unidad" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Capacidad_Competencia" Association="Self.FK_Capacidad_Competencia">
             <End Role="Competencia" EntitySet="Competencia" />
             <End Role="Capacidad" EntitySet="Capacidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contrato_Empleado1" Association="Self.FK_Contrato_Empleado1">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
           <AssociationSet Name="FK_Curricula_CurriculaBase" Association="Self.FK_Curricula_CurriculaBase">
             <End Role="CurriculaBase" EntitySet="CurriculaBase" />
@@ -350,9 +521,21 @@
             <End Role="AreaCurricular" EntitySet="AreaCurricular" />
             <End Role="Curso" EntitySet="Curso" />
           </AssociationSet>
+          <AssociationSet Name="FK_Curso_Empleado" Association="Self.FK_Curso_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Curso" EntitySet="Curso" />
+          </AssociationSet>
           <AssociationSet Name="FK_Curso_Grado" Association="Self.FK_Curso_Grado">
             <End Role="Grado" EntitySet="Grado" />
             <End Role="Curso" EntitySet="Curso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoTema_Curso" Association="Self.FK_CursoTema_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="CursoTema" EntitySet="CursoTema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoTema_Unidad" Association="Self.FK_CursoTema_Unidad">
+            <End Role="Unidad" EntitySet="Unidad" />
+            <End Role="CursoTema" EntitySet="CursoTema" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleCurricula_Competencia" Association="Self.FK_DetalleCurricula_Competencia">
             <End Role="Competencia" EntitySet="Competencia" />
@@ -370,9 +553,17 @@
             <End Role="Docente" EntitySet="Docente" />
             <End Role="DocenteCurso" EntitySet="DocenteCurso" />
           </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Persona" Association="Self.FK_Empleado_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
           <AssociationSet Name="FK_Grado_Nivel" Association="Self.FK_Grado_Nivel">
             <End Role="Nivel" EntitySet="Nivel" />
             <End Role="Grado" EntitySet="Grado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_DocumentoIdentidad" Association="Self.FK_Persona_DocumentoIdentidad">
+            <End Role="DocumentoIdentidad" EntitySet="DocumentoIdentidad" />
+            <End Role="Persona" EntitySet="Persona" />
           </AssociationSet>
           <AssociationSet Name="FK_PlanEstudiosBase_CurriculaBaseCompetencia" Association="Self.FK_PlanEstudiosBase_CurriculaBaseCompetencia">
             <End Role="CurriculaBaseCompetencia" EntitySet="CurriculaBaseCompetencia" />
@@ -391,16 +582,22 @@
           <EntitySet Name="AreaCurricular" EntityType="InnovaModel.AreaCurricular" />
           <EntitySet Name="Capacidad" EntityType="InnovaModel.Capacidad" />
           <EntitySet Name="Competencia" EntityType="InnovaModel.Competencia" />
+          <EntitySet Name="Contrato" EntityType="InnovaModel.Contrato" />
           <EntitySet Name="Curricula" EntityType="InnovaModel.Curricula" />
           <EntitySet Name="CurriculaBase" EntityType="InnovaModel.CurriculaBase" />
           <EntitySet Name="CurriculaBaseCompetencia" EntityType="InnovaModel.CurriculaBaseCompetencia" />
           <EntitySet Name="Curso" EntityType="InnovaModel.Curso" />
+          <EntitySet Name="CursoTema" EntityType="InnovaModel.CursoTema" />
           <EntitySet Name="DetalleCurricula" EntityType="InnovaModel.DetalleCurricula" />
           <EntitySet Name="Docente" EntityType="InnovaModel.Docente" />
+          <EntitySet Name="DocumentoIdentidad" EntityType="InnovaModel.DocumentoIdentidad" />
+          <EntitySet Name="Empleado" EntityType="InnovaModel.Empleado" />
           <EntitySet Name="Grado" EntityType="InnovaModel.Grado" />
           <EntitySet Name="Nivel" EntityType="InnovaModel.Nivel" />
+          <EntitySet Name="Persona" EntityType="InnovaModel.Persona" />
           <EntitySet Name="PlanEstudiosBase" EntityType="InnovaModel.PlanEstudiosBase" />
           <EntitySet Name="sysdiagrams" EntityType="InnovaModel.sysdiagrams" />
+          <EntitySet Name="Unidad" EntityType="InnovaModel.Unidad" />
           <AssociationSet Name="FK_CurriculaBaseCompetencia_AreaCurricular" Association="InnovaModel.FK_CurriculaBaseCompetencia_AreaCurricular">
             <End Role="AreaCurricular" EntitySet="AreaCurricular" />
             <End Role="CurriculaBaseCompetencia" EntitySet="CurriculaBaseCompetencia" />
@@ -420,6 +617,10 @@
           <AssociationSet Name="FK_DetalleCurricula_Competencia" Association="InnovaModel.FK_DetalleCurricula_Competencia">
             <End Role="Competencia" EntitySet="Competencia" />
             <End Role="DetalleCurricula" EntitySet="DetalleCurricula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contrato_Empleado1" Association="InnovaModel.FK_Contrato_Empleado1">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
           <AssociationSet Name="FK_Curricula_CurriculaBase" Association="InnovaModel.FK_Curricula_CurriculaBase">
             <End Role="CurriculaBase" EntitySet="CurriculaBase" />
@@ -441,13 +642,33 @@
             <End Role="CurriculaBaseCompetencia" EntitySet="CurriculaBaseCompetencia" />
             <End Role="PlanEstudiosBase" EntitySet="PlanEstudiosBase" />
           </AssociationSet>
+          <AssociationSet Name="FK_Curso_Empleado" Association="InnovaModel.FK_Curso_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Curso" EntitySet="Curso" />
+          </AssociationSet>
           <AssociationSet Name="FK_Curso_Grado" Association="InnovaModel.FK_Curso_Grado">
             <End Role="Grado" EntitySet="Grado" />
             <End Role="Curso" EntitySet="Curso" />
           </AssociationSet>
+          <AssociationSet Name="FK_CursoTema_Curso" Association="InnovaModel.FK_CursoTema_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="CursoTema" EntitySet="CursoTema" />
+          </AssociationSet>
           <AssociationSet Name="FK_PlanEstudiosBase_Curso" Association="InnovaModel.FK_PlanEstudiosBase_Curso">
             <End Role="Curso" EntitySet="Curso" />
             <End Role="PlanEstudiosBase" EntitySet="PlanEstudiosBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoTema_Unidad" Association="InnovaModel.FK_CursoTema_Unidad">
+            <End Role="Unidad" EntitySet="Unidad" />
+            <End Role="CursoTema" EntitySet="CursoTema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_DocumentoIdentidad" Association="InnovaModel.FK_Persona_DocumentoIdentidad">
+            <End Role="DocumentoIdentidad" EntitySet="DocumentoIdentidad" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Persona" Association="InnovaModel.FK_Empleado_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <AssociationSet Name="FK_Grado_Nivel" Association="InnovaModel.FK_Grado_Nivel">
             <End Role="Nivel" EntitySet="Nivel" />
@@ -487,6 +708,25 @@
           <NavigationProperty Name="Capacidad" Relationship="InnovaModel.FK_Capacidad_Competencia" FromRole="Competencia" ToRole="Capacidad" />
           <NavigationProperty Name="CurriculaBaseCompetencia" Relationship="InnovaModel.FK_CurriculaBaseCompetencia_Competencia" FromRole="Competencia" ToRole="CurriculaBaseCompetencia" />
           <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurricula_Competencia" FromRole="Competencia" ToRole="DetalleCurricula" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+            <PropertyRef Name="numeroContrato" />
+          </Key>
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="numeroContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoContrato" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fechaInicioContrato" Type="DateTime" Precision="3" />
+          <Property Name="fechaFinContrato" Type="DateTime" Precision="3" />
+          <Property Name="salario" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="estadoContrato" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="idPuesto" Type="Int32" Nullable="false" />
+          <Property Name="usuarioCreacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="usuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_Contrato_Empleado1" FromRole="Contrato" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Curricula">
           <Key>
@@ -529,15 +769,31 @@
           <Key>
             <PropertyRef Name="IdCurso" />
           </Key>
-          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Descripción" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sumilla" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="IdGrado" Type="Int32" Nullable="false" />
           <Property Name="IdAreaCurricular" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AreaCurricular" Relationship="InnovaModel.FK_Curso_AreaCurricular" FromRole="Curso" ToRole="AreaCurricular" />
+          <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_Curso_Empleado" FromRole="Curso" ToRole="Empleado" />
           <NavigationProperty Name="Grado" Relationship="InnovaModel.FK_Curso_Grado" FromRole="Curso" ToRole="Grado" />
+          <NavigationProperty Name="CursoTema" Relationship="InnovaModel.FK_CursoTema_Curso" FromRole="Curso" ToRole="CursoTema" />
           <NavigationProperty Name="PlanEstudiosBase" Relationship="InnovaModel.FK_PlanEstudiosBase_Curso" FromRole="Curso" ToRole="PlanEstudiosBase" />
           <NavigationProperty Name="Docente" Relationship="InnovaModel.DocenteCurso" FromRole="Curso" ToRole="Docente" />
+        </EntityType>
+        <EntityType Name="CursoTema">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+            <PropertyRef Name="IdUnidad" />
+          </Key>
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <Property Name="IdUnidad" Type="Int32" Nullable="false" />
+          <Property Name="Temario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_CursoTema_Curso" FromRole="CursoTema" ToRole="Curso" />
+          <NavigationProperty Name="Unidad" Relationship="InnovaModel.FK_CursoTema_Unidad" FromRole="CursoTema" ToRole="Unidad" />
         </EntityType>
         <EntityType Name="DetalleCurricula">
           <Key>
@@ -557,6 +813,40 @@
           <Property Name="Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Curso" Relationship="InnovaModel.DocenteCurso" FromRole="Docente" ToRole="Curso" />
+        </EntityType>
+        <EntityType Name="DocumentoIdentidad">
+          <Key>
+            <PropertyRef Name="idDocumentoIdentidad" />
+          </Key>
+          <Property Name="idDocumentoIdentidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Persona" Relationship="InnovaModel.FK_Persona_DocumentoIdentidad" FromRole="DocumentoIdentidad" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="fondoPensiones" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="estadoEmpleado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="usuarioCreacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="usuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="cantHijos" Type="Int32" />
+          <Property Name="estadoCivil" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="numeroEPS" Type="Int32" />
+          <Property Name="idBanco" Type="Int32" />
+          <Property Name="numeroCuentaHaberes" Type="Decimal" Precision="14" Scale="0" />
+          <Property Name="telefonoEmergencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="contactoEmergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gradoEstudios" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="indicadorEPS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Contrato" Relationship="InnovaModel.FK_Contrato_Empleado1" FromRole="Empleado" ToRole="Contrato" />
+          <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_Curso_Empleado" FromRole="Empleado" ToRole="Curso" />
+          <NavigationProperty Name="Persona" Relationship="InnovaModel.FK_Empleado_Persona" FromRole="Empleado" ToRole="Persona" />
         </EntityType>
         <EntityType Name="Grado">
           <Key>
@@ -579,6 +869,30 @@
           <NavigationProperty Name="Curricula" Relationship="InnovaModel.FK_Curricula_Nivel" FromRole="Nivel" ToRole="Curricula" />
           <NavigationProperty Name="Grado" Relationship="InnovaModel.FK_Grado_Nivel" FromRole="Nivel" ToRole="Grado" />
         </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipoDocumentoIdentidad" Type="Int32" />
+          <Property Name="documentoIdentidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="nacionalidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="genero" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuarioCreacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="usuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DocumentoIdentidad1" Relationship="InnovaModel.FK_Persona_DocumentoIdentidad" FromRole="Persona" ToRole="DocumentoIdentidad" />
+          <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_Empleado_Persona" FromRole="Persona" ToRole="Empleado" />
+        </EntityType>
         <EntityType Name="PlanEstudiosBase">
           <Key>
             <PropertyRef Name="IdCurriculaBaseCompetencia" />
@@ -599,6 +913,14 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Unidad">
+          <Key>
+            <PropertyRef Name="IdUnidad" />
+          </Key>
+          <Property Name="IdUnidad" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CursoTema" Relationship="InnovaModel.FK_CursoTema_Unidad" FromRole="Unidad" ToRole="CursoTema" />
         </EntityType>
         <Association Name="FK_CurriculaBaseCompetencia_AreaCurricular">
           <End Type="InnovaModel.AreaCurricular" Role="AreaCurricular" Multiplicity="0..1" />
@@ -657,6 +979,18 @@
             </Principal>
             <Dependent Role="DetalleCurricula">
               <PropertyRef Name="IdCompetencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contrato_Empleado1">
+          <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="InnovaModel.Contrato" Role="Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="idEmpleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -720,6 +1054,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Curso_Empleado">
+          <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Curso_Grado">
           <End Type="InnovaModel.Grado" Role="Grado" Multiplicity="1" />
           <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="*" />
@@ -732,6 +1078,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CursoTema_Curso">
+          <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="1" />
+          <End Type="InnovaModel.CursoTema" Role="CursoTema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="CursoTema">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PlanEstudiosBase_Curso">
           <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="1" />
           <End Type="InnovaModel.PlanEstudiosBase" Role="PlanEstudiosBase" Multiplicity="*" />
@@ -741,6 +1099,42 @@
             </Principal>
             <Dependent Role="PlanEstudiosBase">
               <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoTema_Unidad">
+          <End Type="InnovaModel.Unidad" Role="Unidad" Multiplicity="1" />
+          <End Type="InnovaModel.CursoTema" Role="CursoTema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidad">
+              <PropertyRef Name="IdUnidad" />
+            </Principal>
+            <Dependent Role="CursoTema">
+              <PropertyRef Name="IdUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_DocumentoIdentidad">
+          <End Type="InnovaModel.DocumentoIdentidad" Role="DocumentoIdentidad" Multiplicity="0..1" />
+          <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentoIdentidad">
+              <PropertyRef Name="idDocumentoIdentidad" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="tipoDocumentoIdentidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Persona">
+          <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idPersona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -760,7 +1154,7 @@
           <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="*" />
           <End Type="InnovaModel.Docente" Role="Docente" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -790,6 +1184,24 @@
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdCompetencia" ColumnName="IdCompetencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contrato">
+            <EntityTypeMapping TypeName="InnovaModel.Contrato">
+              <MappingFragment StoreEntitySet="Contrato">
+                <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+                <ScalarProperty Name="usuarioModificacion" ColumnName="usuarioModificacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="usuarioCreacion" ColumnName="usuarioCreacion" />
+                <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+                <ScalarProperty Name="estadoContrato" ColumnName="estadoContrato" />
+                <ScalarProperty Name="salario" ColumnName="salario" />
+                <ScalarProperty Name="fechaFinContrato" ColumnName="fechaFinContrato" />
+                <ScalarProperty Name="fechaInicioContrato" ColumnName="fechaInicioContrato" />
+                <ScalarProperty Name="tipoContrato" ColumnName="tipoContrato" />
+                <ScalarProperty Name="numeroContrato" ColumnName="numeroContrato" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -827,10 +1239,22 @@
           <EntitySetMapping Name="Curso">
             <EntityTypeMapping TypeName="InnovaModel.Curso">
               <MappingFragment StoreEntitySet="Curso">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="IdAreaCurricular" ColumnName="IdAreaCurricular" />
                 <ScalarProperty Name="IdGrado" ColumnName="IdGrado" />
-                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Sumilla" ColumnName="Sumilla" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoTema">
+            <EntityTypeMapping TypeName="InnovaModel.CursoTema">
+              <MappingFragment StoreEntitySet="CursoTema">
+                <ScalarProperty Name="Temario" ColumnName="Temario" />
+                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
                 <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -853,6 +1277,38 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DocumentoIdentidad">
+            <EntityTypeMapping TypeName="InnovaModel.DocumentoIdentidad">
+              <MappingFragment StoreEntitySet="DocumentoIdentidad">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idDocumentoIdentidad" ColumnName="idDocumentoIdentidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="InnovaModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="indicadorEPS" ColumnName="indicadorEPS" />
+                <ScalarProperty Name="gradoEstudios" ColumnName="gradoEstudios" />
+                <ScalarProperty Name="contactoEmergencia" ColumnName="contactoEmergencia" />
+                <ScalarProperty Name="telefonoEmergencia" ColumnName="telefonoEmergencia" />
+                <ScalarProperty Name="numeroCuentaHaberes" ColumnName="numeroCuentaHaberes" />
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="numeroEPS" ColumnName="numeroEPS" />
+                <ScalarProperty Name="estadoCivil" ColumnName="estadoCivil" />
+                <ScalarProperty Name="cantHijos" ColumnName="cantHijos" />
+                <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+                <ScalarProperty Name="usuarioModificacion" ColumnName="usuarioModificacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="usuarioCreacion" ColumnName="usuarioCreacion" />
+                <ScalarProperty Name="estadoEmpleado" ColumnName="estadoEmpleado" />
+                <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+                <ScalarProperty Name="fondoPensiones" ColumnName="fondoPensiones" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Grado">
             <EntityTypeMapping TypeName="InnovaModel.Grado">
               <MappingFragment StoreEntitySet="Grado">
@@ -869,6 +1325,29 @@
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="InnovaModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+                <ScalarProperty Name="usuarioModificacion" ColumnName="usuarioModificacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="usuarioCreacion" ColumnName="usuarioCreacion" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="nacionalidad" ColumnName="nacionalidad" />
+                <ScalarProperty Name="documentoIdentidad" ColumnName="documentoIdentidad" />
+                <ScalarProperty Name="tipoDocumentoIdentidad" ColumnName="tipoDocumentoIdentidad" />
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -889,6 +1368,14 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unidad">
+            <EntityTypeMapping TypeName="InnovaModel.Unidad">
+              <MappingFragment StoreEntitySet="Unidad">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

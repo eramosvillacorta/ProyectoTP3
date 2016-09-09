@@ -15,26 +15,24 @@ namespace Innova.Models
 using System;
     using System.Collections.Generic;
     
-public partial class Docente
+public partial class DocumentoIdentidad
 {
 
-    public Docente()
+    public DocumentoIdentidad()
     {
 
-        this.Curso = new HashSet<Curso>();
+        this.Persona = new HashSet<Persona>();
 
     }
 
 
-    public int IdDocente { get; set; }
+    public int idDocumentoIdentidad { get; set; }
 
-    public string Nombres { get; set; }
-
-    public string Apellidos { get; set; }
+    public string descripcion { get; set; }
 
 
 
-    public virtual ICollection<Curso> Curso { get; set; }
+    public virtual ICollection<Persona> Persona { get; set; }
 
 }
 
