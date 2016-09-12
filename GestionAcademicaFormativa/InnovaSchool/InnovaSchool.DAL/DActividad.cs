@@ -29,11 +29,13 @@ namespace InnovaSchool.DAL
                         {
                             IdActividad = int.Parse(reader["IdActividad"].ToString()),
                             Nombre = reader["Nombre"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
+                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
-                            IdPersona = int.Parse(reader["IdPersona"].ToString()),
-                            UsuCreacion = reader["UsuCreacion"].ToString()
+                            IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
+                            Tipo = int.Parse(reader["Tipo"].ToString()),
+                            Estado = int.Parse(reader["Estado"].ToString())
                         });
                     }
                 }
@@ -53,7 +55,7 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@Nombre", EActividad.Nombre));
                 cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FecInicio));
                 cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FecTermino));
-                cmd.Parameters.Add(new SqlParameter("@IdPersona", EActividad.IdPersona));
+                cmd.Parameters.Add(new SqlParameter("@IdEmpleado", EActividad.IdEmpleado));
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -62,11 +64,13 @@ namespace InnovaSchool.DAL
                         {
                             IdActividad = int.Parse(reader["IdActividad"].ToString()),
                             Nombre = reader["Nombre"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
+                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
-                            IdPersona = int.Parse(reader["IdPersona"].ToString()),
-                            UsuCreacion = reader["UsuCreacion"].ToString()
+                            IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
+                            Tipo = int.Parse(reader["Tipo"].ToString()),
+                            Estado = int.Parse(reader["Estado"].ToString())
                         });
                     }
                 }
@@ -88,7 +92,7 @@ namespace InnovaSchool.DAL
 	            cmd.Parameters.Add(new SqlParameter("@FecInicio",EActividad.FecInicio));
 	            cmd.Parameters.Add(new SqlParameter("@FecTermino",EActividad.FecTermino));
 	            cmd.Parameters.Add(new SqlParameter("@Descripcion",EActividad.Descripcion));
-	            cmd.Parameters.Add(new SqlParameter("@IdPersona",EActividad.IdPersona));
+	            cmd.Parameters.Add(new SqlParameter("@IdEmpleado",EActividad.IdEmpleado));
 	            cmd.Parameters.Add(new SqlParameter("@UsuCreacion",EUsuario.Usuario));
                 retval = cmd.ExecuteNonQuery();
             }
@@ -148,6 +152,38 @@ namespace InnovaSchool.DAL
             return retval;
         }
 
+        public int VerificarCruceActividad(ESolicitudActividad ESolicitudActividad)
+        {
+            int retval = 0;
+
+            foreach (EDetalleActividad itemDetalleActividad in ESolicitudActividad.EActividad.ListaDetalleActividad)
+            {                    
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_VerificarCruceActividad", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@IdSolicitudActividad", ESolicitudActividad.IdSolicitudActividad));
+                    cmd.Parameters.Add(new SqlParameter("@HoraInicial", itemDetalleActividad.HoraInicial));
+                    cmd.Parameters.Add(new SqlParameter("@HoraTermino", itemDetalleActividad.HoraTermino));
+                    cmd.Parameters.Add(new SqlParameter("@IdEmpleado", ESolicitudActividad.EActividad.IdEmpleado));
+                    cmd.Parameters.Add(new SqlParameter("@Alcance", ESolicitudActividad.EActividad.Alcance));
+                    cmd.Parameters.Add(new SqlParameter("@IDAmbiente", itemDetalleActividad.IdAmbiente));
+                    cmd.Parameters.Add(new SqlParameter("@Resultado", retval)).Direction = ParameterDirection.Output;
+                    cmd.ExecuteNonQuery();
+                    retval = Convert.ToInt32(cmd.Parameters["@Resultado"].Value);
+
+                    if (retval != 0)
+                    {
+                        cn.Close();
+                        break;
+                    }                        
+                }
+                cn.Close();
+            }
+            
+            return retval;
+        }        
+
         public EActividad ConsultarActividadCalendario(EActividad EActividad)
         {
             EActividad retval = null;
@@ -167,7 +203,7 @@ namespace InnovaSchool.DAL
                             FecInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
                             FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
-                            IdPersona = int.Parse(reader["IdPersona"].ToString())
+                            IdEmpleado = int.Parse(reader["IdEmpleado"].ToString())
                         };
                     }
                 }

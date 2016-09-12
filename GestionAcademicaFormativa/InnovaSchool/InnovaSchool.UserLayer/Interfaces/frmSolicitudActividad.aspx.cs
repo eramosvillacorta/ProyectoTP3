@@ -101,8 +101,8 @@ namespace InnovaSchool.UserLayer.Interfaces
             EAgenda = BAgenda.ConsultarAgenda(EAgenda);
             if (EAgenda != null)
             {
-                FecIniAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.fechaInicioEscolar);
-                FecFinAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.FechaTerminoEscolar);
+                FecIniAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.FecIniEscolar);
+                FecFinAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.FecFinEscolar);
 
                 if (EAgenda.Estado == int.Parse(Constant.ParametroAgendaEstadoVigente))
                 {
@@ -456,7 +456,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                 {
                     Nombre = txtNombreActividad.Text,                    
                     Descripcion = txtDescripcion.Text,
-                    IdPersona = int.Parse(ddlResponsable.SelectedValue),
+                    IdEmpleado = int.Parse(ddlResponsable.SelectedValue),
                     Alcance = ddlAlcance.SelectedValue,
                     FecInicio = objResources.GetDateFromTextBox(txtFechaInicio),
                     Tipo = int.Parse(ddlTipoActividad.SelectedValue),

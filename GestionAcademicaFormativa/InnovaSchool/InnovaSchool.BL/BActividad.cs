@@ -41,5 +41,10 @@ namespace InnovaSchool.BL
         {
             return DActividad.ConsultarDetalleActividad(EActividad);
         }
+
+        public int VerificarCruceActividad(ESolicitudActividad ESolicitudActividad)
+        {
+            return DActividad.VerificarCruceActividad(ESolicitudActividad);
+        }
     }
 }

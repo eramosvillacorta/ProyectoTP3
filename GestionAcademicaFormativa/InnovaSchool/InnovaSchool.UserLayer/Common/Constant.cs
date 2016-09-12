@@ -31,6 +31,7 @@ namespace InnovaSchool.UserLayer.Common
         public static string MensajeErrorAperturaCalendarioAcademicoAgenda = ConfigurationManager.AppSettings["MensajeErrorAperturaCalendarioAcademicoAgenda"].Trim();
         //Guardar Actividad
         public static string TituloRegistroActividad = ConfigurationManager.AppSettings["TituloRegistroActividad"].Trim();
+        public static string MensajeConfirmarRegistroActividadAcademica = ConfigurationManager.AppSettings["MensajeConfirmarRegistroActividadAcademica"].Trim();        
         public static string MensajeRegistroActividadAcademica = ConfigurationManager.AppSettings["MensajeRegistroActividadAcademica"].Trim();
         public static string MensajeErrorRegistroActividadAcademica = ConfigurationManager.AppSettings["MensajeErrorRegistroActividadAcademica"].Trim();
         public static string MensajeEdicionActividadAcademica = ConfigurationManager.AppSettings["MensajeEdicionActividadAcademica"].Trim();

@@ -76,7 +76,7 @@
             <ul class="nav nav-justified">
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">Gestion<br /> Pedagógica
+                    <a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">Gestión<br /> Pedagógica
                         <span class="caret"></span>
                     </a>
                 </li>
@@ -97,21 +97,18 @@
                 </li>
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">Gestion Académica y Formativa
+                    <a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">Gestión Académica y Formativa
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="../Interfaces/frmMantenerAgenda.aspx">Mantener Agenda</a>
-                        </li>
-                        <li>
-                            <a href="../Interfaces/frmMantenerCalendarioAcademico.aspx">Calendario Académico</a>
-                        </li>
-                        <li>
-                            <a href="../Interfaces/frmSolicitudActividad.aspx">Solicitud de Actividade</a>
-                        </li>
-                        <li>
                             <a href="../Interfaces/frmActualizarFeriados.aspx">Actualizar Feriados</a>
+                        </li>
+                        <li>
+                            <a href="../Interfaces/frmCalendarioExtracurricular.aspx">Calendario Extracurricular</a>
+                        </li>
+                        <li>
+                            <a href="../Interfaces/frmSolicitudActividad.aspx">Solicitud de Actividades</a>
                         </li>
                     </ul>
                 </li>

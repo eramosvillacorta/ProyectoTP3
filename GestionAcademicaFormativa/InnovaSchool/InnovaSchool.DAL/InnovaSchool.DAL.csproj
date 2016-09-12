@@ -45,6 +45,7 @@
     <Compile Include="DAgenda.cs" />
     <Compile Include="DAmbiente.cs" />
     <Compile Include="DCalendario.cs" />
+    <Compile Include="DEmpleado.cs" />
     <Compile Include="DFeriado.cs" />
     <Compile Include="DParametro.cs" />
     <Compile Include="DPersona.cs" />

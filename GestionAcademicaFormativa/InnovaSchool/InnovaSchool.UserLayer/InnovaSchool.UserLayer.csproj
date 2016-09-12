@@ -183,7 +183,9 @@
     <Content Include="Img\web.png" />
     <Content Include="Index.aspx" />
     <Content Include="Interfaces\frmActividadesAcademicas.aspx" />
+    <Content Include="Interfaces\frmActividadesExtracurriculares.aspx" />
     <Content Include="Interfaces\frmActualizarFeriados.aspx" />
+    <Content Include="Interfaces\frmCalendarioExtracurricular.aspx" />
     <Content Include="Interfaces\frmMantenerAgenda.aspx" />
     <Content Include="Interfaces\frmMantenerCalendarioAcademico.aspx" />
     <Content Include="Interfaces\frmSolicitudActividad.aspx" />
@@ -239,6 +241,13 @@
     </Compile>
     <Compile Include="Interfaces\frmActividadesAcademicas.aspx.designer.cs">
       <DependentUpon>frmActividadesAcademicas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\frmActividadesExtracurriculares.aspx.cs">
+      <DependentUpon>frmActividadesExtracurriculares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmActividadesExtracurriculares.aspx.designer.cs">
+      <DependentUpon>frmActividadesExtracurriculares.aspx</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\frmActualizarFeriados.aspx.cs">
       <DependentUpon>frmActualizarFeriados.aspx</DependentUpon>

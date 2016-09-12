@@ -114,7 +114,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalExisteFeriado').modal('show');</script>");
                 }
-                if (diferenciaenDias > 3) 
+                else if (diferenciaenDias > 3) 
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalExcedeFeriado').modal('show');</script>");
                 }
@@ -127,6 +127,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                         ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#mensaje').modal('show');</script>");
 
                         objResources.LimpiarControles(this.Controls);
+                        hfIdFeriado.Value = string.Empty;
                         txtAnioEscolarVigente.Text = DateTime.Today.Year.ToString();
                         CargarAniosAgenda();
                         //(VerificarAperturaAgenda();

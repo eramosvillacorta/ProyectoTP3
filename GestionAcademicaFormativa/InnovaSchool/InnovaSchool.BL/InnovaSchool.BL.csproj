@@ -43,6 +43,7 @@
     <Compile Include="BAgenda.cs" />
     <Compile Include="BAmbiente.cs" />
     <Compile Include="BCalendario.cs" />
+    <Compile Include="BEmpleado.cs" />
     <Compile Include="BFeriado.cs" />
     <Compile Include="BParametro.cs" />
     <Compile Include="BPersona.cs" />
