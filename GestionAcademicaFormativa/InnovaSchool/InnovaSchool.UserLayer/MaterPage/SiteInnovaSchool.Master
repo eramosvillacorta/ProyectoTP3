@@ -110,6 +110,9 @@
                         <li>
                             <a href="../Interfaces/frmSolicitudActividad.aspx">Solicitud de Actividades</a>
                         </li>
+                        <li>
+                            <a href="../Interfaces/frmAprobarSolicitud.aspx">Aprobación de Solicitud de Actividades</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">

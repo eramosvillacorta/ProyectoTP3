@@ -59,6 +59,15 @@ namespace InnovaSchool.UserLayer.Common
         public static string MensajeEnviarSolicitud = ConfigurationManager.AppSettings["MensajeEnviarSolicitud"].Trim();
         public static string MensajeConfirmarEnviarSolicitud = ConfigurationManager.AppSettings["MensajeConfirmarEnviarSolicitud"].Trim();
         public static string MensajeErrorEnviarSolicitud = ConfigurationManager.AppSettings["MensajeErrorEnviarSolicitud"].Trim();
+        public static string MensajeCruceAlcanceGuardarSolicitud = ConfigurationManager.AppSettings["MensajeCruceAlcanceGuardarSolicitud"].Trim();
+        public static string MensajeCruceAmbienteSolicitud = ConfigurationManager.AppSettings["MensajeCruceAmbienteSolicitud"].Trim();
+
+        public static string TituloAprobarSolicitud = ConfigurationManager.AppSettings["TituloAprobarSolicitud"].Trim();
+        public static string MensajeConfirmarAprobarSolicitud = ConfigurationManager.AppSettings["MensajeConfirmarAprobarSolicitud"].Trim();
+        public static string MensajeAprobarSolicitud = ConfigurationManager.AppSettings["MensajeAprobarSolicitud"].Trim();
+        public static string TituloRechazarSolicitud = ConfigurationManager.AppSettings["TituloRechazarSolicitud"].Trim();
+        public static string MensajeConfirmarRechazarSolicitud = ConfigurationManager.AppSettings["MensajeConfirmarRechazarSolicitud"].Trim();
+        public static string MensajeRechazarSolicitud = ConfigurationManager.AppSettings["MensajeRechazarSolicitud"].Trim();
             
         //Actualizar Feriado
         public static string TituloRegistroFeriado = ConfigurationManager.AppSettings["TituloRegistroFeriado"].Trim();
@@ -103,5 +112,7 @@ namespace InnovaSchool.UserLayer.Common
         public static string CorreoAprobacion = ConfigurationManager.AppSettings["CorreoAprobacion"].Trim();
         public static string PasswordAprobacion = ConfigurationManager.AppSettings["PasswordAprobacion"].Trim();
         
+        public static string EstadoAprobacionAprobado = ConfigurationManager.AppSettings["EstadoAprobacionAprobado"].Trim();
+        public static string EstadoAprobacionRechazado = ConfigurationManager.AppSettings["EstadoAprobacionRechazado"].Trim();                
     }
 }

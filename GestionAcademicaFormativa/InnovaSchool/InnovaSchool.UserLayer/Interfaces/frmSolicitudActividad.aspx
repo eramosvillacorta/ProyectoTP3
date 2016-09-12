@@ -179,7 +179,7 @@
                                     ForeColor="Red"
                                     Font-Size="Small"
                                     Display="Dynamic"
-                                    ErrorMessage="<div><i>*La fecha de fin debe ser mayor o igual a la fecha actual.</i></div>">
+                                    ErrorMessage="<div><i>*La fecha de fin debe ser mayor o igual a la fecha actual y a la fecha de inicio.</i></div>">
                                 </asp:CompareValidator>
                                 
                                 <asp:Button ID="btnIngresarHoras" runat="server" Text="Registar Horas" class="btn btn-primary" ValidationGroup="FechaValid"
@@ -196,54 +196,50 @@
                                     <asp:TemplateField HeaderText ="Hora Inicio" HeaderStyle-Width="20%"> 
                                         <ItemTemplate> 
                                             <asp:DropDownList ID="ddlHoraInicio" runat="server" class="input-mini"></asp:DropDownList>                                            
-                                            <asp:CompareValidator ID="cvHoraInicio" runat="server" 
+                                            <asp:RequiredFieldValidator ID="rfvHoraInicio" runat="server" 
                                                 ValidationGroup="SolicitudValid"
                                                 ControlToValidate="ddlHoraInicio"
-                                                Operator="GreaterThan"
-                                                ValueToCompare="0"
+                                                InitialValue="0"
                                                 ForeColor="Red"
                                                 Font-Size="Small"
                                                 Display="Dynamic"
                                                 ErrorMessage="<div><i>*Ingresar Hora Inicio</i></div>">
-                                            </asp:CompareValidator>&nbsp;:&nbsp;   
-                                            <asp:DropDownList ID="ddlMinutoInicio" runat="server" class="input-mini"></asp:DropDownList>
-                                            <asp:CompareValidator ID="cvMinutoInicio" runat="server" 
+                                            </asp:RequiredFieldValidator> &nbsp;:&nbsp;   
+                                            <asp:DropDownList ID="ddlMinutoInicio" runat="server" class="input-mini"></asp:DropDownList>                                            
+                                            <asp:RequiredFieldValidator ID="rfvMinutoInicio" runat="server" 
                                                 ValidationGroup="SolicitudValid"
                                                 ControlToValidate="ddlMinutoInicio"
-                                                Operator="GreaterThan"
-                                                ValueToCompare="-1"
+                                                InitialValue="-1"
                                                 ForeColor="Red"
                                                 Font-Size="Small"
                                                 Display="Dynamic"
-                                                ErrorMessage="<div><i>*Ingresar Hora Inicio</i></div>">
-                                            </asp:CompareValidator>   
+                                                ErrorMessage="<div><i>*Ingresar Minuto Inicio</i></div>">
+                                            </asp:RequiredFieldValidator>  
                                         </ItemTemplate> 
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField> 
                                     <asp:TemplateField HeaderText ="Hora Fin" HeaderStyle-Width="20%"> 
-                                        <ItemTemplate> 
+                                        <ItemTemplate>                                             
                                             <asp:DropDownList ID="ddlHoraFin" runat="server" class="input-mini"></asp:DropDownList>
-                                            <asp:CompareValidator ID="cvHoraFin" runat="server" 
+                                            <asp:RequiredFieldValidator ID="rfvHoraFin" runat="server" 
                                                 ValidationGroup="SolicitudValid"
                                                 ControlToValidate="ddlHoraFin"
-                                                Operator="GreaterThan"
-                                                ValueToCompare="0"
+                                                InitialValue="0"
                                                 ForeColor="Red"
                                                 Font-Size="Small"
                                                 Display="Dynamic"
                                                 ErrorMessage="<div><i>*Ingresar Hora Fin</i></div>">
-                                            </asp:CompareValidator>&nbsp;:&nbsp;  
+                                            </asp:RequiredFieldValidator>&nbsp;:&nbsp;  
                                             <asp:DropDownList ID="ddlMinutoFin" runat="server" class="input-mini"></asp:DropDownList>
-                                            <asp:CompareValidator ID="cvMinutoFin" runat="server" 
+                                            <asp:RequiredFieldValidator ID="rfvMinutoFin" runat="server" 
                                                 ValidationGroup="SolicitudValid"
-                                                ControlToValidate="ddlMinutoFin"                                                
-                                                Operator="GreaterThan"
-                                                ValueToCompare="-1"
+                                                ControlToValidate="ddlMinutoFin"
+                                                InitialValue="-1"
                                                 ForeColor="Red"
                                                 Font-Size="Small"
                                                 Display="Dynamic"
-                                                ErrorMessage="<div><i>*Ingresar Hora Fin</i></div>">
-                                            </asp:CompareValidator>   
+                                                ErrorMessage="<div><i>*Ingresar Minuto Fin</i></div>">
+                                            </asp:RequiredFieldValidator>  
                                         </ItemTemplate> 
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField> 
@@ -263,9 +259,9 @@
                                         </ItemTemplate> 
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText ="Ambiente / Dirección" HeaderStyle-Width="55%"> 
+                                    <asp:TemplateField HeaderText ="Ambiente / Dirección" HeaderStyle-Width="45%"> 
                                         <ItemTemplate> 
-                                            <asp:DropDownList ID="ddlAmbiente" runat="server" AutoPostBack="True" class="input-xlarge" Visible="false"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlAmbiente" runat="server" class="input-xlarge" Visible="false"></asp:DropDownList>
                                             <asp:TextBox ID="txtDireccion" runat="server" type="text" class="input-xlarge editable-input" Visible="false" MaxLength="100"></asp:TextBox>
                                         </ItemTemplate> 
                                         <ItemStyle HorizontalAlign="Center" />
@@ -328,7 +324,7 @@
                             <div class="control-group">
                             <asp:GridView ID="gvConsultaSolicitudes" runat="server"
                                 CssClass="table table-striped table-bordered bootstrap-datatable datatable dataTable"                                                                                             
-                                AutoGenerateColumns="False" ShowHeaderWhenEmpty="true"
+                                AutoGenerateColumns="False"
                                 OnRowDataBound="gvConsultaSolicitudes_RowDataBound" OnRowCommand="gvConsultaSolicitudes_RowCommand"
                                 DataKeyNames="IdSolicitudActividad, Motivo">
                                 <Columns>                                    
@@ -401,7 +397,7 @@
             <p><asp:Label ID="lblMensajeConfirmacionEnviar" runat="server" Text=""></asp:Label></p>
         </div>
         <div class="modal-footer">            
-            <asp:Button ID="btnConfirmarEnviarAprobar" runat="server" type="submit" Text="Si" class="btn btn-primary" OnClick="btnConfirmarEnviarAprobar_Click" />
+            <asp:Button ID="btnConfirmarEnviarAprobar" runat="server" type="submit" Text="Sí" class="btn btn-primary" OnClick="btnConfirmarEnviarAprobar_Click" />
             <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
         </div>
     </div>    

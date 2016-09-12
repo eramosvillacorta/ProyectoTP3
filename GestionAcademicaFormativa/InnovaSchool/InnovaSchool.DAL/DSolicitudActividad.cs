@@ -13,10 +13,9 @@ namespace InnovaSchool.DAL
     {
         SqlConnection cn = new SqlConnection(ConexionUtil.Get_Connection());
 
-       public int RegistrarSolicitudActividad(ESolicitudActividad ESolicitudActividad, EUsuario EUsuario, ECalendario ECalendario, ref int IdSolicitudActividad)
+       public int RegistrarSolicitudActividad(ESolicitudActividad ESolicitudActividad, EUsuario EUsuario, ECalendario ECalendario)
         {
             int retval = 0;
-            int IdActividad = 0;
             cn.Open();
             using (SqlCommand cmd = new SqlCommand("SP_RegistrarSolicitudActividad", cn))
             {
@@ -36,26 +35,25 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@IdActividad", retval)).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(new SqlParameter("@NuevaIdSolicitud", retval)).Direction = ParameterDirection.Output;
                 retval = cmd.ExecuteNonQuery();
-                IdActividad = Convert.ToInt32(cmd.Parameters["@IdActividad"].Value);
-                IdSolicitudActividad = Convert.ToInt32(cmd.Parameters["@NuevaIdSolicitud"].Value);
+                ESolicitudActividad.EActividad.IdActividad = Convert.ToInt32(cmd.Parameters["@IdActividad"].Value);
+                ESolicitudActividad.IdSolicitudActividad = Convert.ToInt32(cmd.Parameters["@NuevaIdSolicitud"].Value);
 
                 foreach (EDetalleActividad itemDetalleActividad in ESolicitudActividad.EActividad.ListaDetalleActividad)
                 {
-                    itemDetalleActividad.IdActividad = IdActividad;
-                    retval = RegistrarDetalleSolicitudActividad(itemDetalleActividad, EUsuario, IdSolicitudActividad);
+                    itemDetalleActividad.IdActividad = ESolicitudActividad.EActividad.IdActividad;
+                    retval = RegistrarDetalleSolicitudActividad(itemDetalleActividad, EUsuario);
                 }
             }
             cn.Close();
             return retval;
         }
 
-       public int RegistrarDetalleSolicitudActividad(EDetalleActividad EDetalleActividad, EUsuario EUsuario, int IdSolicitudActividad)
+       public int RegistrarDetalleSolicitudActividad(EDetalleActividad EDetalleActividad, EUsuario EUsuario)
         {
             int retval = 0;
             using (SqlCommand cmd = new SqlCommand("SP_RegistrarDetalleActividad", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@IdSolicitudActividad", IdSolicitudActividad));
                 cmd.Parameters.Add(new SqlParameter("@IdActividad", EDetalleActividad.IdActividad));
                 cmd.Parameters.Add(new SqlParameter("@IdDetalleActividad", EDetalleActividad.IdDetalleActividad));
                 cmd.Parameters.Add(new SqlParameter("@Fecha", EDetalleActividad.Fecha));
@@ -123,6 +121,49 @@ namespace InnovaSchool.DAL
 
                         ESolicitudActividad.EActividad = EActividad;
                         retval.Add(ESolicitudActividad);                       
+                    }
+                }
+            }
+            cn.Close();
+            return retval;
+        }        
+
+        public List<ESolicitudActividad> ListarSolicitudesPendientesAgenda(EAgenda EAgenda)
+        {
+            List<ESolicitudActividad> retval = new List<ESolicitudActividad>();
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_ListarSolicitudesPendientesAnio", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@IdAgenda", EAgenda.IdAgenda));
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ESolicitudActividad ESolicitudActividad = new ESolicitudActividad
+                        {
+                            IdSolicitudActividad = int.Parse(reader["IDSolicitudActividad"].ToString()),
+                            Motivo = reader["Motivo"].ToString(),
+                            Tipo = reader["TipoCalendario"].ToString()
+                        };
+
+                        EActividad EActividad = new EActividad
+                        {
+                            IdActividad = int.Parse(reader["IdActividad"].ToString()),
+                            Nombre = reader["Nombre"].ToString(),
+                            Tipo = int.Parse(reader["TipoActividad"].ToString()),
+                            Descripcion = reader["Descripcion"].ToString(),
+                            Alcance = reader["Alcance"].ToString(),
+                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
+                            Solicitante = reader["Solicitante"].ToString(),
+                        };
+
+                        ESolicitudActividad.EActividad = EActividad;
+                        retval.Add(ESolicitudActividad);
                     }
                 }
             }
