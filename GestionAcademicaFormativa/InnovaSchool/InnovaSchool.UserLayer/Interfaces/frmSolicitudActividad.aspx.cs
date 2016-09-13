@@ -486,7 +486,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                     ESolicitudActividad.EActividad = EActividad;
 
                     int retval = 0;
-                    retval = BActividad.VerificarCruceActividad(ESolicitudActividad); 
+                    retval = BSolicitudActividad.VerificarCruceSolicitudActividad(ESolicitudActividad); 
                     if (retval == 0)
                     {
                         retval = BSolicitudActividad.RegistrarSolicitudActividad(ESolicitudActividad, EUsuario, ECalendario);
@@ -524,7 +524,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                     }
                     else if (retval == 2)
                     {
-                        lblTituloMensaje.Text = Constant.TituloGuardarSolicitud;
+                        lblTituloMensaje.Text = Constant.TituloRegistroActividad;
                         lblDescripcionMensaje.Text = Constant.MensajeCruceAmbienteSolicitud;
                         ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
                     }

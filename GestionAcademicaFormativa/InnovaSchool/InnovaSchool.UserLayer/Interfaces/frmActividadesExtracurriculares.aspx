@@ -265,7 +265,7 @@
                             <div class="form-actions">
                                 <asp:Button ID="btnOperGuardar" runat="server" type="submit" Text="Guardar" class="btn btn-primary" ValidationGroup="ActividadValid" OnClick="btnOperGuardar_Click" />
                                 <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" type="reset" class="btn btn-warning" UseSubmitBehavior="False" OnClick="btnLimpiar_Click"/>
-                                <a href="../Interfaces/frmCalendarioExtracurricular.aspx" class="btn btn-success">Cancelar</a>
+                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" type="reset" class="btn btn-success" UseSubmitBehavior="False" OnClick="btnCancelar_Click"/>
                             </div>                            
                         </div>
                         <div id="divConsultaActividad" runat="server">
@@ -319,6 +319,16 @@
                                     <asp:BoundField DataField="IdActividad" HeaderText="IdActividad" Visible="false" />
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" HeaderStyle-Width="20%" ItemStyle-CssClass="align-cen" />                                    
                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo de Actividad" HeaderStyle-Width="15%" ItemStyle-CssClass="align-cen"/>
+                                    <asp:TemplateField Visible="false">
+                                        <ItemTemplate>
+                                            <asp:Label id="lblDescripcion" runat ="server" text='<%# Eval("Descripcion")%>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField Visible="false">
+                                        <ItemTemplate>
+                                            <asp:Label id="lblAlcance" runat ="server" text='<%# Eval("Alcance")%>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="IdPersona" HeaderText="IdPersona" Visible="false" />
                                     <asp:BoundField DataField="UsuCreacion" HeaderText="Responsable" HeaderStyle-Width="15%" ItemStyle-CssClass="align-cen"/>
                                     <asp:BoundField DataField="FecInicio" DataFormatString="{0:dd/MM/yyyy}"  HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
@@ -339,7 +349,7 @@
                             </asp:GridView>
                         </div>
                         <div class="form-actions" id="divCancelar" runat="server" visible="false">
-                            <a href="../Interfaces/frmMantenerCalendarioAcademico.aspx" class="btn btn-success">Cancelar</a>
+                            <asp:Button ID="btnCancelar2" runat="server" Text="Cancelar" type="reset" class="btn btn-success" UseSubmitBehavior="False" OnClick="btnCancelar2_Click"/>
                         </div>
                     </fieldset>
                 </div>

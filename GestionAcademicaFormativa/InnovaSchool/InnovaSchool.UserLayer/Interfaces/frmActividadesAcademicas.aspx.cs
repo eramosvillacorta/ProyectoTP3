@@ -195,7 +195,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                     IdEmpleado = int.Parse(ddlResponsable.SelectedValue), 
                 };
                 int result = 0;
-                result = BActividad.RegistrarActividad(EActividad, EUsuario);
+                //result = BActividad.RegistrarActividad(EActividad, EUsuario);
                 if (result != 0)
                 {
                     if (int.Parse(hdfActividad.Value) == 0)
@@ -321,7 +321,7 @@ namespace InnovaSchool.UserLayer.Interfaces
             gvActividades.DataBind();
             if (ListEActividad.Count == 0)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "<script>$('#mensaje').html(GenerarMensaje('" + Constant.TituloNoActividadAcademica + "','" + Constant.MensajeNoActividadAcademica + "'))</script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "<script>$('#mensaje').html(GenerarMensaje('" + Constant.TituloNoActividad + "','" + Constant.MensajeNoActividad + "'))</script>");
                 ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>myModalShow();</script>");
             }
         }

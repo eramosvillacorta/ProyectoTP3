@@ -38,31 +38,31 @@ namespace InnovaSchool.UserLayer.Interfaces
             LinkButton lnkEditar = ((LinkButton)e.Row.FindControl("lbtEditar"));
             LinkButton lnkEliminar = ((LinkButton)e.Row.FindControl("lbtEliminar"));
 
-            if (e.Row.Cells[7].Text == "1")
+            if (e.Row.Cells[9].Text == "1")
             {
-                e.Row.Cells[7].Text = "Borrador";
-                e.Row.Cells[7].CssClass = "label label-warning estado";
+                e.Row.Cells[9].Text = "Borrador";
+                e.Row.Cells[9].CssClass = "label label-warning estado";
                 lnkEditar.Visible = true;
                 lnkEliminar.Visible = true;
             }
-            else if (e.Row.Cells[7].Text == "2")
+            else if (e.Row.Cells[9].Text == "2")
             {
-                e.Row.Cells[7].Text = "Programada";
-                e.Row.Cells[7].CssClass = "label label-warning estado";
-                lnkEditar.Visible = false;
-                lnkEliminar.Visible = true;
-            }
-            else if (e.Row.Cells[7].Text == "3")
-            {
-                e.Row.Cells[7].Text = "Rechazada";
-                e.Row.Cells[7].CssClass = "label label-important estado";
+                e.Row.Cells[9].Text = "Programada";
+                e.Row.Cells[9].CssClass = "label label-warning estado";
                 lnkEditar.Visible = true;
                 lnkEliminar.Visible = true;
             }
-            else if (e.Row.Cells[7].Text == "4")
+            else if (e.Row.Cells[9].Text == "3")
             {
-                e.Row.Cells[7].Text = "Activa";
-                e.Row.Cells[7].CssClass = "label label-important estado";
+                e.Row.Cells[9].Text = "Rechazada";
+                e.Row.Cells[9].CssClass = "label label-important estado";
+                lnkEditar.Visible = true;
+                lnkEliminar.Visible = true;
+            }
+            else if (e.Row.Cells[9].Text == "4")
+            {
+                e.Row.Cells[9].Text = "Activa";
+                e.Row.Cells[9].CssClass = "label label-important estado";
                 lnkEditar.Visible = true;
                 lnkEliminar.Visible = false;
             }
@@ -240,7 +240,6 @@ namespace InnovaSchool.UserLayer.Interfaces
         {
             List<EEmpleado> ListEEmpleado;
             EEmpleado EEmpleado = new EEmpleado();
-            int IdAlcance = 1;
             EEmpleado.IdPuesto = 1;
 
             ListEEmpleado = BEmpleado.ListarResponsable(EEmpleado);
@@ -254,6 +253,16 @@ namespace InnovaSchool.UserLayer.Interfaces
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Interfaces/frmCalendarioExtracurricular.aspx");
+        }
+
+        protected void btnCancelar2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Interfaces/frmCalendarioExtracurricular.aspx");
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -285,8 +294,8 @@ namespace InnovaSchool.UserLayer.Interfaces
             gvActividades.DataBind();
             if (ListEActividad.Count == 0)
             {
-                lblTituloMensaje.Text = Constant.TituloNoActividadAcademica;
-                lblDescripcionMensaje.Text = Constant.MensajeNoActividadAcademica;
+                lblTituloMensaje.Text = Constant.TituloNoActividad;
+                lblDescripcionMensaje.Text = Constant.MensajeNoActividad;
                 ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
             }
         }
@@ -294,10 +303,11 @@ namespace InnovaSchool.UserLayer.Interfaces
         private void Limpiar()
         {
             objResources.LimpiarControles(this.Controls);
-            //ActivarFechaTermino(ckbFTermino.Checked);
+            ddlResponsable.Items.Clear();
+            ddlResponsable.DataBind();
+            ddlResponsable.Enabled = false;
+            hdfActividad.Value = string.Empty;
             ListarActividades();
-            //lblMensajeConfirmacion.Text = "¿Está seguro de guardar la actividad académica para el año escolar vigente?";
-            hdfActividad.Value = "0";
         }
 
         private void ListarActividades()
@@ -331,27 +341,22 @@ namespace InnovaSchool.UserLayer.Interfaces
                 {
                     case "Editar":
                         rowIndex = (((GridViewRow)((TableCell)((LinkButton)e.CommandSource).Parent).Parent)).RowIndex;
-                        EActividad.IdActividad = (int)gvActividades.DataKeys[rowIndex][0];
-                        EActividad = BActividad.ConsultarActividadCalendario(EActividad);
-                        if (EActividad != null)
-                        {
-                            hdfActividad.Value = EActividad.IdActividad.ToString();
-                            txtNombreActividad.Text = EActividad.Nombre;
-                            txtFechaInicio.Text = string.Format("{0:dd/MM/yyyy}", EActividad.FecInicio);
-                            if (EActividad.FecTermino != null)
-                            {
-                                txtFechaFin.Text = string.Format("{0:dd/MM/yyyy}", EActividad.FecTermino);
-                                //ActivarFechaTermino(true);
-                            }
-                            else
-                            {
-                                txtFechaFin.Text = "";
-                                //ActivarFechaTermino(false);
-                            }
-                            txtDescripcion.Text = EActividad.Descripcion;
-                            ddlResponsable.SelectedValue = EActividad.IdEmpleado.ToString();
-                            //lblMensajeConfirmacion.Text = "¿Está seguro de guardar los cambios en la actividad académica?";
-                        }
+                        GridViewRow gvr = (((GridViewRow)((TableCell)((LinkButton)e.CommandSource).Parent).Parent));
+
+                        EActividad.IdActividad = int.Parse(gvActividades.DataKeys[rowIndex][0].ToString());
+                        hfIdActividad.Value = EActividad.IdActividad.ToString();
+                        //EActividad.IdActividad = int.Parse(((Label)gvr.FindControl("lblIdActividad")).Text);
+                        txtNombreActividad.Text = gvActividades.Rows[rowIndex].Cells[1].Text;
+                        ddlTipoActividad.SelectedIndex = ddlTipoActividad.Items.IndexOf(ddlTipoActividad.Items.FindByText(gvActividades.Rows[rowIndex].Cells[2].Text));
+                        txtDescripcion.Text = ((Label)gvr.FindControl("lblDescripcion")).Text;                                                                            
+                        ddlAlcance.SelectedIndex = ddlAlcance.Items.IndexOf(ddlAlcance.Items.FindByValue(((Label)gvr.FindControl("lblAlcance")).Text));
+                        CargarResponsable();
+                        ddlResponsable.SelectedIndex = ddlResponsable.Items.IndexOf(ddlResponsable.Items.FindByText(gvActividades.Rows[rowIndex].Cells[6].Text));
+                        txtFechaInicio.Text = string.Format("{0:dd/MM/yyyy}", gvActividades.Rows[rowIndex].Cells[7].Text);
+                        txtFechaFin.Text = string.Format("{0:dd/MM/yyyy}", gvActividades.Rows[rowIndex].Cells[8].Text);
+
+                        gvDetalleActividad.DataSource = BActividad.ConsultarDetalleActividad(EActividad);                    
+                        gvDetalleActividad.DataBind();                 
                         break;
                     case "Eliminar":
                         rowIndex = (((GridViewRow)((TableCell)((LinkButton)e.CommandSource).Parent).Parent)).RowIndex;
@@ -434,7 +439,7 @@ namespace InnovaSchool.UserLayer.Interfaces
 
         protected void btnOperGuardar_Click(object sender, EventArgs e)
         {
-            lblMensajeConfirmacionGuardar.Text = Constant.MensajeConfirmarRegistroActividadAcademica;
+            lblMensajeConfirmacionGuardar.Text = Constant.MensajeConfirmarRegistroActividadExtracurricular;
             ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalConfirmarGuardar').modal('show');</script>");          
         }
 
@@ -470,7 +475,14 @@ namespace InnovaSchool.UserLayer.Interfaces
                     if (!hfIdActividad.Value.Equals(string.Empty))
                         IdActividad = int.Parse(hfIdActividad.Value);
 
+                    EActividad.IdActividad = IdActividad;
                     EUsuario EUsuario = (EUsuario)Session["Usuario"];
+
+                    ECalendario ECalendario = new ECalendario
+                    {
+                        IdAgenda = DateTime.Today.Year.ToString(),
+                        Tipo = Constant.ParametroTipoCalendarioExtracurricular
+                    };
 
                     List<EDetalleActividad> lstDetalleActividad = new List<EDetalleActividad>();
                     foreach (GridViewRow gvr in gvDetalleActividad.Rows)
@@ -500,26 +512,47 @@ namespace InnovaSchool.UserLayer.Interfaces
                     }
 
                     EActividad.ListaDetalleActividad = lstDetalleActividad;
-                }
-                
-                
-                //int retval = 0;
-                //retval = BSolicitudActividad.EnviarSolicitudActividad(ESolicitudActividad);
 
-                /*if (retval != 1)
-                {
-                    lblTituloMensaje.Text = Constant.TituloEnviarSolicitud;
-                    lblDescripcionMensaje.Text = Constant.MensajeErrorEnviarSolicitud;
-                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                    int retval = 0;
+                    retval = BActividad.VerificarCruceActividad(EActividad);
+                    if (retval == 0)
+                    {
+                        retval = BActividad.RegistrarActividad(EActividad, EUsuario, ECalendario);
+
+                        if (retval == 0)
+                        {
+                            lblTituloMensaje.Text = Constant.TituloRegistroActividad;
+                            lblDescripcionMensaje.Text = Constant.MensajeErrorGuardarActividad;
+                            ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                        }
+                        else
+                        {
+                            if (hfIdActividad.Value.ToString().Equals(string.Empty))
+                                hfIdActividad.Value = EActividad.IdActividad.ToString();
+                            lblTituloMensaje.Text = Constant.TituloRegistroActividad;
+                            lblDescripcionMensaje.Text = Constant.MensajeGuardarActividadExtracurricular;
+                            ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                            //ddlAnio.SelectedIndex = 0;
+                            gvDetalleActividad.DataSource = BActividad.ConsultarDetalleActividad(EActividad);
+                            gvDetalleActividad.DataBind();
+                            gvActividades.DataSource = new List<EActividad>();
+                            gvActividades.DataBind();
+                        }
+                    }
+                    else if (retval == 1)
+                    {
+                        lblTituloMensaje.Text = Constant.TituloRegistroActividad;
+                        lblDescripcionMensaje.Text = Constant.MensajeCruceAlcanceGuardarActividad;
+                        ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                    }
+                    else if (retval == 2)
+                    {
+                        lblTituloMensaje.Text = Constant.TituloRegistroActividad;
+                        lblDescripcionMensaje.Text = Constant.MensajeCruceAmbienteGuardarActividad;
+                        ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                    }
                 }
-                else
-                {
-                    lblTituloMensaje.Text = Constant.TituloEnviarSolicitud;
-                    lblDescripcionMensaje.Text = Constant.MensajeEnviarSolicitud;
-                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
-                    //EnviarCorreo();
-                    Limpiar();
-                }*/
+                
             }
             catch (Exception ex)
             {

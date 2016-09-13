@@ -13,7 +13,7 @@ namespace InnovaSchool.DAL
     {
         SqlConnection cn = new SqlConnection(ConexionUtil.Get_Connection());
 
-       public int RegistrarSolicitudActividad(ESolicitudActividad ESolicitudActividad, EUsuario EUsuario, ECalendario ECalendario)
+        public int RegistrarSolicitudActividad(ESolicitudActividad ESolicitudActividad, EUsuario EUsuario, ECalendario ECalendario)
         {
             int retval = 0;
             cn.Open();
@@ -48,7 +48,7 @@ namespace InnovaSchool.DAL
             return retval;
         }
 
-       public int RegistrarDetalleSolicitudActividad(EDetalleActividad EDetalleActividad, EUsuario EUsuario)
+        public int RegistrarDetalleSolicitudActividad(EDetalleActividad EDetalleActividad, EUsuario EUsuario)
         {
             int retval = 0;
             using (SqlCommand cmd = new SqlCommand("SP_RegistrarDetalleActividad", cn))
@@ -59,16 +59,48 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@Fecha", EDetalleActividad.Fecha));
                 cmd.Parameters.Add(new SqlParameter("@HoraInicial", EDetalleActividad.HoraInicial));
                 cmd.Parameters.Add(new SqlParameter("@HoraTermino", EDetalleActividad.HoraTermino));
-                if(EDetalleActividad.IdAmbiente != 0)
-                    cmd.Parameters.Add(new SqlParameter("@IdAmbiente", EDetalleActividad.IdAmbiente)); 
+                if (EDetalleActividad.IdAmbiente != 0)
+                    cmd.Parameters.Add(new SqlParameter("@IdAmbiente", EDetalleActividad.IdAmbiente));
                 else
-                    cmd.Parameters.Add(new SqlParameter("@IdAmbiente", DBNull.Value)); 
+                    cmd.Parameters.Add(new SqlParameter("@IdAmbiente", DBNull.Value));
                 cmd.Parameters.Add(new SqlParameter("@Direccion", EDetalleActividad.Direccion));
                 cmd.Parameters.Add(new SqlParameter("@UsuCreacion", EUsuario.Usuario));
                 retval = cmd.ExecuteNonQuery();
             }
             return retval;
         }
+
+        public int VerificarCruceSolicitudActividad(ESolicitudActividad ESolicitudActividad)
+        {
+            int retval = 0;
+
+            foreach (EDetalleActividad itemDetalleActividad in ESolicitudActividad.EActividad.ListaDetalleActividad)
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_VerificarCruceSolicitudActividad", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@IdSolicitudActividad", ESolicitudActividad.IdSolicitudActividad));
+                    cmd.Parameters.Add(new SqlParameter("@HoraInicial", itemDetalleActividad.HoraInicial));
+                    cmd.Parameters.Add(new SqlParameter("@HoraTermino", itemDetalleActividad.HoraTermino));
+                    cmd.Parameters.Add(new SqlParameter("@IdEmpleado", ESolicitudActividad.EActividad.IdEmpleado));
+                    cmd.Parameters.Add(new SqlParameter("@Alcance", ESolicitudActividad.EActividad.Alcance));
+                    cmd.Parameters.Add(new SqlParameter("@IDAmbiente", itemDetalleActividad.IdAmbiente));
+                    cmd.Parameters.Add(new SqlParameter("@Resultado", retval)).Direction = ParameterDirection.Output;
+                    cmd.ExecuteNonQuery();
+                    retval = Convert.ToInt32(cmd.Parameters["@Resultado"].Value);
+
+                    if (retval != 0)
+                    {
+                        cn.Close();
+                        break;
+                    }
+                }
+                cn.Close();
+            }
+
+            return retval;
+        }        
 
         public int EnviarSolicitudActividad(ESolicitudActividad ESolicitudActividad)
         {

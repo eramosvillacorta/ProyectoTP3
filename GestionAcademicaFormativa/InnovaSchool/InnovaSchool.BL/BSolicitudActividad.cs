@@ -32,5 +32,10 @@ namespace InnovaSchool.BL
         {
             return DSolicitudActividad.ListarSolicitudesPendientesAgenda(EAgenda);
         }
+
+        public int VerificarCruceSolicitudActividad(ESolicitudActividad ESolicitudActividad)
+        {
+            return DSolicitudActividad.VerificarCruceSolicitudActividad(ESolicitudActividad);
+        }
     }
 }
