@@ -80,3 +80,15 @@ C:\Users\SMITH\Documents\Smith\Repositorio\Upc\TP3All\GestionAcademicaFormativa\
 C:\Users\SMITH\Documents\Smith\Repositorio\Upc\TP3All\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\obj\Debug\InnovaSchool.UserLayer.csprojResolveAssemblyReference.cache
 C:\Users\SMITH\Documents\Smith\Repositorio\Upc\TP3All\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\obj\Debug\InnovaSchool.UserLayer.dll
 C:\Users\SMITH\Documents\Smith\Repositorio\Upc\TP3All\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\obj\Debug\InnovaSchool.UserLayer.pdb
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\obj\Debug\InnovaSchool.UserLayer.csprojResolveAssemblyReference.cache
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\obj\Debug\InnovaSchool.UserLayer.dll
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\obj\Debug\InnovaSchool.UserLayer.pdb
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.UserLayer.dll.config
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.UserLayer.dll
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.UserLayer.pdb
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.BL.dll
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.Entity.dll
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.DAL.dll
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.BL.pdb
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.Entity.pdb
+D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.UserLayer\bin\InnovaSchool.DAL.pdb

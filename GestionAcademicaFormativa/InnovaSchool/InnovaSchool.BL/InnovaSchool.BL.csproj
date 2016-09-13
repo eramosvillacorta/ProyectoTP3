@@ -42,7 +42,9 @@
     <Compile Include="BActividad.cs" />
     <Compile Include="BAgenda.cs" />
     <Compile Include="BAmbiente.cs" />
-    <Compile Include="BAprobacionSolicitudActividad.cs" />
+    <Compile Include="BAprobacionSolicitudActividad.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BCalendario.cs" />
     <Compile Include="BEmpleado.cs" />
     <Compile Include="BFeriado.cs" />
