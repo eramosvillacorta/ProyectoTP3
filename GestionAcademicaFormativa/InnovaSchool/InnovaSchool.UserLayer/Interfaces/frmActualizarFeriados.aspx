@@ -18,9 +18,9 @@
         <div class="box span12" id="divSolicitudActividades" runat="server">
             <div class="box-header" data-original-title="">
                 <h2><i class="halflings-icon white edit"></i><span class="break"></span>Actualizar Feriados</h2>
-                <div class="box-icon">
+<%--                <div class="box-icon">
                     <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-down"></i></a>                    
-                </div>                
+                </div> --%>               
             </div>                        
             <div class="box-content">           
                 <div class="form-horizontal">
@@ -30,7 +30,6 @@
                             <div class="controls">
                                 <asp:TextBox ID="txtAnioEscolarVigente" runat="server" type="text" class="input-xlarge editable-input"
                                  title="Se necesita un nombre" MaxLength="4" Enabled="false"></asp:TextBox>
-                                
                             </div>
                         </div>
                         <div class="control-group">
@@ -73,7 +72,6 @@
                                     Font-Size="Small"
                                     Display="Dynamic"
                                     ErrorMessage="<div><i>*Se necesita una fecha de termino</i></div>"> </asp:RequiredFieldValidator>
-
                                 <asp:CompareValidator ID="cvFechaFin" runat="server"  
                                     ValidationGroup="SolicitudValid"
                                     ControlToValidate="txtFechaFin"
@@ -89,7 +87,7 @@
                         <div class="control-group">
                             <div class="controls">
                                 <asp:HiddenField ID="HiddenField1" runat="server" Value="0" />
-                                <asp:CheckBox ID="chkRepiteCadaAnio" runat="server" Text="Repite cada año" style="margin-left: 10px;" Width="300px" />
+                                <asp:CheckBox ID="chkRepiteCadaAnio" runat="server" Text="Repite cada año" />
                             </div>
                         </div>
                         <div class="form-actions">
@@ -107,9 +105,9 @@
             <div class="box span12" id="divConsultaSolicitudes" runat="server">
                 <div class="box-header" data-original-title="">
                     <h2><i class="halflings-icon white search"></i><span class="break"></span>Consulta Feriados</h2>
-                    <div class="box-icon">
+<%--                    <div class="box-icon">
                         <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-down"></i></a>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="box-content">           
                     <div class="form-horizontal">
