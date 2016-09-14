@@ -3,14 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innova Schools</title>
+    <title>Index - Innova Schools</title>
     
     <!-- start: MVC-->
     <!--<link href="../Content/bootstrap.css" rel="stylesheet" />-->
     <!--<link href="../Content/bootstrap.min.css" rel="stylesheet" />-->
-    <link href="../Content/Justified-Nav.css" rel="stylesheet" />
-    <link href="../Content/Site.css" rel="stylesheet" />
-    <script src="../Scripts/modernizr.js"></script>
+
+    
     <!-- start: MVC-->
 
     <!-- start: JavaScript-->
@@ -45,10 +44,13 @@
     <script src="../Scripts/retina.js"></script>
     <script src="../Scripts/custom.js"></script>
     <script src="../Scripts/mensaje.js"></script>
+    <script src="../Scripts/modernizr.js"></script>
     <!-- end: JavaScript-->
     <!-- start: CSS -->	    
     <link href="../css/bootstrap.css" rel="stylesheet" />
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/Justified-Nav.css" rel="stylesheet" />
+    <link href="../Content/Site.css" rel="stylesheet" />
 	<link href="../css/bootstrap-responsive.min.css" rel="stylesheet" />    		
 	<link href="../css/style-responsive.css" rel="stylesheet" />
     <link href="../css/style.css" rel="stylesheet" />
@@ -61,11 +63,11 @@
 <body>
     <div class="container">
         <div class="masthead">
-            <div class="row">
-                <div style="float: left;">
+            <div class="row" style="width:1170px;margin-left:0px;">
+                <div class="col-sm-6" style="float:left;">
                     <img src="../Img/logo/innova_schools.png" alt="" />
                 </div>
-                <div class="col-sm-6" style="text-align: right">
+                <div class="col-sm-6" style="text-align:right;float:right;">
                     <h3 class="text-info">
                         <a href="../Index.aspx" style="color: #428bca !important; font-size: 24px !important; font-weight: normal !important;  font-family: Helvetica Neue, Helvetica, Arial, sans-serif !important;" >Sistema de gestión académica</a>
                     </h3>
@@ -123,7 +125,6 @@
             </ul>
         </div>
     </div>    
-    <br />
     <div class="container body-content">
         <form id="form1" runat="server" >
             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
