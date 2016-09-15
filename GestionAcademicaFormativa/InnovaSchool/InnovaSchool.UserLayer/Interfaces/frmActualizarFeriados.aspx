@@ -58,6 +58,16 @@
                                     Font-Size="Small"
                                     Display="Dynamic"
                                     ErrorMessage="<div><i>*Se necesita una fecha de inicio</i></div>"></asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="cvFechaInicio" runat="server"  
+                                    ValidationGroup="SolicitudValid"
+                                    ControlToValidate="txtFechaInicio"
+                                    Operator="GreaterThan"
+                                    Type="Date"
+                                    ForeColor="Red"
+                                    Font-Size="Small"
+                                    Display="Dynamic"
+                                    ErrorMessage="<div><i>*La fecha de inicio debe ser mayor a la fecha actual.</i></div>">
+                                </asp:CompareValidator>
                             </div>
                         </div>
                         <div class="control-group">
@@ -81,7 +91,7 @@
                                     ForeColor="Red"
                                     Font-Size="Small"
                                     Display="Dynamic"
-                                    ErrorMessage="<div><i>*La fecha de fin debe ser mayor o igual a la fecha actual.</i></div>"> </asp:CompareValidator>
+                                    ErrorMessage="<div><i>*La fecha de Termino debe ser mayor o igual a la fecha de inicio.</i></div>"> </asp:CompareValidator>
                             </div>                                                        
                         </div>
                         <div class="control-group">
@@ -168,10 +178,10 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText ="Opciones" HeaderStyle-Width="15%"> 
                                         <ItemTemplate> 
-                                        <asp:LinkButton ID="lbtEditar" CommandName="Editar" CssClass="btn btn-primary btn-gv" runat="server" ToolTip="Editar" >
+                                        <asp:LinkButton ID="lbtEditar" CommandName="Editar" CssClass="btn btn-primary btn-gv" runat="server" ToolTip="Editar" Visible="false">
                                             <i class="halflings-icon white edit"></i>
                                         </asp:LinkButton> 
-                                        <asp:LinkButton ID="lbtEliminar" CommandName="Eliminar" CssClass="btn btn-danger btn-gv" runat="server" ToolTip="Eliminar">
+                                        <asp:LinkButton ID="lbtEliminar" CommandName="Eliminar" CssClass="btn btn-danger btn-gv" runat="server" ToolTip="Eliminar" Visible="false">
                                             <i class="halflings-icon white trash"></i>
                                         </asp:LinkButton>
                                         </ItemTemplate> 
@@ -205,7 +215,7 @@
     <div class="modal hide fade in" id="mensaje">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
-            <!-- <h2>Registro Feriado</h2> -->
+            <h2>Registro Feriado</h2>
         </div>
         <div class="modal-body">
             <p>El feriado se guardó con éxito.</p>
@@ -220,7 +230,7 @@
     <div class="modal hide fade in" id="myModalRepetitivo">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
-          <!--  <h2>Eliminar Feriado</h2> -->
+            <h2>Cargar Feriado</h2> 
         </div>
         <div class="modal-body">
             <p>¿Está seguro de cargar los feriados repetitivos del año escolar?</p>
@@ -235,7 +245,7 @@
     <div class="modal hide fade in" id="myModalEliminar">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
-          <!--  <h2>Eliminar Feriado</h2> -->
+            <h2>Eliminar Feriado</h2> 
         </div>
         <div class="modal-body">
             <p>¿Está seguro de eliminar este feriado?</p>
@@ -250,7 +260,7 @@
     <div class="modal hide fade in" id="myModalExisteFeriado">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
-          <!--  <h2>Eliminar Feriado</h2> -->
+            <h2>Feriado Existente</h2> 
         </div>
         <div class="modal-body">
             <p>Ya existe un feriado registrado para esta fecha.</p>
@@ -264,7 +274,7 @@
     <div class="modal hide fade in" id="myModalExcedeFeriado">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
-          <!--  <h2>Eliminar Feriado</h2> -->
+            <h2>Feriado Largo</h2> 
         </div>
         <div class="modal-body">
             <p>Este rango de feriados excede los 03 días. ¿Está seguro de registrarlo?</p>

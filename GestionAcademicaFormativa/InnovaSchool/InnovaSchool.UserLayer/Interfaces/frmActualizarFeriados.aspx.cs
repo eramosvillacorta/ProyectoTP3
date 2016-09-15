@@ -44,6 +44,7 @@ namespace InnovaSchool.UserLayer.Interfaces
             var FecIniAnio = "01/01/" + DateTime.Today.Year.ToString();
             var FecFinAnio = "31/12/" + DateTime.Today.Year.ToString();
             var FecActual = DateTime.Today.ToShortDateString();
+            cvFechaInicio.ValueToCompare = FecActual.ToString();
            /* rvApertura.MinimumValue = FecIniAnio.ToString();
             rvApertura.MaximumValue = FecFinAnio.ToString();
             rvCierre.MinimumValue = FecIniAnio.ToString();
@@ -130,7 +131,14 @@ namespace InnovaSchool.UserLayer.Interfaces
                         hfIdFeriado.Value = string.Empty;
                         txtAnioEscolarVigente.Text = DateTime.Today.Year.ToString();
                         CargarAniosAgenda();
-                        //(VerificarAperturaAgenda();
+
+                        ddlAnio.SelectedValue = txtAnioEscolarVigente.Text;
+                        eFeriado.IdAgenda = ddlAnio.SelectedValue;
+                        List<EFeriado> ListECalendario;
+                        ListECalendario = bFeriado.ConsultarFeriadoLista(eFeriado);
+                        gvConsultaFeriados.DataSource = ListECalendario;
+                        gvConsultaFeriados.DataBind();
+
                     }
                     else
                     {
@@ -199,7 +207,23 @@ namespace InnovaSchool.UserLayer.Interfaces
 
         protected void gvConsultaFeriados_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType != DataControlRowType.DataRow) return;
 
+            LinkButton lnkEditar = ((LinkButton)e.Row.FindControl("lbtEditar"));
+            LinkButton lbtEliminar = ((LinkButton)e.Row.FindControl("lbtEliminar"));
+            if (ddlAnio.SelectedValue == txtAnioEscolarVigente.Text)
+            {
+                lnkEditar.Visible = true;
+                lbtEliminar.Visible = true;
+            }
+            var FecActual = DateTime.Today;
+            DateTime FecInicio = DateTime.ParseExact(e.Row.Cells[5].Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime FecFin = DateTime.ParseExact(e.Row.Cells[6].Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            if (FecInicio <= FecActual || FecFin <= FecActual)
+            {
+                lnkEditar.Visible = false;
+                lbtEliminar.Visible = false;
+            }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

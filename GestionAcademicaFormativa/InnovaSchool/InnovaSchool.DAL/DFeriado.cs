@@ -175,6 +175,7 @@ namespace InnovaSchool.DAL
             using (SqlCommand cmd = new SqlCommand("SP_ValidarExistenciaFeriado", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@idFeriado", EFeriado.IdFeriado));
                 cmd.Parameters.Add(new SqlParameter("@fechaInicio", EFeriado.FechaInicio));
                 cmd.Parameters.Add(new SqlParameter("@fechaTermino", EFeriado.FechaTermino));
                 using (SqlDataReader reader = cmd.ExecuteReader())
