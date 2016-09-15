@@ -135,9 +135,9 @@ namespace InnovaSchool.UserLayer.Interfaces
                 divSolicitudActividades.Visible = false;                
             }
 
-            rvFechaInicio.MinimumValue = string.Format("{0:dd/MM/yyyy}", DateTime.Now);
+            rvFechaInicio.MinimumValue = string.Format("{0:dd/MM/yyyy}", FecIniAnio);
             rvFechaInicio.MaximumValue = FecFinAnio.ToString();
-            rvFechaFin.MinimumValue = string.Format("{0:dd/MM/yyyy}", DateTime.Now);
+            rvFechaFin.MinimumValue = string.Format("{0:dd/MM/yyyy}", FecIniAnio);
             rvFechaFin.MaximumValue = FecFinAnio.ToString();           
         }
 
@@ -270,7 +270,7 @@ namespace InnovaSchool.UserLayer.Interfaces
 
             e.Row.Cells[6].Text = BParametro.ConsultarParametro(int.Parse(Constant.ParametroTipoActividad), 0, e.Row.Cells[6].Text);
 
-            LinkButton lnkEditar = ((LinkButton)e.Row.FindControl("lbtEditar")); if (e.Row.Cells[12].Text == "1")
+            LinkButton lnkEditar = ((LinkButton)e.Row.FindControl("lbtEditar"));
             switch (e.Row.Cells[12].Text)
             {
                 case "1":

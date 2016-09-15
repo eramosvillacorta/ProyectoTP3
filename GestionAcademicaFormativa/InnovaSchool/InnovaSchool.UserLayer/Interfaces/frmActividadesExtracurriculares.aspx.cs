@@ -390,7 +390,7 @@ namespace InnovaSchool.UserLayer.Interfaces
 
             if (!lblAnio.Text.Equals(DateTime.Today.Year.ToString()))
             {
-                gvActividades.Columns[7].Visible = false;
+                gvActividades.Columns[10].Visible = false;
                 divRegistroActividad.Visible = false;
                 divCancelar.Visible = true;
             }
@@ -407,33 +407,36 @@ namespace InnovaSchool.UserLayer.Interfaces
                     FecIniAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.FecIniEscolar);
                     FecFinAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.FecFinEscolar);
 
-                    if (EAgenda.Estado == int.Parse(Constant.ParametroAgendaEstadoAperturada))
-                    {
+                    /*if (EAgenda.Estado == int.Parse(Constant.ParametroAgendaEstadoAperturada))
+                    {*/
                         ECalendario ECalendario = (ECalendario)Session["Calendario"];
                         ECalendario.Tipo = Constant.ParametroTipoCalendarioExtracurricular;
                         BCalendario BCalendario = new BL.BCalendario();
                         List<ECalendario> lstECalendario = BCalendario.ConsultarCalendario(ECalendario);
 
-                        if (lstECalendario[0].Estado != int.Parse(Constant.ParametroCalendarioEstadoAprobado))
+                        if (lstECalendario[0].Estado == int.Parse(Constant.ParametroCalendarioEstadoAprobado) || DateTime.Today > EAgenda.FecCierre)
                         {
-                            CargarAlcance();
-                            CargarTipoActividadExtracurricular();
-                        }
-                        else
-                        {
-                            lblTituloMensaje.Text = Constant.TituloCalendarioAprobado;
+                            /*lblTituloMensaje.Text = Constant.TituloCalendarioAprobado;
                             lblDescripcionMensaje.Text = Constant.MensajeCalendarioAprobado;
                             ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                            divRegistroActividad.Visible = false;*/
+                            gvActividades.Columns[10].Visible = false;
                             divRegistroActividad.Visible = false;
+                            divCancelar.Visible = true;
+                        }
+                        else
+                        {                            
+                            CargarAlcance();
+                            CargarTipoActividadExtracurricular();
                         }                        
-                    }
+                    /*}
                     else
                     {
                         lblTituloMensaje.Text = Constant.TituloNoAgendaAperturada;
                         lblDescripcionMensaje.Text = Constant.MensajeNoAgendaAperturada;
                         ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
                         divRegistroActividad.Visible = false;
-                    }
+                    }*/
                 }
                 else
                 {
@@ -446,9 +449,9 @@ namespace InnovaSchool.UserLayer.Interfaces
                     divRegistroActividad.Visible = false;
                 }
 
-                rvFechaInicio.MinimumValue = string.Format("{0:dd/MM/yyyy}", DateTime.Now);
+                rvFechaInicio.MinimumValue = string.Format("{0:dd/MM/yyyy}", FecIniAnio);
                 rvFechaInicio.MaximumValue = FecFinAnio.ToString();
-                rvFechaFin.MinimumValue = string.Format("{0:dd/MM/yyyy}", DateTime.Now);
+                rvFechaFin.MinimumValue = string.Format("{0:dd/MM/yyyy}", FecIniAnio);
                 rvFechaFin.MaximumValue = FecFinAnio.ToString();
             }            
         }

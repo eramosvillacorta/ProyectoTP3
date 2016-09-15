@@ -111,7 +111,7 @@
                                         ForeColor="Red"
                                         Font-Size="Small"
                                         Display="Dynamic"
-                                        ErrorMessage="<div><i>*La fecha de la actividad se encuentra fuera del rango del año escolar vigente o es menor a la actual.</i></div>">
+                                        ErrorMessage="<div><i>*La fecha de la actividad se encuentra fuera del rango del año escolar o es menor a la actual.</i></div>">
                                     </asp:RangeValidator>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                                         ForeColor="Red"
                                         Font-Size="Small"
                                         Display="Dynamic"
-                                        ErrorMessage="<div><i>*La fecha de la actividad se encuentra fuera del rango del año escolar vigente o es menor a la actual.</i></div>">
+                                        ErrorMessage="<div><i>*La fecha de la actividad se encuentra fuera del rango del año escolar o es menor a la actual.</i></div>">
                                     </asp:RangeValidator>
                                     <asp:CompareValidator ID="cvFechaFin" runat="server"  
                                         ValidationGroup="FechaValid"
@@ -288,7 +288,7 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="txtFTerminoB">Fecha Fin</label>
+                                <label class="control-label" for="txtFTerminoB">Fecha de Término</label>
                                 <div class="controls">
                                     <asp:TextBox ID="txtFTerminoB" runat="server" type="text" class="input-medium datepicker"></asp:TextBox>
                                 </div>
