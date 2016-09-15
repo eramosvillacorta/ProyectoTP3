@@ -126,7 +126,7 @@
                                         ForeColor="Red"
                                         Font-Size="Small"
                                         Display="Dynamic"
-                                        ErrorMessage="<div><i>*Se necesita una fecha de fin</i></div>">
+                                        ErrorMessage="<div><i>*Se necesita una fecha de Termino</i></div>">
                                     </asp:RequiredFieldValidator>
                                     <asp:RangeValidator ID="rvFechaFin" runat="server" 
                                         ValidationGroup="FechaValid"
@@ -146,7 +146,7 @@
                                         ForeColor="Red"
                                         Font-Size="Small"
                                         Display="Dynamic"
-                                        ErrorMessage="<div><i>*La fecha de fin debe ser mayor o igual a la fecha actual y a la fecha de inicio.</i></div>">
+                                        ErrorMessage="<div><i>*La fecha de Termino debe ser mayor o igual a la fecha actual y a la fecha de inicio.</i></div>">
                                     </asp:CompareValidator>
                                 
                                     <asp:Button ID="btnIngresarHoras" runat="server" Text="Registar Horas" class="btn btn-primary" ValidationGroup="FechaValid"
@@ -282,7 +282,7 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="txtFInicioB">Fecha Inicio</label>
+                                <label class="control-label" for="txtFInicioB">Fecha de Inicio</label>
                                 <div class="controls">
                                     <asp:TextBox ID="txtFInicioB" runat="server" type="text" class="input-medium datepicker"></asp:TextBox>
                                 </div>
