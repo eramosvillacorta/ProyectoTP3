@@ -16,7 +16,6 @@
                             <div class="control-group">
                                 <label class="control-label" for="txtNomActividad">Nombre Actividad</label>
                                 <div class="controls">
-                                    <asp:HiddenField ID="hdfActividad" runat="server" Value="0" />
                                     <asp:TextBox ID="txtNombreActividad" runat="server" type="text" class="input-xxlarge"
                                         title="Se necesita un nombre para la actividad"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfNombreActividad" runat="server"
@@ -117,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="txtFechaFin">Fecha de Fin</label>
+                                <label class="control-label" for="txtFechaFin">Fecha de Término</label>
                                 <div class="controls">
                                     <asp:TextBox ID="txtFechaFin" runat="server" type="text" class="input-medium datepicker"
                                         title="Se necesita una fecha de fin"></asp:TextBox>
@@ -276,7 +275,7 @@
                             </div>
                             <%-- Busqueda --%>
                             <div class="control-group">
-                                <label class="control-label" for="txtNomActividadB">Nombre de la actividad</label>
+                                <label class="control-label" for="txtNomActividadB">Nombre Actividad</label>
                                 <div class="controls">
                                     <asp:HiddenField ID="HiddenField1" runat="server" Value="0" />
                                     <asp:TextBox ID="txtNomActividadB" runat="server" type="text" class="input-xlarge"></asp:TextBox>
@@ -381,5 +380,19 @@
             <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
         </div>
     </div>    
+    <div class="modal hide fade in" id="myModalConfirmarEliminar">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h2>Eliminar Actividad</h2>
+        </div>
+        <div class="modal-body">
+            <p><asp:Label ID="lblMensajeConfirmacionEliminar" runat="server" Text=""></asp:Label></p>
+        </div>
+        <div class="modal-footer">            
+            <asp:Button ID="btnConfirmarEliminar" runat="server" type="submit" Text="Sí" class="btn btn-primary" OnClick="btnConfirmarEliminar_Click" />
+            <a href="#" class="btn btn-success" data-dismiss="modal">No</a>
+        </div>
+    </div>    
+
     <asp:HiddenField runat="server" ID="hfIdActividad" />
 </asp:Content>

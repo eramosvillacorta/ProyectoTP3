@@ -270,19 +270,28 @@ namespace InnovaSchool.UserLayer.Interfaces
 
             e.Row.Cells[6].Text = BParametro.ConsultarParametro(int.Parse(Constant.ParametroTipoActividad), 0, e.Row.Cells[6].Text);
 
-            LinkButton lnkEditar = ((LinkButton)e.Row.FindControl("lbtEditar"));
-            if (e.Row.Cells[12].Text == "1")
+            LinkButton lnkEditar = ((LinkButton)e.Row.FindControl("lbtEditar")); if (e.Row.Cells[12].Text == "1")
+            switch (e.Row.Cells[12].Text)
             {
-                e.Row.Cells[12].Text = "Borrador";
-                e.Row.Cells[12].CssClass = "label label-warning estado";
-                lnkEditar.Visible = true;                
+                case "1":
+                    e.Row.Cells[12].CssClass = "label label-warning estado";
+                    lnkEditar.Visible = true;
+                    break;
+                case "2":
+                    e.Row.Cells[12].CssClass = "label label-warning estado";
+                    lnkEditar.Visible = false;
+                    break;
+                case "3":
+                    e.Row.Cells[12].CssClass = "label label-important estado";
+                    lnkEditar.Visible = true;
+                    break;
+                case "4":
+                    e.Row.Cells[12].CssClass = "label label-success estado";
+                    lnkEditar.Visible = false;
+                    break;
             }
-            else
-            {
-                e.Row.Cells[12].Text = "Pendiente de aprobación";
-                e.Row.Cells[12].CssClass = "label label-success estado";
-                lnkEditar.Visible = false;
-            }
+
+            e.Row.Cells[12].Text = BParametro.ConsultarParametro(int.Parse(Constant.ParametroEstadoSolicitudActividad), int.Parse(e.Row.Cells[12].Text), null);
         }
 
         protected void gvConsultaSolicitudes_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -323,20 +332,39 @@ namespace InnovaSchool.UserLayer.Interfaces
 
 
         protected void btnIngresarHoras_Click(object sender, EventArgs e)
-        {   
-            List<EDetalleActividad> lstDetalleActividad = new List<EDetalleActividad>();            
-            DateTime dtFechaFin = Convert.ToDateTime(txtFechaFin.Text);
-            DateTime dtFechaInicio = Convert.ToDateTime(txtFechaInicio.Text);            
-
-            for (DateTime dt = dtFechaInicio; dt <= dtFechaFin; dt = dt.AddDays(1))
+        {
+            EFeriado EFeriado;
+            EActividad EActividad = new EActividad()
             {
-                EDetalleActividad EDetalleActividad = new EDetalleActividad();
-                EDetalleActividad.Fecha = dt;
-                lstDetalleActividad.Add(EDetalleActividad);
+                FecInicio = objResources.GetDateFromTextBox(txtFechaInicio),
+                FecTermino = objResources.GetDateFromTextBox(txtFechaFin)
+            };
+            EFeriado = BFeriado.VerificarFeriado(EActividad);
+            if (EFeriado != null)
+            {
+                string Feriado = " " + string.Format("{0:dd/MM/yyyy}", EFeriado.FechaInicio) + " - " + EFeriado.Motivo.ToString();
+                lblTituloMensaje.Text = Constant.TituloActividadFeriado;
+                lblDescripcionMensaje.Text = string.Format(Constant.MensajeActividadFeriado, EFeriado.Motivo);
+                ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                gvDetalleSolicitudActividad.DataSource = new List<EDetalleActividad>();
+                gvDetalleSolicitudActividad.DataBind();
             }
+            else
+            {
+                List<EDetalleActividad> lstDetalleActividad = new List<EDetalleActividad>();
+                DateTime dtFechaFin = Convert.ToDateTime(txtFechaFin.Text);
+                DateTime dtFechaInicio = Convert.ToDateTime(txtFechaInicio.Text);
 
-            gvDetalleSolicitudActividad.DataSource = lstDetalleActividad;
-            gvDetalleSolicitudActividad.DataBind();            
+                for (DateTime dt = dtFechaInicio; dt <= dtFechaFin; dt = dt.AddDays(1))
+                {
+                    EDetalleActividad EDetalleActividad = new EDetalleActividad();
+                    EDetalleActividad.Fecha = dt;
+                    lstDetalleActividad.Add(EDetalleActividad);
+                }
+
+                gvDetalleSolicitudActividad.DataSource = lstDetalleActividad;
+                gvDetalleSolicitudActividad.DataBind();           
+            }             
         }        
                 
         protected void ddlTipoActividad_SelectedIndexChanged(object sender, EventArgs e)

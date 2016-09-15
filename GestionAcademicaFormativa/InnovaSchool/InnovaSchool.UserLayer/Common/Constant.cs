@@ -40,6 +40,12 @@ namespace InnovaSchool.UserLayer.Common
         public static string TituloEliminarActividad = ConfigurationManager.AppSettings["TituloEliminarActividad"].Trim();
         public static string MensajeEliminarActividadAcademica = ConfigurationManager.AppSettings["MensajeEliminarActividadAcademica"].Trim();
         public static string MensajeErrorEliminarActividadAcademica = ConfigurationManager.AppSettings["MensajeErrorEliminarActividadAcademica"].Trim(); 
+
+        public static string MensajeConfirmarEliminarActividadExtracurricular = ConfigurationManager.AppSettings["MensajeConfirmarEliminarActividadExtracurricular"].Trim();
+        public static string MensajeEliminarActividadExtracurricular = ConfigurationManager.AppSettings["MensajeEliminarActividadExtracurricular"].Trim();
+        public static string MensajeErrorEliminarActividad = ConfigurationManager.AppSettings["MensajeErrorEliminarActividad"].Trim();        
+        
+            
         //Actividad Feriado
         public static string TituloActividadFeriado = ConfigurationManager.AppSettings["TituloActividadFeriado"].Trim();
         public static string MensajeActividadFeriado = ConfigurationManager.AppSettings["MensajeActividadFeriado"].Trim();
@@ -51,6 +57,10 @@ namespace InnovaSchool.UserLayer.Common
         public static string TituloNoAgendaAprobada = ConfigurationManager.AppSettings["TituloNoAgendaAprobada"].Trim();
         public static string MensajeNoAgendaAprobada = ConfigurationManager.AppSettings["MensajeNoAgendaAprobada"].Trim();
         public static string TituloNoAgendaAperturada = ConfigurationManager.AppSettings["TituloNoAgendaAperturada"].Trim();
+
+        public static string TituloCalendarioAprobado = ConfigurationManager.AppSettings["TituloCalendarioAprobado"].Trim();
+        public static string MensajeCalendarioAprobado = ConfigurationManager.AppSettings["MensajeCalendarioAprobado"].Trim();
+
         public static string MensajeNoAgendaAperturada = ConfigurationManager.AppSettings["MensajeNoAgendaAperturada"].Trim();
         public static string TituloGuardarSolicitud = ConfigurationManager.AppSettings["TituloGuardarSolicitud"].Trim();
         public static string MensajeGuardarSolicitud = ConfigurationManager.AppSettings["MensajeGuardarSolicitud"].Trim();        
@@ -99,11 +109,17 @@ namespace InnovaSchool.UserLayer.Common
         public static string ParametroHora = ConfigurationManager.AppSettings["ParametroHora"].Trim();
         public static string ParametroMinuto = ConfigurationManager.AppSettings["ParametroMinuto"].Trim();
 
+        public static string ParametroEstadoActividad = ConfigurationManager.AppSettings["ParametroEstadoActividad"].Trim();
+        public static string ParametroEstadoSolicitudActividad = ConfigurationManager.AppSettings["ParametroEstadoSolicitudActividad"].Trim();
+
         public static string ParametroUbicacionInterna = ConfigurationManager.AppSettings["ParametroUbicacionInterna"].Trim();
         public static string ParametroUbicacionExterna = ConfigurationManager.AppSettings["ParametroUbicacionExterna"].Trim();
 
 
+        public static string ParametroCalendarioEstadoAprobado = ConfigurationManager.AppSettings["ParametroCalendarioEstadoAprobado"].Trim();
         public static string ParametroAgendaEstadoVigente = ConfigurationManager.AppSettings["ParametroAgendaEstadoVigente"].Trim();
+        public static string ParametroAgendaEstadoAperturada = ConfigurationManager.AppSettings["ParametroAgendaEstadoAperturada"].Trim();        
+
         public static string ParametroTipoActividadAcademica = ConfigurationManager.AppSettings["ParametroTipoActividadAcademica"].Trim();
         public static string ParametroTipoActividadExtracurricular = ConfigurationManager.AppSettings["ParametroTipoActividadExtracurricular"].Trim();
 

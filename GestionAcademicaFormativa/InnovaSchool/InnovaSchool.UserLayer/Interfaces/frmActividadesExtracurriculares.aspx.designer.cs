@@ -40,15 +40,6 @@ namespace InnovaSchool.UserLayer.Interfaces {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegistroActividad;
         
         /// <summary>
-        /// Control hdfActividad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdfActividad;
-        
-        /// <summary>
         /// Control txtNombreActividad.
         /// </summary>
         /// <remarks>
@@ -371,6 +362,24 @@ namespace InnovaSchool.UserLayer.Interfaces {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirmarGuardar;
+        
+        /// <summary>
+        /// Control lblMensajeConfirmacionEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensajeConfirmacionEliminar;
+        
+        /// <summary>
+        /// Control btnConfirmarEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmarEliminar;
         
         /// <summary>
         /// Control hfIdActividad.

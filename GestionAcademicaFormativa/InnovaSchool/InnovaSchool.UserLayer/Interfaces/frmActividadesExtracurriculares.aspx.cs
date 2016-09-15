@@ -38,34 +38,42 @@ namespace InnovaSchool.UserLayer.Interfaces
             LinkButton lnkEditar = ((LinkButton)e.Row.FindControl("lbtEditar"));
             LinkButton lnkEliminar = ((LinkButton)e.Row.FindControl("lbtEliminar"));
 
-            if (e.Row.Cells[9].Text == "1")
+            switch (e.Row.Cells[9].Text)
             {
-                e.Row.Cells[9].Text = "Borrador";
-                e.Row.Cells[9].CssClass = "label label-warning estado";
-                lnkEditar.Visible = true;
-                lnkEliminar.Visible = true;
+                case "1":
+                    e.Row.Cells[9].CssClass = "label label-warning estado";
+                    lnkEditar.Visible = true;
+                    lnkEliminar.Visible = true;
+                    break;
+                case "2":
+                    e.Row.Cells[9].CssClass = "label label-warning estado";
+                    lnkEditar.Visible = true;
+                    lnkEliminar.Visible = true;
+                    break;
+                case "3":
+                    e.Row.Cells[9].CssClass = "label label-important estado";
+                    lnkEditar.Visible = true;
+                    lnkEliminar.Visible = true;
+                    break;
+                case "4":
+                    e.Row.Cells[9].CssClass = "label label-success estado";
+                    lnkEditar.Visible = false;
+                    lnkEliminar.Visible = false;
+                    break;
+                case "5":
+                    e.Row.Cells[9].CssClass = "label label-important estado";
+                    lnkEditar.Visible = false;
+                    lnkEliminar.Visible = false;
+                    break;
             }
-            else if (e.Row.Cells[9].Text == "2")
+
+            if (!lblAnio.Text.Equals(DateTime.Today.Year.ToString()))
             {
-                e.Row.Cells[9].Text = "Programada";
-                e.Row.Cells[9].CssClass = "label label-warning estado";
-                lnkEditar.Visible = true;
-                lnkEliminar.Visible = true;
-            }
-            else if (e.Row.Cells[9].Text == "3")
-            {
-                e.Row.Cells[9].Text = "Rechazada";
-                e.Row.Cells[9].CssClass = "label label-important estado";
-                lnkEditar.Visible = true;
-                lnkEliminar.Visible = true;
-            }
-            else if (e.Row.Cells[9].Text == "4")
-            {
-                e.Row.Cells[9].Text = "Activa";
-                e.Row.Cells[9].CssClass = "label label-important estado";
-                lnkEditar.Visible = true;
+                lnkEditar.Visible = false;
                 lnkEliminar.Visible = false;
             }
+
+            e.Row.Cells[9].Text = BParametro.ConsultarParametro(int.Parse(Constant.ParametroEstadoActividad), int.Parse(e.Row.Cells[9].Text), null);
         }
 
         protected void ddlAlcance_SelectedIndexChanged(object sender, EventArgs e)
@@ -302,11 +310,13 @@ namespace InnovaSchool.UserLayer.Interfaces
 
         private void Limpiar()
         {
-            objResources.LimpiarControles(this.Controls);
+            objResources.LimpiarControles(divRegistroActividad.Controls);
             ddlResponsable.Items.Clear();
             ddlResponsable.DataBind();
             ddlResponsable.Enabled = false;
-            hdfActividad.Value = string.Empty;
+            hfIdActividad.Value = string.Empty;
+            gvDetalleActividad.DataSource = new List<EDetalleActividad>();
+            gvDetalleActividad.DataBind();
             ListarActividades();
         }
 
@@ -361,8 +371,9 @@ namespace InnovaSchool.UserLayer.Interfaces
                     case "Eliminar":
                         rowIndex = (((GridViewRow)((TableCell)((LinkButton)e.CommandSource).Parent).Parent)).RowIndex;
                         EActividad.IdActividad = (int)gvActividades.DataKeys[rowIndex][0];
-                        hdfActividad.Value = EActividad.IdActividad.ToString();
-                        ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalEliminar').modal('show');</script>");
+                        hfIdActividad.Value = EActividad.IdActividad.ToString();
+                        lblMensajeConfirmacionEliminar.Text = Constant.MensajeConfirmarEliminarActividadExtracurricular;
+                        ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalConfirmarEliminar').modal('show');</script>");
                         break;
                 }
             }
@@ -396,15 +407,30 @@ namespace InnovaSchool.UserLayer.Interfaces
                     FecIniAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.FecIniEscolar);
                     FecFinAnio = string.Format("{0:dd/MM/yyyy}", EAgenda.FecFinEscolar);
 
-                    if (EAgenda.Estado == int.Parse(Constant.ParametroAgendaEstadoVigente))
+                    if (EAgenda.Estado == int.Parse(Constant.ParametroAgendaEstadoAperturada))
                     {
-                        CargarAlcance();                        
-                        CargarTipoActividadExtracurricular();
+                        ECalendario ECalendario = (ECalendario)Session["Calendario"];
+                        ECalendario.Tipo = Constant.ParametroTipoCalendarioExtracurricular;
+                        BCalendario BCalendario = new BL.BCalendario();
+                        List<ECalendario> lstECalendario = BCalendario.ConsultarCalendario(ECalendario);
+
+                        if (lstECalendario[0].Estado != int.Parse(Constant.ParametroCalendarioEstadoAprobado))
+                        {
+                            CargarAlcance();
+                            CargarTipoActividadExtracurricular();
+                        }
+                        else
+                        {
+                            lblTituloMensaje.Text = Constant.TituloCalendarioAprobado;
+                            lblDescripcionMensaje.Text = Constant.MensajeCalendarioAprobado;
+                            ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                            divRegistroActividad.Visible = false;
+                        }                        
                     }
                     else
                     {
-                        lblTituloMensaje.Text = Constant.TituloNoAgendaAprobada;
-                        lblDescripcionMensaje.Text = Constant.MensajeNoAgendaAprobada;
+                        lblTituloMensaje.Text = Constant.TituloNoAgendaAperturada;
+                        lblDescripcionMensaje.Text = Constant.MensajeNoAgendaAperturada;
                         ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
                         divRegistroActividad.Visible = false;
                     }
@@ -441,6 +467,36 @@ namespace InnovaSchool.UserLayer.Interfaces
         {
             lblMensajeConfirmacionGuardar.Text = Constant.MensajeConfirmarRegistroActividadExtracurricular;
             ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalConfirmarGuardar').modal('show');</script>");          
+        }
+
+        protected void btnConfirmarEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EActividad EActividad = new EActividad();
+                EActividad.IdActividad = int.Parse(hfIdActividad.Value);
+                int retval = 0;
+                retval = BActividad.EliminarActividad(EActividad);
+
+                if (retval == 0)
+                {
+                    lblTituloMensaje.Text = Constant.TituloEliminarActividad;
+                    lblDescripcionMensaje.Text = Constant.MensajeErrorEliminarActividad;
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                }                
+                else
+                {
+                    lblTituloMensaje.Text = Constant.TituloEliminarActividad;
+                    lblDescripcionMensaje.Text = Constant.MensajeEliminarActividadExtracurricular;
+                    ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
+                    ListarActividades();
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("../Error/NoAccess.html");
+            }
+            
         }
 
         protected void btnConfirmarGuardar_Click(object sender, EventArgs e)
@@ -531,12 +587,8 @@ namespace InnovaSchool.UserLayer.Interfaces
                                 hfIdActividad.Value = EActividad.IdActividad.ToString();
                             lblTituloMensaje.Text = Constant.TituloRegistroActividad;
                             lblDescripcionMensaje.Text = Constant.MensajeGuardarActividadExtracurricular;
-                            ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
-                            //ddlAnio.SelectedIndex = 0;
-                            gvDetalleActividad.DataSource = BActividad.ConsultarDetalleActividad(EActividad);
-                            gvDetalleActividad.DataBind();
-                            gvActividades.DataSource = new List<EActividad>();
-                            gvActividades.DataBind();
+                            ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");                                                        
+                            Limpiar();
                         }
                     }
                     else if (retval == 1)
