@@ -42,6 +42,7 @@
     <Compile Include="EActividad.cs" />
     <Compile Include="EAgenda.cs" />
     <Compile Include="EAmbiente.cs" />
+    <Compile Include="EAprobarCalendario.cs" />
     <Compile Include="ECalendario.cs" />
     <Compile Include="EDetalleActividad.cs" />
     <Compile Include="EFeriado.cs" />

@@ -42,6 +42,7 @@
     <Compile Include="BActividad.cs" />
     <Compile Include="BAgenda.cs" />
     <Compile Include="BAmbiente.cs" />
+    <Compile Include="BAprobarCalendario.cs" />
     <Compile Include="BCalendario.cs" />
     <Compile Include="BFeriado.cs" />
     <Compile Include="BParametro.cs" />

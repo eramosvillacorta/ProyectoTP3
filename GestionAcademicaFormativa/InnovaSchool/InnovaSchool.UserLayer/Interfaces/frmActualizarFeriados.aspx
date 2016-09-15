@@ -131,7 +131,7 @@
                                 CssClass="table table-striped table-bordered bootstrap-datatable datatable dataTable"                                                                                             
                                 AutoGenerateColumns="False" ShowHeaderWhenEmpty="True"
                                 
-                                DataKeyNames="IdFeriado,Motivo" OnRowCommand="gvConsultaFeriados_RowCommand" OnRowDataBound="gvConsultaFeriados_RowDataBound">
+                                DataKeyNames="IdFeriado,Motivo" OnRowCommand="gvConsultaFeriados_RowCommand" OnRowDataBound="gvConsultaFeriados_RowDataBound" OnSelectedIndexChanged="gvConsultaFeriados_SelectedIndexChanged">
                                 <Columns>                                    
                                     <asp:BoundField DataField="IdFeriado" HeaderText="IdFeriado" Visible="false" >
                                     <HeaderStyle Width="10%" />
