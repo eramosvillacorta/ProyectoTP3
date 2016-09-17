@@ -329,16 +329,13 @@ namespace InnovaSchool.UserLayer.Interfaces
             lblAnio.Text = ECalendario.IdAgenda;
             List<EActividad> ListEActividad;
             ListEActividad = BActividad.ListarActividadesCalendario(EActividad);
-            if (ListEActividad.Count != 0)
-            {
-                gvActividades.DataSource = ListEActividad;
-                gvActividades.DataBind();
-                divConsultaActividad.Visible = true;
-            }
-            else
-            {
-                divConsultaActividad.Visible = false;
-            }
+            gvActividades.DataSource = ListEActividad;
+            gvActividades.DataBind();
+
+            if (ListEActividad.Count != 0)            
+                divConsultaActividad.Visible = true;            
+            else            
+                divConsultaActividad.Visible = false;            
         }
 
         protected void gvActividades_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -493,6 +490,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                     lblDescripcionMensaje.Text = Constant.MensajeEliminarActividadExtracurricular;
                     ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>$('#myModalMensaje').modal('show');</script>");
                     ListarActividades();
+                    hfIdActividad.Value = string.Empty;
                 }
             }
             catch (Exception ex)

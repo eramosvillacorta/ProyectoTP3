@@ -64,10 +64,10 @@ namespace InnovaSchool.UserLayer.Interfaces
                     e.Row.Cells[5].CssClass = "label label-warning estado";
                     break;
                 case "2":
-                    e.Row.Cells[5].CssClass = "label label-info estado";
+                    e.Row.Cells[5].CssClass = "label label-warning estado";
                     break;
                 case "3":
-                    e.Row.Cells[5].CssClass = "label label-inverse estado";
+                    e.Row.Cells[5].CssClass = "label label-success estado";
                     break;
                 case "4":
                     e.Row.Cells[5].CssClass = "label label-success estado";

@@ -59,10 +59,10 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@Fecha", EDetalleActividad.Fecha));
                 cmd.Parameters.Add(new SqlParameter("@horaInicio", EDetalleActividad.HoraInicial));
                 cmd.Parameters.Add(new SqlParameter("@horaTermino", EDetalleActividad.HoraTermino));
-                if (EDetalleActividad.IdAmbiente != 0)
+                //if (EDetalleActividad.Direccion != string.Empty)
                     cmd.Parameters.Add(new SqlParameter("@IdAmbiente", EDetalleActividad.IdAmbiente));
-                else
-                    cmd.Parameters.Add(new SqlParameter("@IdAmbiente", DBNull.Value));
+                /*else
+                    cmd.Parameters.Add(new SqlParameter("@IdAmbiente", 0));*/
                 cmd.Parameters.Add(new SqlParameter("@Direccion", EDetalleActividad.Direccion));
                 cmd.Parameters.Add(new SqlParameter("@UsuCreacion", EUsuario.Usuario));
                 retval = cmd.ExecuteNonQuery();
