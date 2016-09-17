@@ -70,3 +70,12 @@ D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool
 D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.Entity.dll
 D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.DAL.pdb
 D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.Entity.pdb
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\obj\Debug\InnovaSchool.BL.csprojResolveAssemblyReference.cache
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\obj\Debug\InnovaSchool.BL.dll
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\obj\Debug\InnovaSchool.BL.pdb
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.BL.dll
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.BL.pdb
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.DAL.dll
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.Entity.dll
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.DAL.pdb
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.BL\bin\Debug\InnovaSchool.Entity.pdb

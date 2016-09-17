@@ -45,6 +45,7 @@
     <Compile Include="BAprobacionSolicitudActividad.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BAprobarCalendario.cs" />
     <Compile Include="BCalendario.cs" />
     <Compile Include="BEmpleado.cs" />
     <Compile Include="BFeriado.cs" />

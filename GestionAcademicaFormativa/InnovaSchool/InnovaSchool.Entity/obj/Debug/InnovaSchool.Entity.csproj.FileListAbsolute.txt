@@ -35,3 +35,8 @@ D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool
 D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\bin\Debug\InnovaSchool.Entity.pdb
 D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\obj\Debug\InnovaSchool.Entity.dll
 D:\Personal\Taller de Proyecto III\Github\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\obj\Debug\InnovaSchool.Entity.pdb
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\bin\Debug\InnovaSchool.Entity.dll
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\bin\Debug\InnovaSchool.Entity.pdb
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\obj\Debug\InnovaSchool.Entity.csprojResolveAssemblyReference.cache
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\obj\Debug\InnovaSchool.Entity.dll
+D:\Proyectos\GitHub\GestionAcademicaFormativa\InnovaSchool\InnovaSchool.Entity\obj\Debug\InnovaSchool.Entity.pdb

@@ -152,8 +152,8 @@ namespace InnovaSchool.DAL
                         retval.Add(new EAprobarCalendario
                         {
                             Fecha = Convert.ToDateTime(reader["Fecha"].ToString()),
-                            HoraInicial = Convert.ToDateTime(reader["HoraInicial"].ToString()),
-                            HoraTermino = Convert.ToDateTime(reader["HoraTermino"].ToString()),
+                            HoraInicial = Convert.ToDateTime(reader["horaInicio"].ToString()),
+                            HoraTermino = Convert.ToDateTime(reader["horaTermino"].ToString()),
                             Direccion = reader["Direccion"].ToString(),
                             Ubicacion = reader["Ubicacion"].ToString(),
                         });

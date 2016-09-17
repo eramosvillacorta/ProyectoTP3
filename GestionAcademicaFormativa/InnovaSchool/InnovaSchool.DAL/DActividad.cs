@@ -124,8 +124,8 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@IdActividad", EDetalleActividad.IdActividad));
                 cmd.Parameters.Add(new SqlParameter("@IdDetalleActividad", EDetalleActividad.IdDetalleActividad));
                 cmd.Parameters.Add(new SqlParameter("@Fecha", EDetalleActividad.Fecha));
-                cmd.Parameters.Add(new SqlParameter("@HoraInicial", EDetalleActividad.HoraInicial));
-                cmd.Parameters.Add(new SqlParameter("@HoraTermino", EDetalleActividad.HoraTermino));
+                cmd.Parameters.Add(new SqlParameter("@horaInicio", EDetalleActividad.HoraInicial));
+                cmd.Parameters.Add(new SqlParameter("@horaTermino", EDetalleActividad.HoraTermino));
                 if (EDetalleActividad.IdAmbiente != 0)
                     cmd.Parameters.Add(new SqlParameter("@IdAmbiente", EDetalleActividad.IdAmbiente));
                 else
@@ -154,8 +154,8 @@ namespace InnovaSchool.DAL
                         {
                             IdDetalleActividad = int.Parse(reader["IdDetalleActividad"].ToString()),
                             Fecha = Convert.ToDateTime(reader["Fecha"].ToString()),
-                            HoraInicial = Convert.ToDateTime(reader["HoraInicial"].ToString()),
-                            HoraTermino = Convert.ToDateTime(reader["HoraTermino"].ToString()),
+                            HoraInicial = Convert.ToDateTime(reader["horaInicio"].ToString()),
+                            HoraTermino = Convert.ToDateTime(reader["horaTermino"].ToString()),
                             Direccion = reader["Direccion"].ToString(),
                             IdAmbiente = reader.IsDBNull(5) ? 0 : int.Parse(reader["IdAmbiente"].ToString())
                         };
@@ -179,8 +179,8 @@ namespace InnovaSchool.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@IdActividad", EActividad.IdActividad));
-                    cmd.Parameters.Add(new SqlParameter("@HoraInicial", itemDetalleActividad.HoraInicial));
-                    cmd.Parameters.Add(new SqlParameter("@HoraTermino", itemDetalleActividad.HoraTermino));
+                    cmd.Parameters.Add(new SqlParameter("@horaInicio", itemDetalleActividad.HoraInicial));
+                    cmd.Parameters.Add(new SqlParameter("@horaTermino", itemDetalleActividad.HoraTermino));
                     cmd.Parameters.Add(new SqlParameter("@IdEmpleado", EActividad.IdEmpleado));
                     cmd.Parameters.Add(new SqlParameter("@Alcance", EActividad.Alcance));
                     cmd.Parameters.Add(new SqlParameter("@IDAmbiente", itemDetalleActividad.IdAmbiente));

@@ -57,8 +57,8 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@IdActividad", EDetalleActividad.IdActividad));
                 cmd.Parameters.Add(new SqlParameter("@IdDetalleActividad", EDetalleActividad.IdDetalleActividad));
                 cmd.Parameters.Add(new SqlParameter("@Fecha", EDetalleActividad.Fecha));
-                cmd.Parameters.Add(new SqlParameter("@HoraInicial", EDetalleActividad.HoraInicial));
-                cmd.Parameters.Add(new SqlParameter("@HoraTermino", EDetalleActividad.HoraTermino));
+                cmd.Parameters.Add(new SqlParameter("@horaInicio", EDetalleActividad.HoraInicial));
+                cmd.Parameters.Add(new SqlParameter("@horaTermino", EDetalleActividad.HoraTermino));
                 if (EDetalleActividad.IdAmbiente != 0)
                     cmd.Parameters.Add(new SqlParameter("@IdAmbiente", EDetalleActividad.IdAmbiente));
                 else
@@ -81,8 +81,8 @@ namespace InnovaSchool.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@IdSolicitudActividad", ESolicitudActividad.IdSolicitudActividad));
-                    cmd.Parameters.Add(new SqlParameter("@HoraInicial", itemDetalleActividad.HoraInicial));
-                    cmd.Parameters.Add(new SqlParameter("@HoraTermino", itemDetalleActividad.HoraTermino));
+                    cmd.Parameters.Add(new SqlParameter("@horaInicio", itemDetalleActividad.HoraInicial));
+                    cmd.Parameters.Add(new SqlParameter("@horaTermino", itemDetalleActividad.HoraTermino));
                     cmd.Parameters.Add(new SqlParameter("@IdEmpleado", ESolicitudActividad.EActividad.IdEmpleado));
                     cmd.Parameters.Add(new SqlParameter("@Alcance", ESolicitudActividad.EActividad.Alcance));
                     cmd.Parameters.Add(new SqlParameter("@IDAmbiente", itemDetalleActividad.IdAmbiente));
