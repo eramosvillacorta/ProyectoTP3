@@ -43,7 +43,7 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="Mes" HeaderText="Mes" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" >
-<HeaderStyle Width="25%"></HeaderStyle>
+<HeaderStyle Width="10%"></HeaderStyle>
 
 <ItemStyle CssClass="align-izq" HorizontalAlign="Left"></ItemStyle>
                                     </asp:BoundField>
@@ -57,12 +57,24 @@
 
 <ItemStyle CssClass="align-cen"></ItemStyle>
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="ActDeportivas" HeaderText="Act. Deportivas" />
-                                    <asp:BoundField DataField="HorasDeportivas" HeaderText="Horas Deportivas" />
-                                    <asp:BoundField DataField="ActRecreativas" HeaderText="Act. Recreativas" />
-                                    <asp:BoundField DataField="HorasRecreativas" HeaderText="Horas Recreativas" />
-                                    <asp:BoundField DataField="TotalActividades" HeaderText="Total de Actividades" />
-                                    <asp:BoundField DataField="TotalHoras" HeaderText="Total de Horas" />
+                                    <asp:BoundField DataField="ActDeportivas" HeaderText="Act. Deportivas" >
+                                    <ItemStyle CssClass="align-cen" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="HorasDeportivas" HeaderText="Horas Deportivas" >
+                                    <ItemStyle CssClass="align-cen" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="ActRecreativas" HeaderText="Act. Recreativas" >
+                                    <ItemStyle CssClass="align-cen" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="HorasRecreativas" HeaderText="Horas Recreativas" >
+                                    <ItemStyle CssClass="align-cen" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="TotalActividades" HeaderText="Total de Actividades" >
+                                    <ItemStyle CssClass="align-cen" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="TotalHoras" HeaderText="Total de Horas" >
+                                    <ItemStyle CssClass="align-cen" />
+                                    </asp:BoundField>
                                     <asp:TemplateField Visible="false">
                                         <ItemTemplate>
                                             <asp:Label id="lblMotivo" runat ="server" text='<%# Eval("TotalHoras")%>' />
@@ -75,7 +87,7 @@
                                         </asp:LinkButton>                                         
                                         </ItemTemplate> 
 
-<HeaderStyle Width="15%"></HeaderStyle>
+<HeaderStyle Width="10%"></HeaderStyle>
 
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>                                                                         
@@ -84,7 +96,7 @@
                         </div>  
                         <div class="form-actions">
                             
-                            <input type="button" value="Abrobar Calendario" onclick="$('#myModalAprobarCal').modal('show');" id="btnaprobar" class="btn btn-primary">
+                            <input type="button" value="Abrobar Calendario" onclick="$('#myModalAprobarCal').modal('show');" id="btnaprobar" class="btn btn-primary" style="display: none;">
                             <a href="../Index.aspx" class="btn btn-success">Cancelar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </div>  
                         </fieldset>
@@ -135,20 +147,24 @@
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" >
 <HeaderStyle Width="25%"></HeaderStyle>
 
-<ItemStyle CssClass="align-izq" HorizontalAlign="Left"></ItemStyle>
+<ItemStyle CssClass="align-izq" HorizontalAlign="Left" Width="30%"></ItemStyle>
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Responsable" HeaderText="Responsable" />
-                                    <asp:BoundField DataField="FechaInicio" HeaderText="Fecha Inicio" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" >
+                                    <asp:BoundField DataField="Responsable" HeaderText="Responsable" >
+                                    <ItemStyle Width="20%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="FechaInicio" HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" >
 <HeaderStyle Width="10%"></HeaderStyle>
 
-<ItemStyle CssClass="align-cen"></ItemStyle>
+<ItemStyle CssClass="align-cen" Width="10%"></ItemStyle>
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="FechaTermino" HeaderText="Fecha Termino" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" >                                                                                                          
+                                    <asp:BoundField DataField="FechaTermino" HeaderText="Fecha de Termino" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" >                                                                                                          
 <HeaderStyle Width="10%"></HeaderStyle>
 
-<ItemStyle CssClass="align-cen"></ItemStyle>
+<ItemStyle CssClass="align-cen" Width="10%"></ItemStyle>
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                                    <asp:BoundField DataField="Estado" HeaderText="Estado" >
+                                    <ItemStyle Width="10%" />
+                                    </asp:BoundField>
                                     <asp:TemplateField Visible="false">
                                         <ItemTemplate>
                                             <asp:Label id="lblMotivo" runat ="server" text='<%# Eval("Responsable")%>' />
@@ -156,15 +172,23 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText ="Opciones" HeaderStyle-Width="15%"> 
                                         <ItemTemplate> 
-                                        <asp:LinkButton ID="lbtMostrarDeta" CommandName="Detalle" CssClass="btn green search" runat="server" ToolTip="Editar" >
-                                            <i class="halflings-icon white search"></i>
-                                        </asp:LinkButton> 
-                                        <asp:LinkButton ID="lbtAprobar" CommandName="Aprobar" CssClass="btn btn-primary btn-gv" runat="server" ToolTip="Eliminar">
-                                            <i class="halflings-icon white edit"></i>
-                                        </asp:LinkButton>
-                                        <asp:LinkButton ID="lbtRechazar" CommandName="Rechazar" CssClass="btn btn-danger btn-gv" runat="server" ToolTip="Mostrar">
-                                            <i class="halflings-icon white trash"></i>
-                                        </asp:LinkButton>
+                                            <div style="width: 100%; display: flex;">
+                                                <div style="width: 33%">
+                                                <asp:LinkButton ID="lbtMostrarDeta" CommandName="Detalle" CssClass="btn green search" runat="server" ToolTip="Mostrar detalle de actividad" >
+                                                    <i class="halflings-icon white search"></i>
+                                                </asp:LinkButton> 
+                                                    </div>
+                                                <div style="width: 33%">
+                                                <asp:LinkButton ID="lbtAprobar" CommandName="Aprobar" CssClass="btn btn-primary btn-gv-opt" runat="server" ToolTip="Aprobar actividad" Visible='<%# ((string)Eval("Estado") == "Pendiente") ? true : false %>'>
+                                                    <i class="halflings-icon white edit"></i>
+                                                </asp:LinkButton>
+                                                    </div>
+                                                <div style="width: 34%">
+                                                <asp:LinkButton ID="lbtRechazar" CommandName="Rechazar" CssClass="btn btn-danger btn-gv-opt" runat="server" ToolTip="Rechazar actividad" Visible='<%# ((string)Eval("Estado") == "Pendiente") ? true : false %>'>
+                                                    <i class="halflings-icon white trash"></i>
+                                                </asp:LinkButton>       
+                                                    </div>
+                                             </div>
                                         </ItemTemplate> 
 
 <HeaderStyle Width="15%"></HeaderStyle>
@@ -179,7 +203,7 @@
                 </div>
             </div>
         </div>
-
+<div class="row-fluid sortable ui-sortable">
     <div class="box span12" id="divSolicitudActividades" runat="server">
             <div class="box-header" data-original-title="">
                 <h2><i class="halflings-icon white edit"></i><span class="break"></span>Detalle de Actividad</h2>
@@ -276,7 +300,10 @@
                 </div>                 
             </div>                       
         </div>
-
+ </div>
+    <asp:HiddenField runat="server" ID="hfIdActividad" />
+    <asp:HiddenField runat="server" ID="hfIdMes" />
+    
     <%-- Mensaje de Confirmación de Aprobar actividad--%>
     <div class="modal hide fade in" id="myModalAprobar">
         <div class="modal-header">

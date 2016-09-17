@@ -139,6 +139,24 @@ namespace InnovaSchool.UserLayer.Interfaces {
         protected global::System.Web.UI.WebControls.GridView gvDetalleAct;
         
         /// <summary>
+        /// Control hfIdActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfIdActividad;
+        
+        /// <summary>
+        /// Control hfIdMes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfIdMes;
+        
+        /// <summary>
         /// Control btnAprobarCalen.
         /// </summary>
         /// <remarks>

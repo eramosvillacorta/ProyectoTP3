@@ -38,5 +38,13 @@ namespace InnovaSchool.BL
         {
             return DAprobarCalendario.DetalleActividad(eAprobarCalendario);
         }
+        public List<EAprobarCalendario> VerificarAprobarCalendario(EAprobarCalendario eAprobarCalendario)
+        {
+            return DAprobarCalendario.VerificarAprobarCalendario(eAprobarCalendario);
+        }
+        public List<EAprobarCalendario> CalendarioActual()
+        {
+            return DAprobarCalendario.CalendarioActual();
+        }
     }
 }

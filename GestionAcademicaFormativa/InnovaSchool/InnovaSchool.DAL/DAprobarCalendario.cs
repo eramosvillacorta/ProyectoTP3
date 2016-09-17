@@ -163,5 +163,51 @@ namespace InnovaSchool.DAL
             cn.Close();
             return retval;
         }
+
+        public List<EAprobarCalendario> VerificarAprobarCalendario(EAprobarCalendario eAprobarCalendario)
+        {
+            List<EAprobarCalendario> retval = new List<EAprobarCalendario>();
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_VerificarAprobarCalendario", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@idagenda", int.Parse(eAprobarCalendario.idagenda)));
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        retval.Add(new EAprobarCalendario
+                        {
+                            TotalActividades = int.Parse(reader["Total"].ToString()),
+                        });
+                    }
+                }
+            }
+            cn.Close();
+            return retval;
+        }
+        public List<EAprobarCalendario> CalendarioActual()
+        {
+            List<EAprobarCalendario> retval = new List<EAprobarCalendario>();
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_CalendarioActual", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        retval.Add(new EAprobarCalendario
+                        {
+                            idagenda = reader["IdAgenda"].ToString(),
+                        });
+                    }
+                }
+            }
+            cn.Close();
+            return retval;
+        }
     }
 }
