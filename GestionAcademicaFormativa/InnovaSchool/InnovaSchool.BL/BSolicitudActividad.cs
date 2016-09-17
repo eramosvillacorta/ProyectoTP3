@@ -13,9 +13,9 @@ namespace InnovaSchool.BL
     {
         DSolicitudActividad DSolicitudActividad = new DSolicitudActividad();
 
-        public int RegistrarSolicitudActividad(ESolicitudActividad ESolicitudActividad, EUsuario EUsuario, ECalendario ECalendario, ref int IdSolicitudActividad)
+        public int RegistrarSolicitudActividad(ESolicitudActividad ESolicitudActividad, EUsuario EUsuario, ECalendario ECalendario)
         {
-            return DSolicitudActividad.RegistrarSolicitudActividad(ESolicitudActividad, EUsuario, ECalendario, ref IdSolicitudActividad);
+            return DSolicitudActividad.RegistrarSolicitudActividad(ESolicitudActividad, EUsuario, ECalendario);
         }
 
         public int EnviarSolicitudActividad(ESolicitudActividad ESolicitudActividad)
@@ -26,6 +26,16 @@ namespace InnovaSchool.BL
         public List<ESolicitudActividad> ListarSolicitudesAgenda(EAgenda EAgenda, EUsuario EUsuario)
         {
             return DSolicitudActividad.ListarSolicitudesAgenda(EAgenda, EUsuario);
+        }
+
+        public List<ESolicitudActividad> ListarSolicitudesPendientesAgenda(EAgenda EAgenda)
+        {
+            return DSolicitudActividad.ListarSolicitudesPendientesAgenda(EAgenda);
+        }
+
+        public int VerificarCruceSolicitudActividad(ESolicitudActividad ESolicitudActividad)
+        {
+            return DSolicitudActividad.VerificarCruceSolicitudActividad(ESolicitudActividad);
         }
     }
 }

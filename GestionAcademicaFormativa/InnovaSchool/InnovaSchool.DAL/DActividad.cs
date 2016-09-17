@@ -29,11 +29,14 @@ namespace InnovaSchool.DAL
                         {
                             IdActividad = int.Parse(reader["IdActividad"].ToString()),
                             Nombre = reader["Nombre"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
+                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
-                            IdPersona = int.Parse(reader["IdPersona"].ToString()),
-                            UsuCreacion = reader["UsuCreacion"].ToString()
+                            IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
+                            Tipo = int.Parse(reader["Tipo"].ToString()),
+                            Alcance = reader["Alcance"].ToString(),
+                            Estado = int.Parse(reader["Estado"].ToString())
                         });
                     }
                 }
@@ -53,7 +56,7 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@Nombre", EActividad.Nombre));
                 cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FecInicio));
                 cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FecTermino));
-                cmd.Parameters.Add(new SqlParameter("@IdPersona", EActividad.IdPersona));
+                cmd.Parameters.Add(new SqlParameter("@IdEmpleado", EActividad.IdEmpleado));
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -62,11 +65,14 @@ namespace InnovaSchool.DAL
                         {
                             IdActividad = int.Parse(reader["IdActividad"].ToString()),
                             Nombre = reader["Nombre"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
+                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
-                            IdPersona = int.Parse(reader["IdPersona"].ToString()),
-                            UsuCreacion = reader["UsuCreacion"].ToString()
+                            IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
+                            Tipo = int.Parse(reader["Tipo"].ToString()),
+                            Estado = int.Parse(reader["Estado"].ToString()),
+                            Alcance = reader["Alcance"].ToString()
                         });
                     }
                 }
@@ -75,22 +81,35 @@ namespace InnovaSchool.DAL
             return retval;
         }
 
-        public int RegistrarActividad(EActividad EActividad, EUsuario EUsuario)
+        public int RegistrarActividad(EActividad EActividad, EUsuario EUsuario, ECalendario ECalendario)
         {
             int retval = 0;
             cn.Open();
             using (SqlCommand cmd = new SqlCommand("SP_RegistrarActividad", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@IdActividad",EActividad.IdActividad));
-	            cmd.Parameters.Add(new SqlParameter("@IdCalendario",EActividad.IdCalendario));
-	            cmd.Parameters.Add(new SqlParameter("@Nombre",EActividad.Nombre));
-	            cmd.Parameters.Add(new SqlParameter("@FecInicio",EActividad.FecInicio));
-	            cmd.Parameters.Add(new SqlParameter("@FecTermino",EActividad.FecTermino));
-	            cmd.Parameters.Add(new SqlParameter("@Descripcion",EActividad.Descripcion));
-	            cmd.Parameters.Add(new SqlParameter("@IdPersona",EActividad.IdPersona));
-	            cmd.Parameters.Add(new SqlParameter("@UsuCreacion",EUsuario.Usuario));
+                cmd.Parameters.Add(new SqlParameter("@IdActividad", EActividad.IdActividad));
+                cmd.Parameters.Add(new SqlParameter("@Nombre", EActividad.Nombre));
+                cmd.Parameters.Add(new SqlParameter("@IdAgenda", ECalendario.IdAgenda));
+                cmd.Parameters.Add(new SqlParameter("@TipoCalendario", ECalendario.Tipo));
+                cmd.Parameters.Add(new SqlParameter("@Tipo", EActividad.Tipo));
+                cmd.Parameters.Add(new SqlParameter("@Descripcion", EActividad.Descripcion));
+                cmd.Parameters.Add(new SqlParameter("@IdEmpleado", EActividad.IdEmpleado));
+                cmd.Parameters.Add(new SqlParameter("@Alcance", EActividad.Alcance));
+                cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FecInicio));
+                cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FecTermino));
+                cmd.Parameters.Add(new SqlParameter("@UsuCreacion", EUsuario.Usuario));
+                cmd.Parameters.Add(new SqlParameter("@IdNuevaActividad", retval)).Direction = ParameterDirection.Output;
                 retval = cmd.ExecuteNonQuery();
+
+                EActividad.IdActividad = Convert.ToInt32(cmd.Parameters["@IdNuevaActividad"].Value);
+
+                foreach (EDetalleActividad itemDetalleActividad in EActividad.ListaDetalleActividad)
+                {
+                    itemDetalleActividad.IdActividad = EActividad.IdActividad;
+                    retval = RegistrarDetalleActividad(itemDetalleActividad, EUsuario);
+                }
+
             }
             cn.Close();
             return retval;
@@ -103,6 +122,7 @@ namespace InnovaSchool.DAL
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@IdActividad", EDetalleActividad.IdActividad));
+                cmd.Parameters.Add(new SqlParameter("@IdDetalleActividad", EDetalleActividad.IdDetalleActividad));
                 cmd.Parameters.Add(new SqlParameter("@Fecha", EDetalleActividad.Fecha));
                 cmd.Parameters.Add(new SqlParameter("@HoraInicial", EDetalleActividad.HoraInicial));
                 cmd.Parameters.Add(new SqlParameter("@HoraTermino", EDetalleActividad.HoraTermino));
@@ -146,6 +166,38 @@ namespace InnovaSchool.DAL
             }
             cn.Close();
             return retval;
+        }        
+
+        public int VerificarCruceActividad(EActividad EActividad)
+        {
+            int retval = 0;
+
+            foreach (EDetalleActividad itemDetalleActividad in EActividad.ListaDetalleActividad)
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_VerificarCruceActividad", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@IdActividad", EActividad.IdActividad));
+                    cmd.Parameters.Add(new SqlParameter("@HoraInicial", itemDetalleActividad.HoraInicial));
+                    cmd.Parameters.Add(new SqlParameter("@HoraTermino", itemDetalleActividad.HoraTermino));
+                    cmd.Parameters.Add(new SqlParameter("@IdEmpleado", EActividad.IdEmpleado));
+                    cmd.Parameters.Add(new SqlParameter("@Alcance", EActividad.Alcance));
+                    cmd.Parameters.Add(new SqlParameter("@IDAmbiente", itemDetalleActividad.IdAmbiente));
+                    cmd.Parameters.Add(new SqlParameter("@Resultado", retval)).Direction = ParameterDirection.Output;
+                    cmd.ExecuteNonQuery();
+                    retval = Convert.ToInt32(cmd.Parameters["@Resultado"].Value);
+
+                    if (retval != 0)
+                    {
+                        cn.Close();
+                        break;
+                    }
+                }
+                cn.Close();
+            }
+
+            return retval;
         }
 
         public EActividad ConsultarActividadCalendario(EActividad EActividad)
@@ -167,7 +219,7 @@ namespace InnovaSchool.DAL
                             FecInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
                             FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
-                            IdPersona = int.Parse(reader["IdPersona"].ToString())
+                            IdEmpleado = int.Parse(reader["IdEmpleado"].ToString())
                         };
                     }
                 }

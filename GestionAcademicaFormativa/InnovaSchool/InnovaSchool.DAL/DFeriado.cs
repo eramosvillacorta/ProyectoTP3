@@ -28,7 +28,7 @@ namespace InnovaSchool.DAL
                     {
                         retval = new EFeriado
                         {
-                            FecCreacion = Convert.ToDateTime(reader["Fecha"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
                             Motivo = reader["Motivo"].ToString()
                         };
                     }
@@ -87,13 +87,11 @@ namespace InnovaSchool.DAL
                             IdAgenda = reader["IdAgenda"].ToString(),
                             Motivo = reader["Motivo"].ToString(),
                             FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
-                            FechaTermino = Convert.ToDateTime(reader["FechaTermino"].ToString()),
-                            //FechaTermino = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
-                            Repetitivo = int.Parse(reader["Repetitivo"].ToString()),
+                            FechaTermino = reader.IsDBNull(4) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),                            
+                            Repetitivo = reader.IsDBNull(5) ? 0 : int.Parse(reader["Repetitivo"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString(),
-                            FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString()),
-                            UsuModificacion = reader["UsuModificacion"].ToString(),
-                            //FecModificacion = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FecModificacion"].ToString())
+                            FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString())
+                            //UsuModificacion = reader["UsuModificacion"].ToString()                            
                         });
                     }
                 }
@@ -145,7 +143,6 @@ namespace InnovaSchool.DAL
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@usuCreacion", EUsuario.Usuario));
-                cmd.Parameters.Add(new SqlParameter("@usuCreacion", EUsuario.Usuario));
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -178,6 +175,7 @@ namespace InnovaSchool.DAL
             using (SqlCommand cmd = new SqlCommand("SP_ValidarExistenciaFeriado", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@idFeriado", EFeriado.IdFeriado));
                 cmd.Parameters.Add(new SqlParameter("@fechaInicio", EFeriado.FechaInicio));
                 cmd.Parameters.Add(new SqlParameter("@fechaTermino", EFeriado.FechaTermino));
                 using (SqlDataReader reader = cmd.ExecuteReader())

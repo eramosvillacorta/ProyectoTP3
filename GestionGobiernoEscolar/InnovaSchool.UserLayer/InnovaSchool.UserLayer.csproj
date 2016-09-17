@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5AEC31AC-3099-45CF-B892-38B959AB328F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InnovaSchool.UserLayer</RootNamespace>
+    <AssemblyName>InnovaSchool.UserLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\GobiernoEscolar\Views\PlanGobierno\_PartialObservaciones.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\GobiernoEscolar\Views\Plantillas\Credenciales.html" />
+    <Content Include="Areas\GobiernoEscolar\Views\Resultados\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\justified-nav.css" />
+    <Content Include="Content\css\print.css" />
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\font\font-awesome-4.3.0\css\font-awesome.css" />
+    <Content Include="Content\font\font-awesome-4.3.0\css\font-awesome.min.css" />
+    <Content Include="Content\font\font-awesome-4.3.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font\glyphicons-regular.svg" />
+    <Content Include="Content\font\glyphiconshalflings-regular.svg" />
+    <Content Include="Content\img\bg-login.png" />
+    <Content Include="Content\img\ColegioPortada.jpg" />
+    <Content Include="Content\img\default.png" />
+    <Content Include="Content\img\innova_schools.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\amcharts\amcharts.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\font\font-awesome-4.3.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font\font-awesome-4.3.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\font-awesome-4.3.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font\font-awesome-4.3.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font\font-awesome-4.3.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\animated.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\bordered-pulled.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\core.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\fixed-width.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\font-awesome.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\icons.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\larger.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\list.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\mixins.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\path.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\rotated-flipped.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\stacked.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\less\variables.less" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\font-awesome.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_animated.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_core.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_fixed-width.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_icons.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_larger.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_list.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_mixins.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_path.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_stacked.scss" />
+    <Content Include="Content\font\font-awesome-4.3.0\scss\_variables.scss" />
+    <Content Include="Areas\GobiernoEscolar\Views\PadronElectoral\Index.cshtml" />
+    <Content Include="InnovaSchoolDataSet.xsc">
+      <DependentUpon>InnovaSchoolDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Areas\GobiernoEscolar\Views\PlanGobierno\Index.cshtml" />
+    <Content Include="Areas\GobiernoEscolar\Views\Votacion\Credenciales.cshtml" />
+    <Content Include="Areas\GobiernoEscolar\Views\Votacion\Index.cshtml" />
+    <None Include="InnovaSchoolDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InnovaSchoolDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="InnovaSchoolDataSet.xss">
+      <DependentUpon>InnovaSchoolDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\localhost.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-print.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\amcharts\serial.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\GobiernoEscolar\Controllers\PadronElectoralController.cs" />
+    <Compile Include="Areas\GobiernoEscolar\Controllers\PartidosController.cs" />
+    <Compile Include="Areas\GobiernoEscolar\Controllers\PlanGobiernoController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\GobiernoEscolar\Controllers\ResultadosController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\GobiernoEscolar\Controllers\VotacionController.cs" />
+    <Compile Include="Areas\GobiernoEscolar\GobiernoEscolarAreaRegistration.cs" />
+    <Compile Include="Areas\GobiernoEscolar\Models\EPartidoModel.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlumnoController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestringidoController.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\SessionHelper.cs" />
+    <Compile Include="InnovaSchoolDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InnovaSchoolDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Content\font\glyphicons-regular-0.eot" />
+    <Content Include="Content\font\glyphicons-regular.eot" />
+    <Content Include="Content\font\glyphicons-regular.ttf" />
+    <Content Include="Content\font\glyphicons-regular.woff" />
+    <Content Include="Content\font\glyphiconshalflings-regular-0.eot" />
+    <Content Include="Content\font\glyphiconshalflings-regular.eot" />
+    <Content Include="Content\font\glyphiconshalflings-regular.ttf" />
+    <Content Include="Content\font\glyphiconshalflings-regular.woff" />
+    <Content Include="Areas\GobiernoEscolar\Views\Partidos\Registro.cshtml" />
+    <Content Include="Areas\GobiernoEscolar\Views\web.config" />
+    <Content Include="Areas\GobiernoEscolar\Views\Partidos\Index.cshtml" />
+    <Content Include="Views\Restringido\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\GobiernoEscolar\Views\Shared\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Alumno\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InnovaSchool.BL\InnovaSchool.BL.csproj">
+      <Project>{48646cc5-5294-47c3-89a3-07387816a17c}</Project>
+      <Name>InnovaSchool.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InnovaSchool.Entity\InnovaSchool.Entity.csproj">
+      <Project>{c71a5f92-942e-4c5e-8949-6071772ca265}</Project>
+      <Name>InnovaSchool.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Areas\GobiernoEscolar\Informes\PadronElectoral.rdlc" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60460</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60460/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

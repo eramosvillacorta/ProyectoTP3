@@ -22,9 +22,9 @@ namespace InnovaSchool.BL
             return DActividad.ConsultarActividadCalendarioFiltro(EActividad);
         }
 
-        public int RegistrarActividad(EActividad EActividad, EUsuario EUsuario)
+        public int RegistrarActividad(EActividad EActividad, EUsuario EUsuario, ECalendario ECalendario)
         {
-            return DActividad.RegistrarActividad(EActividad, EUsuario);
+            return DActividad.RegistrarActividad(EActividad, EUsuario, ECalendario);
         }
 
         public EActividad ConsultarActividadCalendario(EActividad EActividad)
@@ -40,6 +40,11 @@ namespace InnovaSchool.BL
         public List<EDetalleActividad> ConsultarDetalleActividad(EActividad EActividad)
         {
             return DActividad.ConsultarDetalleActividad(EActividad);
+        }
+
+        public int VerificarCruceActividad(EActividad EActividad)
+        {
+            return DActividad.VerificarCruceActividad(EActividad);
         }
     }
 }
