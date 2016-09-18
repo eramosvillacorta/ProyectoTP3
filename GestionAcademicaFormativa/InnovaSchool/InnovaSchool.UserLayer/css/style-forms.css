@@ -31,11 +31,11 @@ input[type="file"],
           border-radius: 0px;
 }
 
-input,
+/*input,
 textarea,
 .uneditable-input {
   width: 206px;
-}
+}*/
 
 textarea {
   height: auto;
@@ -227,7 +227,7 @@ textarea::-webkit-input-placeholder {
 }
 
 .input-xlarge {
-  width: 270px;
+  width: 370px;
 }
 
 .input-xxlarge {
