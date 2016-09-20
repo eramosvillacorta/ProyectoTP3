@@ -46,5 +46,10 @@ namespace InnovaSchool.BL
         {
             return DActividad.VerificarCruceActividad(EActividad);
         }
+
+        public List<EActividad> ConsultarActividadesAfectadas(EActividad EActividad)
+        {
+            return DActividad.ConsultarActividadesAfectadas(EActividad);
+        }
     }
 }
