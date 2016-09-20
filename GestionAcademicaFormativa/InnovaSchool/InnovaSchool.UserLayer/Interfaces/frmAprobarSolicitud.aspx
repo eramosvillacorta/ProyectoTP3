@@ -228,7 +228,7 @@
             <a href="#" runat="server" id="btnCancelar" class="btn btn-success" data-dismiss="modal">No</a>            
         </div>
     </div>
-
+    <%-- Modal de Disponibilidad de Docentes --%>
     <div class="modal hide fade in" id="myModalDisponibilidad">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>

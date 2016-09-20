@@ -82,14 +82,15 @@ namespace InnovaSchool.UserLayer.Common
         //Actualizar Feriado
         public static string TituloRegistroFeriado = ConfigurationManager.AppSettings["TituloRegistroFeriado"].Trim();
         public static string MensajeRegistroFeriado = ConfigurationManager.AppSettings["MensajeRegistroFeriado"].Trim();
-        public static string TituloErrorFeriado = ConfigurationManager.AppSettings["TituloErrorFeriado"].Trim();
+        public static string TituloRegistroFeriadoExsistente = ConfigurationManager.AppSettings["TituloRegistroFeriadoExsistente"].Trim();
         public static string MensajeErrorRegistrarFeriado = ConfigurationManager.AppSettings["MensajeErrorRegistrarFeriado"].Trim();
-        public static string MensajeConfirmarCargaFeriadosRepetidos = ConfigurationManager.AppSettings["MensajeConfirmarCargaFeriadosRepetidos"].Trim();
         public static string MensajeRegistroFeriadoExistente = ConfigurationManager.AppSettings["MensajeRegistroFeriadoExistente"].Trim();
-        public static string MensajeConfirmarEliminarFeriado = ConfigurationManager.AppSettings["MensajeConfirmarEliminarFeriado"].Trim();
-        public static string MensajeConfirmarFeriadoExcedido = ConfigurationManager.AppSettings["MensajeConfirmarFeriadoExcedido"].Trim();
-
-
+        public static string TituloEliminarFeriado = ConfigurationManager.AppSettings["TituloEliminarFeriado"].Trim();
+        public static string MensajeEliminarFeriado = ConfigurationManager.AppSettings["MensajeEliminarFeriado"].Trim();
+        public static string MensajeErrorEliminarFeriado = ConfigurationManager.AppSettings["MensajeErrorEliminarFeriado"].Trim();
+        public static string TituloCargaFeriado = ConfigurationManager.AppSettings["TituloCargaFeriado"].Trim();
+        public static string MensajeCargaFeriado = ConfigurationManager.AppSettings["MensajeCargaFeriado"].Trim();
+        public static string MensajeErrorCargaFeriado = ConfigurationManager.AppSettings["MensajeErrorCargaFeriado"].Trim();
 
 
         /* ---------- PARAMETROS ---------- */

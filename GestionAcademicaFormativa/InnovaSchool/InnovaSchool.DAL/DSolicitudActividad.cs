@@ -29,8 +29,8 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@Motivo", ESolicitudActividad.Motivo));
                 cmd.Parameters.Add(new SqlParameter("@IdEmpleado", ESolicitudActividad.EActividad.IdEmpleado));
                 cmd.Parameters.Add(new SqlParameter("@Alcance", ESolicitudActividad.EActividad.Alcance));
-                cmd.Parameters.Add(new SqlParameter("@FecInicio", ESolicitudActividad.EActividad.FecInicio));
-                cmd.Parameters.Add(new SqlParameter("@FecTermino", ESolicitudActividad.EActividad.FecTermino));                                
+                cmd.Parameters.Add(new SqlParameter("@FecInicio", ESolicitudActividad.EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@FecTermino", ESolicitudActividad.EActividad.FechaTermino));                                
                 cmd.Parameters.Add(new SqlParameter("@UsuCreacion", EUsuario.Usuario));
                 cmd.Parameters.Add(new SqlParameter("@IdActividad", retval)).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(new SqlParameter("@NuevaIdSolicitud", retval)).Direction = ParameterDirection.Output;
@@ -145,8 +145,8 @@ namespace InnovaSchool.DAL
                             Tipo = int.Parse(reader["TipoActividad"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
                             Alcance = reader["Alcance"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString()                        
                         };
@@ -187,8 +187,8 @@ namespace InnovaSchool.DAL
                             Tipo = int.Parse(reader["TipoActividad"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
                             Alcance = reader["Alcance"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString(),
                             Solicitante = reader["Solicitante"].ToString(),

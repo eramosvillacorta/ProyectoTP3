@@ -29,8 +29,8 @@ namespace InnovaSchool.DAL
                         {
                             IdActividad = int.Parse(reader["IdActividad"].ToString()),
                             Nombre = reader["Nombre"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
                             IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString(),
@@ -54,8 +54,8 @@ namespace InnovaSchool.DAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@IdCalendario", EActividad.IdCalendario));
                 cmd.Parameters.Add(new SqlParameter("@Nombre", EActividad.Nombre));
-                cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FecInicio));
-                cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FecTermino));
+                cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FechaTermino));
                 cmd.Parameters.Add(new SqlParameter("@IdEmpleado", EActividad.IdEmpleado));
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -65,8 +65,8 @@ namespace InnovaSchool.DAL
                         {
                             IdActividad = int.Parse(reader["IdActividad"].ToString()),
                             Nombre = reader["Nombre"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
                             IdEmpleado = int.Parse(reader["IdEmpleado"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString(),
@@ -96,8 +96,8 @@ namespace InnovaSchool.DAL
                 cmd.Parameters.Add(new SqlParameter("@Descripcion", EActividad.Descripcion));
                 cmd.Parameters.Add(new SqlParameter("@IdEmpleado", EActividad.IdEmpleado));
                 cmd.Parameters.Add(new SqlParameter("@Alcance", EActividad.Alcance));
-                cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FecInicio));
-                cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FecTermino));
+                cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FechaTermino));
                 cmd.Parameters.Add(new SqlParameter("@UsuCreacion", EUsuario.Usuario));
                 cmd.Parameters.Add(new SqlParameter("@IdNuevaActividad", retval)).Direction = ParameterDirection.Output;
                 retval = cmd.ExecuteNonQuery();
@@ -216,8 +216,8 @@ namespace InnovaSchool.DAL
                         {
                             IdActividad = int.Parse(reader["IdActividad"].ToString()),
                             Nombre = reader["Nombre"].ToString(),
-                            FecInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
-                            FecTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FecInicio"].ToString()),
+                            FechaTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FecTermino"].ToString()),
                             Descripcion = reader["Descripcion"].ToString(),
                             IdEmpleado = int.Parse(reader["IdEmpleado"].ToString())
                         };
@@ -237,6 +237,30 @@ namespace InnovaSchool.DAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@IdActividad", EActividad.IdActividad));
                 retval = cmd.ExecuteNonQuery();
+            }
+            cn.Close();
+            return retval;
+        }
+
+        public List<EActividad> ConsultarActividadesAfectadas(EActividad EActividad)
+        {
+            List<EActividad> retval = new List<EActividad>();
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_ConsultarActividadesAfectadas", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@FechaInicio", EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@FechaTermino", EActividad.FechaTermino));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        retval.Add(new EActividad
+                        {
+                            IdActividad = int.Parse(reader["idActividad"].ToString())
+                        });
+                    }
+                }
             }
             cn.Close();
             return retval;

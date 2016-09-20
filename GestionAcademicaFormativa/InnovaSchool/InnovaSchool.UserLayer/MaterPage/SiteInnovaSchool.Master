@@ -122,15 +122,17 @@
     </div>    
     <div class="container body-content">
         <form id="form1" runat="server" >
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-            </asp:ContentPlaceHolder>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+                <!-- Mensaje de Alerta -->
+	            <div id="mensaje"></div>
+                <!-- Fin de Mensaje -->
+            </div>
         </form>
         <hr />
         © 2016 - Innova Schools
+        <hr />
     </div>
-
-    <!--@Scripts.Render("~/bundles/jquery")-->
-    <!--@Scripts.Render("~/bundles/bootstrap")-->
-    <!--@RenderSection("scripts", required: false)-->
 </body>
 </html>

@@ -13,8 +13,7 @@ namespace InnovaSchool.UserLayer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblTitulo.Text = Constant.TituloInicio;
-            lblSubTitulo.Text = Constant.SubtituloTituloInicio;
+
         }
     }
 }

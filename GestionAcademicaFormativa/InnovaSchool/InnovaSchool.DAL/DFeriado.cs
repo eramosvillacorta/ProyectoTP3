@@ -20,8 +20,8 @@ namespace InnovaSchool.DAL
             using (SqlCommand cmd = new SqlCommand("SP_VerificarFeriado", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FecInicio));
-                cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FecTermino));
+                cmd.Parameters.Add(new SqlParameter("@FecInicio", EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@FecTermino", EActividad.FechaTermino));
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
@@ -90,8 +90,35 @@ namespace InnovaSchool.DAL
                             FechaTermino = reader.IsDBNull(4) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),                            
                             Repetitivo = reader.IsDBNull(5) ? 0 : int.Parse(reader["Repetitivo"].ToString()),
                             UsuCreacion = reader["UsuCreacion"].ToString(),
+                            FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString())                          
+                        });
+                    }
+                }
+            }
+            cn.Close();
+            return retval;
+        }
+
+        public List<EFeriado> ConsultarCargaFeriados()
+        {
+            List<EFeriado> retval = new List<EFeriado>();
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_ConsultarCargaFeriados", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        retval.Add(new EFeriado
+                        {
+                            IdAgenda = reader["IdAgenda"].ToString(),
+                            Motivo = reader["Motivo"].ToString(),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = reader.IsDBNull(4) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
+                            Repetitivo = reader.IsDBNull(5) ? 0 : int.Parse(reader["Repetitivo"].ToString()),
+                            UsuCreacion = reader["UsuCreacion"].ToString(),
                             FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString())
-                            //UsuModificacion = reader["UsuModificacion"].ToString()                            
                         });
                     }
                 }
@@ -135,34 +162,15 @@ namespace InnovaSchool.DAL
             return retval;
         }
 
-        public List<EFeriado> CargarFeriadoRepetitivos(EUsuario EUsuario)
+        public int CargarFeriadoRepetitivos(EUsuario EUsuario)
         {
-            List<EFeriado> retval = new List<EFeriado>();
+            int retval = 0;
             cn.Open();
             using (SqlCommand cmd = new SqlCommand("SP_CargarFeriados", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@usuCreacion", EUsuario.Usuario));
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        retval.Add(new EFeriado
-                        {
-                            IdFeriado = int.Parse(reader["IdFeriado"].ToString()),
-                            IdAgenda = reader["IdAgenda"].ToString(),
-                            Motivo = reader["Motivo"].ToString(),
-                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
-                            FechaTermino = Convert.ToDateTime(reader["FechaTermino"].ToString()),
-                            //FechaTermino = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString()),
-                            Repetitivo = int.Parse(reader["Repetitivo"].ToString()),
-                            UsuCreacion = reader["UsuCreacion"].ToString(),
-                            FecCreacion = Convert.ToDateTime(reader["FecCreacion"].ToString()),
-                            UsuModificacion = reader["UsuModificacion"].ToString(),
-                            //FecModificacion = reader.IsDBNull(8) ? (DateTime?)null : Convert.ToDateTime(reader["FecModificacion"].ToString())
-                        });
-                    }
-                }
+                retval = cmd.ExecuteNonQuery();
             }
             cn.Close();
             return retval;

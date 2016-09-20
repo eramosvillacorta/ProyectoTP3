@@ -13,13 +13,13 @@ namespace InnovaSchool.UserLayer.Interfaces {
     public partial class frmActualizarFeriados {
         
         /// <summary>
-        /// Control divSolicitudActividades.
+        /// Control divActualizarFeriado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSolicitudActividades;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divActualizarFeriado;
         
         /// <summary>
         /// Control txtAnioEscolarVigente.
@@ -130,6 +130,15 @@ namespace InnovaSchool.UserLayer.Interfaces {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
+        /// Control btnOpenCarga.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOpenCarga;
+        
+        /// <summary>
         /// Control btnLimpiar.
         /// </summary>
         /// <remarks>
@@ -164,6 +173,24 @@ namespace InnovaSchool.UserLayer.Interfaces {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvConsultaFeriados;
+        
+        /// <summary>
+        /// Control gvActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvActividad;
+        
+        /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// Control hfIdFeriado.
