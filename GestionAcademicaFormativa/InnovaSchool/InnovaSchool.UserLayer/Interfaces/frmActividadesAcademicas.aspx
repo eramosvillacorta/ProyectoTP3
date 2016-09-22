@@ -147,8 +147,8 @@
                                 <Columns>
                                     <asp:BoundField DataField="IdActividad" HeaderText="IdActividad" Visible="false" />
                                     <asp:BoundField DataField="Nombre" HeaderText="Actividad" HeaderStyle-Width="20%" />
-                                    <asp:BoundField DataField="FecInicio" DataFormatString="{0:dd/MM/yyyy}"  HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
-                                    <asp:BoundField DataField="FecTermino" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Fecha de Término" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
+                                    <asp:BoundField DataField="FechaInicio" DataFormatString="{0:dd/MM/yyyy}"  HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
+                                    <asp:BoundField DataField="FechaTermino" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Fecha de Término" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
                                     <asp:BoundField DataField="Descripcion" HeaderText="Descripción" HeaderStyle-Width="30%" />
                                     <asp:BoundField DataField="IdPersona" HeaderText="IdPersona" Visible="false" />
                                     <asp:BoundField DataField="UsuCreacion" HeaderText="Responsable" HeaderStyle-Width="15%" />
