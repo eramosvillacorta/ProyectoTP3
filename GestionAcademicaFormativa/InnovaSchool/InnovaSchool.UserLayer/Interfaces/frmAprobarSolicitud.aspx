@@ -44,8 +44,8 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="EActividad.Solicitante" HeaderText="Solicitante" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%"/>                                   
-                                <asp:BoundField DataField="EActividad.FecInicio" HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />
-                                <asp:BoundField DataField="EActividad.FecTermino" HeaderText="Fecha de Termino" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />                                                                                        
+                                <asp:BoundField DataField="EActividad.FechaInicio" HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />
+                                <asp:BoundField DataField="EActividad.FechaTermino" HeaderText="Fecha de Termino" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />                                                                                        
                                 <asp:TemplateField Visible="false">
                                     <ItemTemplate>
                                         <asp:Label id="lblAlcance" runat ="server" text='<%# Eval("EActividad.Alcance")%>' />

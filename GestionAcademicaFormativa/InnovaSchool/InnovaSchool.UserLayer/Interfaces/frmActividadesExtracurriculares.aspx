@@ -185,7 +185,7 @@
                                             </ItemTemplate> 
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField> 
-                                        <asp:TemplateField HeaderText ="Hora Fin" HeaderStyle-Width="20%"> 
+                                        <asp:TemplateField HeaderText ="Hora Término" HeaderStyle-Width="20%"> 
                                             <ItemTemplate>                                             
                                                 <asp:DropDownList ID="ddlHoraFin" runat="server" class="input-mini"></asp:DropDownList>
                                                 <asp:RequiredFieldValidator ID="rfvHoraFin" runat="server" 
@@ -195,7 +195,7 @@
                                                     ForeColor="Red"
                                                     Font-Size="Small"
                                                     Display="Dynamic"
-                                                    ErrorMessage="<div><i>*Ingresar Hora Fin</i></div>">
+                                                    ErrorMessage="<div><i>*Ingresar Hora Término</i></div>">
                                                 </asp:RequiredFieldValidator>&nbsp;:&nbsp;  
                                                 <asp:DropDownList ID="ddlMinutoFin" runat="server" class="input-mini"></asp:DropDownList>
                                                 <asp:RequiredFieldValidator ID="rfvMinutoFin" runat="server" 
@@ -330,8 +330,8 @@
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="IdPersona" HeaderText="IdPersona" Visible="false" />
                                     <asp:BoundField DataField="UsuCreacion" HeaderText="Responsable" HeaderStyle-Width="15%" ItemStyle-CssClass="align-cen"/>
-                                    <asp:BoundField DataField="FecInicio" DataFormatString="{0:dd/MM/yyyy}"  HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
-                                    <asp:BoundField DataField="FecTermino" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Fecha de Término" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
+                                    <asp:BoundField DataField="FechaInicio" DataFormatString="{0:dd/MM/yyyy}"  HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
+                                    <asp:BoundField DataField="FechaTermino" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Fecha de Término" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" HeaderStyle-Width="10%" />
                                     <asp:TemplateField HeaderText ="Opciones" HeaderStyle-Width="15%"> 
                                         <ItemTemplate> 
