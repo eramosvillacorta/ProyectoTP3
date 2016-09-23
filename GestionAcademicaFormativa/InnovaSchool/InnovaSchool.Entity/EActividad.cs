@@ -11,8 +11,8 @@ namespace InnovaSchool.Entity
         public int IdActividad { get; set; }
         public int IdCalendario { get; set; }
         public string Nombre { get; set; }
-        public DateTime? FecInicio { get; set; }
-        public DateTime? FecTermino { get; set; }
+        public DateTime? FechaInicio { get; set; }
+        public DateTime? FechaTermino { get; set; }
         public string Descripcion { get; set; }
         public int IdEmpleado { get; set; }
         public string UsuCreacion { get; set; }
@@ -22,9 +22,7 @@ namespace InnovaSchool.Entity
         public int Tipo { get; set; }
         public DateTime? FecModificacion { get; set; }
         public int Estado { get; set; }
-
         public string Solicitante { get; set; }
-
         public List<EDetalleActividad> ListaDetalleActividad { get; set; }
     }
 }
