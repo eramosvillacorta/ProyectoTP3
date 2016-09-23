@@ -187,8 +187,8 @@ namespace InnovaSchool.UserLayer.Interfaces
             EFeriado EFeriado;
             EActividad EActividad = new EActividad()
             {
-                FecInicio = objResources.GetDateFromTextBox(txtFechaInicio),
-                FecTermino = objResources.GetDateFromTextBox(txtFechaFin)
+                FechaInicio = objResources.GetDateFromTextBox(txtFechaInicio),
+                FechaTermino = objResources.GetDateFromTextBox(txtFechaFin)
             };
             EFeriado = BFeriado.VerificarFeriado(EActividad);
             if (EFeriado != null)
@@ -292,8 +292,8 @@ namespace InnovaSchool.UserLayer.Interfaces
             {
                 IdCalendario = ECalendario.IdCalendario,
                 Nombre = txtNomActividadB.Text,
-                FecInicio = objResources.GetDateFromTextBox(txtFInicioB),
-                FecTermino = objResources.GetDateFromTextBox(txtFTerminoB),
+                FechaInicio = objResources.GetDateFromTextBox(txtFInicioB),
+                FechaTermino = objResources.GetDateFromTextBox(txtFTerminoB),
                 IdEmpleado = int.Parse(ddlResponsableB.SelectedValue)
             };
             List<EActividad> ListEActividad;
@@ -510,9 +510,9 @@ namespace InnovaSchool.UserLayer.Interfaces
                     Descripcion = txtDescripcion.Text,
                     IdEmpleado = int.Parse(ddlResponsable.SelectedValue),
                     Alcance = ddlAlcance.SelectedValue,
-                    FecInicio = objResources.GetDateFromTextBox(txtFechaInicio),
+                    FechaInicio = objResources.GetDateFromTextBox(txtFechaInicio),
                     Tipo = int.Parse(ddlTipoActividad.SelectedValue),
-                    FecTermino = objResources.GetDateFromTextBox(txtFechaFin)
+                    FechaTermino = objResources.GetDateFromTextBox(txtFechaFin)
                 };
 
                 EFeriado EFeriado = new EFeriado();

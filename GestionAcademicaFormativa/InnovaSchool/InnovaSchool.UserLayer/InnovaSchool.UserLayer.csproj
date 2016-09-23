@@ -57,36 +57,33 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Justified-Nav.css" />
-    <Content Include="Content\Site.css" />
-    <Content Include="CSS\bootstrap-responsive.css" />
-    <Content Include="CSS\bootstrap-responsive.min.css" />
-    <Content Include="CSS\bootstrap.css" />
-    <Content Include="CSS\bootstrap.min.css" />
-    <Content Include="CSS\chosen.css" />
-    <Content Include="CSS\elfinder.min.css" />
-    <Content Include="CSS\elfinder.theme.css" />
-    <Content Include="CSS\font-awesome-ie7.min.css" />
-    <Content Include="CSS\font-awesome.min.css" />
-    <Content Include="CSS\fullcalendar.css" />
-    <Content Include="CSS\glyphicons.css" />
-    <Content Include="CSS\halflings.css" />
-    <Content Include="CSS\ie.css" />
-    <Content Include="CSS\ie9.css" />
-    <Content Include="CSS\jquery-ui-1.8.21.custom.css" />
-    <Content Include="CSS\jquery.cleditor.css" />
-    <Content Include="CSS\jquery.gritter.css" />
-    <Content Include="CSS\jquery.iphone.toggle.css" />
-    <Content Include="CSS\jquery.noty.css" />
-    <Content Include="CSS\noty_theme_default.css" />
-    <Content Include="CSS\pages.css" />
-    <Content Include="CSS\style-forms.css" />
-    <Content Include="CSS\style-responsive.css" />
-    <Content Include="CSS\style.css" />
-    <Content Include="CSS\uniform.default.css" />
-    <Content Include="CSS\uploadify.css" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\chosen.css" />
+    <Content Include="css\elfinder.min.css" />
+    <Content Include="css\elfinder.theme.css" />
+    <Content Include="css\font-awesome-ie7.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\fullcalendar.css" />
+    <Content Include="css\glyphicons.css" />
+    <Content Include="css\halflings.css" />
+    <Content Include="css\ie.css" />
+    <Content Include="css\ie9.css" />
+    <Content Include="css\jquery-ui-1.8.21.custom.css" />
+    <Content Include="css\jquery.cleditor.css" />
+    <Content Include="css\jquery.gritter.css" />
+    <Content Include="css\jquery.iphone.toggle.css" />
+    <Content Include="css\jquery.noty.css" />
+    <Content Include="css\noty_theme_default.css" />
+    <Content Include="css\pages.css" />
+    <Content Include="css\style-forms.css" />
+    <Content Include="css\style-responsive.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\uniform.default.css" />
+    <Content Include="css\uploadify.css" />
     <Content Include="Error\NoAccess.html" />
     <Content Include="Font\glyphicons-regular.svg" />
     <Content Include="Font\glyphiconshalflings-regular.svg" />
@@ -115,6 +112,7 @@
     <Content Include="Img\chosen-sprite.png" />
     <Content Include="Img\close-button-white.png" />
     <Content Include="Img\close-button.png" />
+    <Content Include="Img\ColegioPortada.jpg" />
     <Content Include="Img\crop.gif" />
     <Content Include="Img\dialogs.png" />
     <Content Include="Img\favicon.png" />
@@ -224,6 +222,7 @@
     <Content Include="Scripts\mensaje.js" />
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\retina.js" />
+    <Content Include="Scripts\validation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -246,6 +245,7 @@
     </Compile>
     <Compile Include="Interfaces\frmActividadesExtracurriculares.aspx.cs">
       <DependentUpon>frmActividadesExtracurriculares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Interfaces\frmActividadesExtracurriculares.aspx.designer.cs">
       <DependentUpon>frmActividadesExtracurriculares.aspx</DependentUpon>
@@ -266,12 +266,14 @@
     </Compile>
     <Compile Include="Interfaces\frmAprobarSolicitud.aspx.cs">
       <DependentUpon>frmAprobarSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Interfaces\frmAprobarSolicitud.aspx.designer.cs">
       <DependentUpon>frmAprobarSolicitud.aspx</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\frmCalendarioExtracurricular.aspx.cs">
       <DependentUpon>frmCalendarioExtracurricular.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Interfaces\frmCalendarioExtracurricular.aspx.designer.cs">
       <DependentUpon>frmCalendarioExtracurricular.aspx</DependentUpon>

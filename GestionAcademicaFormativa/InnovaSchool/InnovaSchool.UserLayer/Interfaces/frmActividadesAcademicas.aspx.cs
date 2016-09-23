@@ -163,8 +163,8 @@ namespace InnovaSchool.UserLayer.Interfaces
             EFeriado EFeriado;
             EActividad EActividad = new EActividad()
             {
-                FecInicio = objResources.GetDateFromTextBox(txtFInicio),
-                FecTermino = objResources.GetDateFromTextBox(txtFTermino)
+                FechaInicio = objResources.GetDateFromTextBox(txtFInicio),
+                FechaTermino = objResources.GetDateFromTextBox(txtFTermino)
             };
             EFeriado = BFeriado.VerificarFeriado(EActividad);
             if (EFeriado != null)
@@ -189,8 +189,8 @@ namespace InnovaSchool.UserLayer.Interfaces
                     IdActividad = int.Parse(hdfActividad.Value),
                     IdCalendario = IdCalendario, 
 				    Nombre = txtNomActividad.Text,
-                    FecInicio = objResources.GetDateFromTextBox(txtFInicio),
-                    FecTermino = objResources.GetDateFromTextBox(txtFTermino),  
+                    FechaInicio = objResources.GetDateFromTextBox(txtFInicio),
+                    FechaTermino = objResources.GetDateFromTextBox(txtFTermino),  
 				    Descripcion = txtDescripcion.Text, 
                     IdEmpleado = int.Parse(ddlResponsable.SelectedValue), 
                 };
@@ -244,10 +244,10 @@ namespace InnovaSchool.UserLayer.Interfaces
                         {
                             hdfActividad.Value = EActividad.IdActividad.ToString();
                             txtNomActividad.Text = EActividad.Nombre;
-                            txtFInicio.Text = string.Format("{0:dd/MM/yyyy}", EActividad.FecInicio);
-                            if (EActividad.FecTermino != null)
+                            txtFInicio.Text = string.Format("{0:dd/MM/yyyy}", EActividad.FechaInicio);
+                            if (EActividad.FechaTermino != null)
                             {
-                                txtFTermino.Text = string.Format("{0:dd/MM/yyyy}", EActividad.FecTermino);
+                                txtFTermino.Text = string.Format("{0:dd/MM/yyyy}", EActividad.FechaTermino);
                                 ckbFTermino.Checked = true;
                                 ActivarFechaTermino(true);
                             }
@@ -311,8 +311,8 @@ namespace InnovaSchool.UserLayer.Interfaces
             {
                 IdCalendario = ECalendario.IdCalendario,
                 Nombre = txtNomActividadB.Text,
-                FecInicio = objResources.GetDateFromTextBox(txtFInicioB),
-                FecTermino = objResources.GetDateFromTextBox(txtFTerminoB),
+                FechaInicio = objResources.GetDateFromTextBox(txtFInicioB),
+                FechaTermino = objResources.GetDateFromTextBox(txtFTerminoB),
                 IdEmpleado = int.Parse(ddlResponsableB.SelectedValue)
             };
             List<EActividad> ListEActividad;
