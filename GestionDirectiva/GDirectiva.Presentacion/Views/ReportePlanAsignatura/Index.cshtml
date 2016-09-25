@@ -13,7 +13,7 @@
                 <div class="box-wrap-header">
                     <div class="pull-left">
                         <div class="title-main">
-                            REPORTE DE PLAN DE ASIGNATURA - BÚSQUEDA
+                            REPORTE DE CUMPLIMIENTO DE PLAN DE ASIGNATURA - BÚSQUEDA
                         </div>
                     </div>
                 </div>
@@ -77,13 +77,7 @@
     ns('GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions')
     GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.Buscar = '@Url.Action("Buscar", "PlanAsignaturaCronograma", new { Area = "General" })';
     GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.BuscarActividades = '@Url.Action("BuscarActividades", "PlanAsignaturaCronograma", new { Area = "General" })';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.FormularioRegistro = '@Url.Action("FormularioRegistro", "PlanAsignaturaCronograma", new { Area = "General" })';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.FormularioRegistroActividad = '@Url.Action("FormularioRegistroActividad", "PlanAsignaturaCronograma", new { Area = "General" })';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.Registrar = '@Url.Action("Registrar", "PlanAsignaturaCronograma", new { Area = "General" })';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.RegistrarActividad = '@Url.Action("RegistrarActividad", "PlanAsignaturaCronograma", new { Area = "General" })';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.Eliminar = '@Url.Action("Eliminar", "PlanAsignaturaCronograma", new { Area = "General" })';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.EliminarActividad = '@Url.Action("EliminarActividad", "PlanAsignaturaCronograma", new { Area = "General" })';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.Activar = '@Url.Action("Activar", "PlanAsignaturaCronograma", new { Area = "General" })';
+    GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.ReporteCumplimiento = '@Url.Action("ReporteCumplimiento", "ReportePlanAsignatura", new { Area = "General" })';
     GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.BuscarPlanArea = '@Url.Action("BuscarPlanArea", "PlanAsignaturaCronograma", new { Area = "General" })';
     GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.BuscarAsignatura = '@Url.Action("BuscarAsignatura", "PlanAsignaturaCronograma", new { Area = "General" })';
     GDirectiva.Presentacion.General.ReportePlanAsignatura.Actions.BuscarDocente = '@Url.Action("BuscarDocente", "PlanAsignaturaCronograma", new { Area = "General" })';
@@ -92,20 +86,12 @@
 
 
     ns('GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource')
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaTituloFormulario = '@PlanAsignaturaCronogramaResource.EtiquetaTituloFormulario';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaTituloFormularioActividad = '@PlanAsignaturaCronogramaResource.EtiquetaTituloFormularioActividad';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaPeriodoAcademico = '@PlanAsignaturaCronogramaResource.EtiquetaPeriodoAcademico';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaPlanArea = '@PlanAsignaturaCronogramaResource.EtiquetaPlanArea';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaDocente = '@PlanAsignaturaCronogramaResource.EtiquetaDocente';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaAsignatura = '@PlanAsignaturaCronogramaResource.EtiquetaAsignatura';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaMeta = '@PlanAsignaturaCronogramaResource.EtiquetaMetas';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaMetodologias = '@PlanAsignaturaCronogramaResource.EtiquetaMetodologias';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaNombreActividad = '@PlanAsignaturaCronogramaResource.EtiquetaNombreActividad';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaFechaInicio = '@PlanAsignaturaCronogramaResource.EtiquetaFechaInicio';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaFechaFin = '@PlanAsignaturaCronogramaResource.EtiquetaFechaFin';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaPorcentaje = '@PlanAsignaturaCronogramaResource.EtiquetaPorcentaje';
-    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaResponsables = '@PlanAsignaturaCronogramaResource.EtiquetaResponsables';
+    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaTituloFormulario = '@ReporteCumplimientoResource.EtiquetaTituloFormulario';
+    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaPeriodoAcademico = '@ReporteCumplimientoResource.EtiquetaPeriodoAcademico';
+    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaPlanArea = '@ReporteCumplimientoResource.EtiquetaPlanArea';
+    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaAsignatura = '@ReporteCumplimientoResource.EtiquetaAsignatura';
+    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaMeta = '@ReporteCumplimientoResource.EtiquetaMetas';
+    GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaMetodologias = '@ReporteCumplimientoResource.EtiquetaMetodologias';
 </script>
-    @CustomHtmlHelper.RenderViewJs("generalreporteplanasignaturaformularioregistro")
-    @CustomHtmlHelper.RenderViewJs("generalreporteplanasignaturaformularioregistroactividad")
+    @CustomHtmlHelper.RenderViewJs("generalreporteplanasignaturareportecumplimiento")
 }

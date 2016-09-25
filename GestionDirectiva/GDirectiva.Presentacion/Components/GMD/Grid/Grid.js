@@ -292,5 +292,14 @@ GDirectiva.Presentacion.Web.Components.GridAction = {
             return GDirectiva.Presentacion.Web.Components.Util.RenderIcono('calendat', 'fa-calendar ' + selector, GDirectiva.Presentacion.Base.GenericResource.EtiquetaCalendario);
 
         }
+    },
+    Reporte: {
+        Class: 'reporte',
+        Icon: '.fa-bar-chart-',
+        Source: function (id) {
+            var selector = 'fa-bar-chart-' + id;
+            return GDirectiva.Presentacion.Web.Components.Util.RenderIcono('reporte', 'fa-bar-chart ' + selector, GDirectiva.Presentacion.Base.GenericResource.EtiquetaReporte);
+
+        }
     }
 };

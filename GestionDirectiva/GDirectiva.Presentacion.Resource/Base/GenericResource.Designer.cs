@@ -196,6 +196,15 @@ namespace GDirectiva.Presentacion.Resource.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reporte de cumplimiento.
+        /// </summary>
+        public static string EtiquetaReporte {
+            get {
+                return ResourceManager.GetString("EtiquetaReporte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resultado de la búsqueda.
         /// </summary>
         public static string EtiquetaResultadosBusqueda {

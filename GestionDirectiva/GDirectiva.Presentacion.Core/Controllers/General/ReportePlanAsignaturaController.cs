@@ -31,10 +31,22 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
         {
             var model = new ReportePlanAsignaturaBusquedaModel();
             var bl_PeriodoAcademico = new BL_PeriodoAcademico();
-
+            
             model.ListaPeriodoAcademico = bl_PeriodoAcademico.ListarPeriodosAcademicos();
 
             return View(model);
+        }
+
+        public ActionResult ReporteCumplimiento(int pId_Plan_Asignatura)
+        {
+            var model = new ReporteCumplimientoModel();
+            var bl_PlanAsignatura = new BL_PlanAsignatura();
+            model.planAsignatura.ID_PLANASIGNATURA = pId_Plan_Asignatura;
+            if (pId_Plan_Asignatura > 0)
+            {
+                model.planAsignatura = bl_PlanAsignatura.ObtenerPlanAsignatura(pId_Plan_Asignatura).Result;
+            }
+            return PartialView(model);
         }
         #endregion
 
@@ -49,46 +61,6 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
             var bl_PlanAsignatura = new BL_PlanAsignatura();
             var proceso = bl_PlanAsignatura.ListarPlanAsignatura(pId_Periodo, pGD_Plan_Area_Id_Plan_Area, pGD_Asignatura_Id_Asignatura, 0, 100);
             return Json(proceso);
-        }
-
-        public JsonResult BuscarPlanArea(int pId_Periodo)
-        {
-            ProcessResult<List<SelectListItem>> resultado = new ProcessResult<List<SelectListItem>>();
-            resultado.Result = new List<SelectListItem>();
-            var bl_PlanArea = new BL_PlanArea();
-            var proceso = bl_PlanArea.ListarPlanAreaVigente(pId_Periodo);
-            if (proceso != null)
-            {
-                proceso.Result.ForEach(delegate(PA_PLAN_AREA_LISTA_VIGENTE_Result plan)
-                {
-                    resultado.Result.Add(new SelectListItem() { Value = plan.ID_PLANAREA.ToString(), Text = plan.NOMBRE });
-                });
-            }
-            else
-            {
-                resultado.Result = null;
-            }
-            return Json(resultado);
-        }
-
-        public JsonResult BuscarAsignatura(int pId_PlanArea)
-        {
-            ProcessResult<List<SelectListItem>> resultado = new ProcessResult<List<SelectListItem>>();
-            resultado.Result = new List<SelectListItem>();
-            var bl_Asignatura = new BL_Asignatura();
-            var proceso = bl_Asignatura.ListarAsignaturaPlanArea(pId_PlanArea);
-            if (proceso != null)
-            {
-                proceso.Result.ForEach(delegate(PA_ASIGNATURA_PLANAREA_LISTA_Result asignatura)
-                {
-                    resultado.Result.Add(new SelectListItem() { Value = asignatura.ID_ASIGNATURA.ToString(), Text = asignatura.NOMBRE_ASIGNATURA });
-                });
-            }
-            else
-            {
-                resultado.Result = null;
-            }
-            return Json(resultado);
         }
 
         #endregion

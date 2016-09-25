@@ -11,6 +11,11 @@ GDirectiva.Presentacion.General.ReportePlanAsignatura.Index.Controller = functio
     var base = this;
 
     base.Ini = function () {
+        base.Control.FormularioRegistro = new GDirectiva.Presentacion.General.ReportePlanAsignatura.ReporteCumplimiento.Controller({
+            GrabarSuccess: function () {
+                base.Control.GrdResultado.Load(base.Configurations.search.parameters);
+            }
+        });
         base.Control.SlcPeriodoAcademico().change(base.Event.SlcPeriodoAcademicoChange);
         base.Control.SlcPlanArea().change(base.Event.SlcPlanAreaChange);
         base.Control.SlcAsignatura().change(base.Event.SlcAsignaturaChange);
@@ -127,7 +132,7 @@ GDirectiva.Presentacion.General.ReportePlanAsignatura.Index.Controller = functio
             columns.push({ data: 'NOMBRE_ASIGNATURA', title: GDirectiva.Presentacion.General.ReportePlanAsignatura.Resource.EtiquetaAsignatura });
             
             var listaOpciones = new Array();
-            listaOpciones.push({ type: GDirectiva.Presentacion.Web.Components.GridAction.Calendario, event: { on: 'click', callBack: base.Event.BtnGridEditarClick } });
+            listaOpciones.push({ type: GDirectiva.Presentacion.Web.Components.GridAction.Reporte, event: { on: 'click', callBack: base.Event.BtnGridEditarClick } });
 
             columns.push({
                 data: null,

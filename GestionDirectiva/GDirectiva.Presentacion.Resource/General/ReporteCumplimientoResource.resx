@@ -117,79 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BotonAgregar" xml:space="preserve">
-    <value>Agregar</value>
+  <data name="ErrorDeExtension" xml:space="preserve">
+    <value>Error de extensión: Archivo Inválido, solo se acepta archivos de tipo Word.</value>
   </data>
-  <data name="BotonCerrar" xml:space="preserve">
-    <value>Cerrar</value>
+  <data name="EtiquetaAsignatura" xml:space="preserve">
+    <value>Curso</value>
   </data>
-  <data name="BotonCerrarSesion" xml:space="preserve">
-    <value>Cerrar Sesión</value>
+  <data name="EtiquetaEstado" xml:space="preserve">
+    <value>Estado</value>
   </data>
-  <data name="BotonEliminar" xml:space="preserve">
-    <value>Eliminar</value>
+  <data name="EtiquetaLineaNegocio" xml:space="preserve">
+    <value>Línea de Negocio</value>
   </data>
-  <data name="BotonGrabar" xml:space="preserve">
-    <value>Grabar</value>
+  <data name="EtiquetaMetas" xml:space="preserve">
+    <value>Metas</value>
   </data>
-  <data name="BotonLimpiar" xml:space="preserve">
-    <value>Limpiar</value>
+  <data name="EtiquetaMetodologias" xml:space="preserve">
+    <value>Metodologías</value>
   </data>
-  <data name="BotonModificar" xml:space="preserve">
-    <value>Modificar</value>
+  <data name="EtiquetaPeriodoAcademico" xml:space="preserve">
+    <value>Periodo Académico</value>
   </data>
-  <data name="BotonMostrar" xml:space="preserve">
-    <value>Mostrar</value>
-  </data>
-  <data name="BotonRegistrar" xml:space="preserve">
-    <value>Nuevo</value>
-  </data>
-  <data name="BotonRegresar" xml:space="preserve">
-    <value>Regresar</value>
-  </data>
-  <data name="EtiquetaCalendario" xml:space="preserve">
-    <value>Cronograma</value>
-  </data>
-  <data name="EtiquetaDesactivar" xml:space="preserve">
-    <value>Desactivar</value>
-  </data>
-  <data name="EtiquetaEditar" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="EtiquetaEliminar" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="EtiquetaEliminarActividades" xml:space="preserve">
-    <value>Eliminar actividades</value>
-  </data>
-  <data name="EtiquetaReporte" xml:space="preserve">
-    <value>Reporte de cumplimiento</value>
+  <data name="EtiquetaPlanArea" xml:space="preserve">
+    <value>Plan Área</value>
   </data>
   <data name="EtiquetaResultadosBusqueda" xml:space="preserve">
     <value>Resultado de la búsqueda</value>
   </data>
-  <data name="EtiquetaSeleccionar" xml:space="preserve">
-    <value>--SELECCIONE--</value>
+  <data name="EtiquetaTituloFormulario" xml:space="preserve">
+    <value>Reporte de cumplimiento de Plan de Asignatura</value>
   </data>
-  <data name="EtiquetaTituloSistema" xml:space="preserve">
-    <value>Innova Schools</value>
+  <data name="EtiquetaTituloPrincipal" xml:space="preserve">
+    <value>Plan Asignatura</value>
   </data>
-  <data name="EtiquetaTodos" xml:space="preserve">
-    <value>(TODOS)</value>
-  </data>
-  <data name="GridAcciones" xml:space="preserve">
-    <value>Acciones</value>
-  </data>
-  <data name="GridControles" xml:space="preserve">
-    <value>Controles</value>
-  </data>
-  <data name="MensajeDebeIngresarUnTexto" xml:space="preserve">
-    <value>Debe ingresar un texto.</value>
-  </data>
-  <data name="MensajeSeDesactivoConExito" xml:space="preserve">
-    <value>Se desactivó con éxito.</value>
-  </data>
-  <data name="MensajeSeEliminoConExito" xml:space="preserve">
-    <value>Se eliminó con éxito.</value>
+  <data name="MensajeDebeSeleccionarArchivoWord" xml:space="preserve">
+    <value>Debe seleccionar el archivo Excel (.doc | .docx).</value>
   </data>
 </root>
