@@ -8,6 +8,8 @@ using InnovaSchool.Entity;
 using InnovaSchool.BL;
 using InnovaSchool.UserLayer.Common;
 using System.Globalization;
+using System.Net;
+using System.Net.Mail;
 
 namespace InnovaSchool.UserLayer.Interfaces
 {
@@ -121,6 +123,35 @@ namespace InnovaSchool.UserLayer.Interfaces
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "<script>$('#mensaje').html(GenerarMensaje('" + Constant.TituloRegistroFeriado + "','" + Constant.MensajeErrorRegistrarFeriado + "'))</script>");
                 ClientScript.RegisterStartupScript(this.GetType(), "Show", "<script>myModalShow();</script>");
+            }
+        }
+
+        private void EnviarCorreo(string feriado)
+        {
+            if (Constant.FlagCorreo.Equals("1"))
+            {
+                var fromAddress = new MailAddress(Constant.CorreoAprobacion, "InnovaSchools");
+                var toAddress = new MailAddress(Constant.CorreoAprobacion, "Coordinador Académico");
+                string fromPassword = Constant.PasswordAprobacion;
+                string subject = "Actividades Afectadas Por Feriado";
+                string body = "Existen actividades afectadas por el feriado " + feriado;
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = true,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(message);
+                }
             }
         }
 
@@ -383,6 +414,7 @@ namespace InnovaSchool.UserLayer.Interfaces
                 };
                 int result = 0;
                 result = BActividad.SuspenderActividadFeriado(EActividad, EUsuario);
+                EnviarCorreo(txtDescripcion.Text + " con fecha: " + txtFechaInicio.Text + "-" + txtFechaFin.Text);
                 RegistrarFeriado(result);
             }
             catch (Exception ex)
