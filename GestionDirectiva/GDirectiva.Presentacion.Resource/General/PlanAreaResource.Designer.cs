@@ -88,7 +88,7 @@ namespace GDirectiva.Presentacion.Resource.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Documento.
+        ///   Looks up a localized string similar to Documento de Plan de Área.
         /// </summary>
         public static string EtiquetaDocumento {
             get {
@@ -142,7 +142,7 @@ namespace GDirectiva.Presentacion.Resource.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Periodo académico.
+        ///   Looks up a localized string similar to Periodo Académico.
         /// </summary>
         public static string EtiquetaPeriodoAcademico {
             get {
@@ -196,7 +196,7 @@ namespace GDirectiva.Presentacion.Resource.General {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Debe seleccionar el archivo Excel (.doc | .docx)..
+        ///   Looks up a localized string similar to Debe seleccionar el archivo Word (.doc | .docx)..
         /// </summary>
         public static string MensajeDebeSeleccionarArchivoWord {
             get {

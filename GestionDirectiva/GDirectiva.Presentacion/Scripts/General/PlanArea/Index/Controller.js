@@ -97,7 +97,7 @@ GDirectiva.Presentacion.General.PlanArea.Index.Controller = function () {
             var columns = new Array();
             columns.push({ data: 'PERIODO', title: GDirectiva.Presentacion.General.PlanArea.Resource.EtiquetaPeriodoAcademico });
             columns.push({ data: 'NOMBRE_GRADO', title: GDirectiva.Presentacion.General.PlanArea.Resource.EtiquetaGrado });
-            columns.push({ data: 'NOMBRE_AREA', title: GDirectiva.Presentacion.General.PlanArea.Resource.EtiquetaArea });
+            columns.push({ data: 'NOMBRE_AREA', title: GDirectiva.Presentacion.General.PlanArea.Resource.EtiquetaArea });            
             columns.push({
                 data: null, title: GDirectiva.Presentacion.General.PlanArea.Resource.EtiquetaNombrePlanArea, 'mRender': function (data, type, full) {
                     return full.NOMBRE_PLANAREA;

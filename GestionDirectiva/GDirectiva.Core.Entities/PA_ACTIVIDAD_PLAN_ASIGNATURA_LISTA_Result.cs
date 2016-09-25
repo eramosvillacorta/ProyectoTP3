@@ -19,8 +19,10 @@ namespace GDirectiva.Core.Entities
         public Nullable<int> TamanioPagina { get; set; }
         public int ID_ACTIVIDADPLANASIGNATURA { get; set; }
         public string ACTIVIDAD { get; set; }
+        public Nullable<int> ID_EMPLEADO { get; set; }
         public System.DateTime FECHAINICIO { get; set; }
         public System.DateTime FECHAFIN { get; set; }
         public int PORCENTAJE { get; set; }
+        public Nullable<int> ID_PLANASIGNATURAMETA { get; set; }
     }
 }

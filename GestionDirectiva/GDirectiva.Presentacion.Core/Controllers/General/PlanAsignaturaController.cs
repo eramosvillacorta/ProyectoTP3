@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace GDirectiva.Presentacion.Core.Controllers.General
@@ -48,9 +49,13 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
             if (pId_Plan_Asignatura > 0)
             {
                 model.planAsignatura = bl_PlanAsignatura.ObtenerPlanAsignatura(pId_Plan_Asignatura).Result;
+                model.ListaPeriodoAcademico = new List<PA_PERIODO_ACADEMICO_LISTA_VIGENTE_Result>() { new PA_PERIODO_ACADEMICO_LISTA_VIGENTE_Result() { ID_PERIODOACADEMICO = 4, PERIODO = "2016 - Cuarto bimestre" } };
             }
-            model.ListaPeriodoAcademico = bl_PeriodoAcademico.ListarPeriodosAcademicosVigentes();
-
+            else
+            {
+                //model.ListaPeriodoAcademico = bl_PeriodoAcademico.ListarPeriodosAcademicosVigentes();
+                model.ListaPeriodoAcademico = new List<PA_PERIODO_ACADEMICO_LISTA_VIGENTE_Result>() { new PA_PERIODO_ACADEMICO_LISTA_VIGENTE_Result() { ID_PERIODOACADEMICO = 4, PERIODO = "2016 - Cuarto bimestre" } };
+            }
             return PartialView(model);
         }
         #endregion
@@ -104,18 +109,51 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
             return Json(resultado);
         }
 
-        public JsonResult Registrar(PlanAsignatura planAsignatura)
+        public JsonResult Registrar(PlanAsignatura planAsignatura, List<string> listaMeta, string contenidoArchivo)
         {
             ProcessResult<PlanAsignatura> resultado = new ProcessResult<PlanAsignatura>();
             var bl_PlanAsignatura = new BL_PlanAsignatura();
+
+            if (!string.IsNullOrEmpty(contenidoArchivo))
+            {
+                var extencion = planAsignatura.Documento.Split('.').LastOrDefault();
+                planAsignatura.Documento = WebConfigurationManager.AppSettings["DirectorioPlanAsignatura"] + Guid.NewGuid().ToString() + "." + extencion;
+                contenidoArchivo = contenidoArchivo.Split(new string[] { "base64," }, StringSplitOptions.None).LastOrDefault();
+            }
+
             if (planAsignatura.Id_PlanAsignatura == 0)
             {
                 resultado = bl_PlanAsignatura.InsertarPlanAsignatura(planAsignatura);
             }
             else
             {
+                if (!string.IsNullOrEmpty(planAsignatura.Documento))
+                {
+                    var planAreaActual = bl_PlanAsignatura.ObtenerPlanAsignatura(planAsignatura.Id_PlanAsignatura);
+                    if (!string.IsNullOrEmpty(planAreaActual.Result.DOCUMENTO_PLANASIGNATURA) && !string.IsNullOrEmpty(contenidoArchivo))
+                    {
+                        System.IO.File.Delete(planAreaActual.Result.DOCUMENTO_PLANASIGNATURA);
+                    }
+                }
+
                 resultado = bl_PlanAsignatura.ActualizarPlanAsignatura(planAsignatura);
             }
+
+            if (resultado.IsSuccess)
+            {
+                if (!string.IsNullOrEmpty(contenidoArchivo))
+                {
+                    System.IO.File.WriteAllBytes(planAsignatura.Documento, Convert.FromBase64String(contenidoArchivo));
+                }
+            }
+
+            var resultadoEliminarMeta = bl_PlanAsignatura.EliminarPlanAsignaturaMeta(planAsignatura.Id_PlanAsignatura);
+
+            if (listaMeta != null && listaMeta.Count > 0)
+            {
+                bl_PlanAsignatura.InsertarPlanAsignaturaMeta(planAsignatura.Id_PlanAsignatura, listaMeta);
+            }
+
             return Json(resultado);
         }
 
@@ -124,6 +162,13 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
             ProcessResult<PlanAsignatura> resultado = new ProcessResult<PlanAsignatura>();
             var bl_PlanAsignatura = new BL_PlanAsignatura();
             resultado = bl_PlanAsignatura.EliminarPlanAsignatura(pId_PlanAsignatura);
+            return Json(resultado);
+        }
+
+        public JsonResult BuscarMeta(int pId_PlanAsignatura)
+        {
+            var bl_PlanAsignatura = new BL_PlanAsignatura();
+            var resultado = bl_PlanAsignatura.ListarPlanAsignaturaMeta(pId_PlanAsignatura);
             return Json(resultado);
         }
         #endregion

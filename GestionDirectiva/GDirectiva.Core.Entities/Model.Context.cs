@@ -27,17 +27,77 @@ namespace GDirectiva.Core.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<ActividadPlanAsignatura> ActividadPlanAsignatura { get; set; }
         public virtual DbSet<ActividadPlanProyectoPedagogico> ActividadPlanProyectoPedagogico { get; set; }
         public virtual DbSet<PeriodoAcademico> PeriodoAcademico { get; set; }
         public virtual DbSet<PlanArea> PlanArea { get; set; }
         public virtual DbSet<PlanAsignatura> PlanAsignatura { get; set; }
+        public virtual DbSet<PlanAsignaturaMeta> PlanAsignaturaMeta { get; set; }
         public virtual DbSet<PlanEstudio> PlanEstudio { get; set; }
         public virtual DbSet<PlanProyectoPedagogico> PlanProyectoPedagogico { get; set; }
         public virtual DbSet<AreaCurricular> AreaCurricular { get; set; }
         public virtual DbSet<Curso> Curso { get; set; }
         public virtual DbSet<Grado> Grado { get; set; }
+        public virtual DbSet<CursoDocente> CursoDocente { get; set; }
+    
+        public virtual int PA_ACTIVIDAD_PLAN_ASIGNATURA_ELIMINAR(Nullable<int> iD_PLANASIGNATURA)
+        {
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_ACTIVIDAD_PLAN_ASIGNATURA_ELIMINAR", iD_PLANASIGNATURAParameter);
+        }
+    
+        public virtual ObjectResult<PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result> PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA(Nullable<int> iD_PLANASIGNATURA, Nullable<int> pAGINA_INICIO, Nullable<int> tAMANIO_PAGINA)
+        {
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            var pAGINA_INICIOParameter = pAGINA_INICIO.HasValue ?
+                new ObjectParameter("PAGINA_INICIO", pAGINA_INICIO) :
+                new ObjectParameter("PAGINA_INICIO", typeof(int));
+    
+            var tAMANIO_PAGINAParameter = tAMANIO_PAGINA.HasValue ?
+                new ObjectParameter("TAMANIO_PAGINA", tAMANIO_PAGINA) :
+                new ObjectParameter("TAMANIO_PAGINA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result>("PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA", iD_PLANASIGNATURAParameter, pAGINA_INICIOParameter, tAMANIO_PAGINAParameter);
+        }
+    
+        public virtual int PA_ACTIVIDAD_PLAN_ASIGNATURA_REGISTRAR(string aCTIVIDAD, Nullable<System.DateTime> fECHAINICIO, Nullable<System.DateTime> fECHAFIN, Nullable<int> pORCENTAJEAVANCE, Nullable<int> iD_PLANASIGNATURA, Nullable<int> iD_EMPLEADO, Nullable<int> iD_PLANASIGNATURAMETA)
+        {
+            var aCTIVIDADParameter = aCTIVIDAD != null ?
+                new ObjectParameter("ACTIVIDAD", aCTIVIDAD) :
+                new ObjectParameter("ACTIVIDAD", typeof(string));
+    
+            var fECHAINICIOParameter = fECHAINICIO.HasValue ?
+                new ObjectParameter("FECHAINICIO", fECHAINICIO) :
+                new ObjectParameter("FECHAINICIO", typeof(System.DateTime));
+    
+            var fECHAFINParameter = fECHAFIN.HasValue ?
+                new ObjectParameter("FECHAFIN", fECHAFIN) :
+                new ObjectParameter("FECHAFIN", typeof(System.DateTime));
+    
+            var pORCENTAJEAVANCEParameter = pORCENTAJEAVANCE.HasValue ?
+                new ObjectParameter("PORCENTAJEAVANCE", pORCENTAJEAVANCE) :
+                new ObjectParameter("PORCENTAJEAVANCE", typeof(int));
+    
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            var iD_EMPLEADOParameter = iD_EMPLEADO.HasValue ?
+                new ObjectParameter("ID_EMPLEADO", iD_EMPLEADO) :
+                new ObjectParameter("ID_EMPLEADO", typeof(int));
+    
+            var iD_PLANASIGNATURAMETAParameter = iD_PLANASIGNATURAMETA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURAMETA", iD_PLANASIGNATURAMETA) :
+                new ObjectParameter("ID_PLANASIGNATURAMETA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_ACTIVIDAD_PLAN_ASIGNATURA_REGISTRAR", aCTIVIDADParameter, fECHAINICIOParameter, fECHAFINParameter, pORCENTAJEAVANCEParameter, iD_PLANASIGNATURAParameter, iD_EMPLEADOParameter, iD_PLANASIGNATURAMETAParameter);
+        }
     
         public virtual ObjectResult<PA_AREA_LISTA_Result> PA_AREA_LISTA()
         {
@@ -53,6 +113,15 @@ namespace GDirectiva.Core.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_ASIGNATURA_PLANAREA_LISTA_Result>("PA_ASIGNATURA_PLANAREA_LISTA", iD_PLANAREAParameter);
         }
     
+        public virtual ObjectResult<PA_CURSO_DOCENTE_Result> PA_CURSO_DOCENTE(Nullable<int> iD_CURSO)
+        {
+            var iD_CURSOParameter = iD_CURSO.HasValue ?
+                new ObjectParameter("ID_CURSO", iD_CURSO) :
+                new ObjectParameter("ID_CURSO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_CURSO_DOCENTE_Result>("PA_CURSO_DOCENTE", iD_CURSOParameter);
+        }
+    
         public virtual ObjectResult<PA_GRADO_LISTA_Result> PA_GRADO_LISTA()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_GRADO_LISTA_Result>("PA_GRADO_LISTA");
@@ -66,6 +135,27 @@ namespace GDirectiva.Core.Entities
         public virtual ObjectResult<PA_PERIODO_ACADEMICO_LISTA_VIGENTE_Result> PA_PERIODO_ACADEMICO_LISTA_VIGENTE()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PERIODO_ACADEMICO_LISTA_VIGENTE_Result>("PA_PERIODO_ACADEMICO_LISTA_VIGENTE");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> PA_PLAN_AREA_EXISTE(Nullable<int> iD_PERIODOACADEMICO, Nullable<int> iD_AREA, Nullable<int> iD_PLANESTUDIO, Nullable<int> iD_GRADO)
+        {
+            var iD_PERIODOACADEMICOParameter = iD_PERIODOACADEMICO.HasValue ?
+                new ObjectParameter("ID_PERIODOACADEMICO", iD_PERIODOACADEMICO) :
+                new ObjectParameter("ID_PERIODOACADEMICO", typeof(int));
+    
+            var iD_AREAParameter = iD_AREA.HasValue ?
+                new ObjectParameter("ID_AREA", iD_AREA) :
+                new ObjectParameter("ID_AREA", typeof(int));
+    
+            var iD_PLANESTUDIOParameter = iD_PLANESTUDIO.HasValue ?
+                new ObjectParameter("ID_PLANESTUDIO", iD_PLANESTUDIO) :
+                new ObjectParameter("ID_PLANESTUDIO", typeof(int));
+    
+            var iD_GRADOParameter = iD_GRADO.HasValue ?
+                new ObjectParameter("ID_GRADO", iD_GRADO) :
+                new ObjectParameter("ID_GRADO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PA_PLAN_AREA_EXISTE", iD_PERIODOACADEMICOParameter, iD_AREAParameter, iD_PLANESTUDIOParameter, iD_GRADOParameter);
         }
     
         public virtual ObjectResult<PA_PLAN_AREA_LISTA_Result> PA_PLAN_AREA_LISTA(Nullable<int> iD_PERIODOACADEMICO, Nullable<int> iD_GRADO, Nullable<int> iD_AREA, Nullable<int> pAGINA_INICIO, Nullable<int> tAMANIO_PAGINA)
@@ -136,41 +226,6 @@ namespace GDirectiva.Core.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_ASIGNATURA_LISTA_Result>("PA_PLAN_ASIGNATURA_LISTA", iD_PERIODOACADEMICOParameter, iD_PLANAREAParameter, iD_ASIGNATURAParameter, pAGINA_INICIOParameter, tAMANIO_PAGINAParameter);
         }
     
-        public virtual ObjectResult<PA_PLAN_ASIGNATURA_SEL_Result> PA_PLAN_ASIGNATURA_SEL(Nullable<int> iD_PLANASIGNATURA)
-        {
-            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
-                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
-                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_ASIGNATURA_SEL_Result>("PA_PLAN_ASIGNATURA_SEL", iD_PLANASIGNATURAParameter);
-        }
-    
-        public virtual ObjectResult<PA_PLAN_ESTUDIO_SEL_Result> PA_PLAN_ESTUDIO_SEL()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_ESTUDIO_SEL_Result>("PA_PLAN_ESTUDIO_SEL");
-        }
-    
-        public virtual ObjectResult<Nullable<int>> PA_PLAN_AREA_EXISTE(Nullable<int> iD_PERIODOACADEMICO, Nullable<int> iD_AREA, Nullable<int> iD_PLANESTUDIO, Nullable<int> iD_GRADO)
-        {
-            var iD_PERIODOACADEMICOParameter = iD_PERIODOACADEMICO.HasValue ?
-                new ObjectParameter("ID_PERIODOACADEMICO", iD_PERIODOACADEMICO) :
-                new ObjectParameter("ID_PERIODOACADEMICO", typeof(int));
-    
-            var iD_AREAParameter = iD_AREA.HasValue ?
-                new ObjectParameter("ID_AREA", iD_AREA) :
-                new ObjectParameter("ID_AREA", typeof(int));
-    
-            var iD_PLANESTUDIOParameter = iD_PLANESTUDIO.HasValue ?
-                new ObjectParameter("ID_PLANESTUDIO", iD_PLANESTUDIO) :
-                new ObjectParameter("ID_PLANESTUDIO", typeof(int));
-    
-            var iD_GRADOParameter = iD_GRADO.HasValue ?
-                new ObjectParameter("ID_GRADO", iD_GRADO) :
-                new ObjectParameter("ID_GRADO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PA_PLAN_AREA_EXISTE", iD_PERIODOACADEMICOParameter, iD_AREAParameter, iD_PLANESTUDIOParameter, iD_GRADOParameter);
-        }
-    
         public virtual ObjectResult<PA_PLAN_ASIGNATURA_LISTA_VIGENTE_Result> PA_PLAN_ASIGNATURA_LISTA_VIGENTE(Nullable<int> iD_PERIODOACADEMICO, Nullable<int> iD_PLANAREA, Nullable<int> iD_ASIGNATURA, Nullable<int> pAGINA_INICIO, Nullable<int> tAMANIO_PAGINA)
         {
             var iD_PERIODOACADEMICOParameter = iD_PERIODOACADEMICO.HasValue ?
@@ -196,11 +251,64 @@ namespace GDirectiva.Core.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_ASIGNATURA_LISTA_VIGENTE_Result>("PA_PLAN_ASIGNATURA_LISTA_VIGENTE", iD_PERIODOACADEMICOParameter, iD_PLANAREAParameter, iD_ASIGNATURAParameter, pAGINA_INICIOParameter, tAMANIO_PAGINAParameter);
         }
     
-        public virtual ObjectResult<PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result> PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA(Nullable<int> iD_PLANASIGNATURA, Nullable<int> pAGINA_INICIO, Nullable<int> tAMANIO_PAGINA)
+        public virtual int PA_PLAN_ASIGNATURA_META_ELIMINAR(Nullable<int> iD_PLANASIGNATURA)
         {
             var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
                 new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
                 new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_PLAN_ASIGNATURA_META_ELIMINAR", iD_PLANASIGNATURAParameter);
+        }
+    
+        public virtual ObjectResult<PA_PLAN_ASIGNATURA_META_LISTA_Result> PA_PLAN_ASIGNATURA_META_LISTA(Nullable<int> iD_PLANASIGNATURA)
+        {
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_ASIGNATURA_META_LISTA_Result>("PA_PLAN_ASIGNATURA_META_LISTA", iD_PLANASIGNATURAParameter);
+        }
+    
+        public virtual int PA_PLAN_ASIGNATURA_META_REGISTRAR(Nullable<int> iD_PLANASIGNATURA, string mETA)
+        {
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            var mETAParameter = mETA != null ?
+                new ObjectParameter("META", mETA) :
+                new ObjectParameter("META", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_PLAN_ASIGNATURA_META_REGISTRAR", iD_PLANASIGNATURAParameter, mETAParameter);
+        }
+    
+        public virtual ObjectResult<PA_PLAN_ASIGNATURA_SEL_Result> PA_PLAN_ASIGNATURA_SEL(Nullable<int> iD_PLANASIGNATURA)
+        {
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_ASIGNATURA_SEL_Result>("PA_PLAN_ASIGNATURA_SEL", iD_PLANASIGNATURAParameter);
+        }
+    
+        public virtual ObjectResult<PA_PLAN_ESTUDIO_SEL_Result> PA_PLAN_ESTUDIO_SEL()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_ESTUDIO_SEL_Result>("PA_PLAN_ESTUDIO_SEL");
+        }
+    
+        public virtual ObjectResult<PA_PLAN_PROYECTO_PEDAGOGICO_LISTA_Result> PA_PLAN_PROYECTO_PEDAGOGICO_LISTA(Nullable<int> iD_PERIODOACADEMICO, Nullable<int> iD_GRADO, Nullable<int> iD_AREA, Nullable<int> pAGINA_INICIO, Nullable<int> tAMANIO_PAGINA)
+        {
+            var iD_PERIODOACADEMICOParameter = iD_PERIODOACADEMICO.HasValue ?
+                new ObjectParameter("ID_PERIODOACADEMICO", iD_PERIODOACADEMICO) :
+                new ObjectParameter("ID_PERIODOACADEMICO", typeof(int));
+    
+            var iD_GRADOParameter = iD_GRADO.HasValue ?
+                new ObjectParameter("ID_GRADO", iD_GRADO) :
+                new ObjectParameter("ID_GRADO", typeof(int));
+    
+            var iD_AREAParameter = iD_AREA.HasValue ?
+                new ObjectParameter("ID_AREA", iD_AREA) :
+                new ObjectParameter("ID_AREA", typeof(int));
     
             var pAGINA_INICIOParameter = pAGINA_INICIO.HasValue ?
                 new ObjectParameter("PAGINA_INICIO", pAGINA_INICIO) :
@@ -210,7 +318,37 @@ namespace GDirectiva.Core.Entities
                 new ObjectParameter("TAMANIO_PAGINA", tAMANIO_PAGINA) :
                 new ObjectParameter("TAMANIO_PAGINA", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result>("PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA", iD_PLANASIGNATURAParameter, pAGINA_INICIOParameter, tAMANIO_PAGINAParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_PROYECTO_PEDAGOGICO_LISTA_Result>("PA_PLAN_PROYECTO_PEDAGOGICO_LISTA", iD_PERIODOACADEMICOParameter, iD_GRADOParameter, iD_AREAParameter, pAGINA_INICIOParameter, tAMANIO_PAGINAParameter);
+        }
+    
+        public virtual ObjectResult<PA_PLAN_PROYECTO_PEDAGOGICO_SEL_Result> PA_PLAN_PROYECTO_PEDAGOGICO_SEL(Nullable<int> planProyectoPedagogicoId)
+        {
+            var planProyectoPedagogicoIdParameter = planProyectoPedagogicoId.HasValue ?
+                new ObjectParameter("PlanProyectoPedagogicoId", planProyectoPedagogicoId) :
+                new ObjectParameter("PlanProyectoPedagogicoId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_PLAN_PROYECTO_PEDAGOGICO_SEL_Result>("PA_PLAN_PROYECTO_PEDAGOGICO_SEL", planProyectoPedagogicoIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> PA_PLAN_PROYECTO_PEDAGOGICO_EXISTE(Nullable<int> iD_PERIODOACADEMICO, Nullable<int> iD_AREA, Nullable<int> iD_PLANESTUDIO, Nullable<int> iD_GRADO)
+        {
+            var iD_PERIODOACADEMICOParameter = iD_PERIODOACADEMICO.HasValue ?
+                new ObjectParameter("ID_PERIODOACADEMICO", iD_PERIODOACADEMICO) :
+                new ObjectParameter("ID_PERIODOACADEMICO", typeof(int));
+    
+            var iD_AREAParameter = iD_AREA.HasValue ?
+                new ObjectParameter("ID_AREA", iD_AREA) :
+                new ObjectParameter("ID_AREA", typeof(int));
+    
+            var iD_PLANESTUDIOParameter = iD_PLANESTUDIO.HasValue ?
+                new ObjectParameter("ID_PLANESTUDIO", iD_PLANESTUDIO) :
+                new ObjectParameter("ID_PLANESTUDIO", typeof(int));
+    
+            var iD_GRADOParameter = iD_GRADO.HasValue ?
+                new ObjectParameter("ID_GRADO", iD_GRADO) :
+                new ObjectParameter("ID_GRADO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PA_PLAN_PROYECTO_PEDAGOGICO_EXISTE", iD_PERIODOACADEMICOParameter, iD_AREAParameter, iD_PLANESTUDIOParameter, iD_GRADOParameter);
         }
     }
 }

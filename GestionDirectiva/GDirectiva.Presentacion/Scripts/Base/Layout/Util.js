@@ -255,3 +255,29 @@ GDirectiva.Presentacion.Web.Components.Util.SoloNumeros = function (e) {
             tecla === inicioKeyCode ||
             tecla === finKeyCode);
 };
+
+GDirectiva.Presentacion.Web.Components.Util.ConvertirFechaACadena = function (dateAsFromServerSide) {
+    if (dateAsFromServerSide != null && dateAsFromServerSide != "") {
+        date = new Date(parseInt(dateAsFromServerSide.substr(6)));
+
+        var pad = "00"
+
+        var day = '' + date.getDate();
+        day = pad.substring(0, pad.length - day.length) + day
+
+        var month = '' + (date.getMonth() + 1);
+        month = pad.substring(0, pad.length - month.length) + month
+
+        var year = '' + date.getFullYear();
+
+        return day + '/' + month + '/' + year;
+    } else {
+        return '';
+    }
+};
+
+GDirectiva.Presentacion.Web.Components.Util.ConvertirCadenaAFecha = function (dateString) {
+    var dateParts = dateString.split("/");
+
+    return new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+};

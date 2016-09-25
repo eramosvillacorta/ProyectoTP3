@@ -24,7 +24,6 @@ namespace GDirectiva.Core.Entities
         public System.DateTime FechaCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
     
-        public virtual Empleado Empleado { get; set; }
         public virtual PlanProyectoPedagogico PlanProyectoPedagogico { get; set; }
     }
 }

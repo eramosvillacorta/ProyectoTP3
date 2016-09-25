@@ -69,12 +69,12 @@ namespace GDirectiva.Domain.Main
                 {
                     planArea.Estado = "REGISTRADO";
                     planArea.FechaCreacion = DateTime.Now;
-                    objDA.InsertarPlanArea(planArea);
+                    resultado.Result = objDA.InsertarPlanArea(planArea);
                     resultado.IsProcess = true;
                 }
                 else
                 {
-                    resultado.Message = "El Plan de estudio existe para el siguiente: Periodo, Area Curricular o Grado";
+                    resultado.Message = "El Plan de área existe para el siguiente: Periodo Académico, Área Curricular o Grado";
                     resultado.IsProcess = false;
                 }
             }
@@ -97,6 +97,7 @@ namespace GDirectiva.Domain.Main
                 planArea.Estado = "REGISTRADO";
                 planArea.FechaModificacion = DateTime.Now;
                 objDA.ActualizarPlanArea(planArea);
+                resultado.Result = planArea;
 
                 resultado.IsProcess = true;
             }

@@ -17,7 +17,7 @@ namespace GDirectiva.Core.Entities
         public Curso()
         {
             this.PlanAsignatura = new HashSet<PlanAsignatura>();
-            this.Empleado = new HashSet<Empleado>();
+            this.CursoDocente = new HashSet<CursoDocente>();
         }
     
         public int Id_Asignatura { get; set; }
@@ -26,6 +26,6 @@ namespace GDirectiva.Core.Entities
     
         public virtual ICollection<PlanAsignatura> PlanAsignatura { get; set; }
         public virtual AreaCurricular AreaCurricular { get; set; }
-        public virtual ICollection<Empleado> Empleado { get; set; }
+        public virtual ICollection<CursoDocente> CursoDocente { get; set; }
     }
 }

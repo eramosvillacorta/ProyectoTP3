@@ -17,6 +17,7 @@ namespace GDirectiva.Core.Entities
         public PlanAsignatura()
         {
             this.ActividadPlanAsignatura = new HashSet<ActividadPlanAsignatura>();
+            this.PlanAsignaturaMeta = new HashSet<PlanAsignaturaMeta>();
         }
     
         public int Id_PlanAsignatura { get; set; }
@@ -30,9 +31,9 @@ namespace GDirectiva.Core.Entities
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string Estado { get; set; }
     
-        public virtual Empleado Empleado { get; set; }
         public virtual ICollection<ActividadPlanAsignatura> ActividadPlanAsignatura { get; set; }
         public virtual PlanArea PlanArea { get; set; }
         public virtual Curso Curso { get; set; }
+        public virtual ICollection<PlanAsignaturaMeta> PlanAsignaturaMeta { get; set; }
     }
 }

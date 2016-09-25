@@ -22,8 +22,8 @@ namespace GDirectiva.Core.Entities
         public string NOMBRE_ASIGNATURA { get; set; }
         public Nullable<int> ID_EMPLEADO { get; set; }
         public int ID_PERIODOACADEMICO { get; set; }
+        public string PERIODO { get; set; }
         public string NOMBRE_PLANAREA { get; set; }
         public string ESTADO { get; set; }
-        public string PERIODO { get; set; }
     }
 }

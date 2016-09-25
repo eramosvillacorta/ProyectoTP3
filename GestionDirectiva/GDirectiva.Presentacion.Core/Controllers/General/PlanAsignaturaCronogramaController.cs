@@ -36,6 +36,10 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
             if (pId_Plan_Asignatura > 0)
             {
                 model.planAsignatura = bl_PlanAsignatura.ObtenerPlanAsignatura(pId_Plan_Asignatura).Result;
+                var bl_PeriodoAcademico = new BL_PeriodoAcademico();
+                var periodoAcademico = bl_PeriodoAcademico.ListarPeriodosAcademicos().Where(item => item.ID_PERIODOACADEMICO == model.planAsignatura.ID_PERIODOACADEMICO).FirstOrDefault();
+                model.fechaInicioPeriodo = periodoAcademico.FECHA_INICIO.Value.ToString("dd/MM/yyyy");
+                model.fechaFinPeriodo = periodoAcademico.FECHA_FIN.Value.ToString("dd/MM/yyyy");
             }
             return PartialView(model);
         }
@@ -101,6 +105,27 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
             {
                 resultado.Result = null;
             }
+            return Json(resultado);
+        }
+
+        public JsonResult Registrar(int Id_Plan_Asignatura, List<PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result> request)
+        {
+            var bl_PlanAsignatura = new BL_PlanAsignatura();
+            var proceso = bl_PlanAsignatura.RegistrarPlanAsignaturaVigente(Id_Plan_Asignatura, request);
+            return Json(proceso);
+        }
+
+        public JsonResult ListarEmpleado(int idCurso)
+        {
+            var bl_PlanAsignatura = new BL_PlanAsignatura();
+            var resultado = bl_PlanAsignatura.CursoDocente(idCurso);
+            return Json(resultado);
+        }
+
+        public JsonResult ListarMeta(int pId_PlanAsignatura)
+        {
+            var bl_PlanAsignatura = new BL_PlanAsignatura();
+            var resultado = bl_PlanAsignatura.ListarPlanAsignaturaMeta(pId_PlanAsignatura);
             return Json(resultado);
         }
         #endregion

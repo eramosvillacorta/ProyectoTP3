@@ -127,7 +127,7 @@
     <value>Criterios</value>
   </data>
   <data name="EtiquetaDocumento" xml:space="preserve">
-    <value>Documento</value>
+    <value>Documento de Plan de Área</value>
   </data>
   <data name="EtiquetaEstado" xml:space="preserve">
     <value>Estado</value>
@@ -145,7 +145,7 @@
     <value>Objetivos</value>
   </data>
   <data name="EtiquetaPeriodoAcademico" xml:space="preserve">
-    <value>Periodo académico</value>
+    <value>Periodo Académico</value>
   </data>
   <data name="EtiquetaRequisitos" xml:space="preserve">
     <value>Requisitos</value>
@@ -163,6 +163,6 @@
     <value>Plan de Área</value>
   </data>
   <data name="MensajeDebeSeleccionarArchivoWord" xml:space="preserve">
-    <value>Debe seleccionar el archivo Excel (.doc | .docx).</value>
+    <value>Debe seleccionar el archivo Word (.doc | .docx).</value>
   </data>
 </root>
