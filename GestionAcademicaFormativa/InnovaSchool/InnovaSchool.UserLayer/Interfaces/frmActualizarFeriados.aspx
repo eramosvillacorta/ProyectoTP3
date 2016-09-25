@@ -192,7 +192,7 @@
             <h2>Actividades Afectadas Por Feriado</h2>
         </div>
         <div class="modal-body">
-            <p>Las siguientes actividades serán afectadas por el feriado registrado</p>
+            <p>Las siguientes actividades serán afectadas por el feriado registrado:</p>
             <asp:GridView ID="gvActividad" runat="server"
                 CssClass="table table-striped table-bordered bootstrap-datatable datatable dataTable"
                 AutoGenerateColumns="False" OnRowDataBound="gvActividad_RowDataBound">
