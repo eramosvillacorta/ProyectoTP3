@@ -51,5 +51,17 @@ namespace InnovaSchool.BL
         {
             return DActividad.ConsultarActividadesAfectadas(EActividad);
         }
+
+        public int SuspenderActividadFeriado(EActividad EActividad, EUsuario EUsuario)
+        {
+            return DActividad.SuspenderActividadFeriado(EActividad, EUsuario);
+        }
+
+        public int ActivarActividadFeriado(EActividad EActividad, EUsuario EUsuario)
+        {
+            return DActividad.ActivarActividadFeriado(EActividad, EUsuario);
+        }
+        
+
     }
 }

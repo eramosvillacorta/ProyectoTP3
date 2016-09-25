@@ -148,7 +148,7 @@ namespace InnovaSchool.DAL
             return retval;
         }
 
-        public int EliminarFeriado(EFeriado EFeriado)
+        public int EliminarFeriado(EFeriado EFeriado, EUsuario EUsuario)
         {
             int retval = 0;
             cn.Open();
@@ -156,6 +156,7 @@ namespace InnovaSchool.DAL
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@idFeriado", EFeriado.IdFeriado));
+                cmd.Parameters.Add(new SqlParameter("@usuCreacion", EUsuario.Usuario));
                 retval = cmd.ExecuteNonQuery();
             }
             cn.Close();

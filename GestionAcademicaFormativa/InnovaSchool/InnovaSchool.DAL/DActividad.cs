@@ -249,18 +249,55 @@ namespace InnovaSchool.DAL
             using (SqlCommand cmd = new SqlCommand("SP_ConsultarActividadesAfectadas", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@FechaInicio", EActividad.FechaInicio));
-                cmd.Parameters.Add(new SqlParameter("@FechaTermino", EActividad.FechaTermino));
+                cmd.Parameters.Add(new SqlParameter("@fechaInicio", EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@fechaTermino", EActividad.FechaTermino));
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         retval.Add(new EActividad
                         {
-                            IdActividad = int.Parse(reader["idActividad"].ToString())
+                            IdActividad = int.Parse(reader["IdActividad"].ToString()),
+                            Nombre = reader["Nombre"].ToString(),
+                            IdCalendario = int.Parse(reader["IdCalendario"].ToString()),
+                            Tipo = int.Parse(reader["Tipo"].ToString()),
+                            FechaInicio = Convert.ToDateTime(reader["FechaInicio"].ToString()),
+                            FechaTermino = reader.IsDBNull(3) ? (DateTime?)null : Convert.ToDateTime(reader["FechaTermino"].ToString())
                         });
                     }
                 }
+            }
+            cn.Close();
+            return retval;
+        }
+
+        public int SuspenderActividadFeriado(EActividad EActividad, EUsuario EUsuario)
+        {
+            int retval = 0;
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_SuspenderActividadFeriado", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@fechaInicio", EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@fechaTermino", EActividad.FechaTermino));
+                cmd.Parameters.Add(new SqlParameter("@UsuCreacion", EUsuario.Usuario));
+                retval = cmd.ExecuteNonQuery();
+            }
+            cn.Close();
+            return retval;
+        }
+
+        public int ActivarActividadFeriado(EActividad EActividad, EUsuario EUsuario)
+        {
+            int retval = 0;
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_ActivarActividadFeriado", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@fechaInicio", EActividad.FechaInicio));
+                cmd.Parameters.Add(new SqlParameter("@fechaTermino", EActividad.FechaTermino));
+                cmd.Parameters.Add(new SqlParameter("@UsuCreacion", EUsuario.Usuario));
+                retval = cmd.ExecuteNonQuery();
             }
             cn.Close();
             return retval;

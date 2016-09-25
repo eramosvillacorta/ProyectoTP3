@@ -22,9 +22,7 @@ namespace InnovaSchool.Entity
         public int Tipo { get; set; }
         public DateTime? FecModificacion { get; set; }
         public int Estado { get; set; }
-
         public string Solicitante { get; set; }
-
         public List<EDetalleActividad> ListaDetalleActividad { get; set; }
     }
 }
