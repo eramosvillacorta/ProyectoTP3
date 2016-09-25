@@ -35,7 +35,12 @@ namespace InnovaSchool.BL
         public int RegistrarAperturaCalendario(EUsuario EUsuario)
         {
             return DCalendario.RegistrarAperturaCalendario(EUsuario);
-        }  
+        }
+
+        public ECalendario ConsultarTipoCalendario(ECalendario ECalendario)
+        {
+            return DCalendario.ConsultarTipoCalendario(ECalendario);
+        }
 
     }
         

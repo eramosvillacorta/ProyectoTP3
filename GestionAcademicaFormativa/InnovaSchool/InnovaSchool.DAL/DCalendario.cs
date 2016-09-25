@@ -127,5 +127,29 @@ namespace InnovaSchool.DAL
             cn.Close();
             return retval;
         }
+
+        public ECalendario ConsultarTipoCalendario(ECalendario ECalendario)
+        {
+            ECalendario retval = null;
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand("SP_ConsultarTipoCalendario", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@IdCalendario", ECalendario.IdCalendario));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        retval = new ECalendario()
+                        {
+                            Tipo = reader["tipo"].ToString()
+                        };
+                    }
+                }
+            }
+            cn.Close();
+            return retval;
+        }
+        
     }
 }

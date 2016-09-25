@@ -195,21 +195,20 @@
             <p>Las siguientes actividades serán afectadas por el feriado registrado</p>
             <asp:GridView ID="gvActividad" runat="server"
                 CssClass="table table-striped table-bordered bootstrap-datatable datatable dataTable"
-                AutoGenerateColumns="False">
+                AutoGenerateColumns="False" OnRowDataBound="gvActividad_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="IdCalendario" HeaderText="IdActividad" Visible="false" />
-                    <asp:BoundField DataField="IdCalendario" HeaderText="Nombre"/>
-                    <asp:BoundField DataField="IdAgenda" HeaderText="Actividad" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />
-                    <asp:BoundField DataField="Tipo" HeaderText="Tipo de Actividad" ItemStyle-CssClass="align-cen" HeaderStyle-Width="15%"/>
-                    <asp:BoundField DataField="Estado" HeaderText="Responsable"/>
-                    <asp:BoundField DataField="Estado" HeaderText="Fecha de Inicio"/>
-                    <asp:BoundField DataField="Estado" HeaderText="Fecha de Termino"/>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" HeaderStyle-Width="36%" />
+                    <asp:BoundField DataField="idCalendario" HeaderText="Actividad" ItemStyle-CssClass="align-cen" HeaderStyle-Width="12%" />
+                    <asp:BoundField DataField="Tipo" HeaderText="Tipo de Actividad" ItemStyle-CssClass="align-cen" HeaderStyle-Width="12%"/>
+                    <asp:BoundField DataField="fechaInicio" HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />
+                    <asp:BoundField DataField="fechaTermino" HeaderText="Fecha de Termino" ItemStyle-CssClass="align-cen" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />
                 </Columns>
             </asp:GridView>
             <p>¿Está seguro de registrar el feriado y suspender las actividades programadas?</p>
         </div>
         <div class="modal-footer">
-            <asp:Button ID="Button1" runat="server" type="submit" Text="Aceptar" class="btn btn-primary" UseSubmitBehavior="False" />
+            <asp:Button ID="btnAfectaActividad" runat="server" type="submit" Text="Aceptar" class="btn btn-primary" UseSubmitBehavior="False" OnClick="btnAfectaActividad_Click" />
             <a href="#" class="btn btn-success" data-dismiss="modal">Cancelar</a>
         </div>
     </div>

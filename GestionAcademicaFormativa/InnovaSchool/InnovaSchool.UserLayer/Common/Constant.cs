@@ -83,6 +83,7 @@ namespace InnovaSchool.UserLayer.Common
         public static string TituloRegistroFeriado = ConfigurationManager.AppSettings["TituloRegistroFeriado"].Trim();
         public static string MensajeRegistroFeriado = ConfigurationManager.AppSettings["MensajeRegistroFeriado"].Trim();
         public static string TituloRegistroFeriadoExsistente = ConfigurationManager.AppSettings["TituloRegistroFeriadoExsistente"].Trim();
+        public static string MensajeRegistroFeriadoAfectado = ConfigurationManager.AppSettings["MensajeRegistroFeriadoAfectado"].Trim();
         public static string MensajeErrorRegistrarFeriado = ConfigurationManager.AppSettings["MensajeErrorRegistrarFeriado"].Trim();
         public static string MensajeRegistroFeriadoExistente = ConfigurationManager.AppSettings["MensajeRegistroFeriadoExistente"].Trim();
         public static string TituloEliminarFeriado = ConfigurationManager.AppSettings["TituloEliminarFeriado"].Trim();
