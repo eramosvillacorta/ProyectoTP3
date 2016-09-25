@@ -149,7 +149,7 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="txtFechaFin">Fecha de Termino</label>
+                            <label class="control-label" for="txtFechaFin">Fecha de Término</label>
                             <div class="controls">
                                 <asp:TextBox ID="txtFechaFin" runat="server" type="text" class="input-medium datepicker"
                                     title="Se necesita una fecha de fin"></asp:TextBox>
@@ -159,7 +159,7 @@
                                     ForeColor="Red"
                                     Font-Size="Small"
                                     Display="Dynamic"
-                                    ErrorMessage="<div><i>*Se necesita una fecha de Termino</i></div>">
+                                    ErrorMessage="<div><i>*Se necesita una fecha de Término</i></div>">
                                 </asp:RequiredFieldValidator>
                                 <asp:RangeValidator ID="rvFechaFin" runat="server" 
                                     ValidationGroup="FechaValid"
@@ -179,7 +179,7 @@
                                     ForeColor="Red"
                                     Font-Size="Small"
                                     Display="Dynamic"
-                                    ErrorMessage="<div><i>*La fecha de Termino debe ser mayor o igual a la fecha actual y a la fecha de inicio.</i></div>">
+                                    ErrorMessage="<div><i>*La fecha de Término debe ser mayor o igual a la fecha actual y a la fecha de inicio.</i></div>">
                                 </asp:CompareValidator>
                                 
                                 <asp:Button ID="btnIngresarHoras" runat="server" Text="Registar Horas" class="btn btn-primary" ValidationGroup="FechaValid"
@@ -346,7 +346,7 @@
                                     <asp:BoundField DataField="EActividad.Tipo" HeaderText="Tipo de Actividad" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%" />                                                                                                       
                                     <asp:BoundField DataField="EActividad.UsuCreacion" HeaderText="Responsable" ItemStyle-CssClass="align-cen" HeaderStyle-Width="10%"/>                                                              
                                     <asp:BoundField DataField="EActividad.FechaInicio" HeaderText="Fecha de Inicio" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />
-                                    <asp:BoundField DataField="EActividad.FechaTermino" HeaderText="Fecha de Termino" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />                                                                                                          
+                                    <asp:BoundField DataField="EActividad.FechaTermino" HeaderText="Fecha de Término" ItemStyle-CssClass="align-cen"  DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="10%" />                                                                                                          
                                     <asp:TemplateField Visible="false">
                                         <ItemTemplate>
                                             <asp:Label id="lblAlcance" runat ="server" text='<%# Eval("EActividad.Alcance")%>' />
