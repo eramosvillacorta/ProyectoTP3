@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Aprobación de Curricula";
+}
+<h3 class="text-info">Bandeja de Aprobación de Curricula</h3>
+<div id="lista" class="container"></div>
+
+<script type="text/javascript">
+    var Curricula = function () {
+        thiss = this;
+
+        this.Iniciar = function () {
+            $.ajax({
+                url: '/aprobarcurricula/consultar',
+                contentType: 'application/html; charset=utf-8',
+                data: {},
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#lista').html(data);
+
+                    $('#btnBuscar').click(function () {
+                        thiss.Listar();
+                    });
+
+                    $('#btnLimpiar').click(function () {
+                        thiss.Limpiar();
+                    });
+
+                    $('#btnGuardarEstado').click(function () {
+                        thiss.Guardar();
+                    });
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+        this.Limpiar = function () {
+            $('#txtBusCod').val('');
+        };
+        this.Listar = function () {
+            var data = {
+                codigo: $('#txtBusCod').val(),
+                inicio: $('#txtBusAnhoInicio').val(),
+                fin: $('#txtBusAnhoFin').val()
+            };
+
+            $.ajax({
+                url: '/aprobarcurricula/listar',
+                contentType: 'application/html; charset=utf-8',
+                data: data,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#pnlLista').html(data);
+
+                    $('#tblLista button').click(function () {
+                        if ($(this).attr('name') == 'btnAprobar') {
+                            var curricula = $(this).parent().parent().find('td').eq(0).attr('data-value');
+                            var codigo = $(this).parent().parent().find('td').eq(0).html();
+
+                            $('#txhIdCurricula').val(curricula);
+                            $('#txtCodigo').val(codigo);
+                            $('#pnlCambiarEstado').modal('show');
+                        }
+                    });
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+        this.Guardar = function () {
+            if ($('#ddlEstado').val() == '0') {
+                alert('Seleccionar un estado');
+                return false;
+            } else if ($('#ddlEstado').val() == '5' && $('#txtMotivo').val() == '') {
+                alert('Ingrese motivo de rechazo');
+                return false;
+            }
+
+            if (!confirm('¿Está seguro de guardar la curricula?')) return false;
+
+            var data = {
+                curricula: $('#txhIdCurricula').val(),
+                codigo: $('#txtCodigo').val(),
+                estado: $('#ddlEstado').val(),
+                motivo: $('#txtMotivo').val()
+            };
+
+            $.ajax({
+                url: '/aprobarcurricula/guardarestado',
+                contentType: 'application/json; charset=utf-8',
+                data: data,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Exito ? data.Exito : data.Error);
+
+                    if (data.Exito) $('#pnlCambiarEstado').modal('hide');
+
+                    thiss.Listar();
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+    }
+
+    $(document).ready(function () {
+        var curricula = new Curricula();
+        curricula.Iniciar();
+    });
+</script>

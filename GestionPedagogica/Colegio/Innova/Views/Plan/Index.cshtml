@@ -1,0 +1,54 @@
+﻿<br />
+<div class="panel panel-default">
+    <div class="panel-heading">Registrar Plan de Estudios EBR</div>
+    <div class="panel-body">
+        <div id="idDatosPrincipales">
+            @{Html.RenderAction("DatosPrincipales", "Plan");}
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Plan de Estudios Nivel Primaria</div>
+    <div class="panel-body">
+        <div id="idBusquedaPrimaria">
+            @{Html.RenderAction("PlanPrimaria", "Plan");}
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Plan de Estudios Nivel Secundaria</div>
+    <div class="panel-body">
+        <div id="idBusquedaSecundaria">
+            @{Html.RenderAction("PlanSecundaria", "Plan");}
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="PlanPrimariaPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Registrar Plan Primaria</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="PlanSecundariaPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Registrar Plan Secundaria</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>

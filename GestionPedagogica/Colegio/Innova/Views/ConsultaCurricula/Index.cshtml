@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Consulta de Curricula";
+}
+<h3 class="text-info">Consulta de Curricula</h3>
+<div id="lista" class="container"></div>
+
+<script type="text/javascript">
+    var Curricula = function () {
+        thiss = this;
+
+        this.Iniciar = function () {
+            $.ajax({
+                url: '/consultacurricula/consultar',
+                contentType: 'application/html; charset=utf-8',
+                data: {},
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#lista').html(data);
+
+                    $('#btnBuscar').click(function () {
+                        thiss.Listar();
+                    });
+
+                    $('#btnLimpiar').click(function () {
+                        thiss.Limpiar();
+                    });
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+        this.Limpiar = function () {
+            $('#txtBusCod').val('');
+            $('#ddlBusEstado').val('-1');
+        };
+        this.Listar = function () {
+            var data = {
+                codigo: $('#txtBusCod').val(),
+                inicio: $('#txtBusAnhoInicio').val(),
+                fin: $('#txtBusAnhoFin').val(),
+                estado: $('#ddlBusEstado').val()
+            };
+
+            $.ajax({
+                url: '/consultacurricula/listar',
+                contentType: 'application/html; charset=utf-8',
+                data: data,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#pnlLista').html(data);
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+    }
+
+    $(document).ready(function () {
+        var curricula = new Curricula();
+        curricula.Iniciar();
+    });
+</script>

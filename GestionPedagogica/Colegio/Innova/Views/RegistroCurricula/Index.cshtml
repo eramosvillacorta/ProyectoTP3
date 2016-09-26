@@ -1,0 +1,827 @@
+﻿@{
+    ViewBag.Title = "Registrar Curricula";
+}
+<h3 class="text-info">Registrar Curricula</h3>
+<div class="container">
+    @Html.Action("Registro")
+</div>
+
+<script type="text/javascript">
+    var Curricula = function () {
+        thiss = this;
+
+        this.ListaCompetencia = new Array();
+        this.ListaCurriculaCurso = new Array();
+
+        this.Iniciar = function () {
+            $('#btnAgregarCurso').click(function () {
+                if ($('#ddlBase').val() != '0') {
+                    $('#ddlNivel').val('0');
+                    $('#ddlGrado').val('0');
+                    $('#ddlArea').val('0');
+                    $('#ddlCurso').val('0');
+                    $('#txtHoraAsignar').val('');
+                    $('#txtHoraTotal').val('');
+                    $('#ddlCoordinador').val('0');
+
+                    $('#ddlProfesor').val('0');
+                    $('#ddlCalificacion').val('0');
+                    $('#txtValor').val('');
+
+                    $('#btnAgregarProfesor').html('Agregar');
+                    $('#btnAgregarCalificacion').html('Agregar');
+
+                    $('#tblCursoTema tbody').empty();
+                    $('#tblCursoProfesor tbody').empty();
+                    $('#tblCursoCalificacion tbody').empty();
+                    $('#tblCursoCalificacion tfoot > tr').eq(0).find('th').eq(1).html('');
+
+                    thiss.BloquearCurso();
+                    $('#pnlRegistroCurso').modal('show');
+                } else {
+                    alert('Seleccione Curricula Base');
+                }
+            });
+
+            $('#ddlNivel').change(function () {
+                thiss.ListarGradoProfesor($('#ddlNivel').val());
+            });
+
+            $('#ddlGrado, #ddlArea').change(function () {
+                thiss.ListarCurso($('#ddlGrado').val(), $('#ddlArea').val());
+            });
+
+            $('#ddlCurso').change(function () {
+                thiss.ListarCursoTema($('#ddlBase').val(), $('#ddlCurso').val());
+            });
+
+            $('#btnNuevoTema').click(function () {
+                if ($('#ddlCurso').val() == '0') {
+                    alert('Seleccione un curso');
+                    return;
+                }
+
+                thiss.AgregarTema($('#ddlBase').val());
+            });
+
+            $('#btnAgregarProfesor').click(function () {
+                if ($('#ddlCurso').val() == '0') {
+                    alert('Seleccione un curso');
+                    return;
+                } else if ($('#ddlProfesor').val() == '0') {
+                    alert('Seleccione un profesor');
+                    return;
+                }
+
+                thiss.AgregarProfesor();
+            });
+
+            $('#btnAgregarCalificacion').click(function () {
+                if ($('#ddlCurso').val() == '0') {
+                    alert('Seleccione un curso');
+                    return;
+                } else if ($('#ddlCalificacion').val() == '0') {
+                    alert('Seleccione una calificación');
+                    return;
+                } else if ($('#txtValor').val() == '' || isNaN($('#txtValor').val())) {
+                    alert('Ingrese un valor de nota valido');
+                    return;
+                }
+
+                thiss.AgregarCalificacion();
+            });
+
+            $('#btnGuardarCurso').click(function () {
+                thiss.AgregarCurso();
+            });
+
+            $('#btnGuardar').click(function () {
+                thiss.Guardar();
+            });
+
+            $('#btnEnviar').click(function () {
+                thiss.EnviarAprobacion();
+            });
+
+            $('#btnCancelar').click(function () {
+                if (confirm('¿Esta seguro de cancelar, se regresara a la ventana de consulta curricula?')) {
+                    return true;
+                } else {
+                    return false;
+                }
+                //thiss.ListaCurriculaCurso = new Array();
+
+                //$('#ddlBase').val('0');
+                //$('#txtDesc').val('');
+                //$('#tblDetalle tbody').append(html);
+                //$('#btnGuardar').removeAttr('disabled');
+            });
+        };
+        this.Limpiar = function () {
+            $('#txtBusCod').val('');
+        };
+        this.Guardar = function () {
+            var estadoCurricula = 2;
+
+            if ($('#ddlBase').val() == '0') {
+                alert('Seleccionar curricula base');
+                return false;
+            } else if ($('#tblDetalle tbody > tr').length == 0) {
+                alert('No estan asignados cursos');
+                return false;
+            } else {
+
+                var horaMinima = 0;
+                var idGrado = '0';
+                var idArea = '0';
+
+                /****************VALIDA QUE CUMPLA CON EL MINIMO DE HORAS POR CURSO******************/
+                //Extrae los grados
+                for (var x = 0; x < thiss.ListaCurriculaCurso.length; x++) {
+                    if (thiss.ListaCurriculaCurso[x].idGrado != idGrado) {
+                        idGrado = thiss.ListaCurriculaCurso[x].idGrado;
+                        idArea = thiss.ListaCurriculaCurso[x].idArea;
+                        horaMinima = thiss.ListaCurriculaCurso[x].horaMinima;
+
+                        //Valida en el listado si el grado cumple horas minimas
+                        var hora = 0;
+                        for (var i = 0; i < thiss.ListaCurriculaCurso.length; i++) {
+                            if (thiss.ListaCurriculaCurso[i].idGrado == idGrado &&
+                                thiss.ListaCurriculaCurso[i].idArea == idArea) {
+                                hora += thiss.ListaCurriculaCurso[i].hora;
+                            }
+                        }
+
+                        if (horaMinima > hora) {
+                            if (!confirm('Nivel: [' + thiss.ListaCurriculaCurso[x].noNivel + ']  Grado: [' +
+                                thiss.ListaCurriculaCurso[x].noGrado + ']  Area Curricular: [' +
+                                thiss.ListaCurriculaCurso[x].noArea + '] no cumple con horas minimas, desea continuar?')) {
+                                return false;
+                            } else estadoCurricula = 1;
+                        }
+                    }
+                }
+                /***************************************************************************************/
+
+                /********VALIDA QUE CUMPLA CON TODAS LAS COMPETENCIAS SEGUN LA CURRICULA BASE***********/
+                for (var x = 0; x < thiss.ListaCompetencia.length; x++) {
+                    var boExisteCompetencia = false;
+
+                    for (var z = 0; z < thiss.ListaCurriculaCurso.length; z++) {
+                        for (var y = 0; y < thiss.ListaCurriculaCurso[z].temas.length; y++) {
+                            if (thiss.ListaCompetencia[x].IdCompetencia == thiss.ListaCurriculaCurso[z].temas[y].idCompetencia) {
+                                boExisteCompetencia = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!boExisteCompetencia) {
+                        if (!confirm('Asignar todas las competencias definidas por la Curricula Base, ' +
+                            '  Competencia: [' + thiss.ListaCompetencia[x].Nombre + '] no esta asignada en ningun tema, desea continuar?')) {
+                            return false;
+                        } else estadoCurricula = 1;
+                    }
+                }
+                /***************************************************************************************/
+            }
+
+
+            if (!confirm('¿Está seguro de guardar la curricula?')) return false;
+
+            var detalle = '', detalletema = '', detalleprofesor = '', detallecalificacion = '';
+
+            for (var x = 0; x < thiss.ListaCurriculaCurso.length; x++) {
+                var idCurso = thiss.ListaCurriculaCurso[x].idCurso;
+                var idCoordinador = thiss.ListaCurriculaCurso[x].idCoordinador;
+                var hora = thiss.ListaCurriculaCurso[x].hora;
+
+                var item = '00000' + (x + 1).toString();
+                item = item.substr(item.length - 5, 5);
+
+                detalle += idCurso + '|' + idCoordinador + '|' + item + '|' + hora + '~';
+
+                for (var y = 0; y < thiss.ListaCurriculaCurso[x].temas.length; y++) {
+                    var idUnidad = thiss.ListaCurriculaCurso[x].temas[y].idUnidad;
+                    var idTema = thiss.ListaCurriculaCurso[x].temas[y].idTema;
+                    var tema = thiss.ListaCurriculaCurso[x].temas[y].tema;
+                    var idCompe = thiss.ListaCurriculaCurso[x].temas[y].idCompetencia;
+
+                    detalletema += idCurso + '|' + idUnidad + '|' + idTema + '|' + tema + '|' + idCompe + '~';
+                }
+
+                for (var y = 0; y < thiss.ListaCurriculaCurso[x].profesores.length; y++) {
+                    var idProf = thiss.ListaCurriculaCurso[x].profesores[y].idProfesor;
+
+                    detalleprofesor += idCurso + '|' + idProf + '~';
+                }
+
+                for (var y = 0; y < thiss.ListaCurriculaCurso[x].calificaciones.length; y++) {
+                    var idCalif = thiss.ListaCurriculaCurso[x].calificaciones[y].idCalificacion;
+                    var valor = thiss.ListaCurriculaCurso[x].calificaciones[y].valor;
+
+                    detallecalificacion += idCurso + '|' + idCalif + '|' + valor + '~';
+                }
+            }
+
+            if (detalle.length > 0) detalle = detalle.substr(0, detalle.length - 1);
+            if (detalletema.length > 0) detalletema = detalletema.substr(0, detalletema.length - 1);
+            if (detalleprofesor.length > 0) detalleprofesor = detalleprofesor.substr(0, detalleprofesor.length - 1);
+            if (detallecalificacion.length > 0) detallecalificacion = detallecalificacion.substr(0, detallecalificacion.length - 1);
+
+            var data = {
+                anho: $('#ddlAnho').val(),
+                idCurriculaBase: $('#ddlBase').val(),
+                descripcion: $('#txtDesc').val(),
+                estado: estadoCurricula,
+                detalle: detalle,
+                detalletema: detalletema,
+                detalleprofesor: detalleprofesor,
+                detallecalificacion: detallecalificacion
+            };
+
+            $.ajax({
+                url: '/registrocurricula/guardar',
+                contentType: 'application/json; charset=utf-8',
+                data: data,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Exito ? data.Exito : data.Error);
+
+                    if (data.Exito) {
+                        $('#txhID').val(data.Curricula);
+                        if (data.Estado == 2) $('#btnEnviar').removeAttr('disabled');
+                        $('#btnGuardar').attr('disabled', 'disabled');
+                    }
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+        this.EnviarAprobacion = function () {
+            if (!confirm('¿Está seguro de enviar la curricula para su aprobación?')) return false;
+
+            var data = { curricula: $('#txhID').val() };
+
+            $.ajax({
+                url: '/registrocurricula/guardaraprobacion',
+                contentType: 'application/json; charset=utf-8',
+                data: data,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Exito ? data.Exito : data.Error);
+
+                    if (data.Exito) $('#btnEnviar').attr('disabled', 'disabled');
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            })
+        };
+
+        this.ListarGradoProfesor = function (nivel) {
+            $.ajax({
+                url: '/registrocurricula/listargradoprofesor',
+                contentType: 'application/json; charset=utf-8',
+                data: { nivel: nivel },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#ddlGrado').empty();
+                    $('#ddlProfesor').empty();
+                    $('#ddlCurso').empty();
+
+                    $('#ddlGrado').html(data.htmlOptionGrado);
+                    $('#ddlProfesor').html(data.htmlOptionProfesor);
+                    $('#ddlCurso').html(data.htmlOptionCurso);
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        };
+        this.ListarCurso = function (grado, area) {
+            $.ajax({
+                url: '/registrocurricula/listarcurso',
+                contentType: 'application/json; charset=utf-8',
+                data: { grado: grado, area: area },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#ddlCurso').empty();
+                    $('#tblCursoTema tbody').empty();
+
+                    $('#txtHoraAsignar').val(data.horaBase);
+                    $('#ddlCurso').html(data.htmlOptionCurso);
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        };
+        this.ListarCursoTema = function (base, curso) {
+            $.ajax({
+                url: '/registrocurricula/listarcursotema',
+                contentType: 'application/json; charset=utf-8',
+                data: { curriculaBase: base, curso: curso },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (thiss.ListaCompetencia.length == 0) thiss.ListaCompetencia = data.competencia;
+
+                    $('#tblCursoTema tbody').empty();
+
+                    var htmlOptionUnidad = '<select class="form-control input-sm"><option value="0">Seleccione</option>';
+                    for (var x = 0; x < data.unidad.length; x++) {
+                        htmlOptionUnidad += '<option value="' + data.unidad[x].IdUnidad + '">' + data.unidad[x].Nombre + '</option>';
+                    }
+                    htmlOptionUnidad += '</select>';
+
+                    var htmlOptionCompet = '<select class="form-control input-sm"><option value="0">Seleccione</option>';
+                    for (var x = 0; x < data.competencia.length; x++) {
+                        htmlOptionCompet += '<option value="' + data.competencia[x].IdCompetencia + '">' + data.competencia[x].Nombre + '</option>';
+                    }
+                    htmlOptionCompet += '</select>';
+
+                    var html = '';
+                    for (var x = 0; x < data.tema.length; x++) {
+                        html += '<tr>' +
+                                    '<td data-value="' + data.tema[x].IdCursoTema + '">' + htmlOptionUnidad + '</td>' +
+                                    '<td><input class="form-control input-sm" type="text" value="' + data.tema[x].Temario + '" disabled></td>' +
+                                    '<td>' + htmlOptionCompet + '</td>' +
+                                    '<td><button type="button" name="btnModificar" class="btn btn-xs btn-info">' +
+                                        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></td>' +
+                                    '<td><button type="button" name="btnEliminar" class="btn btn-xs btn-info">' +
+                                        '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>' +
+                                '</tr>';
+                    }
+
+                    $('#tblCursoTema tbody').html(html);
+
+                    $('#tblCursoTema button').click(function () {
+                        if ($(this).attr('name') == 'btnModificar') {
+                            thiss.ModificarTema(this);
+                        } else {
+                            thiss.EliminarTema(this);
+                        }
+                    });
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        };
+
+        this.AgregarCurso = function () {
+            var num = 1;
+            var temas = new Array();
+            var profesores = new Array();
+            var calificaciones = new Array();
+
+            if ($('#ddlGrado').val() == '0') {
+                alert('Seleccionar un grado');
+                return false;
+            } else if ($('#ddlArea').val() == '0') {
+                alert('Seleccionar una area curricular');
+                return false;
+            } else if ($('#ddlCurso').val() == '0') {
+                alert('Seleccionar un curso');
+                return false;
+            } else if ($('#txtHoraAsignar').val() == '' || isNaN($('#txtHoraAsignar').val())) {
+                alert('No tiene hora base minima');
+                return false;
+            } else if (parseFloat($('#txtHoraAsignar').val()) <= 0) {
+                alert('Hora base minima no valido');
+                return false;
+            } else if ($('#txtHoraTotal').val() == '' || isNaN($('#txtHoraTotal').val())) {
+                alert('Ingresar horas asignadas del curso');
+                return false;
+            } else if (parseFloat($('#txtHoraTotal').val()) <= 0) {
+                alert('Ingresar horas asignadas del curso mayor a cero');
+                return false;
+            } else if ($('#tblCursoTema tbody > tr').length == 0) {
+                alert('No existe temas');
+                return false;
+            } else if ($('#ddlCoordinador').val() == '0') {
+                alert('Seleccionar un coordinador');
+                return false;
+            } else if ($('#tblCursoProfesor tbody > tr').length == 0) {
+                alert('No estan asignados profesores');
+                return false;
+            } else if ($('#tblCursoCalificacion tbody > tr').length == 0) {
+                alert('No estan asignados las calificaciones');
+                return false;
+            } else {
+                var boValida = false;
+
+                for (var x = 0; x < thiss.ListaCurriculaCurso.length; x++) {
+                    if (thiss.ListaCurriculaCurso[x].idCurso == $('#ddlCurso').val()) {
+                        alert('Ya se encuentra ingresado el curso');
+                        boValida = true;
+                        break;
+                    }
+
+                    num++;
+                }
+
+                if (boValida) return;
+
+                $('#tblCursoTema tbody > tr').each(function (i, item) {
+                    var unidad = $(item).find('td').eq(0).children().val();
+                    var competencia = $(item).find('td').eq(2).children().val();
+
+                    if (unidad == '0' || competencia == '0') {
+                        alert('Falta seleccionar unidad y/o competencia en el detalle de temas');
+                        boValida = true;
+                        return false;
+                    }
+
+                    temas.push({
+                        idTema: $(item).find('td').eq(0).attr('data-value'),
+                        tema: $(item).find('td').eq(1).children().val(),
+                        idUnidad: $(item).find('td').eq(0).children().val(),
+                        idCompetencia: $(item).find('td').eq(2).children().val()
+                    });
+                });
+
+                if (boValida) return;
+
+                var total = 0;
+
+                $('#tblCursoCalificacion tbody > tr').each(function (i, item) {
+                    total += parseFloat($(item).find('td').eq(1).html().replace('%', ''));
+
+                    calificaciones.push({
+                        idCalificacion: $(item).find('td').eq(0).attr('data-value'),
+                        calificacion: $(item).find('td').eq(0).html(),
+                        valor: $(item).find('td').eq(1).html().replace('%', '')
+                    });
+                });
+
+                if (total != 100) {
+                    alert('Las calificaciones no cumplen la condicion del 100%');
+                    return false;
+                }
+
+                $('#tblCursoProfesor tbody > tr').each(function (i, item) {
+                    profesores.push({
+                        idProfesor: $(item).find('td').eq(0).attr('data-value'),
+                        profesor: $(item).find('td').eq(1).html()
+                    });
+                });
+            }
+
+            var data = {
+                idNivel: $('#ddlNivel').val(),
+                noNivel: $('#ddlNivel option:selected').text(),
+                idGrado: $('#ddlGrado').val(),
+                noGrado: $('#ddlGrado option:selected').text(),
+                idArea: $('#ddlArea').val(),
+                noArea: $('#ddlArea option:selected').text(),
+                idCurso: $('#ddlCurso').val(),
+                horaMinima: parseFloat($('#txtHoraAsignar').val()),
+                hora: parseFloat($('#txtHoraTotal').val()),
+                idCoordinador: $('#ddlCoordinador').val(),
+                temas: temas,
+                profesores: profesores,
+                calificaciones: calificaciones
+            };
+
+            thiss.ListaCurriculaCurso.push(data);
+
+            num = '00000' + num.toString();
+
+            var html = '<tr>' +
+                            '<td data-value="' + data.idCurso + '">' + num.substr(num.length - 5, 5) + '</td>' +
+                            '<td>' + $('#ddlNivel option:selected').text() + '</td>' +
+                            '<td>' + $('#ddlGrado option:selected').text() + '</td>' +
+                            '<td>' + $('#ddlArea option:selected').text() + '</td>' +
+                            '<td>' + $('#ddlCurso option:selected').text() + '</td>' +
+                            '<td>' + $('#txtHoraTotal').val() + '</td>' +
+                            '<td><button type="button" name="btnModificar" class="btn btn-xs btn-info">' +
+                                '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></td>' +
+                            '<td><button type="button" name="btnEliminar" class="btn btn-xs btn-info">' +
+                                '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>' +
+                        '</tr>';
+
+            $('#tblDetalle tbody').append(html);
+
+            $('#tblDetalle button').click(function () {
+                if ($(this).attr('name') == 'btnModificar') {
+                    thiss.ModificarCurso(this);
+                } else {
+                    thiss.EliminarCurso(this);
+                }
+            });
+
+            $('#pnlRegistroCurso').modal('hide');
+            thiss.BloquearCurricula();
+        };
+        this.ModificarCurso = function (obj) {
+            $('#pnlRegistroCurso').modal('show');
+        };
+        this.EliminarCurso = function (obj) {
+            var id = $(obj).parent().parent().find('td').eq(0).attr('data-value');
+
+            for (var x = 0; x < thiss.ListaCurriculaCurso.length; x++) {
+                if (thiss.ListaCurriculaCurso[x].idCurso == id) {
+                    thiss.ListaCurriculaCurso.splice(x, 1);
+                    break;
+                }
+            }
+
+            $(obj).parent().parent().remove();
+
+            var num = 0;
+
+            $('#tblDetalle tbody > tr').each(function (i, item) {
+                num++;
+                var numText = '00000' + num.toString();
+                $(item).find('td').eq(0).html(numText.substr(numText.length - 5, 5));
+
+                if ($(item).attr('class') == 'success') $(item).removeClass('success');
+            });
+
+            thiss.BloquearCurricula();
+        };
+
+        this.AgregarTema = function (base) {
+            $.ajax({
+                url: '/registrocurricula/agregarcursotema',
+                contentType: 'application/json; charset=utf-8',
+                data: { curriculaBase: base },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var htmlOptionUnidad = '<select class="form-control input-sm"><option value="0">Seleccione</option>';
+                    for (var x = 0; x < data.unidad.length; x++) {
+                        htmlOptionUnidad += '<option value="' + data.unidad[x].IdUnidad + '">' + data.unidad[x].Nombre + '</option>';
+                    }
+                    htmlOptionUnidad += '</select>';
+
+                    var htmlOptionCompet = '<select class="form-control input-sm"><option value="0">Seleccione</option>';
+                    for (var x = 0; x < data.competencia.length; x++) {
+                        htmlOptionCompet += '<option value="' + data.competencia[x].IdCompetencia + '">' + data.competencia[x].Nombre + '</option>';
+                    }
+                    htmlOptionCompet += '</select>';
+
+                    var html = '<tr>' +
+                                    '<td data-value="0">' + htmlOptionUnidad + '</td>' +
+                                    '<td><input class="form-control input-sm" type="text" value=""></td>' +
+                                    '<td>' + htmlOptionCompet + '</td>' +
+                                    '<td><button type="button" name="btnModificar" class="btn btn-xs btn-info">' +
+                                        '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>' +
+                                    '<td><button type="button" name="btnEliminar" class="btn btn-xs btn-info">' +
+                                        '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>' +
+                                '</tr>';
+
+                    $('#tblCursoTema tbody').append(html);
+
+                    $('#tblCursoTema button').click(function () {
+                        if ($(this).attr('name') == 'btnModificar') {
+                            thiss.ModificarTema(this);
+                        } else {
+                            thiss.EliminarTema(this);
+                        }
+                    });
+
+                    thiss.BloquearCurso();
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        };
+        this.ModificarTema = function (obj) {
+            if ($(obj).children().hasClass('glyphicon-ok')) {
+                $(obj).children().removeClass('glyphicon-ok');
+                $(obj).children().addClass('glyphicon-edit');
+                $(obj).parent().parent().find('td').eq(1).children().attr('disabled', 'disabled');
+            } else {
+                $(obj).children().removeClass('glyphicon-edit');
+                $(obj).children().addClass('glyphicon-ok');
+                $(obj).parent().parent().find('td').eq(1).children().removeAttr('disabled');
+            }
+        };
+        this.EliminarTema = function (obj) {
+            $(obj).parent().parent().remove();
+
+            thiss.BloquearCurso();
+        };
+
+        this.AgregarProfesor = function () {
+            var num = 1;
+            var id = $('#ddlProfesor').val();
+            var nombre = $('#ddlProfesor option:selected').text();
+            var boEncontrado = false;
+
+            $('#tblCursoProfesor tbody > tr').each(function (i, item) {
+                if ($(item).find('td').eq(0).attr('data-value') == id && $(item).attr('class') != 'success') {
+                    alert('Ya existe profesor');
+                    boEncontrado = true;
+                    return;
+                }
+
+                num++;
+            });
+
+            if (boEncontrado) return;
+
+            if ($('#btnAgregarProfesor').html() != 'Modificar') {
+                num = '00' + num.toString();
+
+                var html = '<tr>' +
+                                '<td data-value="' + id + '">' + num.substr(num.length - 2, 2) + '</td>' +
+                                '<td>' + nombre + '</td>' +
+                                '<td><button type="button" name="btnModificar" class="btn btn-xs btn-info">' +
+                                    '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></td>' +
+                                '<td><button type="button" name="btnEliminar" class="btn btn-xs btn-info">' +
+                                    '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>' +
+                            '</tr>';
+
+                $('#tblCursoProfesor tbody').append(html);
+
+                $('#tblCursoProfesor button').click(function () {
+                    if ($(this).attr('name') == 'btnModificar') {
+                        thiss.ModificarProfesor(this);
+                    } else {
+                        thiss.EliminarProfesor(this);
+                    }
+                });
+            } else {
+                $('#tblCursoProfesor tbody > tr').each(function (i, item) {
+                    if ($(item).attr('class') == 'success') {
+                        $(item).removeClass('success');
+                        $(item).find('td').eq(0).attr('data-value', id);
+                        $(item).find('td').eq(1).html(nombre);
+                        return;
+                    }
+                });
+
+                $('#btnAgregarProfesor').html('Agregar');
+            }
+
+            $('#ddlProfesor').val('0');
+            thiss.BloquearCurso();
+        }
+        this.ModificarProfesor = function (obj) {
+            var fila = $(obj).parent().parent().find('td');
+
+            $(obj).parent().parent().addClass('success');
+
+            $('#ddlProfesor').val(fila.eq(0).attr('data-value'));
+
+            $('#btnAgregarProfesor').html('Modificar');
+        };
+        this.EliminarProfesor = function (obj) {
+            $(obj).parent().parent().remove();
+
+            var num = 0;
+
+            $('#tblCursoProfesor tbody > tr').each(function (i, item) {
+                num++;
+                var numText = '00' + num.toString();
+                $(item).find('td').eq(0).html(numText.substr(numText.length - 2, 2));
+
+                if ($(item).attr('class') == 'success') $(item).removeClass('success');
+            });
+
+            $('#ddlProfesor').val('0');
+            $('#btnAgregarProfesor').html('Agregar');
+            thiss.BloquearCurso();
+        };
+
+        this.AgregarCalificacion = function () {
+            var id = $('#ddlCalificacion').val();
+            var nombre = $('#ddlCalificacion option:selected').text();
+            var valor = $('#txtValor').val();
+            var boEncontrado = false;
+            var total = parseFloat(valor);
+
+            $('#tblCursoCalificacion tbody > tr').each(function (i, item) {
+                if ($(item).find('td').eq(0).attr('data-value') == id && $(item).attr('class') != 'success') {
+                    alert('Ya existe calificación');
+                    boEncontrado = true;
+                    return;
+                }
+
+                if ($(item).attr('class') != 'success')
+                    total += parseFloat($(item).find('td').eq(1).html().replace('%', ''));
+            });
+
+            if (boEncontrado) return;
+            if (total > 100) {
+                alert('No puede exceder el 100%');
+                return;
+            }
+
+            if ($('#btnAgregarCalificacion').html() != 'Modificar') {
+                var html = '<tr>' +
+                                '<td data-value="' + id + '">' + nombre + '</td>' +
+                                '<td>' + valor.toString() + '%</td>' +
+                                '<td><button type="button" name="btnModificar" class="btn btn-xs btn-info">' +
+                                    '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></td>' +
+                                '<td><button type="button" name="btnEliminar" class="btn btn-xs btn-info">' +
+                                    '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>' +
+                            '</tr>';
+
+                $('#tblCursoCalificacion tbody').append(html);
+
+                $('#tblCursoCalificacion tfoot > tr').eq(0).find('th').eq(1).html(total.toString() + '%');
+
+                $('#tblCursoCalificacion button').click(function () {
+                    if ($(this).attr('name') == 'btnModificar') {
+                        thiss.ModificarCalificacion(this);
+                    } else {
+                        thiss.EliminarCalificacion(this);
+                    }
+                });
+            } else {
+                $('#tblCursoCalificacion tbody > tr').each(function (i, item) {
+                    if ($(item).attr('class') == 'success') {
+                        $(item).removeClass('success');
+                        $(item).find('td').eq(0).attr('data-value', id);
+                        $(item).find('td').eq(0).html(nombre);
+                        $(item).find('td').eq(1).html(valor.toString() + '%');
+                        return;
+                    }
+                });
+
+                $('#btnAgregarCalificacion').html('Agregar');
+            }
+
+            $('#ddlCalificacion').val('0');
+            $('#txtValor').val('');
+            thiss.BloquearCurso();
+        }
+        this.ModificarCalificacion = function (obj) {
+            var fila = $(obj).parent().parent().find('td');
+
+            $(obj).parent().parent().addClass('success');
+
+            $('#ddlCalificacion').val(fila.eq(0).attr('data-value'));
+            $('#txtValor').val(fila.eq(1).html().replace('%', ''));
+
+            $('#btnAgregarCalificacion').html('Modificar');
+        };
+        this.EliminarCalificacion = function (obj) {
+            $(obj).parent().parent().remove();
+
+            var total = 0;
+
+            $('#tblCursoCalificacion tbody > tr').each(function (i, item) {
+                total += parseFloat($(item).find('td').eq(1).html().replace('%', ''));
+
+                if ($(item).attr('class') == 'success') $(item).removeClass('success');
+            });
+
+            $('#tblCursoCalificacion tfoot > tr').eq(0).find('th').eq(1).html(total.toString() + '%');
+            $('#btnAgregarCalificacion').html('Agregar');
+            $('#ddlCalificacion').val('0');
+            $('#txtValor').val('');
+            thiss.BloquearCurso();
+        };
+
+        this.BloquearCurricula = function () {
+            var boBloquear = false
+
+            if ($('#tblDetalle tbody > tr').length > 0) boBloquear = true;
+
+            if (boBloquear) {
+                $('#ddlAnho').attr('disabled', 'disabled');
+                $('#ddlBase').attr('disabled', 'disabled');
+            } else {
+                $('#ddlAnho').removeAttr('disabled');
+                $('#ddlBase').removeAttr('disabled');
+
+                thiss.ListaCompetencia = new Array();
+            }
+        };
+        this.BloquearCurso = function () {
+            var boBloquear = false
+
+            if ($('#tblCursoProfesor tbody > tr').length > 0) boBloquear = true;
+            else if ($('#tblCursoCalificacion tbody > tr').length > 0) boBloquear = true;
+
+            if (boBloquear) {
+                $('#ddlNivel').attr('disabled', 'disabled');
+                $('#ddlGrado').attr('disabled', 'disabled');
+                $('#ddlArea').attr('disabled', 'disabled');
+                $('#ddlCurso').attr('disabled', 'disabled');
+            } else {
+                $('#ddlNivel').removeAttr('disabled');
+                $('#ddlGrado').removeAttr('disabled');
+                $('#ddlArea').removeAttr('disabled');
+                $('#ddlCurso').removeAttr('disabled');
+            }
+        };
+    }
+
+    $(document).ready(function () {
+        var curricula = new Curricula();
+        curricula.Iniciar();
+    });
+</script>

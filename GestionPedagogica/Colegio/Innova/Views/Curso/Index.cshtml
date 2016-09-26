@@ -1,11 +1,8 @@
 ﻿@{
     ViewBag.Title = "Consulta de Curso";
 }
-
 <h3 class="text-info">Consulta de Curso</h3>
-
-<div id="lista"></div>
-
+<div id="lista" class="container"></div>
 <div id="registro"></div>
 
 <script type="text/javascript">
@@ -95,12 +92,27 @@
                         thiss.Guardar();
                     });
 
-                    $('#btnAgregar').click(function () {
-                        thiss.AgregarTemario();
-                    });
+                    if ($('#txhID').val() == '0') {
+                        $('#ddlArea').change(function () {
+                            thiss.ObtenerCodigo($('#ddlArea').val());
+                        });
+                    }
 
                     $('#ddlNivel').change(function () {
                         thiss.ListarGrado('ddlGrado', $('#ddlNivel').val());
+                    });
+
+
+                    $('#btnAgregarTema').click(function () {
+                        thiss.AgregarTemario();
+                    });
+
+                    $('#btnModificarTema').click(function () {
+                        thiss.ActualizarTemario();
+                    });
+
+                    $('#btnCancelarTema').click(function () {
+                        thiss.CancelarTemario();
                     });
 
                     $('#tblTemario button').click(function () {
@@ -110,6 +122,9 @@
                             thiss.EliminarTemario(this);
                         }
                     });
+
+                    $('#btnModificarTema').hide();
+                    $('#btnCancelarTema').hide();
                 },
                 error: function (xhr, status) {
                     alert(status);
@@ -119,12 +134,43 @@
         this.Guardar = function () {
             var tema = '';
 
+            if ($('#txtCod').val() == '') {
+                alert('Generar codigo de curso seleccionando area curricular');
+                return false;
+            } else if ($('#txtNom').val() == '') {
+                alert('Ingresar nombre de curso');
+                return false;
+            } else if ($('#ddlArea').val() == '0') {
+                alert('Seleccionar una area curricular');
+                return false;
+            } else if ($('#ddlGrado').val() == '0') {
+                alert('Seleccionar un grado');
+                return false;
+            } else if ($('#ddlCoord').val() == '0') {
+                alert('Seleccionar un coordinador');
+                return false;
+            }
+
+            var minimoTema = parseInt($('#ddlNivel option:selected').attr('data-tema'));
+            var contadorTema = 0;
+
             $('#tblTemario tbody > tr').each(function (i, item) {
-                var uni = $(item).find('td').eq(0).attr('data-value');
-                var tit = $(item).find('td').eq(1).html();
-                tema += uni + '|' + tit + '~';
+                var id = $(item).find('td').eq(0).attr('data-value');
+                var tit = $(item).find('td').eq(0).html();
+                tema += id + '|' + tit + '~';
+                contadorTema++;
             });
+
+            if (contadorTema < minimoTema) {
+                alert('Tiene que ingresar como mínimo ' + minimoTema.toString() + ' temas');
+                return false;
+            }
+
             if (tema.length > 0) tema = tema.substr(0, tema.length - 1);
+
+            if ($('#txhID').val() != '0') {
+                if (!confirm('¿Está seguro de Guardar los datos modificados?')) return false;
+            }
 
             var data = {
                 id: $('#txhID').val(),
@@ -140,14 +186,14 @@
 
             $.ajax({
                 url: '/curso/guardar',
-                contentType: 'application/html; charset=utf-8',
+                contentType: 'application/json; charset=utf-8',
                 data: data,
                 type: 'GET',
-                dataType: 'html',
+                dataType: 'json',
                 success: function (data) {
-                    alert(data);
+                    alert(data.Exito ? data.Exito : data.Error);
 
-                    $('#pnlRegistro').modal('hide');
+                    if (data.Exito) $('#pnlRegistro').modal('hide');
 
                     thiss.Listar();
                 },
@@ -157,6 +203,21 @@
             })
         };
 
+        this.ObtenerCodigo = function (area) {
+            $.ajax({
+                url: '/curso/obtenercodigo',
+                contentType: 'application/html; charset=utf-8',
+                data: { area: area },
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#txtCod').val(data);
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        };
         this.ListarGrado = function (control, nivel) {
             $.ajax({
                 url: '/curso/listargrado',
@@ -171,19 +232,21 @@
                 error: function (xhr, status) {
                     alert(status);
                 }
-            })
+            });
         };
 
         this.AgregarTemario = function () {
-            var uni = $('#ddlUnidad option:selected').val();
-            var uniDes = $('#ddlUnidad option:selected').text();
             var tit = $('#txtTemTit').val();
             var boEncontrado = false;
 
+            if (tit == '') {
+                alert('Ingrese tema');
+                return;
+            }
+
             $('#tblTemario tbody > tr').each(function (i, item) {
-                if ($(item).find('td').eq(0).attr('data-value') == uni) {
-                    $(item).find('td').eq(0).html(uniDes);
-                    $(item).find('td').eq(1).html(tit);
+                if ($(item).find('td').eq(0).html() == tit) {
+                    alert('Ya existe tema');
                     boEncontrado = true;
                     return;
                 }
@@ -192,10 +255,9 @@
             if (boEncontrado) return;
 
             $('#tblTemario tbody').append('<tr>' +
-                '<td data-value="' + uni + '">' + uniDes + '</td>' +
-                '<td>' + tit + '</td>' +
-                '<td><button type="button" name="btnModificar" class="btn btn-xs btn-default">Modificar</button></td>' +
-                '<td><button type="button" id="btnEliminar" class="btn btn-xs btn-default">Eliminar</button></td></tr>');
+                '<td data-value="0">' + tit + '</td>' +
+                '<td><button type="button" name="btnModificar" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></td>' +
+                '<td><button type="button" id="btnEliminar" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>');
 
             $('#tblTemario button').click(function () {
                 if ($(this).attr('name') == 'btnModificar') {
@@ -205,16 +267,79 @@
                 }
             });
 
+            $('#txtTemTit').attr('data-value', '0');
             $('#txtTemTit').val('');
+        };
+        this.ActualizarTemario = function () {
+            var tema = $('#txtTemTit').attr('data-value');
+            var tit = $('#txtTemTit').val();
+            var boEncontrado = false;
+            var filaModificar = null;
+
+            if (tit == '') {
+                alert('Ingrese tema');
+                return;
+            }
+
+            $('#tblTemario tbody > tr').each(function (i, item) {
+                if ($(item).find('td').eq(0).html() == tit && $(item).attr('class') != 'success') {
+                    alert('Ya existe tema');
+                    boEncontrado = true;
+                    return;
+                }
+
+                if ($(item).attr('class') == 'success') filaModificar = item;
+            });
+
+            if (boEncontrado) return;
+
+            if (filaModificar != null) {
+                $(filaModificar).find('td').eq(0).attr('data-value', tema);
+                $(filaModificar).find('td').eq(0).html(tit);
+                $(filaModificar).removeClass('success');
+            }
+
+            $('#txtTemTit').attr('data-value', '0');
+            $('#txtTemTit').val('');
+
+            $('#btnAgregarTema').show();
+            $('#btnModificarTema').hide();
+            $('#btnCancelarTema').hide();
         };
         this.ModificarTemario = function (obj) {
             var fila = $(obj).parent().parent().find('td');
 
-            $('#ddlUnidad').val(fila.eq(0).attr('data-value'));
-            $('#txtTemTit').val(fila.eq(1).text());
+            $(obj).parent().parent().addClass('success');
+
+            $('#txtTemTit').attr('data-value', fila.eq(0).attr('data-value'));
+            $('#txtTemTit').val(fila.eq(0).text());
+
+            $('#btnAgregarTema').hide();
+            $('#btnModificarTema').show();
+            $('#btnCancelarTema').show();
         };
         this.EliminarTemario = function (obj) {
             $(obj).parent().parent().remove();
+
+            $('#txtTemTit').attr('data-value', '0');
+            $('#txtTemTit').val('');
+
+            $('#btnAgregarTema').show();
+            $('#btnModificarTema').hide();
+            $('#btnCancelarTema').hide();
+        };
+        this.CancelarTemario = function (obj) {
+            $('#tblTemario tbody > tr').each(function (i, item) {
+                if ($(item).attr('class') == 'success')
+                    $(item).removeClass('success');
+            });
+
+            $('#txtTemTit').attr('data-value', '0');
+            $('#txtTemTit').val('');
+
+            $('#btnAgregarTema').show();
+            $('#btnModificarTema').hide();
+            $('#btnCancelarTema').hide();
         };
     }
 

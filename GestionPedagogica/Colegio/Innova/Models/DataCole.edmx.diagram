@@ -5,45 +5,186 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5b8f275db415459cb26e5bcb3d2fb136" Name="Diagram1" ZoomLevel="83">
-        <EntityTypeShape EntityType="InnovaModel.AreaCurricular" Width="1.5" PointX="3" PointY="12.25" />
-        <EntityTypeShape EntityType="InnovaModel.Capacidad" Width="1.5" PointX="5.25" PointY="20.875" />
-        <EntityTypeShape EntityType="InnovaModel.Competencia" Width="1.5" PointX="3" PointY="1.875" />
-        <EntityTypeShape EntityType="InnovaModel.Contrato" Width="1.5" PointX="5.25" PointY="16.5" />
-        <EntityTypeShape EntityType="InnovaModel.Curricula" Width="1.5" PointX="3" PointY="5.75" />
-        <EntityTypeShape EntityType="InnovaModel.CurriculaBase" Width="1.5" PointX="0.75" PointY="2.75" />
-        <EntityTypeShape EntityType="InnovaModel.CurriculaBaseCompetencia" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="InnovaModel.Curso" Width="1.5" PointX="5.25" PointY="8.125" />
-        <EntityTypeShape EntityType="InnovaModel.CursoTema" Width="1.5" PointX="7.5" PointY="9" />
-        <EntityTypeShape EntityType="InnovaModel.DetalleCurricula" Width="1.5" PointX="5.25" PointY="4.875" />
-        <EntityTypeShape EntityType="InnovaModel.Docente" Width="1.5" PointX="7.5" PointY="14.625" />
-        <EntityTypeShape EntityType="InnovaModel.DocumentoIdentidad" Width="1.5" PointX="1.5" PointY="21.5" />
-        <EntityTypeShape EntityType="InnovaModel.Empleado" Width="1.5" PointX="3" PointY="14.75" />
-        <EntityTypeShape EntityType="InnovaModel.Grado" Width="1.5" PointX="3" PointY="9" />
-        <EntityTypeShape EntityType="InnovaModel.Nivel" Width="1.5" PointX="0.75" PointY="5.875" />
-        <EntityTypeShape EntityType="InnovaModel.Persona" Width="1.5" PointX="0.75" PointY="15" />
-        <EntityTypeShape EntityType="InnovaModel.PlanEstudiosBase" Width="1.5" PointX="7.5" PointY="6" />
-        <EntityTypeShape EntityType="InnovaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.125" />
-        <EntityTypeShape EntityType="InnovaModel.Unidad" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="InnovaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InnovaModel.Alumno" Width="1.5" PointX="8.25" PointY="58.75" />
+        <EntityTypeShape EntityType="InnovaModel.Apoderado" Width="1.5" PointX="6" PointY="57.875" />
+        <EntityTypeShape EntityType="InnovaModel.Area" Width="1.5" PointX="9" PointY="55.375" />
+        <EntityTypeShape EntityType="InnovaModel.Cronograma" Width="1.5" PointX="6" PointY="64.375" />
+        <EntityTypeShape EntityType="InnovaModel.DocumentoIdentidad" Width="1.5" PointX="1.5" PointY="11.5" />
+        <EntityTypeShape EntityType="InnovaModel.ExpedienteAdmision" Width="1.5" PointX="10.5" PointY="59.5" />
+        <EntityTypeShape EntityType="InnovaModel.Matricula" Width="1.5" PointX="10.5" PointY="62.5" />
+        <EntityTypeShape EntityType="InnovaModel.Parentesco" Width="1.5" PointX="3.75" PointY="58.375" />
+        <EntityTypeShape EntityType="InnovaModel.Proceso" Width="1.5" PointX="8.25" PointY="64.125" />
+        <EntityTypeShape EntityType="InnovaModel.Seccion" Width="1.5" PointX="8.25" PointY="67.5" />
+        <EntityTypeShape EntityType="InnovaModel.Sede" Width="1.5" PointX="6" PointY="61.25" />
+        <EntityTypeShape EntityType="InnovaModel.Agenda" Width="1.5" PointX="6" PointY="15.375" />
+        <EntityTypeShape EntityType="InnovaModel.Ambiente" Width="1.5" PointX="13.5" PointY="12.75" />
+        <EntityTypeShape EntityType="InnovaModel.AprobacionAgenda" Width="1.5" PointX="8.25" PointY="20" />
+        <EntityTypeShape EntityType="InnovaModel.AprobacionCalendario" Width="1.5" PointX="10.5" PointY="16.75" />
+        <EntityTypeShape EntityType="InnovaModel.AprobacionSolicitudActividad" Width="1.5" PointX="15" PointY="41.25" />
+        <EntityTypeShape EntityType="InnovaModel.Calendario" Width="1.5" PointX="8.25" PointY="15.75" />
+        <EntityTypeShape EntityType="InnovaModel.Feriado" Width="1.5" PointX="8.25" PointY="23.75" />
+        <EntityTypeShape EntityType="InnovaModel.SolicitudActividad" Width="1.5" PointX="12.75" PointY="41.125" />
+        <EntityTypeShape EntityType="InnovaModel.ActividadPlanAsignatura" Width="1.5" PointX="13.5" PointY="33.625" />
+        <EntityTypeShape EntityType="InnovaModel.ActividadPlanProyectoPedagogico" Width="1.5" PointX="8.25" PointY="27.75" />
+        <EntityTypeShape EntityType="InnovaModel.Meta" Width="1.5" PointX="7.5" PointY="39.75" />
+        <EntityTypeShape EntityType="InnovaModel.PeriodoAcademico" Width="1.5" PointX="0.75" PointY="35" />
+        <EntityTypeShape EntityType="InnovaModel.PlanArea" Width="1.5" PointX="3" PointY="27" />
+        <EntityTypeShape EntityType="InnovaModel.PlanAsignatura" Width="1.5" PointX="5.25" PointY="32.625" />
+        <EntityTypeShape EntityType="InnovaModel.PlanEstudio" Width="1.5" PointX="0.75" PointY="31.5" />
+        <EntityTypeShape EntityType="InnovaModel.PlanProyectoPedagogico" Width="1.5" PointX="6" PointY="27.125" />
+        <EntityTypeShape EntityType="InnovaModel.ActividadAcademicaPlan" Width="1.5" PointX="12.75" PointY="25.125" />
+        <EntityTypeShape EntityType="InnovaModel.ActividadPropuesta" Width="1.5" PointX="12.75" PointY="17.5" />
+        <EntityTypeShape EntityType="InnovaModel.AlumnoEmpadronado" Width="1.5" PointX="10.5" PointY="23.25" />
+        <EntityTypeShape EntityType="InnovaModel.Asesor" Width="1.5" PointX="6" PointY="7" />
+        <EntityTypeShape EntityType="InnovaModel.Cargo" Width="1.5" PointX="16.25" PointY="19.625" />
+        <EntityTypeShape EntityType="InnovaModel.DetalleProceso" Width="1.5" PointX="8.25" PointY="3.125" />
+        <EntityTypeShape EntityType="InnovaModel.Instrumento" Width="1.5" PointX="12.75" PointY="21.375" />
+        <EntityTypeShape EntityType="InnovaModel.Integrante" Width="1.5" PointX="18.5" PointY="33.375" />
+        <EntityTypeShape EntityType="InnovaModel.Observacion" Width="1.5" PointX="15" PointY="22.875" />
+        <EntityTypeShape EntityType="InnovaModel.ParametroTiempo" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InnovaModel.PartidoPostulante" Width="1.5" PointX="8.25" PointY="6.5" />
+        <EntityTypeShape EntityType="InnovaModel.PlanGobierno" Width="1.5" PointX="10.5" PointY="4.5" />
+        <EntityTypeShape EntityType="InnovaModel.Roles" Width="1.5" PointX="11.25" PointY="11.5" />
+        <EntityTypeShape EntityType="InnovaModel.SubActividad" Width="1.5" PointX="18" PointY="25.125" />
+        <EntityTypeShape EntityType="InnovaModel.Voto" Width="1.5" PointX="13.5" PointY="5.125" />
+        <EntityTypeShape EntityType="InnovaModel.AreaCurricular" Width="1.5" PointX="0.75" PointY="27.875" />
+        <EntityTypeShape EntityType="InnovaModel.Capacidad" Width="1.5" PointX="3" PointY="38" />
+        <EntityTypeShape EntityType="InnovaModel.Competencia" Width="1.5" PointX="0.75" PointY="25" />
+        <EntityTypeShape EntityType="InnovaModel.Curricula" Width="1.5" PointX="8.25" PointY="42.375" />
+        <EntityTypeShape EntityType="InnovaModel.CurriculaBase" Width="1.5" PointX="0.75" PointY="21.625" />
+        <EntityTypeShape EntityType="InnovaModel.CurriculaBaseCompetencia" Width="1.5" PointX="3" PointY="23.125" />
+        <EntityTypeShape EntityType="InnovaModel.Curso" Width="1.5" PointX="3" PointY="32.375" />
+        <EntityTypeShape EntityType="InnovaModel.CursoTema" Width="1.5" PointX="5.25" PointY="44.75" />
+        <EntityTypeShape EntityType="InnovaModel.DetalleCurricula" Width="1.5" PointX="10.5" PointY="33.625" />
+        <EntityTypeShape EntityType="InnovaModel.DetalleCurriculaCalificacion" Width="1.5" PointX="15.75" PointY="31.25" />
+        <EntityTypeShape EntityType="InnovaModel.DetalleCurriculaProfesor" Width="1.5" PointX="15.75" PointY="34.25" />
+        <EntityTypeShape EntityType="InnovaModel.DetalleCurriculaTema" Width="1.5" PointX="15.75" PointY="37.125" />
+        <EntityTypeShape EntityType="InnovaModel.Grado" Width="1.5" PointX="3.75" PointY="17.75" />
+        <EntityTypeShape EntityType="InnovaModel.Nivel" Width="1.5" PointX="1.5" PointY="18.375" />
+        <EntityTypeShape EntityType="InnovaModel.Parametro" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InnovaModel.PlanEstudiosBase" Width="1.5" PointX="6" PointY="23.125" />
+        <EntityTypeShape EntityType="InnovaModel.TipoCalificación" Width="1.5" PointX="13.5" PointY="38.5" />
+        <EntityTypeShape EntityType="InnovaModel.Unidad" Width="1.5" PointX="13.5" PointY="45.5" />
+        <EntityTypeShape EntityType="InnovaModel.Banco" Width="1.5" PointX="6" PointY="50" />
+        <EntityTypeShape EntityType="InnovaModel.Candidato" Width="1.5" PointX="6" PointY="10.625" />
+        <EntityTypeShape EntityType="InnovaModel.Contrato" Width="1.5" PointX="13.5" PointY="28.625" />
+        <EntityTypeShape EntityType="InnovaModel.Convocatoria" Width="1.5" PointX="11.25" PointY="47.75" />
+        <EntityTypeShape EntityType="InnovaModel.ConvocatoriaCandidato" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InnovaModel.Desarrollo" Width="1.5" PointX="9" PointY="49.125" />
+        <EntityTypeShape EntityType="InnovaModel.Empleado" Width="1.5" PointX="8.25" PointY="32" />
+        <EntityTypeShape EntityType="InnovaModel.EstadoCandidato" Width="1.5" PointX="3.75" PointY="8.375" />
+        <EntityTypeShape EntityType="InnovaModel.EstadoCivil" Width="1.5" PointX="1.5" PointY="13.875" />
+        <EntityTypeShape EntityType="InnovaModel.EstadoEmpleado" Width="1.5" PointX="6" PointY="42.25" />
+        <EntityTypeShape EntityType="InnovaModel.FondoPensiones" Width="1.5" PointX="6" PointY="52.5" />
+        <EntityTypeShape EntityType="InnovaModel.Nacionalidad" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InnovaModel.NivelEstudio" Width="1.5" PointX="6" PointY="20" />
+        <EntityTypeShape EntityType="InnovaModel.Persona" Width="1.5" PointX="3.75" PointY="10.75" />
+        <EntityTypeShape EntityType="InnovaModel.Puesto" Width="1.5" PointX="11.25" PointY="53.625" />
+        <EntityTypeShape EntityType="InnovaModel.Seguro" Width="1.5" PointX="6" PointY="47.625" />
+        <EntityTypeShape EntityType="InnovaModel.TipoContrato" Width="1.5" PointX="11.25" PointY="14.375" />
+        <EntityTypeShape EntityType="InnovaModel.TipoPuesto" Width="1.5" PointX="9" PointY="52.75" />
+        <EntityTypeShape EntityType="InnovaModel.Usuario" Width="1.5" PointX="9" PointY="10.5" />
+        <AssociationConnector Association="InnovaModel.FK__AlumnoEmp__idAlu__42CCE065" />
+        <AssociationConnector Association="InnovaModel.FK__Integrant__idAlu__2BB470E3" />
+        <AssociationConnector Association="InnovaModel.R_10" />
+        <AssociationConnector Association="InnovaModel.R_12" />
+        <AssociationConnector Association="InnovaModel.R_14" />
+        <AssociationConnector Association="InnovaModel.R_7" />
+        <AssociationConnector Association="InnovaModel.R_8" />
+        <AssociationConnector Association="InnovaModel.FK_Parentesco" />
+        <AssociationConnector Association="InnovaModel.R_6" />
+        <AssociationConnector Association="InnovaModel.FK_ConvocatoriaArea" />
+        <AssociationConnector Association="InnovaModel.FK_Puesto_Area" />
+        <AssociationConnector Association="InnovaModel.R_50" />
+        <AssociationConnector Association="InnovaModel.FK_Persona_TipoDocumentoI" />
+        <AssociationConnector Association="InnovaModel.R_13" />
+        <AssociationConnector Association="InnovaModel.R_18" />
+        <AssociationConnector Association="InnovaModel.R_23" />
+        <AssociationConnector Association="InnovaModel.AprobacionAgenda_Agenda_FK" />
+        <AssociationConnector Association="InnovaModel.Calendario_Agenda_FK" />
+        <AssociationConnector Association="InnovaModel.Feriado_Agenda_FK" />
+        <AssociationConnector Association="InnovaModel.AprobacionCalendario_Calendario_FK" />
+        <AssociationConnector Association="InnovaModel.AprobacionSolicitudActividad_SolicitudActividad_FK" />
+        <AssociationConnector Association="InnovaModel.R_151" />
+        <AssociationConnector Association="InnovaModel.R_9" />
+        <AssociationConnector Association="InnovaModel.R_141" />
+        <AssociationConnector Association="InnovaModel.R_161" />
+        <AssociationConnector Association="InnovaModel.FK_Meta_PlanAsignatura" />
+        <AssociationConnector Association="InnovaModel.R_111" />
+        <AssociationConnector Association="InnovaModel.R_21" />
+        <AssociationConnector Association="InnovaModel.R_3" />
+        <AssociationConnector Association="InnovaModel.R_4" />
+        <AssociationConnector Association="InnovaModel.R_51" />
+        <AssociationConnector Association="InnovaModel.R_61" />
+        <AssociationConnector Association="InnovaModel.R_71" />
+        <AssociationConnector Association="InnovaModel.R_81" />
+        <AssociationConnector Association="InnovaModel.R_101" />
+        <AssociationConnector Association="InnovaModel.R_121" />
+        <AssociationConnector Association="InnovaModel.R_171" />
+        <AssociationConnector Association="InnovaModel.FK__Actividad__idPla__6AA5C795" />
+        <AssociationConnector Association="InnovaModel.FK__Observaci__idact__6E765879" />
+        <AssociationConnector Association="InnovaModel.FK__SubActivi__idact__6B99EBCE" />
+        <AssociationConnector Association="InnovaModel.FK__Actividad__idPla__7DB89C09" />
+        <AssociationConnector Association="InnovaModel.FK__Observaci__idAct__705EA0EB" />
+        <AssociationConnector Association="InnovaModel.FK__SubActivi__idAct__5D4BCC77" />
+        <AssociationConnector Association="InnovaModel.FK__AlumnoEmp__idPro__66D536B1" />
+        <AssociationConnector Association="InnovaModel.FK__Asesor__idPerson__55DFB4D9" />
+        <AssociationConnector Association="InnovaModel.FK__PartidoPo__idAse__5B988E2F" />
+        <AssociationConnector Association="InnovaModel.FK__Integrant__idCar__2D9CB955" />
+        <AssociationConnector Association="InnovaModel.FK__DetallePr__idPer__62108194" />
+        <AssociationConnector Association="InnovaModel.FK__PlanGobie__idPro__64ECEE3F" />
+        <AssociationConnector Association="InnovaModel.FK__Voto__idProceso__65E11278" />
+        <AssociationConnector Association="InnovaModel.FK__Instrumen__idPla__63F8CA06" />
+        <AssociationConnector Association="InnovaModel.FK__Observaci__idIns__6F6A7CB2" />
+        <AssociationConnector Association="InnovaModel.FK__Integrant__idPar__6C8E1007" />
+        <AssociationConnector Association="InnovaModel.FK__PlanGobie__idPar__6D823440" />
+        <AssociationConnector Association="InnovaModel.FK__Voto__idPartido__6304A5CD" />
+        <AssociationConnector Association="InnovaModel.FK__Roles__idUser__605D434C" />
+        <AssociationConnector Association="InnovaModel.FK__Usuario__idRol__7BD05397" />
         <AssociationConnector Association="InnovaModel.FK_CurriculaBaseCompetencia_AreaCurricular" />
         <AssociationConnector Association="InnovaModel.FK_Curso_AreaCurricular" />
+        <AssociationConnector Association="InnovaModel.FK_PlanEstudiosBase_AreaCurricular" />
         <AssociationConnector Association="InnovaModel.FK_Capacidad_Competencia" />
         <AssociationConnector Association="InnovaModel.FK_CurriculaBaseCompetencia_Competencia" />
-        <AssociationConnector Association="InnovaModel.FK_DetalleCurricula_Competencia" />
-        <AssociationConnector Association="InnovaModel.FK_Contrato_Empleado1" />
         <AssociationConnector Association="InnovaModel.FK_Curricula_CurriculaBase" />
-        <AssociationConnector Association="InnovaModel.FK_Curricula_Nivel" />
         <AssociationConnector Association="InnovaModel.FK_DetalleCurricula_Curricula" />
         <AssociationConnector Association="InnovaModel.FK_CurriculaBaseCompetencia_CurriculaBase" />
-        <AssociationConnector Association="InnovaModel.FK_PlanEstudiosBase_CurriculaBaseCompetencia" />
+        <AssociationConnector Association="InnovaModel.FK_PlanEstudiosBase_CurriculaBase" />
         <AssociationConnector Association="InnovaModel.FK_Curso_Empleado" />
         <AssociationConnector Association="InnovaModel.FK_Curso_Grado" />
         <AssociationConnector Association="InnovaModel.FK_CursoTema_Curso" />
-        <AssociationConnector Association="InnovaModel.FK_PlanEstudiosBase_Curso" />
-        <AssociationConnector Association="InnovaModel.FK_CursoTema_Unidad" />
-        <AssociationConnector Association="InnovaModel.FK_Persona_DocumentoIdentidad" />
-        <AssociationConnector Association="InnovaModel.FK_Empleado_Persona" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurricula_Curso" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurricula_Empleado" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurriculaCalificacion_DetalleCurricula" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurriculaProfesor_DetalleCurricula" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurriculaTema_DetalleCurricula" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurriculaCalificacion_TipoCalificación" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurriculaProfesor_Empleado" />
+        <AssociationConnector Association="InnovaModel.FK_DetalleCurriculaTema_Unidad" />
         <AssociationConnector Association="InnovaModel.FK_Grado_Nivel" />
-        <AssociationConnector Association="InnovaModel.DocenteCurso" />
+        <AssociationConnector Association="InnovaModel.FK_PlanEstudiosBase_Grado" />
+        <AssociationConnector Association="InnovaModel.FK_Empleado_Banco" />
+        <AssociationConnector Association="InnovaModel.FK_Candidato_Persona" />
+        <AssociationConnector Association="InnovaModel.FK_CandidatoEstado" />
+        <AssociationConnector Association="InnovaModel.FK_EmpleadoCandidato" />
+        <AssociationConnector Association="InnovaModel.FK_Contrato_Empleado" />
+        <AssociationConnector Association="InnovaModel.FK_Contrato_Puesto" />
+        <AssociationConnector Association="InnovaModel.FK_ContratoConvocatoria" />
+        <AssociationConnector Association="InnovaModel.FK_ContratoTipo" />
+        <AssociationConnector Association="InnovaModel.FK_Convocatoria_Puesto" />
+        <AssociationConnector Association="InnovaModel.FK_ConvocatoriaDesarrollo" />
+        <AssociationConnector Association="InnovaModel.FK_ConvocatoriaTipoPuesto" />
+        <AssociationConnector Association="InnovaModel.FK_Empleado_Persona" />
+        <AssociationConnector Association="InnovaModel.FK_EmpleadoEstado" />
+        <AssociationConnector Association="InnovaModel.FK_EmpleadoFondo" />
+        <AssociationConnector Association="InnovaModel.FK_EmpleadoNivelEstudios" />
+        <AssociationConnector Association="InnovaModel.FK_EmpleadoSeguro" />
+        <AssociationConnector Association="InnovaModel.FK_PersonaEstadoCivil" />
+        <AssociationConnector Association="InnovaModel.FK__Usuario__idPerso__7CC477D0" />
+        <AssociationConnector Association="InnovaModel.FK_PuestoTipo" />
+        <AssociationConnector Association="InnovaModel.CursoDocente" />
+        <AssociationConnector Association="InnovaModel.R_Grado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,158 @@
+﻿@using Innova.Models;
+
+@{
+    List<SelectListItem> listaArea = GestionPedagogica.ListarAreaCurricular().Select(x => new SelectListItem() { Value = x.IdAreaCurricular.ToString(), Text = x.Nombre }).ToList();
+    List<SelectListItem> listaNivel = GestionPedagogica.ListarNivel().Select(x => new SelectListItem() { Value = x.IdNivel.ToString(), Text = x.Nombre }).ToList();
+    List<SelectListItem> listaGrado = GestionPedagogica.ListarGrado(0).Select(x => new SelectListItem() { Value = x.IdGrado.ToString(), Text = x.Nombre }).ToList();
+    List<SelectListItem> listaCoordinador = GestionPedagogica.ListarCoordinador().Select(x => new SelectListItem() { Value = x.idEmpleado.ToString(), Text = x.Persona.nombre }).ToList();
+    List<SelectListItem> listaProfesor = GestionPedagogica.ListarProfesor(0).Select(x => new SelectListItem() { Value = x.idEmpleado.ToString(), Text = x.Persona.nombre }).ToList();
+    List<SelectListItem> listaCalificacion = GestionPedagogica.ListarTipoCalificacion().Select(x => new SelectListItem() { Value = x.IdTipoCalificación.ToString(), Text = x.NomTipoCalificación }).ToList();
+
+    List<SelectListItem> listaCurso = new List<SelectListItem>();
+
+    listaArea.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+    listaGrado.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+    listaCurso.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+    listaCoordinador.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+    listaProfesor.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+    listaCalificacion.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+}
+
+<div class="modal fade" id="pnlRegistroCurso" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:80%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Agregar Curso</h4>
+            </div>
+            <div class="modal-body form-horizontal">
+                @Html.Hidden("txhIdCurso", "0")
+                <div class="form-group">
+                    <label for="ddlNivel" class="col-lg-3 control-label text-right">Nivel:</label>
+                    <div class="col-lg-6">@Html.DropDownList("ddlNivel", listaNivel, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlGrado" class="col-lg-3 control-label text-right">Grado:</label>
+                    <div class="col-lg-6">@Html.DropDownList("ddlGrado", listaGrado, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlArea" class="col-lg-3 control-label text-right">Area Curricular:</label>
+                    <div class="col-lg-6">@Html.DropDownList("ddlArea", listaArea, new { @class = "form-control input-sm" })</div>
+                    <label for="txtCod" class="col-lg-2 control-label text-right">Horas por asignar:</label>
+                    <div class="col-lg-1">@Html.TextBox("txtHoraAsignar", "", new { @class = "form-control input-sm", @disabled = "disabled" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlCurso" class="col-lg-3 control-label text-right">Curso:</label>
+                    <div class="col-lg-6">@Html.DropDownList("ddlCurso", listaCurso, new { @class = "form-control input-sm" })</div>
+                    <label for="txtCod" class="col-lg-2 control-label text-right">Horas asignadas:</label>
+                    <div class="col-lg-1">@Html.TextBox("txtHoraTotal", "", new { @class = "form-control input-sm" })</div>
+                </div>
+
+                <ul class="nav nav-tabs navbar-default">
+                    <li class="active"><a data-toggle="tab" href="#TabTema">Temas</a></li>
+                    <li><a data-toggle="tab" href="#TabProfesor">Profesores</a></li>
+                    <li><a data-toggle="tab" href="#TabCalificacion">Calificación</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="TabTema" class="tab-pane fade in active">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-lg-2 text-left">Detalle de Temas</label>
+                                    <div class="col-lg-10 text-right"><button type="button" id="btnNuevoTema" class="btn btn-sm btn-primary">Nuevo Tema</button></div>
+                                </div>
+                                <table id="tblCursoTema" class="table table-bordered table-condensed">
+                                    <thead>
+                                        <tr class="active">
+                                            <th>Unidad</th>
+                                            <th>Tema</th>
+                                            <th>Competencia</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="TabProfesor" class="tab-pane fade">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label text-left">Coordinador del Curso:</label>
+                                    <div class="col-lg-9 text-right">@Html.DropDownList("ddlCoordinador", listaCoordinador, new { @class = "form-control input-sm" })</div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-lg-1 control-label text-left">Profesor:</label>
+                                            <div class="col-lg-8 text-left">@Html.DropDownList("ddlProfesor", listaProfesor, new { @class = "form-control input-sm" })</div>
+                                            <div class="col-lg-3 text-right"><button type="button" id="btnAgregarProfesor" class="btn btn-sm btn-primary btn-group-justified">Agregar</button></div>
+                                        </div>
+                                        <table id="tblCursoProfesor" class="table table-bordered table-condensed">
+                                            <thead>
+                                                <tr class="active">
+                                                    <th>Item</th>
+                                                    <th>Profesor</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="TabCalificacion" class="tab-pane fade">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-lg-12 text-left">Formulario de Calificación</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label text-left">Tipo de Calificación:</label>
+                                    <div class="col-lg-6 text-left">@Html.DropDownList("ddlCalificacion", listaCalificacion, new { @class = "form-control input-sm" })</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label text-left">Valor:</label>
+                                    <div class="col-lg-6 text-left">
+                                        <div class="input-group">
+                                            @Html.TextBox("txtValor", "", new { @class = "form-control input-sm" })
+                                            <span class="input-group-addon">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 text-right"><button type="button" id="btnAgregarCalificacion" class="btn btn-sm btn-primary">Agregar</button></div>
+                                </div>
+                                <table id="tblCursoCalificacion" class="table table-bordered table-condensed">
+                                    <thead>
+                                        <tr class="active">
+                                            <th>Tipo de Calificación</th>
+                                            <th>Valor</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3" class="text-right">Total</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnGuardarCurso" class="btn btn-primary" type="button">Guardar</button>
+                <button data-dismiss="modal" class="btn btn-primary" type="button">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

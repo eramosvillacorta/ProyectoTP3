@@ -1,0 +1,298 @@
+﻿@using Innova.Models;
+
+@model Curricula
+
+@{
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+    ViewBag.Title = "Index";
+
+    List<SelectListItem> listaOrden = new List<SelectListItem>();
+
+    listaOrden.Add(new SelectListItem() { Text = "Item", Value = "0" });
+    listaOrden.Add(new SelectListItem() { Text = "Nivel", Value = "1" });
+    listaOrden.Add(new SelectListItem() { Text = "Grado", Value = "2" });
+    listaOrden.Add(new SelectListItem() { Text = "Area Curricular", Value = "3" });
+    listaOrden.Add(new SelectListItem() { Text = "Curso", Value = "4" });
+    listaOrden.Add(new SelectListItem() { Text = "Hrs. Asignadas", Value = "5" });
+}
+
+@if (Model == null)
+{
+    <h3 class="text-info">No existe curricula</h3>
+}
+else
+{
+    <h3 class="text-info">Curricula: @Model.Codigo</h3>
+
+    <div class="row form-horizontal">
+        <div class="form-group">
+            <label for="ddlAnho" class="col-lg-2 control-label text-right">Año:</label>
+            <div class="col-lg-2">@Html.TextBox("txtAnho", Model.Año.ToString(), new { @class = "form-control input-sm", disabled = "disabled" })</div>
+        </div>
+        <div class="form-group">
+            <label for="ddlBase" class="col-lg-2 control-label text-right">Curricula Base:</label>
+            <div class="col-lg-4">@Html.TextBox("txtCurriculaBase", Model.CurriculaBase.NumeroResolucion, new { @class = "form-control input-sm", disabled = "disabled" })</div>
+        </div>
+        <div class="form-group">
+            <label for="txtDesc" class="col-lg-2 control-label text-right">Descripción:</label>
+            <div class="col-lg-8">@Html.TextArea("txtDesc", Model.Descripcion, new { @class = "form-control input-sm", disabled = "disabled", rows = 3 })</div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Detalle Curricula</div>
+        <div class="panel-body form-horizontal">
+            <div class="form-group">
+                <label for="txtTemTit" class="col-lg-2 control-label text-right">Ordenar por:</label>
+                <div class="col-lg-2">@Html.DropDownList("ddlOrden", listaOrden, new { @class = "form-control input-sm" })</div>
+            </div>
+            <table id="tblDetalle" class="table table-bordered table-condensed">
+                <thead>
+                    <tr class="active">
+                        <th>Item</th>
+                        <th>Nivel</th>
+                        <th>Grado</th>
+                        <th>Area Curricular</th>
+                        <th>Curso</th>
+                        <th>Hrs. Asignadas</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DetalleCurricula detalle in Model.DetalleCurricula)
+                    {
+                        <tr>
+                            <td data-value="@detalle.IdDetalleCurricula" data-coordi="@detalle.Empleado.Persona.nombre">@detalle.Item</td>
+                            <td>@detalle.Curso.Grado.Nivel.Nombre</td>
+                            <td>@detalle.Curso.Grado.Nombre</td>
+                            <td>@detalle.Curso.AreaCurricular.Nombre</td>
+                            <td>@detalle.Curso.Nombre</td>
+                            <td>@detalle.HrsAsignadas.ToString()</td>
+                            <td>
+                                <button type="button" name="btnVerCurso" class="btn btn-xs btn-info">
+                                    <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group pull-right">
+                <div class="col-lg-12 btn-group btn-group-sm">
+                    <button type="button" id="btnPaginaAnterior" class="btn btn-sm btn-info">&lt;&lt;</button>
+                    <button type="button" id="btnPaginaActual" class="btn btn-sm btn-info" disabled>1/1</button>
+                    <button type="button" id="btnPaginaSiguiente" class="btn btn-sm btn-info">&gt;&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom:10px">
+        <div class="col-lg-12 text-center">
+            <button type="button" id="btnCancelar" class="btn btn-primary">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pnlConsultaCurso" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Consulta de Cursos</h4>
+                </div>
+                <div class="modal-body form-horizontal">
+                    <div class="form-group">
+                        <label for="ddlNivel" class="col-lg-3 control-label text-right">Nivel:</label>
+                        <div class="col-lg-6">@Html.TextBox("txtNivel", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ddlGrado" class="col-lg-3 control-label text-right">Grado:</label>
+                        <div class="col-lg-6">@Html.TextBox("txtGrado", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ddlArea" class="col-lg-3 control-label text-right">Area Curricular:</label>
+                        <div class="col-lg-6">@Html.TextBox("txtArea", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                        <label for="txtCod" class="col-lg-2 control-label text-right">Horas por asignar:</label>
+                        <div class="col-lg-1">@Html.TextBox("txtHoraMin", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ddlCurso" class="col-lg-3 control-label text-right">Curso:</label>
+                        <div class="col-lg-6">@Html.TextBox("txtCurso", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                        <label for="txtCod" class="col-lg-2 control-label text-right">Horas asignadas:</label>
+                        <div class="col-lg-1">@Html.TextBox("txtHoraAsig", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                    </div>
+
+                    <ul class="nav nav-tabs navbar-default">
+                        <li class="active"><a data-toggle="tab" href="#TabTema">Temas</a></li>
+                        <li><a data-toggle="tab" href="#TabProfesor">Profesores</a></li>
+                        <li><a data-toggle="tab" href="#TabCalificacion">Calificación</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="TabTema" class="tab-pane fade in active">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-lg-12 text-left">Detalle de Temas</label>
+                                    </div>
+                                    <table id="tblCursoTema" class="table table-bordered table-condensed">
+                                        <thead>
+                                            <tr class="active">
+                                                <th>Unidad</th>
+                                                <th>Tema</th>
+                                                <th>Competencia</th>
+                                            </tr>
+                                        </thead>
+                                        @for (int x = 0; x < Model.DetalleCurricula.Count; x++)
+                                        {
+                                            string iddetalle = Model.DetalleCurricula.ElementAt(x).IdDetalleCurricula.ToString();
+
+                                            <tbody id="tblCursoTema_@iddetalle" style="display:none">
+                                                @foreach (DetalleCurriculaTema detalleTema in Model.DetalleCurricula.ElementAt(x).DetalleCurriculaTema)
+                                                {
+                                                    <tr>
+                                                        <td>@detalleTema.Unidad.Nombre</td>
+                                                        <td>@detalleTema.NoCursoTema</td>
+                                                        <td>@detalleTema.NoCompetencia</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="TabProfesor" class="tab-pane fade">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label text-left">Coordinador del Curso:</label>
+                                        <div class="col-lg-9 text-right">@Html.TextBox("txtCoordinador", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="col-lg-12 control-label text-left">Detalle de Profesor(es)</label>
+                                            </div>
+                                            <table id="tblCursoProfesor" class="table table-bordered table-condensed">
+                                                <thead>
+                                                    <tr class="active">
+                                                        <th>Item</th>
+                                                        <th>Profesor</th>
+                                                    </tr>
+                                                </thead>
+                                                @for (int x = 0; x < Model.DetalleCurricula.Count; x++)
+                                                {
+                                                    string iddetalle = Model.DetalleCurricula.ElementAt(x).IdDetalleCurricula.ToString();
+                                                    int item = 0;
+
+                                                    <tbody id="tblCursoProfesor_@iddetalle" style="display:none">
+                                                        @foreach (DetalleCurriculaProfesor detalleProfesor in Model.DetalleCurricula.ElementAt(x).DetalleCurriculaProfesor)
+                                                        {
+                                                            item++;
+                                                            string itemText = "0" + item.ToString();
+                                                            itemText = itemText.Substring(itemText.Length - 2, 2);
+
+                                                            <tr>
+                                                                <td>@itemText</td>
+                                                                <td>@detalleProfesor.Empleado.Persona.nombre</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                }
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="TabCalificacion" class="tab-pane fade">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-lg-12 text-left">Formulario de Calificación</label>
+                                    </div>
+                                    <table id="tblCursoCalificacion" class="table table-bordered table-condensed">
+                                        <thead>
+                                            <tr class="active">
+                                                <th>Tipo de Calificación</th>
+                                                <th>Valor</th>
+                                            </tr>
+                                        </thead>
+                                        @for (int x = 0; x < Model.DetalleCurricula.Count; x++)
+                                        {
+                                            string iddetalle = Model.DetalleCurricula.ElementAt(x).IdDetalleCurricula.ToString();
+                                            
+                                            <tbody id="tblCursoCalificacion_@iddetalle" style="display:none">
+                                                @foreach (DetalleCurriculaCalificacion detalleCalifi in Model.DetalleCurricula.ElementAt(x).DetalleCurriculaCalificacion)
+                                                {
+                                                    <tr>
+                                                        <td>@detalleCalifi.TipoCalificación.NomTipoCalificación</td>
+                                                        <td>@detalleCalifi.ValorCalificacion.ToString()%</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        }
+                                        <tfoot>
+                                            <tr>
+                                                <th class="text-right">Total</th>
+                                                <th>100%</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var Curricula = function () {
+            thiss = this;
+
+            this.ListaCurriculaCurso = new Array();
+
+            this.Iniciar = function () {
+                $('#tblDetalle button').click(function () {
+                    thiss.VerCurso($(this).parent().parent().find('td'));
+                });
+
+                $('#btnCancelar').click(function () {
+                    window.close();
+                });
+            };
+
+            this.VerCurso = function (fila) {
+                var detalle = fila.eq(0).attr('data-value');
+
+                $('#txtNivel').val(fila.eq(1).html());
+                $('#txtGrado').val(fila.eq(2).html());
+                $('#txtArea').val(fila.eq(3).html());
+                $('#txtCurso').val(fila.eq(4).html());
+                $('#txtHoraAsig').val(fila.eq(5).html());
+                $('#txtCoordinador').val(fila.eq(0).attr('data-coordi'));
+
+                $('#tblCursoTema tbody').css('display', 'none');
+                $('#tblCursoProfesor tbody').css('display', 'none');
+                $('#tblCursoCalificacion tbody').css('display', 'none');
+
+                $('#tblCursoTema_' + detalle).css('display', '');
+                $('#tblCursoProfesor_' + detalle).css('display', '');
+                $('#tblCursoCalificacion_' + detalle).css('display', '');
+
+                $('#pnlConsultaCurso').modal('show');
+            }
+        }
+
+        $(document).ready(function () {
+            var curricula = new Curricula();
+            curricula.Iniciar();
+        });
+    </script>
+}

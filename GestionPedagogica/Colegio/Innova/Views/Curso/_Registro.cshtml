@@ -3,15 +3,15 @@
 @model Curso
 
 @{
+    List<Nivel> listaNivel = GestionPedagogica.ListarNivel();
+    
     List<SelectListItem> listaEstado = new List<SelectListItem>();
     List<SelectListItem> listaArea = GestionPedagogica.ListarAreaCurricular().Select(x => new SelectListItem() { Value = x.IdAreaCurricular.ToString(), Text = x.Nombre, Selected = (x.IdAreaCurricular == Model.IdAreaCurricular ? true : false) }).ToList();
-    List<SelectListItem> listaNivel = GestionPedagogica.ListarNivel().Select(x => new SelectListItem() { Value = x.IdNivel.ToString(), Text = x.Nombre, Selected = (x.IdNivel == Model.Grado.IdNivel ? true : false) }).ToList();
     List<SelectListItem> listaGrado = GestionPedagogica.ListarGrado(Model.Grado.IdNivel).Select(x => new SelectListItem() { Value = x.IdGrado.ToString(), Text = x.Nombre, Selected = (x.IdGrado == Model.IdGrado ? true : false) }).ToList();
     List<SelectListItem> listaCoordinador = GestionPedagogica.ListarCoordinador().Select(x => new SelectListItem() { Value = x.idEmpleado.ToString(), Text = x.Persona.nombre, Selected = (x.idEmpleado == Model.IdEmpleado ? true : false) }).ToList();
-    List<SelectListItem> listaUnidad = GestionPedagogica.ListarUnidad().Select(x => new SelectListItem() { Value = x.IdUnidad.ToString(), Text = x.Nombre }).ToList();
 
-    listaEstado.Add(new SelectListItem() { Text = "Activo", Value = "1", Selected = (Model.Estado ? true : false) });
-    listaEstado.Add(new SelectListItem() { Text = "Inactivo", Value = "0", Selected = (Model.Estado ? false : true) });
+    listaEstado.Add(new SelectListItem() { Text = "Activo", Value = "1", Selected = (Model.IdCurso == 0 ? true : (Model.Estado ? true : false)) });
+    listaEstado.Add(new SelectListItem() { Text = "Inactivo", Value = "0", Selected = (Model.IdCurso == 0 ? false : (Model.Estado ? false : true)) });
 
     listaArea.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
     listaGrado.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
@@ -29,7 +29,7 @@
                 @Html.Hidden("txhID", Model.IdCurso)
                 <div class="form-group">
                     <label for="txtCod" class="col-lg-3 control-label text-right">Codigo:</label>
-                    <div class="col-lg-4">@Html.TextBox("txtCod", Model.Codigo, new { @class = "form-control input-sm" })</div>
+                    <div class="col-lg-4">@Html.TextBox("txtCod", Model.Codigo, new { @class = "form-control input-sm", @disabled="disabled" })</div>
                     <label for="ddlEstado" class="col-lg-3 control-label text-right">Estado:</label>
                     <div class="col-lg-2">@Html.DropDownList("ddlEstado", listaEstado, new { @class = "form-control input-sm" })</div>
                 </div>
@@ -47,7 +47,15 @@
                 </div>
                 <div class="form-group">
                     <label for="ddlNivel" class="col-lg-3 control-label text-right">Nivel:</label>
-                    <div class="col-lg-9">@Html.DropDownList("ddlNivel", listaNivel, new { @class = "form-control input-sm" })</div>
+                    <div class="col-lg-9">
+                        <select id="ddlNivel" class="form-control input-sm">
+                            @foreach(Nivel item in listaNivel){
+                                string attributo = (@item.IdNivel == Model.Grado.IdNivel?"selected":"");
+                                
+                                <option value="@item.IdNivel" data-tema="@item.temarioNivel.ToString()" @attributo>@item.Nombre</option>
+                            }
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="ddlGrado" class="col-lg-3 control-label text-right">Grado:</label>
@@ -62,18 +70,15 @@
                     <div class="panel-heading">Temario Base</div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="ddlUnidad" class="col-lg-2 control-label text-right">Unidad:</label>
-                            <div class="col-lg-8">@Html.DropDownList("ddlUnidad", listaUnidad, new { @class = "form-control input-sm" })</div>
-                        </div>
-                        <div class="form-group">
                             <label for="txtTemTit" class="col-lg-2 control-label text-right">Temario:</label>
-                            <div class="col-lg-8">@Html.TextBox("txtTemTit", "", new { @class = "form-control input-sm" })</div>
-                            <button type="button" id="btnAgregar" class="btn btn-sm btn-primary">Agregar</button>
+                            <div class="col-lg-8">@Html.TextArea("txtTemTit", "", new { @class = "form-control input-sm", rows = 2 })</div>
+                            <button type="button" id="btnAgregarTema" class="btn btn-sm btn-primary">Agregar</button>
+                            <button type="button" id="btnModificarTema" class="btn btn-sm btn-primary">Modificar</button>
+                            <button type="button" id="btnCancelarTema" class="btn btn-sm btn-primary">Cancelar</button>
                         </div>
                         <table id="tblTemario" class="table table-bordered table-condensed">
                             <thead>
                                 <tr class="active">
-                                    <th>Unidad</th>
                                     <th>Temario</th>
                                     <th>Modificar</th>
                                     <th>Eliminar</th>
@@ -83,15 +88,16 @@
                                 @foreach (CursoTema item in Model.CursoTema)
                                 {
                                     <tr>
-                                        <td data-value="@item.IdUnidad">@item.Unidad.Nombre</td>
-                                        <td>@item.Temario</td>
-                                        <td><button type="button" name="btnModificar" class="btn btn-xs btn-default">
+                                        <td data-value="@item.IdCursoTema">@item.Temario</td>
+                                        <td><button type="button" name="btnModificar" class="btn btn-xs btn-info">
                                             @*Modificar*@
-                                                <img src="~/Content/Images/editar.png" alt="Editar" />
+                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                                @*<img src="~/Content/Images/editar.png" alt="Editar" />*@
                                             </button></td>
-                                        <td><button type="button" id="btnEliminar" class="btn btn-xs btn-default">
+                                        <td><button type="button" id="btnEliminar" class="btn btn-xs btn-info">
                                             @*Eliminar*@
-                                                <img src="~/Content/Images/eliminar.png" alt="Eliminar" />
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                @*<img src="~/Content/Images/eliminar.png" alt="Eliminar" />*@
                                             </button></td>
                                     </tr>
                                 }

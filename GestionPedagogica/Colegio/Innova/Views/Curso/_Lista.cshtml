@@ -9,6 +9,7 @@
         <tr class="active">
             <th>Codigo</th>
             <th>Nombre</th>
+            <th>Area Curricular</th>
             <th>Nivel</th>
             <th>Grado</th>
             <th>Estado</th>
@@ -16,23 +17,29 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Curso item in Model)
-        {
-            <tr>
-                <td data-value="@item.IdCurso">@item.Codigo</td>
-                <td>@item.Nombre</td>
-                <td>@item.Grado.Nivel.Nombre</td>
-                <td>@item.Grado.Nombre</td>
-                <td>
-                    @{ string estado = item.Estado ? "Activo" : "Inactivo"; }
+        @if (Model.Count == 0) { 
+            <tr><td colspan="6">No se encontraron registros.</td></tr>
+        } else { 
+            foreach (Curso item in Model)
+            {
+                <tr>
+                    <td data-value="@item.IdCurso">@item.Codigo</td>
+                    <td>@item.Nombre</td>
+                    <td>@item.AreaCurricular.Nombre</td>
+                    <td>@item.Grado.Nivel.Nombre</td>
+                    <td>@item.Grado.Nombre</td>
+                    <td>
+                        @{ string estado = item.Estado ? "Activo" : "Inactivo"; }
 
-                    @estado
-                </td>
-                <td><button type="button" class="btn btn-xs btn-default">
-                    @*Modificar*@
-                        <img src="~/Content/Images/editar.png" alt="Detalles de Curricula Base" />
-                    </button></td>
-            </tr>
+                        @estado
+                    </td>
+                    <td><button type="button" class="btn btn-xs btn-info">
+                        @*Modificar*@
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            @*<img src="~/Content/Images/editar.png" alt="Detalles de Curricula Base" />*@
+                        </button></td>
+                </tr>
+            }
         }
     </tbody>
 </table>

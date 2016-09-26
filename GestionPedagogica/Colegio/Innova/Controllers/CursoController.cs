@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Innova.Models;
+using System.Web.Script.Serialization;
 
 namespace Innova.Controllers
 {
@@ -55,6 +56,11 @@ namespace Innova.Controllers
         }
 
 
+        public string ObtenerCodigo(int area)
+        {
+            return GestionPedagogica.ObtenerCodigoCurso(area);
+        }
+
         public string ListarGrado(int nivel)
         {
             string htmlOption = "<option value=\"0\">Seleccione</option>";
@@ -72,10 +78,10 @@ namespace Innova.Controllers
             return htmlOption;
         }
 
-        public string Guardar(int id, string codigo, string nombre, int area, string sumilla,
+        public object Guardar(int id, string codigo, string nombre, int area, string sumilla,
             int grado, int coordinador, bool estado, string tema)
         {
-            string htmlRespuesta = "Se registro curso satisfactorimante";
+            object objRespuesta = new { Exito = "Curso registrado exitosamente" };
 
             try
             {
@@ -91,9 +97,10 @@ namespace Innova.Controllers
                         {
                             cursoTema.Add(new CursoTema()
                             {
+                                IdCursoTema = int.Parse(item[0]),
                                 IdCurso = id,
-                                IdUnidad = int.Parse(item[0]),
-                                Temario = item[1]
+                                Temario = item[1],
+                                EstTemario = "1"
                             });
                         }
                     }
@@ -112,17 +119,14 @@ namespace Innova.Controllers
                     CursoTema = cursoTema
                 };
 
-                if (!GestionPedagogica.RegistrarCurso(curso))
-                {
-                    htmlRespuesta = "Inconveniente en la operación";
-                }
+                GestionPedagogica.RegistrarCurso(curso);
             }
-            catch
+            catch (Exception ex)
             {
-                htmlRespuesta = "Inconveniente en la operación";
+                objRespuesta = new { Error = ex.Message };
             }
 
-            return htmlRespuesta;
+            return new JavaScriptSerializer().Serialize(objRespuesta);
         }
     }
 }

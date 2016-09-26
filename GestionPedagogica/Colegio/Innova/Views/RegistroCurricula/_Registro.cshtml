@@ -1,0 +1,80 @@
+﻿@using Innova.Models;
+@{
+    List<SelectListItem> listaBase = GestionPedagogica.ListarBase().Select(x => new SelectListItem() { Value = x.IdCurriculaBase.ToString(), Text = x.NumeroResolucion }).ToList();
+    List<SelectListItem> listaAnho = new List<SelectListItem>();
+    List<SelectListItem> listaOrden = new List<SelectListItem>();
+
+    for (var x = (DateTime.Now.Year - 2); x < (DateTime.Now.Year + 2); x++)
+    {
+        listaAnho.Insert(0, new SelectListItem() { Text = x.ToString(), Value = x.ToString(), Selected = (DateTime.Now.Year == x ? true : false) });
+    }
+
+    listaBase.Insert(0, new SelectListItem() { Text = "Seleccione", Value = "0" });
+
+    listaOrden.Add(new SelectListItem() { Text = "Item", Value = "0" });
+    listaOrden.Add(new SelectListItem() { Text = "Nivel", Value = "1" });
+    listaOrden.Add(new SelectListItem() { Text = "Grado", Value = "2" });
+    listaOrden.Add(new SelectListItem() { Text = "Area Curricular", Value = "3" });
+    listaOrden.Add(new SelectListItem() { Text = "Curso", Value = "4" });
+    listaOrden.Add(new SelectListItem() { Text = "Hrs. Asignadas", Value = "5" });
+}
+
+@Html.Hidden("txhID", "0")
+<div class="row form-horizontal">
+    <div class="form-group">
+        <label for="ddlAnho" class="col-lg-2 control-label text-right">Año:</label>
+        <div class="col-lg-2">@Html.DropDownList("ddlAnho", listaAnho, new { @class = "form-control input-sm" })</div>
+    </div>
+    <div class="form-group">
+        <label for="ddlBase" class="col-lg-2 control-label text-right">Curricula Base:</label>
+        <div class="col-lg-4">@Html.DropDownList("ddlBase", listaBase, new { @class = "form-control input-sm" })</div>
+    </div>
+    <div class="form-group">
+        <label for="txtDesc" class="col-lg-2 control-label text-right">Descripción:</label>
+        <div class="col-lg-8">@Html.TextArea("txtDesc", "", new { @class = "form-control input-sm", rows = 3 })</div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Detalle Curricula</div>
+    <div class="panel-body form-horizontal">
+        <div class="form-group">
+            <label for="txtTemTit" class="col-lg-2 control-label text-right">Ordenar por:</label>
+            <div class="col-lg-2">@Html.DropDownList("ddlOrden", listaOrden, new { @class = "form-control input-sm" })</div>
+            <div class="col-lg-8 text-right"><button type="button" id="btnAgregarCurso" class="btn btn-sm btn-primary">Agregar Curso</button></div>
+        </div>
+        <table id="tblDetalle" class="table table-bordered table-condensed">
+            <thead>
+                <tr class="active">
+                    <th>Item</th>
+                    <th>Nivel</th>
+                    <th>Grado</th>
+                    <th>Area Curricular</th>
+                    <th>Curso</th>
+                    <th>Hrs. Asignadas</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="form-group pull-right">
+            <div class="col-lg-12 btn-group btn-group-sm">
+                <button type="button" id="btnPaginaAnterior" class="btn btn-sm btn-info">&lt;&lt;</button>
+                <button type="button" id="btnPaginaActual" class="btn btn-sm btn-info" disabled>1/1</button>
+                <button type="button" id="btnPaginaSiguiente" class="btn btn-sm btn-info">&gt;&gt;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom:10px">
+    <div class="col-lg-12 text-right">
+        <button type="button" id="btnGuardar" class="btn btn-primary">Guardar</button>
+        <button type="button" id="btnEnviar" class="btn btn-primary" disabled>Enviar a Aprobación</button>
+        <a id="btnCancelar" class="btn btn-primary" target="_self" href="@Url.Content("~/ConsultaCurricula/Index")">Cancelar</a>
+        @*<button type="button" id="btnCancelar" class="btn btn-primary">Cancelar</button>*@
+    </div>
+</div>
+
+@Html.Action("RegistroCurso")

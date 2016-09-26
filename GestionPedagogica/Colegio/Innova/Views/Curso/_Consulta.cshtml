@@ -9,59 +9,57 @@
     listaNivel.Insert(0, new SelectListItem() { Text = "Todos", Value = "-1" });
     listaGrado.Insert(0, new SelectListItem() { Text = "Todos", Value = "0" });
 }
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Criterios de Busqueda</div>
-                <div class="panel-body form-horizontal">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="txtBusCod" class="col-lg-4 control-label text-right">Codigo:</label>
-                                <div class="col-lg-8">@Html.TextBox("txtBusCod", "", new { @class = "form-control input-sm" })</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="txtBusNom" class="col-lg-2 control-label text-right">Nombre:</label>
-                                <div class="col-lg-10">@Html.TextBox("txtBusNom", "", new { @class = "form-control input-sm" })</div>
-                            </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Criterios de Busqueda</div>
+            <div class="panel-body form-horizontal">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="txtBusCod" class="col-lg-4 control-label text-right">Codigo:</label>
+                            <div class="col-lg-8">@Html.TextBox("txtBusCod", "", new { @class = "form-control input-sm" })</div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="ddlBusArea" class="col-lg-4 control-label text-right">Area Curricular:</label>
-                                <div class="col-lg-8">@Html.DropDownList("ddlBusArea", listaArea, new { @class = "form-control input-sm" })</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="ddlBusNivel" class="col-lg-2 control-label text-right">Nivel:</label>
-                                <div class="col-lg-4">@Html.DropDownList("ddlBusNivel", listaNivel, new { @class = "form-control input-sm" })</div>
-                                <label for="ddlBusGrado" class="col-lg-2 control-label text-right">Grado:</label>
-                                <div class="col-lg-4">@Html.DropDownList("ddlBusGrado", listaGrado, new { @class = "form-control input-sm" })</div>
-                            </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="txtBusNom" class="col-lg-2 control-label text-right">Nombre:</label>
+                            <div class="col-lg-10">@Html.TextBox("txtBusNom", "", new { @class = "form-control input-sm" })</div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="ddlBusNivel" class="col-lg-4 control-label text-right">Estado:</label>
-                                <div class="col-lg-8 input-group">
-                                    <div class="radio">
-                                        <label>
-                                            @Html.RadioButton("rbnEstado", true, true, new { id = "rbnEstadoActivo" })
-                                            Activo
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            @Html.RadioButton("rbnEstado", false, false, new { id = "rbnEstadoInactivo" })
-                                            Inactivo
-                                        </label>
-                                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="ddlBusArea" class="col-lg-4 control-label text-right">Area Curricular:</label>
+                            <div class="col-lg-8">@Html.DropDownList("ddlBusArea", listaArea, new { @class = "form-control input-sm" })</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="ddlBusNivel" class="col-lg-2 control-label text-right">Nivel:</label>
+                            <div class="col-lg-4">@Html.DropDownList("ddlBusNivel", listaNivel, new { @class = "form-control input-sm" })</div>
+                            <label for="ddlBusGrado" class="col-lg-2 control-label text-right">Grado:</label>
+                            <div class="col-lg-4">@Html.DropDownList("ddlBusGrado", listaGrado, new { @class = "form-control input-sm" })</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="ddlBusNivel" class="col-lg-4 control-label text-right">Estado:</label>
+                            <div class="col-lg-8 input-group">
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButton("rbnEstado", true, true, new { id = "rbnEstadoActivo" })
+                                        Activo
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButton("rbnEstado", false, false, new { id = "rbnEstadoInactivo" })
+                                        Inactivo
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -70,18 +68,18 @@
             </div>
         </div>
     </div>
-    <div class="row" style="margin-bottom:10px">
-        <div class="col-lg-6 text-left">
-            <button type="button" id="btnRegistrar" class="btn btn-primary">Registrar Curso</button>
-        </div>
-        <div class="col-lg-6 text-right">
-            <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
-            <button type="button" id="btnLimpiar" class="btn btn-primary">Limpiar</button>
-        </div>
+</div>
+<div class="row" style="margin-bottom:10px">
+    <div class="col-lg-6 text-left">
+        <button type="button" id="btnRegistrar" class="btn btn-primary">Registrar Curso</button>
     </div>
-    <div class="row">
-        <div id="pnlLista" class="col-lg-12">
+    <div class="col-lg-6 text-right">
+        <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
+        <button type="button" id="btnLimpiar" class="btn btn-primary">Limpiar</button>
+    </div>
+</div>
+<div class="row">
+    <div id="pnlLista" class="col-lg-12">
 
-        </div>
     </div>
 </div>

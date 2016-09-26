@@ -44,6 +44,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -184,20 +185,92 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CurriculaController.cs" />
+    <Compile Include="Controllers\AprobarCurriculaController.cs" />
+    <Compile Include="Controllers\ConsultaCurriculaController.cs" />
+    <Compile Include="Controllers\CurriculaBaseController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\RegistroCurriculaController.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VerCurriculaController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ActividadAcademicaPlan.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActividadPlanAsignatura.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActividadPlanProyectoPedagogico.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActividadPropuesta.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Agenda.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Alumno.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlumnoEmpadronado.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ambiente.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Apoderado.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AprobacionAgenda.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AprobacionCalendario.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AprobacionSolicitudActividad.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Area.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AreaCurricular.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Asesor.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Banco.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calendario.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Candidato.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Capacidad.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cargo.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Competencia.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contrato.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Convocatoria.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConvocatoriaCandidato.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cronograma.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Curricula.cs">
@@ -210,6 +283,9 @@
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Curso.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CursoTema.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataCole.Context.cs">
@@ -227,23 +303,157 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataCole.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Desarrollo.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DetalleCurricula.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Docente.cs">
+    <Compile Include="Models\DetalleCurriculaCalificacion.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetalleCurriculaProfesor.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetalleCurriculaTema.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetalleProceso.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DocumentoIdentidad.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Empleado.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EstadoCandidato.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EstadoCivil.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EstadoEmpleado.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpedienteAdmision.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Feriado.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FondoPensiones.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GestionPedagogica.cs" />
     <Compile Include="Models\Grado.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Instrumento.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Integrante.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Matricula.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Meta.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Nacionalidad.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Nivel.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NivelEstudio.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Observacion.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Parametro.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ParametroTiempo.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Parentesco.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartidoPostulante.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PeriodoAcademico.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Persona.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Plan.cs" />
+    <Compile Include="Models\PlanArea.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlanAsignatura.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlanEstudio.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PlanEstudiosBase.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlanGobierno.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlanProyectoPedagogico.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Proceso.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Puesto.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Roles.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seccion.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sede.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguro.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SolicitudActividad.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubActividad.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoCalificación.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoContrato.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoPuesto.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Unidad.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>DataCole.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Utilidad.cs" />
+    <Compile Include="Models\Voto.cs">
       <DependentUpon>DataCole.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -433,13 +643,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Curricula\Index.cshtml" />
-    <Content Include="Views\Curricula\Base.cshtml" />
-    <Content Include="Views\Curricula\ListaBase.cshtml" />
-    <Content Include="Views\Curricula\BuscarBase.cshtml" />
-    <Content Include="Views\Curricula\FormBase.cshtml" />
-    <Content Include="Views\Curricula\FormCompetenciaCapacidadArea.cshtml" />
-    <Content Include="Views\Curricula\ListaAreaCompetencia.cshtml" />
     <Content Include="Views\Home\Modulo1.cshtml" />
     <Content Include="Views\Home\Opcion1Modulo1.cshtml" />
     <Content Include="Views\Home\Modulo2.cshtml" />
@@ -449,6 +652,34 @@
     <Content Include="Views\Home\Modulo6.cshtml" />
     <Content Include="Views\Home\Opcion2Modulo1.cshtml" />
     <Content Include="Views\Home\Opcion3Modulo1.cshtml" />
+    <Content Include="Views\Curso\Index.cshtml" />
+    <Content Include="Views\Curso\_Consulta.cshtml" />
+    <Content Include="Views\Curso\_Lista.cshtml" />
+    <Content Include="Views\Curso\_Registro.cshtml" />
+    <Content Include="Views\RegistroCurricula\Index.cshtml" />
+    <Content Include="Views\RegistroCurricula\_Registro.cshtml" />
+    <Content Include="Views\RegistroCurricula\_RegistroCurso.cshtml" />
+    <Content Include="Views\ConsultaCurricula\Index.cshtml" />
+    <Content Include="Views\AprobarCurricula\Index.cshtml" />
+    <Content Include="Views\ConsultaCurricula\_Consulta.cshtml" />
+    <Content Include="Views\ConsultaCurricula\_Lista.cshtml" />
+    <Content Include="Views\Shared\_LayoutBlank.cshtml" />
+    <Content Include="Views\AprobarCurricula\_Lista.cshtml" />
+    <Content Include="Views\AprobarCurricula\_Consulta.cshtml" />
+    <Content Include="Views\VerCurricula\Index.cshtml" />
+    <Content Include="Views\CurriculaBase\Index.cshtml" />
+    <Content Include="Views\CurriculaBase\Base.cshtml" />
+    <Content Include="Views\CurriculaBase\BuscarBase.cshtml" />
+    <Content Include="Views\CurriculaBase\FormBase.cshtml" />
+    <Content Include="Views\CurriculaBase\FormCompetenciaCapacidadArea.cshtml" />
+    <Content Include="Views\CurriculaBase\ListaAreaCompetencia.cshtml" />
+    <Content Include="Views\CurriculaBase\ListaBase.cshtml" />
+    <Content Include="Views\Plan\Index.cshtml" />
+    <Content Include="Views\Plan\DatosPrincipales.cshtml" />
+    <Content Include="Views\Plan\FormPlanPrimaria.cshtml" />
+    <Content Include="Views\Plan\FormPlanSecundaria.cshtml" />
+    <Content Include="Views\Plan\PlanPrimaria.cshtml" />
+    <Content Include="Views\Plan\PlanSecundaria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

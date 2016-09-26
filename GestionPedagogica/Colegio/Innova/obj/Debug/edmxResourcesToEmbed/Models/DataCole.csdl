@@ -1,6 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="InnovaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="InnovaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="InnovaModel.sysdiagrams" />
+    <EntitySet Name="Alumno" EntityType="InnovaModel.Alumno" />
+    <EntitySet Name="Apoderado" EntityType="InnovaModel.Apoderado" />
+    <EntitySet Name="Area" EntityType="InnovaModel.Area" />
+    <EntitySet Name="Cronograma" EntityType="InnovaModel.Cronograma" />
+    <EntitySet Name="DocumentoIdentidad" EntityType="InnovaModel.DocumentoIdentidad" />
+    <EntitySet Name="ExpedienteAdmision" EntityType="InnovaModel.ExpedienteAdmision" />
+    <EntitySet Name="Matricula" EntityType="InnovaModel.Matricula" />
+    <EntitySet Name="Parentesco" EntityType="InnovaModel.Parentesco" />
+    <EntitySet Name="Proceso" EntityType="InnovaModel.Proceso" />
+    <EntitySet Name="Seccion" EntityType="InnovaModel.Seccion" />
+    <EntitySet Name="Sede" EntityType="InnovaModel.Sede" />
+    <EntitySet Name="Agenda" EntityType="InnovaModel.Agenda" />
+    <EntitySet Name="Ambiente" EntityType="InnovaModel.Ambiente" />
+    <EntitySet Name="AprobacionAgenda" EntityType="InnovaModel.AprobacionAgenda" />
+    <EntitySet Name="AprobacionCalendario" EntityType="InnovaModel.AprobacionCalendario" />
+    <EntitySet Name="AprobacionSolicitudActividad" EntityType="InnovaModel.AprobacionSolicitudActividad" />
+    <EntitySet Name="Calendario" EntityType="InnovaModel.Calendario" />
+    <EntitySet Name="Feriado" EntityType="InnovaModel.Feriado" />
+    <EntitySet Name="SolicitudActividad" EntityType="InnovaModel.SolicitudActividad" />
+    <EntitySet Name="ActividadPlanAsignatura" EntityType="InnovaModel.ActividadPlanAsignatura" />
+    <EntitySet Name="ActividadPlanProyectoPedagogico" EntityType="InnovaModel.ActividadPlanProyectoPedagogico" />
+    <EntitySet Name="Meta" EntityType="InnovaModel.Meta" />
+    <EntitySet Name="PeriodoAcademico" EntityType="InnovaModel.PeriodoAcademico" />
+    <EntitySet Name="PlanArea" EntityType="InnovaModel.PlanArea" />
+    <EntitySet Name="PlanAsignatura" EntityType="InnovaModel.PlanAsignatura" />
+    <EntitySet Name="PlanEstudio" EntityType="InnovaModel.PlanEstudio" />
+    <EntitySet Name="PlanProyectoPedagogico" EntityType="InnovaModel.PlanProyectoPedagogico" />
+    <EntitySet Name="ActividadAcademicaPlan" EntityType="InnovaModel.ActividadAcademicaPlan" />
+    <EntitySet Name="ActividadPropuesta" EntityType="InnovaModel.ActividadPropuesta" />
+    <EntitySet Name="AlumnoEmpadronado" EntityType="InnovaModel.AlumnoEmpadronado" />
+    <EntitySet Name="Asesor" EntityType="InnovaModel.Asesor" />
+    <EntitySet Name="Cargo" EntityType="InnovaModel.Cargo" />
+    <EntitySet Name="DetalleProceso" EntityType="InnovaModel.DetalleProceso" />
+    <EntitySet Name="Instrumento" EntityType="InnovaModel.Instrumento" />
+    <EntitySet Name="Integrante" EntityType="InnovaModel.Integrante" />
+    <EntitySet Name="Observacion" EntityType="InnovaModel.Observacion" />
+    <EntitySet Name="ParametroTiempo" EntityType="InnovaModel.ParametroTiempo" />
+    <EntitySet Name="PartidoPostulante" EntityType="InnovaModel.PartidoPostulante" />
+    <EntitySet Name="PlanGobierno" EntityType="InnovaModel.PlanGobierno" />
+    <EntitySet Name="Roles" EntityType="InnovaModel.Roles" />
+    <EntitySet Name="SubActividad" EntityType="InnovaModel.SubActividad" />
+    <EntitySet Name="Voto" EntityType="InnovaModel.Voto" />
     <EntitySet Name="AreaCurricular" EntityType="InnovaModel.AreaCurricular" />
     <EntitySet Name="Capacidad" EntityType="InnovaModel.Capacidad" />
     <EntitySet Name="Competencia" EntityType="InnovaModel.Competencia" />
@@ -8,12 +51,264 @@
     <EntitySet Name="CurriculaBase" EntityType="InnovaModel.CurriculaBase" />
     <EntitySet Name="CurriculaBaseCompetencia" EntityType="InnovaModel.CurriculaBaseCompetencia" />
     <EntitySet Name="Curso" EntityType="InnovaModel.Curso" />
+    <EntitySet Name="CursoTema" EntityType="InnovaModel.CursoTema" />
     <EntitySet Name="DetalleCurricula" EntityType="InnovaModel.DetalleCurricula" />
-    <EntitySet Name="Docente" EntityType="InnovaModel.Docente" />
+    <EntitySet Name="DetalleCurriculaCalificacion" EntityType="InnovaModel.DetalleCurriculaCalificacion" />
+    <EntitySet Name="DetalleCurriculaProfesor" EntityType="InnovaModel.DetalleCurriculaProfesor" />
+    <EntitySet Name="DetalleCurriculaTema" EntityType="InnovaModel.DetalleCurriculaTema" />
     <EntitySet Name="Grado" EntityType="InnovaModel.Grado" />
     <EntitySet Name="Nivel" EntityType="InnovaModel.Nivel" />
+    <EntitySet Name="Parametro" EntityType="InnovaModel.Parametro" />
     <EntitySet Name="PlanEstudiosBase" EntityType="InnovaModel.PlanEstudiosBase" />
-    <EntitySet Name="sysdiagrams" EntityType="InnovaModel.sysdiagrams" />
+    <EntitySet Name="TipoCalificación" EntityType="InnovaModel.TipoCalificación" />
+    <EntitySet Name="Unidad" EntityType="InnovaModel.Unidad" />
+    <EntitySet Name="Banco" EntityType="InnovaModel.Banco" />
+    <EntitySet Name="Candidato" EntityType="InnovaModel.Candidato" />
+    <EntitySet Name="Contrato" EntityType="InnovaModel.Contrato" />
+    <EntitySet Name="Convocatoria" EntityType="InnovaModel.Convocatoria" />
+    <EntitySet Name="ConvocatoriaCandidato" EntityType="InnovaModel.ConvocatoriaCandidato" />
+    <EntitySet Name="Desarrollo" EntityType="InnovaModel.Desarrollo" />
+    <EntitySet Name="Empleado" EntityType="InnovaModel.Empleado" />
+    <EntitySet Name="EstadoCandidato" EntityType="InnovaModel.EstadoCandidato" />
+    <EntitySet Name="EstadoCivil" EntityType="InnovaModel.EstadoCivil" />
+    <EntitySet Name="EstadoEmpleado" EntityType="InnovaModel.EstadoEmpleado" />
+    <EntitySet Name="FondoPensiones" EntityType="InnovaModel.FondoPensiones" />
+    <EntitySet Name="Nacionalidad" EntityType="InnovaModel.Nacionalidad" />
+    <EntitySet Name="NivelEstudio" EntityType="InnovaModel.NivelEstudio" />
+    <EntitySet Name="Persona" EntityType="InnovaModel.Persona" />
+    <EntitySet Name="Puesto" EntityType="InnovaModel.Puesto" />
+    <EntitySet Name="Seguro" EntityType="InnovaModel.Seguro" />
+    <EntitySet Name="TipoContrato" EntityType="InnovaModel.TipoContrato" />
+    <EntitySet Name="TipoPuesto" EntityType="InnovaModel.TipoPuesto" />
+    <EntitySet Name="Usuario" EntityType="InnovaModel.Usuario" />
+    <AssociationSet Name="FK__AlumnoEmp__idAlu__42CCE065" Association="InnovaModel.FK__AlumnoEmp__idAlu__42CCE065">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="AlumnoEmpadronado" EntitySet="AlumnoEmpadronado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Integrant__idAlu__2BB470E3" Association="InnovaModel.FK__Integrant__idAlu__2BB470E3">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Integrante" EntitySet="Integrante" />
+    </AssociationSet>
+    <AssociationSet Name="R_10" Association="InnovaModel.R_10">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="R_12" Association="InnovaModel.R_12">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="ExpedienteAdmision" EntitySet="ExpedienteAdmision" />
+    </AssociationSet>
+    <AssociationSet Name="R_14" Association="InnovaModel.R_14">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+    <AssociationSet Name="R_7" Association="InnovaModel.R_7">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="R_8" Association="InnovaModel.R_8">
+      <End Role="Apoderado" EntitySet="Apoderado" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parentesco" Association="InnovaModel.FK_Parentesco">
+      <End Role="Parentesco" EntitySet="Parentesco" />
+      <End Role="Apoderado" EntitySet="Apoderado" />
+    </AssociationSet>
+    <AssociationSet Name="R_6" Association="InnovaModel.R_6">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Apoderado" EntitySet="Apoderado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConvocatoriaArea" Association="InnovaModel.FK_ConvocatoriaArea">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Convocatoria" EntitySet="Convocatoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Puesto_Area" Association="InnovaModel.FK_Puesto_Area">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Puesto" EntitySet="Puesto" />
+    </AssociationSet>
+    <AssociationSet Name="R_50" Association="InnovaModel.R_50">
+      <End Role="Cronograma" EntitySet="Cronograma" />
+      <End Role="Proceso" EntitySet="Proceso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_TipoDocumentoI" Association="InnovaModel.FK_Persona_TipoDocumentoI">
+      <End Role="DocumentoIdentidad" EntitySet="DocumentoIdentidad" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="R_13" Association="InnovaModel.R_13">
+      <End Role="Proceso" EntitySet="Proceso" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+    <AssociationSet Name="R_18" Association="InnovaModel.R_18">
+      <End Role="Seccion" EntitySet="Seccion" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+    <AssociationSet Name="R_23" Association="InnovaModel.R_23">
+      <End Role="Grado" EntitySet="Grado" />
+      <End Role="Seccion" EntitySet="Seccion" />
+    </AssociationSet>
+    <AssociationSet Name="AprobacionAgenda_Agenda_FK" Association="InnovaModel.AprobacionAgenda_Agenda_FK">
+      <End Role="Agenda" EntitySet="Agenda" />
+      <End Role="AprobacionAgenda" EntitySet="AprobacionAgenda" />
+    </AssociationSet>
+    <AssociationSet Name="Calendario_Agenda_FK" Association="InnovaModel.Calendario_Agenda_FK">
+      <End Role="Agenda" EntitySet="Agenda" />
+      <End Role="Calendario" EntitySet="Calendario" />
+    </AssociationSet>
+    <AssociationSet Name="Feriado_Agenda_FK" Association="InnovaModel.Feriado_Agenda_FK">
+      <End Role="Agenda" EntitySet="Agenda" />
+      <End Role="Feriado" EntitySet="Feriado" />
+    </AssociationSet>
+    <AssociationSet Name="AprobacionCalendario_Calendario_FK" Association="InnovaModel.AprobacionCalendario_Calendario_FK">
+      <End Role="Calendario" EntitySet="Calendario" />
+      <End Role="AprobacionCalendario" EntitySet="AprobacionCalendario" />
+    </AssociationSet>
+    <AssociationSet Name="AprobacionSolicitudActividad_SolicitudActividad_FK" Association="InnovaModel.AprobacionSolicitudActividad_SolicitudActividad_FK">
+      <End Role="SolicitudActividad" EntitySet="SolicitudActividad" />
+      <End Role="AprobacionSolicitudActividad" EntitySet="AprobacionSolicitudActividad" />
+    </AssociationSet>
+    <AssociationSet Name="R_151" Association="InnovaModel.R_151">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="ActividadPlanAsignatura" EntitySet="ActividadPlanAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="R_9" Association="InnovaModel.R_9">
+      <End Role="PlanAsignatura" EntitySet="PlanAsignatura" />
+      <End Role="ActividadPlanAsignatura" EntitySet="ActividadPlanAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="R_141" Association="InnovaModel.R_141">
+      <End Role="PlanProyectoPedagogico" EntitySet="PlanProyectoPedagogico" />
+      <End Role="ActividadPlanProyectoPedagogico" EntitySet="ActividadPlanProyectoPedagogico" />
+    </AssociationSet>
+    <AssociationSet Name="R_161" Association="InnovaModel.R_161">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="ActividadPlanProyectoPedagogico" EntitySet="ActividadPlanProyectoPedagogico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meta_PlanAsignatura" Association="InnovaModel.FK_Meta_PlanAsignatura">
+      <End Role="PlanAsignatura" EntitySet="PlanAsignatura" />
+      <End Role="Meta" EntitySet="Meta" />
+    </AssociationSet>
+    <AssociationSet Name="R_111" Association="InnovaModel.R_111">
+      <End Role="PeriodoAcademico" EntitySet="PeriodoAcademico" />
+      <End Role="PlanProyectoPedagogico" EntitySet="PlanProyectoPedagogico" />
+    </AssociationSet>
+    <AssociationSet Name="R_21" Association="InnovaModel.R_21">
+      <End Role="PeriodoAcademico" EntitySet="PeriodoAcademico" />
+      <End Role="PlanArea" EntitySet="PlanArea" />
+    </AssociationSet>
+    <AssociationSet Name="R_3" Association="InnovaModel.R_3">
+      <End Role="PlanEstudio" EntitySet="PlanEstudio" />
+      <End Role="PlanArea" EntitySet="PlanArea" />
+    </AssociationSet>
+    <AssociationSet Name="R_4" Association="InnovaModel.R_4">
+      <End Role="Grado" EntitySet="Grado" />
+      <End Role="PlanArea" EntitySet="PlanArea" />
+    </AssociationSet>
+    <AssociationSet Name="R_51" Association="InnovaModel.R_51">
+      <End Role="AreaCurricular" EntitySet="AreaCurricular" />
+      <End Role="PlanArea" EntitySet="PlanArea" />
+    </AssociationSet>
+    <AssociationSet Name="R_61" Association="InnovaModel.R_61">
+      <End Role="PlanArea" EntitySet="PlanArea" />
+      <End Role="PlanAsignatura" EntitySet="PlanAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="R_71" Association="InnovaModel.R_71">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="PlanAsignatura" EntitySet="PlanAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="R_81" Association="InnovaModel.R_81">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="PlanAsignatura" EntitySet="PlanAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="R_101" Association="InnovaModel.R_101">
+      <End Role="PlanEstudio" EntitySet="PlanEstudio" />
+      <End Role="PlanProyectoPedagogico" EntitySet="PlanProyectoPedagogico" />
+    </AssociationSet>
+    <AssociationSet Name="R_121" Association="InnovaModel.R_121">
+      <End Role="AreaCurricular" EntitySet="AreaCurricular" />
+      <End Role="PlanProyectoPedagogico" EntitySet="PlanProyectoPedagogico" />
+    </AssociationSet>
+    <AssociationSet Name="R_171" Association="InnovaModel.R_171">
+      <End Role="Grado" EntitySet="Grado" />
+      <End Role="PlanProyectoPedagogico" EntitySet="PlanProyectoPedagogico" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Actividad__idPla__6AA5C795" Association="InnovaModel.FK__Actividad__idPla__6AA5C795">
+      <End Role="PlanGobierno" EntitySet="PlanGobierno" />
+      <End Role="ActividadAcademicaPlan" EntitySet="ActividadAcademicaPlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Observaci__idact__6E765879" Association="InnovaModel.FK__Observaci__idact__6E765879">
+      <End Role="ActividadAcademicaPlan" EntitySet="ActividadAcademicaPlan" />
+      <End Role="Observacion" EntitySet="Observacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SubActivi__idact__6B99EBCE" Association="InnovaModel.FK__SubActivi__idact__6B99EBCE">
+      <End Role="ActividadAcademicaPlan" EntitySet="ActividadAcademicaPlan" />
+      <End Role="SubActividad" EntitySet="SubActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Actividad__idPla__7DB89C09" Association="InnovaModel.FK__Actividad__idPla__7DB89C09">
+      <End Role="PlanGobierno" EntitySet="PlanGobierno" />
+      <End Role="ActividadPropuesta" EntitySet="ActividadPropuesta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Observaci__idAct__705EA0EB" Association="InnovaModel.FK__Observaci__idAct__705EA0EB">
+      <End Role="ActividadPropuesta" EntitySet="ActividadPropuesta" />
+      <End Role="Observacion" EntitySet="Observacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SubActivi__idAct__5D4BCC77" Association="InnovaModel.FK__SubActivi__idAct__5D4BCC77">
+      <End Role="ActividadPropuesta" EntitySet="ActividadPropuesta" />
+      <End Role="SubActividad" EntitySet="SubActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AlumnoEmp__idPro__66D536B1" Association="InnovaModel.FK__AlumnoEmp__idPro__66D536B1">
+      <End Role="DetalleProceso" EntitySet="DetalleProceso" />
+      <End Role="AlumnoEmpadronado" EntitySet="AlumnoEmpadronado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Asesor__idPerson__55DFB4D9" Association="InnovaModel.FK__Asesor__idPerson__55DFB4D9">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Asesor" EntitySet="Asesor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PartidoPo__idAse__5B988E2F" Association="InnovaModel.FK__PartidoPo__idAse__5B988E2F">
+      <End Role="Asesor" EntitySet="Asesor" />
+      <End Role="PartidoPostulante" EntitySet="PartidoPostulante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Integrant__idCar__2D9CB955" Association="InnovaModel.FK__Integrant__idCar__2D9CB955">
+      <End Role="Cargo" EntitySet="Cargo" />
+      <End Role="Integrante" EntitySet="Integrante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetallePr__idPer__62108194" Association="InnovaModel.FK__DetallePr__idPer__62108194">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="DetalleProceso" EntitySet="DetalleProceso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanGobie__idPro__64ECEE3F" Association="InnovaModel.FK__PlanGobie__idPro__64ECEE3F">
+      <End Role="DetalleProceso" EntitySet="DetalleProceso" />
+      <End Role="PlanGobierno" EntitySet="PlanGobierno" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Voto__idProceso__65E11278" Association="InnovaModel.FK__Voto__idProceso__65E11278">
+      <End Role="DetalleProceso" EntitySet="DetalleProceso" />
+      <End Role="Voto" EntitySet="Voto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Instrumen__idPla__63F8CA06" Association="InnovaModel.FK__Instrumen__idPla__63F8CA06">
+      <End Role="PlanGobierno" EntitySet="PlanGobierno" />
+      <End Role="Instrumento" EntitySet="Instrumento" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Observaci__idIns__6F6A7CB2" Association="InnovaModel.FK__Observaci__idIns__6F6A7CB2">
+      <End Role="Instrumento" EntitySet="Instrumento" />
+      <End Role="Observacion" EntitySet="Observacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Integrant__idPar__6C8E1007" Association="InnovaModel.FK__Integrant__idPar__6C8E1007">
+      <End Role="PartidoPostulante" EntitySet="PartidoPostulante" />
+      <End Role="Integrante" EntitySet="Integrante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanGobie__idPar__6D823440" Association="InnovaModel.FK__PlanGobie__idPar__6D823440">
+      <End Role="PartidoPostulante" EntitySet="PartidoPostulante" />
+      <End Role="PlanGobierno" EntitySet="PlanGobierno" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Voto__idPartido__6304A5CD" Association="InnovaModel.FK__Voto__idPartido__6304A5CD">
+      <End Role="PartidoPostulante" EntitySet="PartidoPostulante" />
+      <End Role="Voto" EntitySet="Voto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Roles__idUser__605D434C" Association="InnovaModel.FK__Roles__idUser__605D434C">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__idRol__7BD05397" Association="InnovaModel.FK__Usuario__idRol__7BD05397">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
     <AssociationSet Name="FK_CurriculaBaseCompetencia_AreaCurricular" Association="InnovaModel.FK_CurriculaBaseCompetencia_AreaCurricular">
       <End Role="AreaCurricular" EntitySet="AreaCurricular" />
       <End Role="CurriculaBaseCompetencia" EntitySet="CurriculaBaseCompetencia" />
@@ -21,6 +316,10 @@
     <AssociationSet Name="FK_Curso_AreaCurricular" Association="InnovaModel.FK_Curso_AreaCurricular">
       <End Role="AreaCurricular" EntitySet="AreaCurricular" />
       <End Role="Curso" EntitySet="Curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanEstudiosBase_AreaCurricular" Association="InnovaModel.FK_PlanEstudiosBase_AreaCurricular">
+      <End Role="AreaCurricular" EntitySet="AreaCurricular" />
+      <End Role="PlanEstudiosBase" EntitySet="PlanEstudiosBase" />
     </AssociationSet>
     <AssociationSet Name="FK_Capacidad_Competencia" Association="InnovaModel.FK_Capacidad_Competencia">
       <End Role="Competencia" EntitySet="Competencia" />
@@ -30,16 +329,8 @@
       <End Role="Competencia" EntitySet="Competencia" />
       <End Role="CurriculaBaseCompetencia" EntitySet="CurriculaBaseCompetencia" />
     </AssociationSet>
-    <AssociationSet Name="FK_DetalleCurricula_Competencia" Association="InnovaModel.FK_DetalleCurricula_Competencia">
-      <End Role="Competencia" EntitySet="Competencia" />
-      <End Role="DetalleCurricula" EntitySet="DetalleCurricula" />
-    </AssociationSet>
     <AssociationSet Name="FK_Curricula_CurriculaBase" Association="InnovaModel.FK_Curricula_CurriculaBase">
       <End Role="CurriculaBase" EntitySet="CurriculaBase" />
-      <End Role="Curricula" EntitySet="Curricula" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Curricula_Nivel" Association="InnovaModel.FK_Curricula_Nivel">
-      <End Role="Nivel" EntitySet="Nivel" />
       <End Role="Curricula" EntitySet="Curricula" />
     </AssociationSet>
     <AssociationSet Name="FK_DetalleCurricula_Curricula" Association="InnovaModel.FK_DetalleCurricula_Curricula">
@@ -50,41 +341,750 @@
       <End Role="CurriculaBase" EntitySet="CurriculaBase" />
       <End Role="CurriculaBaseCompetencia" EntitySet="CurriculaBaseCompetencia" />
     </AssociationSet>
-    <AssociationSet Name="FK_PlanEstudiosBase_CurriculaBaseCompetencia" Association="InnovaModel.FK_PlanEstudiosBase_CurriculaBaseCompetencia">
-      <End Role="CurriculaBaseCompetencia" EntitySet="CurriculaBaseCompetencia" />
+    <AssociationSet Name="FK_PlanEstudiosBase_CurriculaBase" Association="InnovaModel.FK_PlanEstudiosBase_CurriculaBase">
+      <End Role="CurriculaBase" EntitySet="CurriculaBase" />
       <End Role="PlanEstudiosBase" EntitySet="PlanEstudiosBase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Curso_Empleado" Association="InnovaModel.FK_Curso_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Curso" EntitySet="Curso" />
     </AssociationSet>
     <AssociationSet Name="FK_Curso_Grado" Association="InnovaModel.FK_Curso_Grado">
       <End Role="Grado" EntitySet="Grado" />
       <End Role="Curso" EntitySet="Curso" />
     </AssociationSet>
-    <AssociationSet Name="FK_PlanEstudiosBase_Curso" Association="InnovaModel.FK_PlanEstudiosBase_Curso">
+    <AssociationSet Name="FK_CursoTema_Curso" Association="InnovaModel.FK_CursoTema_Curso">
       <End Role="Curso" EntitySet="Curso" />
-      <End Role="PlanEstudiosBase" EntitySet="PlanEstudiosBase" />
+      <End Role="CursoTema" EntitySet="CursoTema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurricula_Curso" Association="InnovaModel.FK_DetalleCurricula_Curso">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="DetalleCurricula" EntitySet="DetalleCurricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurricula_Empleado" Association="InnovaModel.FK_DetalleCurricula_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="DetalleCurricula" EntitySet="DetalleCurricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurriculaCalificacion_DetalleCurricula" Association="InnovaModel.FK_DetalleCurriculaCalificacion_DetalleCurricula">
+      <End Role="DetalleCurricula" EntitySet="DetalleCurricula" />
+      <End Role="DetalleCurriculaCalificacion" EntitySet="DetalleCurriculaCalificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurriculaProfesor_DetalleCurricula" Association="InnovaModel.FK_DetalleCurriculaProfesor_DetalleCurricula">
+      <End Role="DetalleCurricula" EntitySet="DetalleCurricula" />
+      <End Role="DetalleCurriculaProfesor" EntitySet="DetalleCurriculaProfesor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurriculaTema_DetalleCurricula" Association="InnovaModel.FK_DetalleCurriculaTema_DetalleCurricula">
+      <End Role="DetalleCurricula" EntitySet="DetalleCurricula" />
+      <End Role="DetalleCurriculaTema" EntitySet="DetalleCurriculaTema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurriculaCalificacion_TipoCalificación" Association="InnovaModel.FK_DetalleCurriculaCalificacion_TipoCalificación">
+      <End Role="TipoCalificación" EntitySet="TipoCalificación" />
+      <End Role="DetalleCurriculaCalificacion" EntitySet="DetalleCurriculaCalificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurriculaProfesor_Empleado" Association="InnovaModel.FK_DetalleCurriculaProfesor_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="DetalleCurriculaProfesor" EntitySet="DetalleCurriculaProfesor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCurriculaTema_Unidad" Association="InnovaModel.FK_DetalleCurriculaTema_Unidad">
+      <End Role="Unidad" EntitySet="Unidad" />
+      <End Role="DetalleCurriculaTema" EntitySet="DetalleCurriculaTema" />
     </AssociationSet>
     <AssociationSet Name="FK_Grado_Nivel" Association="InnovaModel.FK_Grado_Nivel">
       <End Role="Nivel" EntitySet="Nivel" />
       <End Role="Grado" EntitySet="Grado" />
     </AssociationSet>
-    <AssociationSet Name="DocenteCurso" Association="InnovaModel.DocenteCurso">
+    <AssociationSet Name="FK_PlanEstudiosBase_Grado" Association="InnovaModel.FK_PlanEstudiosBase_Grado">
+      <End Role="Grado" EntitySet="Grado" />
+      <End Role="PlanEstudiosBase" EntitySet="PlanEstudiosBase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Banco" Association="InnovaModel.FK_Empleado_Banco">
+      <End Role="Banco" EntitySet="Banco" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidato_Persona" Association="InnovaModel.FK_Candidato_Persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Candidato" EntitySet="Candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CandidatoEstado" Association="InnovaModel.FK_CandidatoEstado">
+      <End Role="EstadoCandidato" EntitySet="EstadoCandidato" />
+      <End Role="Candidato" EntitySet="Candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoCandidato" Association="InnovaModel.FK_EmpleadoCandidato">
+      <End Role="Candidato" EntitySet="Candidato" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Empleado" Association="InnovaModel.FK_Contrato_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Puesto" Association="InnovaModel.FK_Contrato_Puesto">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContratoConvocatoria" Association="InnovaModel.FK_ContratoConvocatoria">
+      <End Role="Convocatoria" EntitySet="Convocatoria" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContratoTipo" Association="InnovaModel.FK_ContratoTipo">
+      <End Role="TipoContrato" EntitySet="TipoContrato" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Convocatoria_Puesto" Association="InnovaModel.FK_Convocatoria_Puesto">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Convocatoria" EntitySet="Convocatoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConvocatoriaDesarrollo" Association="InnovaModel.FK_ConvocatoriaDesarrollo">
+      <End Role="Desarrollo" EntitySet="Desarrollo" />
+      <End Role="Convocatoria" EntitySet="Convocatoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConvocatoriaTipoPuesto" Association="InnovaModel.FK_ConvocatoriaTipoPuesto">
+      <End Role="TipoPuesto" EntitySet="TipoPuesto" />
+      <End Role="Convocatoria" EntitySet="Convocatoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Persona" Association="InnovaModel.FK_Empleado_Persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoEstado" Association="InnovaModel.FK_EmpleadoEstado">
+      <End Role="EstadoEmpleado" EntitySet="EstadoEmpleado" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoFondo" Association="InnovaModel.FK_EmpleadoFondo">
+      <End Role="FondoPensiones" EntitySet="FondoPensiones" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoNivelEstudios" Association="InnovaModel.FK_EmpleadoNivelEstudios">
+      <End Role="NivelEstudio" EntitySet="NivelEstudio" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoSeguro" Association="InnovaModel.FK_EmpleadoSeguro">
+      <End Role="Seguro" EntitySet="Seguro" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonaEstadoCivil" Association="InnovaModel.FK_PersonaEstadoCivil">
+      <End Role="EstadoCivil" EntitySet="EstadoCivil" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__idPerso__7CC477D0" Association="InnovaModel.FK__Usuario__idPerso__7CC477D0">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PuestoTipo" Association="InnovaModel.FK_PuestoTipo">
+      <End Role="TipoPuesto" EntitySet="TipoPuesto" />
+      <End Role="Puesto" EntitySet="Puesto" />
+    </AssociationSet>
+    <AssociationSet Name="CursoDocente" Association="InnovaModel.CursoDocente">
       <End Role="Curso" EntitySet="Curso" />
-      <End Role="Docente" EntitySet="Docente" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="R_Grado" Association="InnovaModel.R_Grado">
+      <End Role="Grado" EntitySet="Grado" />
+      <End Role="Alumno" EntitySet="Alumno" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="idAlumno" />
+    </Key>
+    <Property Name="idAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="idPersona" Type="Int32" />
+    <Property Name="idApoderado" Type="Int32" />
+    <Property Name="idSede" Type="Int32" />
+    <NavigationProperty Name="AlumnoEmpadronado" Relationship="InnovaModel.FK__AlumnoEmp__idAlu__42CCE065" FromRole="Alumno" ToRole="AlumnoEmpadronado" />
+    <NavigationProperty Name="Integrante" Relationship="InnovaModel.FK__Integrant__idAlu__2BB470E3" FromRole="Alumno" ToRole="Integrante" />
+    <NavigationProperty Name="Sede" Relationship="InnovaModel.R_10" FromRole="Alumno" ToRole="Sede" />
+    <NavigationProperty Name="ExpedienteAdmision" Relationship="InnovaModel.R_12" FromRole="Alumno" ToRole="ExpedienteAdmision" />
+    <NavigationProperty Name="Matricula" Relationship="InnovaModel.R_14" FromRole="Alumno" ToRole="Matricula" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.R_7" FromRole="Alumno" ToRole="Persona" />
+    <NavigationProperty Name="Apoderado" Relationship="InnovaModel.R_8" FromRole="Alumno" ToRole="Apoderado" />
+    <Property Name="idGrado" Type="Int32" />
+    <NavigationProperty Name="Grado" Relationship="InnovaModel.R_Grado" FromRole="Alumno" ToRole="Grado" />
+  </EntityType>
+  <EntityType Name="Apoderado">
+    <Key>
+      <PropertyRef Name="idApoderado" />
+    </Key>
+    <Property Name="idApoderado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idParentesco" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telefono_2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="idPersona" Type="Int32" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.R_8" FromRole="Apoderado" ToRole="Alumno" />
+    <NavigationProperty Name="Parentesco" Relationship="InnovaModel.FK_Parentesco" FromRole="Apoderado" ToRole="Parentesco" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.R_6" FromRole="Apoderado" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="idArea" />
+    </Key>
+    <Property Name="idArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Convocatoria" Relationship="InnovaModel.FK_ConvocatoriaArea" FromRole="Area" ToRole="Convocatoria" />
+    <NavigationProperty Name="Puesto" Relationship="InnovaModel.FK_Puesto_Area" FromRole="Area" ToRole="Puesto" />
+  </EntityType>
+  <EntityType Name="Cronograma">
+    <Key>
+      <PropertyRef Name="idCronograma" />
+    </Key>
+    <Property Name="idCronograma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="fechaFin" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Proceso" Relationship="InnovaModel.R_50" FromRole="Cronograma" ToRole="Proceso" />
+  </EntityType>
+  <EntityType Name="DocumentoIdentidad">
+    <Key>
+      <PropertyRef Name="idDocumentoIdentidad" />
+    </Key>
+    <Property Name="idDocumentoIdentidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.FK_Persona_TipoDocumentoI" FromRole="DocumentoIdentidad" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="ExpedienteAdmision">
+    <Key>
+      <PropertyRef Name="idExpedienteAdmision" />
+    </Key>
+    <Property Name="idExpedienteAdmision" Type="Int32" Nullable="false" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="idAlumno" Type="Int32" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.R_12" FromRole="ExpedienteAdmision" ToRole="Alumno" />
+    <Property Name="resultInfocorp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="obsPsicologicas" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="resultEvaPsico" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="resultBloqueLetras" Type="Int32" />
+    <Property Name="resultBloqueMatCiencias" Type="Int32" />
+    <Property Name="resultRM_RV" Type="Int32" />
+    <Property Name="codigoExpediente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Matricula">
+    <Key>
+      <PropertyRef Name="idMatricula" />
+    </Key>
+    <Property Name="idMatricula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaMatricula" Type="DateTime" Precision="3" />
+    <Property Name="idProceso" Type="Int32" />
+    <Property Name="idAlumno" Type="Int32" />
+    <Property Name="idSeccion" Type="Int32" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.R_14" FromRole="Matricula" ToRole="Alumno" />
+    <NavigationProperty Name="Proceso" Relationship="InnovaModel.R_13" FromRole="Matricula" ToRole="Proceso" />
+    <NavigationProperty Name="Seccion" Relationship="InnovaModel.R_18" FromRole="Matricula" ToRole="Seccion" />
+  </EntityType>
+  <EntityType Name="Parentesco">
+    <Key>
+      <PropertyRef Name="idParentesco" />
+    </Key>
+    <Property Name="idParentesco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Apoderado" Relationship="InnovaModel.FK_Parentesco" FromRole="Parentesco" ToRole="Apoderado" />
+  </EntityType>
+  <EntityType Name="Proceso">
+    <Key>
+      <PropertyRef Name="idProceso" />
+    </Key>
+    <Property Name="idProceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="fechaFin" Type="DateTime" Precision="3" />
+    <Property Name="idCronograma" Type="Int32" />
+    <NavigationProperty Name="Cronograma" Relationship="InnovaModel.R_50" FromRole="Proceso" ToRole="Cronograma" />
+    <NavigationProperty Name="Matricula" Relationship="InnovaModel.R_13" FromRole="Proceso" ToRole="Matricula" />
+  </EntityType>
+  <EntityType Name="Seccion">
+    <Key>
+      <PropertyRef Name="idSeccion" />
+    </Key>
+    <Property Name="idSeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="capacidad" Type="Int32" />
+    <Property Name="idGrado" Type="Int32" />
+    <NavigationProperty Name="Matricula" Relationship="InnovaModel.R_18" FromRole="Seccion" ToRole="Matricula" />
+    <NavigationProperty Name="Grado" Relationship="InnovaModel.R_23" FromRole="Seccion" ToRole="Grado" />
+  </EntityType>
+  <EntityType Name="Sede">
+    <Key>
+      <PropertyRef Name="idSede" />
+    </Key>
+    <Property Name="idSede" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.R_10" FromRole="Sede" ToRole="Alumno" />
+  </EntityType>
+  <EntityType Name="Agenda">
+    <Key>
+      <PropertyRef Name="idAgenda" />
+    </Key>
+    <Property Name="idAgenda" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="fechaApertura" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaCierre" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaInicioEscolar" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaTerminoEscolar" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AprobacionAgenda" Relationship="InnovaModel.AprobacionAgenda_Agenda_FK" FromRole="Agenda" ToRole="AprobacionAgenda" />
+    <NavigationProperty Name="Calendario" Relationship="InnovaModel.Calendario_Agenda_FK" FromRole="Agenda" ToRole="Calendario" />
+    <NavigationProperty Name="Feriado" Relationship="InnovaModel.Feriado_Agenda_FK" FromRole="Agenda" ToRole="Feriado" />
+  </EntityType>
+  <EntityType Name="Ambiente">
+    <Key>
+      <PropertyRef Name="idAmbiente" />
+    </Key>
+    <Property Name="idAmbiente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ubicacion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AprobacionAgenda">
+    <Key>
+      <PropertyRef Name="idAprobacion" />
+    </Key>
+    <Property Name="idAprobacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idAgenda" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="observacion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Agenda" Relationship="InnovaModel.AprobacionAgenda_Agenda_FK" FromRole="AprobacionAgenda" ToRole="Agenda" />
+  </EntityType>
+  <EntityType Name="AprobacionCalendario">
+    <Key>
+      <PropertyRef Name="idAprobacionCalendario" />
+    </Key>
+    <Property Name="idAprobacionCalendario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCalendario" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="observacion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Calendario" Relationship="InnovaModel.AprobacionCalendario_Calendario_FK" FromRole="AprobacionCalendario" ToRole="Calendario" />
+  </EntityType>
+  <EntityType Name="AprobacionSolicitudActividad">
+    <Key>
+      <PropertyRef Name="idAprobacionSolicitudActividad" />
+    </Key>
+    <Property Name="idAprobacionSolicitudActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSolicitudActividad" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="observacion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SolicitudActividad" Relationship="InnovaModel.AprobacionSolicitudActividad_SolicitudActividad_FK" FromRole="AprobacionSolicitudActividad" ToRole="SolicitudActividad" />
+  </EntityType>
+  <EntityType Name="Calendario">
+    <Key>
+      <PropertyRef Name="idCalendario" />
+    </Key>
+    <Property Name="idCalendario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idAgenda" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Agenda" Relationship="InnovaModel.Calendario_Agenda_FK" FromRole="Calendario" ToRole="Agenda" />
+    <NavigationProperty Name="AprobacionCalendario" Relationship="InnovaModel.AprobacionCalendario_Calendario_FK" FromRole="Calendario" ToRole="AprobacionCalendario" />
+  </EntityType>
+  <EntityType Name="Feriado">
+    <Key>
+      <PropertyRef Name="idFeriado" />
+    </Key>
+    <Property Name="idFeriado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idAgenda" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="motivo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaTermino" Type="DateTime" Precision="3" />
+    <Property Name="repetitivo" Type="Int32" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Agenda" Relationship="InnovaModel.Feriado_Agenda_FK" FromRole="Feriado" ToRole="Agenda" />
+  </EntityType>
+  <EntityType Name="SolicitudActividad">
+    <Key>
+      <PropertyRef Name="idSolicitudActividad" />
+    </Key>
+    <Property Name="idSolicitudActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idActividad" Type="Int32" Nullable="false" />
+    <Property Name="motivo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="usuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AprobacionSolicitudActividad" Relationship="InnovaModel.AprobacionSolicitudActividad_SolicitudActividad_FK" FromRole="SolicitudActividad" ToRole="AprobacionSolicitudActividad" />
+  </EntityType>
+  <EntityType Name="ActividadPlanAsignatura">
+    <Key>
+      <PropertyRef Name="idActividadPlanAsignatura" />
+    </Key>
+    <Property Name="idActividadPlanAsignatura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="actividad" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="porcentajeAvance" Type="Int32" Nullable="false" />
+    <Property Name="idPlanAsignatura" Type="Int32" Nullable="false" />
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.R_151" FromRole="ActividadPlanAsignatura" ToRole="Empleado" />
+    <NavigationProperty Name="PlanAsignatura" Relationship="InnovaModel.R_9" FromRole="ActividadPlanAsignatura" ToRole="PlanAsignatura" />
+  </EntityType>
+  <EntityType Name="ActividadPlanProyectoPedagogico">
+    <Key>
+      <PropertyRef Name="idActividadProyectoPedagogico" />
+    </Key>
+    <Property Name="idActividadProyectoPedagogico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="actividad" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="porcentajeAvance" Type="Int32" Nullable="false" />
+    <Property Name="idProyectoPedagogico" Type="Int32" Nullable="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PlanProyectoPedagogico" Relationship="InnovaModel.R_141" FromRole="ActividadPlanProyectoPedagogico" ToRole="PlanProyectoPedagogico" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.R_161" FromRole="ActividadPlanProyectoPedagogico" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Meta">
+    <Key>
+      <PropertyRef Name="idMeta" />
+    </Key>
+    <Property Name="idMeta" Type="Int32" Nullable="false" />
+    <Property Name="idPlanAsignatura" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PlanAsignatura" Relationship="InnovaModel.FK_Meta_PlanAsignatura" FromRole="Meta" ToRole="PlanAsignatura" />
+  </EntityType>
+  <EntityType Name="PeriodoAcademico">
+    <Key>
+      <PropertyRef Name="idPeriodoAcademico" />
+    </Key>
+    <Property Name="idPeriodoAcademico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="periodo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PlanProyectoPedagogico" Relationship="InnovaModel.R_111" FromRole="PeriodoAcademico" ToRole="PlanProyectoPedagogico" />
+    <NavigationProperty Name="PlanArea" Relationship="InnovaModel.R_21" FromRole="PeriodoAcademico" ToRole="PlanArea" />
+  </EntityType>
+  <EntityType Name="PlanArea">
+    <Key>
+      <PropertyRef Name="idPlanArea" />
+    </Key>
+    <Property Name="idPlanArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="objetivos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="criterios" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="requisitos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idPeriodoAcademico" Type="Int32" Nullable="false" />
+    <Property Name="idPlanEstudio" Type="Int32" Nullable="false" />
+    <Property Name="idGrado" Type="Int32" Nullable="false" />
+    <Property Name="idAreaCurricular" Type="Int32" Nullable="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PeriodoAcademico" Relationship="InnovaModel.R_21" FromRole="PlanArea" ToRole="PeriodoAcademico" />
+    <NavigationProperty Name="PlanEstudio" Relationship="InnovaModel.R_3" FromRole="PlanArea" ToRole="PlanEstudio" />
+    <NavigationProperty Name="Grado" Relationship="InnovaModel.R_4" FromRole="PlanArea" ToRole="Grado" />
+    <NavigationProperty Name="AreaCurricular" Relationship="InnovaModel.R_51" FromRole="PlanArea" ToRole="AreaCurricular" />
+    <NavigationProperty Name="PlanAsignatura" Relationship="InnovaModel.R_61" FromRole="PlanArea" ToRole="PlanAsignatura" />
+  </EntityType>
+  <EntityType Name="PlanAsignatura">
+    <Key>
+      <PropertyRef Name="idPlanAsignatura" />
+    </Key>
+    <Property Name="idPlanAsignatura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="metodologia" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idPlanArea" Type="Int32" Nullable="false" />
+    <Property Name="idCurso" Type="Int32" Nullable="false" />
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="18" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="ActividadPlanAsignatura" Relationship="InnovaModel.R_9" FromRole="PlanAsignatura" ToRole="ActividadPlanAsignatura" />
+    <NavigationProperty Name="Meta" Relationship="InnovaModel.FK_Meta_PlanAsignatura" FromRole="PlanAsignatura" ToRole="Meta" />
+    <NavigationProperty Name="PlanArea" Relationship="InnovaModel.R_61" FromRole="PlanAsignatura" ToRole="PlanArea" />
+    <NavigationProperty Name="Curso" Relationship="InnovaModel.R_71" FromRole="PlanAsignatura" ToRole="Curso" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.R_81" FromRole="PlanAsignatura" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="PlanEstudio">
+    <Key>
+      <PropertyRef Name="idPlanEstudio" />
+    </Key>
+    <Property Name="idPlanEstudio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="anio" Type="Int32" Nullable="false" />
+    <Property Name="objetivos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="requisitos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PlanArea" Relationship="InnovaModel.R_3" FromRole="PlanEstudio" ToRole="PlanArea" />
+    <NavigationProperty Name="PlanProyectoPedagogico" Relationship="InnovaModel.R_101" FromRole="PlanEstudio" ToRole="PlanProyectoPedagogico" />
+  </EntityType>
+  <EntityType Name="PlanProyectoPedagogico">
+    <Key>
+      <PropertyRef Name="idProyectoPedagogico" />
+    </Key>
+    <Property Name="idProyectoPedagogico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="objetivos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idPlanEstudio" Type="Int32" Nullable="false" />
+    <Property Name="idPeriodoAcademico" Type="Int32" Nullable="false" />
+    <Property Name="idAreaCurricular" Type="Int32" Nullable="false" />
+    <Property Name="idGrado" Type="Int32" Nullable="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ActividadPlanProyectoPedagogico" Relationship="InnovaModel.R_141" FromRole="PlanProyectoPedagogico" ToRole="ActividadPlanProyectoPedagogico" />
+    <NavigationProperty Name="PeriodoAcademico" Relationship="InnovaModel.R_111" FromRole="PlanProyectoPedagogico" ToRole="PeriodoAcademico" />
+    <NavigationProperty Name="PlanEstudio" Relationship="InnovaModel.R_101" FromRole="PlanProyectoPedagogico" ToRole="PlanEstudio" />
+    <NavigationProperty Name="AreaCurricular" Relationship="InnovaModel.R_121" FromRole="PlanProyectoPedagogico" ToRole="AreaCurricular" />
+    <NavigationProperty Name="Grado" Relationship="InnovaModel.R_171" FromRole="PlanProyectoPedagogico" ToRole="Grado" />
+  </EntityType>
+  <EntityType Name="ActividadAcademicaPlan">
+    <Key>
+      <PropertyRef Name="idactPlan" />
+    </Key>
+    <Property Name="idactPlan" Type="Int32" Nullable="false" />
+    <Property Name="idactividad" Type="Int32" />
+    <Property Name="idPlan" Type="Int32" />
+    <NavigationProperty Name="PlanGobierno" Relationship="InnovaModel.FK__Actividad__idPla__6AA5C795" FromRole="ActividadAcademicaPlan" ToRole="PlanGobierno" />
+    <NavigationProperty Name="Observacion" Relationship="InnovaModel.FK__Observaci__idact__6E765879" FromRole="ActividadAcademicaPlan" ToRole="Observacion" />
+    <NavigationProperty Name="SubActividad" Relationship="InnovaModel.FK__SubActivi__idact__6B99EBCE" FromRole="ActividadAcademicaPlan" ToRole="SubActividad" />
+  </EntityType>
+  <EntityType Name="ActividadPropuesta">
+    <Key>
+      <PropertyRef Name="idactividadPropuesta" />
+    </Key>
+    <Property Name="idactividadPropuesta" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="fechaTermino" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="idPlan" Type="Int32" />
+    <NavigationProperty Name="PlanGobierno" Relationship="InnovaModel.FK__Actividad__idPla__7DB89C09" FromRole="ActividadPropuesta" ToRole="PlanGobierno" />
+    <NavigationProperty Name="Observacion" Relationship="InnovaModel.FK__Observaci__idAct__705EA0EB" FromRole="ActividadPropuesta" ToRole="Observacion" />
+    <NavigationProperty Name="SubActividad" Relationship="InnovaModel.FK__SubActivi__idAct__5D4BCC77" FromRole="ActividadPropuesta" ToRole="SubActividad" />
+  </EntityType>
+  <EntityType Name="AlumnoEmpadronado">
+    <Key>
+      <PropertyRef Name="idalumnoempadronado" />
+    </Key>
+    <Property Name="idalumnoempadronado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codalumnoempadronado" Type="Int64" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="añoescolar" Type="Int32" />
+    <Property Name="idAlumno" Type="Int32" />
+    <Property Name="idProceso" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="claveAcceso" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.FK__AlumnoEmp__idAlu__42CCE065" FromRole="AlumnoEmpadronado" ToRole="Alumno" />
+    <NavigationProperty Name="DetalleProceso" Relationship="InnovaModel.FK__AlumnoEmp__idPro__66D536B1" FromRole="AlumnoEmpadronado" ToRole="DetalleProceso" />
+  </EntityType>
+  <EntityType Name="Asesor">
+    <Key>
+      <PropertyRef Name="idAsesor" />
+    </Key>
+    <Property Name="idAsesor" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="idPersona" Type="Int32" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.FK__Asesor__idPerson__55DFB4D9" FromRole="Asesor" ToRole="Persona" />
+    <NavigationProperty Name="PartidoPostulante" Relationship="InnovaModel.FK__PartidoPo__idAse__5B988E2F" FromRole="Asesor" ToRole="PartidoPostulante" />
+  </EntityType>
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="idCargo" />
+    </Key>
+    <Property Name="idCargo" Type="Int32" Nullable="false" />
+    <Property Name="tipoCargo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="anoAcademico" Type="Int32" />
+    <NavigationProperty Name="Integrante" Relationship="InnovaModel.FK__Integrant__idCar__2D9CB955" FromRole="Cargo" ToRole="Integrante" />
+  </EntityType>
+  <EntityType Name="DetalleProceso">
+    <Key>
+      <PropertyRef Name="idProceso" />
+    </Key>
+    <Property Name="idProceso" Type="Int32" Nullable="false" />
+    <Property Name="nombreProceso" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaFin" Type="DateTime" Precision="3" />
+    <Property Name="idPersona" Type="Int32" />
+    <NavigationProperty Name="AlumnoEmpadronado" Relationship="InnovaModel.FK__AlumnoEmp__idPro__66D536B1" FromRole="DetalleProceso" ToRole="AlumnoEmpadronado" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.FK__DetallePr__idPer__62108194" FromRole="DetalleProceso" ToRole="Persona" />
+    <NavigationProperty Name="PlanGobierno" Relationship="InnovaModel.FK__PlanGobie__idPro__64ECEE3F" FromRole="DetalleProceso" ToRole="PlanGobierno" />
+    <NavigationProperty Name="Voto" Relationship="InnovaModel.FK__Voto__idProceso__65E11278" FromRole="DetalleProceso" ToRole="Voto" />
+  </EntityType>
+  <EntityType Name="Instrumento">
+    <Key>
+      <PropertyRef Name="idInstrumento" />
+    </Key>
+    <Property Name="idInstrumento" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Objetivo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="idPlan" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PlanGobierno" Relationship="InnovaModel.FK__Instrumen__idPla__63F8CA06" FromRole="Instrumento" ToRole="PlanGobierno" />
+    <NavigationProperty Name="Observacion" Relationship="InnovaModel.FK__Observaci__idIns__6F6A7CB2" FromRole="Instrumento" ToRole="Observacion" />
+  </EntityType>
+  <EntityType Name="Integrante">
+    <Key>
+      <PropertyRef Name="idIntegrante" />
+    </Key>
+    <Property Name="idIntegrante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idAlumno" Type="Int32" />
+    <Property Name="idCargo" Type="Int32" />
+    <Property Name="idPartido" Type="Int32" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.FK__Integrant__idAlu__2BB470E3" FromRole="Integrante" ToRole="Alumno" />
+    <NavigationProperty Name="Cargo" Relationship="InnovaModel.FK__Integrant__idCar__2D9CB955" FromRole="Integrante" ToRole="Cargo" />
+    <NavigationProperty Name="PartidoPostulante" Relationship="InnovaModel.FK__Integrant__idPar__6C8E1007" FromRole="Integrante" ToRole="PartidoPostulante" />
+  </EntityType>
+  <EntityType Name="Observacion">
+    <Key>
+      <PropertyRef Name="idObservacion" />
+    </Key>
+    <Property Name="idObservacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="NivelObservacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idInstrumento" Type="Int32" />
+    <Property Name="idActividadPropuesta" Type="Int32" />
+    <Property Name="idactPlan" Type="Int32" />
+    <NavigationProperty Name="ActividadAcademicaPlan" Relationship="InnovaModel.FK__Observaci__idact__6E765879" FromRole="Observacion" ToRole="ActividadAcademicaPlan" />
+    <NavigationProperty Name="ActividadPropuesta" Relationship="InnovaModel.FK__Observaci__idAct__705EA0EB" FromRole="Observacion" ToRole="ActividadPropuesta" />
+    <NavigationProperty Name="Instrumento" Relationship="InnovaModel.FK__Observaci__idIns__6F6A7CB2" FromRole="Observacion" ToRole="Instrumento" />
+  </EntityType>
+  <EntityType Name="ParametroTiempo">
+    <Key>
+      <PropertyRef Name="IdParametro" />
+    </Key>
+    <Property Name="IdParametro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Proceso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaFin" Type="DateTime" Precision="3" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PartidoPostulante">
+    <Key>
+      <PropertyRef Name="idPartido" />
+    </Key>
+    <Property Name="idPartido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="idAsesor" Type="Int32" />
+    <Property Name="FechaReg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asesor" Relationship="InnovaModel.FK__PartidoPo__idAse__5B988E2F" FromRole="PartidoPostulante" ToRole="Asesor" />
+    <NavigationProperty Name="Integrante" Relationship="InnovaModel.FK__Integrant__idPar__6C8E1007" FromRole="PartidoPostulante" ToRole="Integrante" />
+    <NavigationProperty Name="PlanGobierno" Relationship="InnovaModel.FK__PlanGobie__idPar__6D823440" FromRole="PartidoPostulante" ToRole="PlanGobierno" />
+    <NavigationProperty Name="Voto" Relationship="InnovaModel.FK__Voto__idPartido__6304A5CD" FromRole="PartidoPostulante" ToRole="Voto" />
+  </EntityType>
+  <EntityType Name="PlanGobierno">
+    <Key>
+      <PropertyRef Name="idplan" />
+    </Key>
+    <Property Name="idplan" Type="Int32" Nullable="false" />
+    <Property Name="FechaReg" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Objetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaAprob" Type="DateTime" Precision="3" />
+    <Property Name="codAlumno" Type="Int32" />
+    <Property Name="idProceso" Type="Int32" />
+    <Property Name="idPartido" Type="Int32" />
+    <NavigationProperty Name="ActividadAcademicaPlan" Relationship="InnovaModel.FK__Actividad__idPla__6AA5C795" FromRole="PlanGobierno" ToRole="ActividadAcademicaPlan" />
+    <NavigationProperty Name="ActividadPropuesta" Relationship="InnovaModel.FK__Actividad__idPla__7DB89C09" FromRole="PlanGobierno" ToRole="ActividadPropuesta" />
+    <NavigationProperty Name="DetalleProceso" Relationship="InnovaModel.FK__PlanGobie__idPro__64ECEE3F" FromRole="PlanGobierno" ToRole="DetalleProceso" />
+    <NavigationProperty Name="Instrumento" Relationship="InnovaModel.FK__Instrumen__idPla__63F8CA06" FromRole="PlanGobierno" ToRole="Instrumento" />
+    <NavigationProperty Name="PartidoPostulante" Relationship="InnovaModel.FK__PlanGobie__idPar__6D823440" FromRole="PlanGobierno" ToRole="PartidoPostulante" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="idrol" />
+    </Key>
+    <Property Name="idrol" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="idUser" Type="Int32" />
+    <NavigationProperty Name="Usuario" Relationship="InnovaModel.FK__Roles__idUser__605D434C" FromRole="Roles" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="InnovaModel.FK__Usuario__idRol__7BD05397" FromRole="Roles" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="SubActividad">
+    <Key>
+      <PropertyRef Name="SubActividadID" />
+    </Key>
+    <Property Name="SubActividadID" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="idActividadPropuesta" Type="Int32" />
+    <Property Name="idactPlan" Type="Int32" />
+    <NavigationProperty Name="ActividadAcademicaPlan" Relationship="InnovaModel.FK__SubActivi__idact__6B99EBCE" FromRole="SubActividad" ToRole="ActividadAcademicaPlan" />
+    <NavigationProperty Name="ActividadPropuesta" Relationship="InnovaModel.FK__SubActivi__idAct__5D4BCC77" FromRole="SubActividad" ToRole="ActividadPropuesta" />
+  </EntityType>
+  <EntityType Name="Voto">
+    <Key>
+      <PropertyRef Name="idVoto" />
+    </Key>
+    <Property Name="idVoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EstadoVoto" Type="Int32" />
+    <Property Name="FechaVoto" Type="DateTime" Precision="3" />
+    <Property Name="idPartido" Type="Int32" />
+    <Property Name="idProceso" Type="Int32" />
+    <NavigationProperty Name="DetalleProceso" Relationship="InnovaModel.FK__Voto__idProceso__65E11278" FromRole="Voto" ToRole="DetalleProceso" />
+    <NavigationProperty Name="PartidoPostulante" Relationship="InnovaModel.FK__Voto__idPartido__6304A5CD" FromRole="Voto" ToRole="PartidoPostulante" />
+  </EntityType>
   <EntityType Name="AreaCurricular">
     <Key>
       <PropertyRef Name="IdAreaCurricular" />
     </Key>
-    <Property Name="IdAreaCurricular" Type="Int32" Nullable="false" />
+    <Property Name="IdAreaCurricular" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Horas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Abreviatura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PlanArea" Relationship="InnovaModel.R_51" FromRole="AreaCurricular" ToRole="PlanArea" />
+    <NavigationProperty Name="PlanProyectoPedagogico" Relationship="InnovaModel.R_121" FromRole="AreaCurricular" ToRole="PlanProyectoPedagogico" />
     <NavigationProperty Name="CurriculaBaseCompetencia" Relationship="InnovaModel.FK_CurriculaBaseCompetencia_AreaCurricular" FromRole="AreaCurricular" ToRole="CurriculaBaseCompetencia" />
     <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_Curso_AreaCurricular" FromRole="AreaCurricular" ToRole="Curso" />
+    <NavigationProperty Name="PlanEstudiosBase" Relationship="InnovaModel.FK_PlanEstudiosBase_AreaCurricular" FromRole="AreaCurricular" ToRole="PlanEstudiosBase" />
   </EntityType>
   <EntityType Name="Capacidad">
     <Key>
       <PropertyRef Name="IdCapacidad" />
     </Key>
-    <Property Name="IdCapacidad" Type="Int32" Nullable="false" />
+    <Property Name="IdCapacidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="IdCompetencia" Type="Int32" Nullable="false" />
@@ -94,23 +1094,30 @@
     <Key>
       <PropertyRef Name="IdCompetencia" />
     </Key>
-    <Property Name="IdCompetencia" Type="Int32" Nullable="false" />
+    <Property Name="IdCompetencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Capacidad" Relationship="InnovaModel.FK_Capacidad_Competencia" FromRole="Competencia" ToRole="Capacidad" />
     <NavigationProperty Name="CurriculaBaseCompetencia" Relationship="InnovaModel.FK_CurriculaBaseCompetencia_Competencia" FromRole="Competencia" ToRole="CurriculaBaseCompetencia" />
-    <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurricula_Competencia" FromRole="Competencia" ToRole="DetalleCurricula" />
   </EntityType>
   <EntityType Name="Curricula">
     <Key>
       <PropertyRef Name="IdCurricula" />
     </Key>
-    <Property Name="IdCurricula" Type="Int32" Nullable="false" />
-    <Property Name="IdNivel" Type="Int32" />
+    <Property Name="IdCurricula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdCurriculaBase" Type="Int32" />
+    <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Año" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Estado" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaRechazo" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" />
+    <Property Name="IdUsuarioAprobacion" Type="Int32" />
+    <Property Name="IdUsuarioRechazo" Type="Int32" />
+    <Property Name="MotivoRechazo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CurriculaBase" Relationship="InnovaModel.FK_Curricula_CurriculaBase" FromRole="Curricula" ToRole="CurriculaBase" />
-    <NavigationProperty Name="Nivel" Relationship="InnovaModel.FK_Curricula_Nivel" FromRole="Curricula" ToRole="Nivel" />
     <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurricula_Curricula" FromRole="Curricula" ToRole="DetalleCurricula" />
   </EntityType>
   <EntityType Name="CurriculaBase">
@@ -124,6 +1131,7 @@
     <Property Name="Vigencia" Type="Boolean" />
     <NavigationProperty Name="Curricula" Relationship="InnovaModel.FK_Curricula_CurriculaBase" FromRole="CurriculaBase" ToRole="Curricula" />
     <NavigationProperty Name="CurriculaBaseCompetencia" Relationship="InnovaModel.FK_CurriculaBaseCompetencia_CurriculaBase" FromRole="CurriculaBase" ToRole="CurriculaBaseCompetencia" />
+    <NavigationProperty Name="PlanEstudiosBase" Relationship="InnovaModel.FK_PlanEstudiosBase_CurriculaBase" FromRole="CurriculaBase" ToRole="PlanEstudiosBase" />
   </EntityType>
   <EntityType Name="CurriculaBaseCompetencia">
     <Key>
@@ -132,89 +1140,1090 @@
     <Property Name="IdCurriculaBaseCompetencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdCurriculaBase" Type="Int32" Nullable="false" />
     <Property Name="IdCompetencia" Type="Int32" Nullable="false" />
-    <Property Name="IdAreaCurricular" Type="Int32" />
+    <Property Name="IdAreaCurricular" Type="Int32" Nullable="false" />
     <NavigationProperty Name="AreaCurricular" Relationship="InnovaModel.FK_CurriculaBaseCompetencia_AreaCurricular" FromRole="CurriculaBaseCompetencia" ToRole="AreaCurricular" />
     <NavigationProperty Name="Competencia" Relationship="InnovaModel.FK_CurriculaBaseCompetencia_Competencia" FromRole="CurriculaBaseCompetencia" ToRole="Competencia" />
     <NavigationProperty Name="CurriculaBase" Relationship="InnovaModel.FK_CurriculaBaseCompetencia_CurriculaBase" FromRole="CurriculaBaseCompetencia" ToRole="CurriculaBase" />
-    <NavigationProperty Name="PlanEstudiosBase" Relationship="InnovaModel.FK_PlanEstudiosBase_CurriculaBaseCompetencia" FromRole="CurriculaBaseCompetencia" ToRole="PlanEstudiosBase" />
   </EntityType>
   <EntityType Name="Curso">
     <Key>
       <PropertyRef Name="IdCurso" />
     </Key>
-    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Descripción" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Sumilla" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="IdGrado" Type="Int32" Nullable="false" />
     <Property Name="IdAreaCurricular" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PlanAsignatura" Relationship="InnovaModel.R_71" FromRole="Curso" ToRole="PlanAsignatura" />
     <NavigationProperty Name="AreaCurricular" Relationship="InnovaModel.FK_Curso_AreaCurricular" FromRole="Curso" ToRole="AreaCurricular" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_Curso_Empleado" FromRole="Curso" ToRole="Empleado" />
     <NavigationProperty Name="Grado" Relationship="InnovaModel.FK_Curso_Grado" FromRole="Curso" ToRole="Grado" />
-    <NavigationProperty Name="PlanEstudiosBase" Relationship="InnovaModel.FK_PlanEstudiosBase_Curso" FromRole="Curso" ToRole="PlanEstudiosBase" />
-    <NavigationProperty Name="Docente" Relationship="InnovaModel.DocenteCurso" FromRole="Curso" ToRole="Docente" />
+    <NavigationProperty Name="CursoTema" Relationship="InnovaModel.FK_CursoTema_Curso" FromRole="Curso" ToRole="CursoTema" />
+    <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurricula_Curso" FromRole="Curso" ToRole="DetalleCurricula" />
+    <NavigationProperty Name="Empleado1" Relationship="InnovaModel.CursoDocente" FromRole="Curso" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="CursoTema">
+    <Key>
+      <PropertyRef Name="IdCursoTema" />
+    </Key>
+    <Property Name="IdCursoTema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="Temario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EstTemario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_CursoTema_Curso" FromRole="CursoTema" ToRole="Curso" />
   </EntityType>
   <EntityType Name="DetalleCurricula">
     <Key>
       <PropertyRef Name="IdDetalleCurricula" />
     </Key>
     <Property Name="IdCurricula" Type="Int32" Nullable="false" />
-    <Property Name="IdDetalleCurricula" Type="Int32" Nullable="false" />
-    <Property Name="IdCompetencia" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Competencia" Relationship="InnovaModel.FK_DetalleCurricula_Competencia" FromRole="DetalleCurricula" ToRole="Competencia" />
+    <Property Name="IdDetalleCurricula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCurso" Type="Int32" />
+    <Property Name="IdCoordinador" Type="Int32" />
+    <Property Name="Item" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="HrsAsignadas" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="Curricula" Relationship="InnovaModel.FK_DetalleCurricula_Curricula" FromRole="DetalleCurricula" ToRole="Curricula" />
+    <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_DetalleCurricula_Curso" FromRole="DetalleCurricula" ToRole="Curso" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_DetalleCurricula_Empleado" FromRole="DetalleCurricula" ToRole="Empleado" />
+    <NavigationProperty Name="DetalleCurriculaCalificacion" Relationship="InnovaModel.FK_DetalleCurriculaCalificacion_DetalleCurricula" FromRole="DetalleCurricula" ToRole="DetalleCurriculaCalificacion" />
+    <NavigationProperty Name="DetalleCurriculaProfesor" Relationship="InnovaModel.FK_DetalleCurriculaProfesor_DetalleCurricula" FromRole="DetalleCurricula" ToRole="DetalleCurriculaProfesor" />
+    <NavigationProperty Name="DetalleCurriculaTema" Relationship="InnovaModel.FK_DetalleCurriculaTema_DetalleCurricula" FromRole="DetalleCurricula" ToRole="DetalleCurriculaTema" />
   </EntityType>
-  <EntityType Name="Docente">
+  <EntityType Name="DetalleCurriculaCalificacion">
     <Key>
-      <PropertyRef Name="IdDocente" />
+      <PropertyRef Name="IdDetalleCurriculaCalificacion" />
     </Key>
-    <Property Name="IdDocente" Type="Int32" Nullable="false" />
-    <Property Name="Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Curso" Relationship="InnovaModel.DocenteCurso" FromRole="Docente" ToRole="Curso" />
+    <Property Name="IdDetalleCurriculaCalificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDetalleCurricula" Type="Int32" />
+    <Property Name="IdTipoCalificacion" Type="Int32" />
+    <Property Name="ValorCalificacion" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurriculaCalificacion_DetalleCurricula" FromRole="DetalleCurriculaCalificacion" ToRole="DetalleCurricula" />
+    <NavigationProperty Name="TipoCalificación" Relationship="InnovaModel.FK_DetalleCurriculaCalificacion_TipoCalificación" FromRole="DetalleCurriculaCalificacion" ToRole="TipoCalificación" />
+  </EntityType>
+  <EntityType Name="DetalleCurriculaProfesor">
+    <Key>
+      <PropertyRef Name="IdDetalleCurriculaProfesor" />
+    </Key>
+    <Property Name="IdDetalleCurriculaProfesor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDetalleCurricula" Type="Int32" />
+    <Property Name="IdProfesor" Type="Int32" />
+    <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurriculaProfesor_DetalleCurricula" FromRole="DetalleCurriculaProfesor" ToRole="DetalleCurricula" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_DetalleCurriculaProfesor_Empleado" FromRole="DetalleCurriculaProfesor" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="DetalleCurriculaTema">
+    <Key>
+      <PropertyRef Name="IdDetalleCurriculaTema" />
+    </Key>
+    <Property Name="IdDetalleCurricula" Type="Int32" Nullable="false" />
+    <Property Name="IdDetalleCurriculaTema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUnidad" Type="Int32" Nullable="false" />
+    <Property Name="IdCursoTema" Type="Int32" Nullable="false" />
+    <Property Name="IdCompetencia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurriculaTema_DetalleCurricula" FromRole="DetalleCurriculaTema" ToRole="DetalleCurricula" />
+    <NavigationProperty Name="Unidad" Relationship="InnovaModel.FK_DetalleCurriculaTema_Unidad" FromRole="DetalleCurriculaTema" ToRole="Unidad" />
   </EntityType>
   <EntityType Name="Grado">
     <Key>
       <PropertyRef Name="IdGrado" />
     </Key>
-    <Property Name="IdGrado" Type="Int32" Nullable="false" />
+    <Property Name="IdGrado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="IdNivel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Seccion" Relationship="InnovaModel.R_23" FromRole="Grado" ToRole="Seccion" />
+    <NavigationProperty Name="PlanArea" Relationship="InnovaModel.R_4" FromRole="Grado" ToRole="PlanArea" />
+    <NavigationProperty Name="PlanProyectoPedagogico" Relationship="InnovaModel.R_171" FromRole="Grado" ToRole="PlanProyectoPedagogico" />
     <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_Curso_Grado" FromRole="Grado" ToRole="Curso" />
     <NavigationProperty Name="Nivel" Relationship="InnovaModel.FK_Grado_Nivel" FromRole="Grado" ToRole="Nivel" />
+    <NavigationProperty Name="PlanEstudiosBase" Relationship="InnovaModel.FK_PlanEstudiosBase_Grado" FromRole="Grado" ToRole="PlanEstudiosBase" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.R_Grado" FromRole="Grado" ToRole="Alumno" />
   </EntityType>
   <EntityType Name="Nivel">
     <Key>
       <PropertyRef Name="IdNivel" />
     </Key>
-    <Property Name="IdNivel" Type="Int32" Nullable="false" />
+    <Property Name="IdNivel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Curricula" Relationship="InnovaModel.FK_Curricula_Nivel" FromRole="Nivel" ToRole="Curricula" />
     <NavigationProperty Name="Grado" Relationship="InnovaModel.FK_Grado_Nivel" FromRole="Nivel" ToRole="Grado" />
+    <Property Name="temarioNivel" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Parametro">
+    <Key>
+      <PropertyRef Name="IdParametro" />
+    </Key>
+    <Property Name="IdParametro" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="PlanEstudiosBase">
     <Key>
-      <PropertyRef Name="IdCurriculaBaseCompetencia" />
-      <PropertyRef Name="IdCurso" />
+      <PropertyRef Name="IdCurriculaBase" />
+      <PropertyRef Name="IdGrado" />
+      <PropertyRef Name="IdAreaCurricular" />
     </Key>
-    <Property Name="IdCurriculaBaseCompetencia" Type="Int32" Nullable="false" />
-    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="IdCurriculaBase" Type="Int32" Nullable="false" />
+    <Property Name="IdGrado" Type="Int32" Nullable="false" />
+    <Property Name="IdAreaCurricular" Type="Int32" Nullable="false" />
     <Property Name="Horas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <NavigationProperty Name="CurriculaBaseCompetencia" Relationship="InnovaModel.FK_PlanEstudiosBase_CurriculaBaseCompetencia" FromRole="PlanEstudiosBase" ToRole="CurriculaBaseCompetencia" />
-    <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_PlanEstudiosBase_Curso" FromRole="PlanEstudiosBase" ToRole="Curso" />
+    <NavigationProperty Name="AreaCurricular" Relationship="InnovaModel.FK_PlanEstudiosBase_AreaCurricular" FromRole="PlanEstudiosBase" ToRole="AreaCurricular" />
+    <NavigationProperty Name="CurriculaBase" Relationship="InnovaModel.FK_PlanEstudiosBase_CurriculaBase" FromRole="PlanEstudiosBase" ToRole="CurriculaBase" />
+    <NavigationProperty Name="Grado" Relationship="InnovaModel.FK_PlanEstudiosBase_Grado" FromRole="PlanEstudiosBase" ToRole="Grado" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="TipoCalificación">
     <Key>
-      <PropertyRef Name="diagram_id" />
+      <PropertyRef Name="IdTipoCalificación" />
     </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IdTipoCalificación" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomTipoCalificación" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DetalleCurriculaCalificacion" Relationship="InnovaModel.FK_DetalleCurriculaCalificacion_TipoCalificación" FromRole="TipoCalificación" ToRole="DetalleCurriculaCalificacion" />
   </EntityType>
+  <EntityType Name="Unidad">
+    <Key>
+      <PropertyRef Name="IdUnidad" />
+    </Key>
+    <Property Name="IdUnidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DetalleCurriculaTema" Relationship="InnovaModel.FK_DetalleCurriculaTema_Unidad" FromRole="Unidad" ToRole="DetalleCurriculaTema" />
+  </EntityType>
+  <EntityType Name="Banco">
+    <Key>
+      <PropertyRef Name="idBanco" />
+    </Key>
+    <Property Name="idBanco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreBanco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prefijoCuenta" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_Empleado_Banco" FromRole="Banco" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Candidato">
+    <Key>
+      <PropertyRef Name="idCandidato" />
+    </Key>
+    <Property Name="idCandidato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPersona" Type="Int32" />
+    <Property Name="idEstadoCandidato" Type="Int32" />
+    <Property Name="rutaImgDni" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+    <Property Name="rutaImgAntecedentesPenales" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+    <Property Name="rutaImgAntecedentesPoliciales" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+    <Property Name="rutaImgDeclaracionJurada" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+    <Property Name="rutaImgTituloProfesional" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.FK_Candidato_Persona" FromRole="Candidato" ToRole="Persona" />
+    <NavigationProperty Name="EstadoCandidato" Relationship="InnovaModel.FK_CandidatoEstado" FromRole="Candidato" ToRole="EstadoCandidato" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_EmpleadoCandidato" FromRole="Candidato" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Contrato">
+    <Key>
+      <PropertyRef Name="idContrato" />
+    </Key>
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="idPuesto" Type="Int32" Nullable="false" />
+    <Property Name="fechaInicioContrato" Type="DateTime" Precision="3" />
+    <Property Name="fechaFinContrato" Type="DateTime" Precision="3" />
+    <Property Name="salario" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="idTipoContrato" Type="Int32" />
+    <Property Name="idContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idConvocatoria" Type="Int32" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_Contrato_Empleado" FromRole="Contrato" ToRole="Empleado" />
+    <NavigationProperty Name="Puesto" Relationship="InnovaModel.FK_Contrato_Puesto" FromRole="Contrato" ToRole="Puesto" />
+    <NavigationProperty Name="Convocatoria" Relationship="InnovaModel.FK_ContratoConvocatoria" FromRole="Contrato" ToRole="Convocatoria" />
+    <NavigationProperty Name="TipoContrato" Relationship="InnovaModel.FK_ContratoTipo" FromRole="Contrato" ToRole="TipoContrato" />
+  </EntityType>
+  <EntityType Name="Convocatoria">
+    <Key>
+      <PropertyRef Name="idConvocatoria" />
+    </Key>
+    <Property Name="idConvocatoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaInicioPublicacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaFinPublicacion" Type="DateTime" Precision="3" />
+    <Property Name="numeroVacantes" Type="Int32" />
+    <Property Name="tipoConvocatoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="anoExperiencia" Type="Int32" />
+    <Property Name="conocimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idPuesto" Type="Int32" />
+    <Property Name="fechaVencimientoDocumento" Type="DateTime" Precision="3" />
+    <Property Name="idTipoPuesto" Type="Int32" />
+    <Property Name="idArea" Type="Int32" />
+    <Property Name="idDesarrollo" Type="Int32" />
+    <NavigationProperty Name="Area" Relationship="InnovaModel.FK_ConvocatoriaArea" FromRole="Convocatoria" ToRole="Area" />
+    <NavigationProperty Name="Contrato" Relationship="InnovaModel.FK_ContratoConvocatoria" FromRole="Convocatoria" ToRole="Contrato" />
+    <NavigationProperty Name="Puesto" Relationship="InnovaModel.FK_Convocatoria_Puesto" FromRole="Convocatoria" ToRole="Puesto" />
+    <NavigationProperty Name="Desarrollo" Relationship="InnovaModel.FK_ConvocatoriaDesarrollo" FromRole="Convocatoria" ToRole="Desarrollo" />
+    <NavigationProperty Name="TipoPuesto" Relationship="InnovaModel.FK_ConvocatoriaTipoPuesto" FromRole="Convocatoria" ToRole="TipoPuesto" />
+  </EntityType>
+  <EntityType Name="ConvocatoriaCandidato">
+    <Key>
+      <PropertyRef Name="idConvocatoria" />
+      <PropertyRef Name="idCandidato" />
+    </Key>
+    <Property Name="idConvocatoria" Type="Int32" Nullable="false" />
+    <Property Name="idCandidato" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Desarrollo">
+    <Key>
+      <PropertyRef Name="idDesarrollo" />
+    </Key>
+    <Property Name="idDesarrollo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionDesarrollo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Convocatoria" Relationship="InnovaModel.FK_ConvocatoriaDesarrollo" FromRole="Desarrollo" ToRole="Convocatoria" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="idBanco" Type="Int32" />
+    <Property Name="telefonoEmergencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="contactoEmergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idCandidato" Type="Int32" />
+    <Property Name="idFondoPensiones" Type="Int32" />
+    <Property Name="idSeguro" Type="Int32" />
+    <Property Name="idEstadoEmpleado" Type="Int32" />
+    <Property Name="idNivelEstudios" Type="Int32" />
+    <Property Name="cuentaBanco" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="codigoFotocheck" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ActividadPlanAsignatura" Relationship="InnovaModel.R_151" FromRole="Empleado" ToRole="ActividadPlanAsignatura" />
+    <NavigationProperty Name="ActividadPlanProyectoPedagogico" Relationship="InnovaModel.R_161" FromRole="Empleado" ToRole="ActividadPlanProyectoPedagogico" />
+    <NavigationProperty Name="PlanAsignatura" Relationship="InnovaModel.R_81" FromRole="Empleado" ToRole="PlanAsignatura" />
+    <NavigationProperty Name="Curso" Relationship="InnovaModel.FK_Curso_Empleado" FromRole="Empleado" ToRole="Curso" />
+    <NavigationProperty Name="DetalleCurricula" Relationship="InnovaModel.FK_DetalleCurricula_Empleado" FromRole="Empleado" ToRole="DetalleCurricula" />
+    <NavigationProperty Name="DetalleCurriculaProfesor" Relationship="InnovaModel.FK_DetalleCurriculaProfesor_Empleado" FromRole="Empleado" ToRole="DetalleCurriculaProfesor" />
+    <NavigationProperty Name="Banco" Relationship="InnovaModel.FK_Empleado_Banco" FromRole="Empleado" ToRole="Banco" />
+    <NavigationProperty Name="Candidato" Relationship="InnovaModel.FK_EmpleadoCandidato" FromRole="Empleado" ToRole="Candidato" />
+    <NavigationProperty Name="Contrato" Relationship="InnovaModel.FK_Contrato_Empleado" FromRole="Empleado" ToRole="Contrato" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.FK_Empleado_Persona" FromRole="Empleado" ToRole="Persona" />
+    <NavigationProperty Name="EstadoEmpleado" Relationship="InnovaModel.FK_EmpleadoEstado" FromRole="Empleado" ToRole="EstadoEmpleado" />
+    <NavigationProperty Name="FondoPensiones" Relationship="InnovaModel.FK_EmpleadoFondo" FromRole="Empleado" ToRole="FondoPensiones" />
+    <NavigationProperty Name="NivelEstudio" Relationship="InnovaModel.FK_EmpleadoNivelEstudios" FromRole="Empleado" ToRole="NivelEstudio" />
+    <NavigationProperty Name="Seguro" Relationship="InnovaModel.FK_EmpleadoSeguro" FromRole="Empleado" ToRole="Seguro" />
+    <NavigationProperty Name="Curso1" Relationship="InnovaModel.CursoDocente" FromRole="Empleado" ToRole="Curso" />
+  </EntityType>
+  <EntityType Name="EstadoCandidato">
+    <Key>
+      <PropertyRef Name="idEstadoCandidato" />
+    </Key>
+    <Property Name="idEstadoCandidato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estadoCandidato1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Candidato" Relationship="InnovaModel.FK_CandidatoEstado" FromRole="EstadoCandidato" ToRole="Candidato" />
+  </EntityType>
+  <EntityType Name="EstadoCivil">
+    <Key>
+      <PropertyRef Name="idEstadoCivil" />
+    </Key>
+    <Property Name="idEstadoCivil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estadoCivil1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.FK_PersonaEstadoCivil" FromRole="EstadoCivil" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="EstadoEmpleado">
+    <Key>
+      <PropertyRef Name="idEstadoEmpleado" />
+    </Key>
+    <Property Name="idEstadoEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estadoEmpleado1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_EmpleadoEstado" FromRole="EstadoEmpleado" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="FondoPensiones">
+    <Key>
+      <PropertyRef Name="idFondoPensiones" />
+    </Key>
+    <Property Name="idFondoPensiones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fondoPensiones1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_EmpleadoFondo" FromRole="FondoPensiones" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Nacionalidad">
+    <Key>
+      <PropertyRef Name="idNacionalidad" />
+    </Key>
+    <Property Name="idNacionalidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nacionalidad1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="NivelEstudio">
+    <Key>
+      <PropertyRef Name="idNivelEstudios" />
+    </Key>
+    <Property Name="idNivelEstudios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gradoEstudio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_EmpleadoNivelEstudios" FromRole="NivelEstudio" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="correoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipoDocumentoIdentidad" Type="Int32" />
+    <Property Name="documentoIdentidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="genero" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nroHijos" Type="Int32" />
+    <Property Name="idEstadoCivil" Type="Int32" />
+    <NavigationProperty Name="Alumno" Relationship="InnovaModel.R_7" FromRole="Persona" ToRole="Alumno" />
+    <NavigationProperty Name="Apoderado" Relationship="InnovaModel.R_6" FromRole="Persona" ToRole="Apoderado" />
+    <NavigationProperty Name="DocumentoIdentidad1" Relationship="InnovaModel.FK_Persona_TipoDocumentoI" FromRole="Persona" ToRole="DocumentoIdentidad" />
+    <NavigationProperty Name="Asesor" Relationship="InnovaModel.FK__Asesor__idPerson__55DFB4D9" FromRole="Persona" ToRole="Asesor" />
+    <NavigationProperty Name="DetalleProceso" Relationship="InnovaModel.FK__DetallePr__idPer__62108194" FromRole="Persona" ToRole="DetalleProceso" />
+    <NavigationProperty Name="Candidato" Relationship="InnovaModel.FK_Candidato_Persona" FromRole="Persona" ToRole="Candidato" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_Empleado_Persona" FromRole="Persona" ToRole="Empleado" />
+    <NavigationProperty Name="EstadoCivil" Relationship="InnovaModel.FK_PersonaEstadoCivil" FromRole="Persona" ToRole="EstadoCivil" />
+    <NavigationProperty Name="Usuario" Relationship="InnovaModel.FK__Usuario__idPerso__7CC477D0" FromRole="Persona" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Puesto">
+    <Key>
+      <PropertyRef Name="idPuesto" />
+    </Key>
+    <Property Name="idPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionPuesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="funcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idArea" Type="Int32" Nullable="false" />
+    <Property Name="idTipoPuesto" Type="Int32" />
+    <NavigationProperty Name="Area" Relationship="InnovaModel.FK_Puesto_Area" FromRole="Puesto" ToRole="Area" />
+    <NavigationProperty Name="Contrato" Relationship="InnovaModel.FK_Contrato_Puesto" FromRole="Puesto" ToRole="Contrato" />
+    <NavigationProperty Name="Convocatoria" Relationship="InnovaModel.FK_Convocatoria_Puesto" FromRole="Puesto" ToRole="Convocatoria" />
+    <NavigationProperty Name="TipoPuesto" Relationship="InnovaModel.FK_PuestoTipo" FromRole="Puesto" ToRole="TipoPuesto" />
+  </EntityType>
+  <EntityType Name="Seguro">
+    <Key>
+      <PropertyRef Name="idSeguro" />
+    </Key>
+    <Property Name="idSeguro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionSeguro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empleado" Relationship="InnovaModel.FK_EmpleadoSeguro" FromRole="Seguro" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="TipoContrato">
+    <Key>
+      <PropertyRef Name="idTipoContrato" />
+    </Key>
+    <Property Name="idTipoContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionContrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contrato" Relationship="InnovaModel.FK_ContratoTipo" FromRole="TipoContrato" ToRole="Contrato" />
+  </EntityType>
+  <EntityType Name="TipoPuesto">
+    <Key>
+      <PropertyRef Name="idTipoPuesto" />
+    </Key>
+    <Property Name="idTipoPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionPuesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Convocatoria" Relationship="InnovaModel.FK_ConvocatoriaTipoPuesto" FromRole="TipoPuesto" ToRole="Convocatoria" />
+    <NavigationProperty Name="Puesto" Relationship="InnovaModel.FK_PuestoTipo" FromRole="TipoPuesto" ToRole="Puesto" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UPassword" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="IdPregunta" Type="Int32" Nullable="false" />
+    <Property Name="Respuesta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <Property Name="UsuCreacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FecCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FecModificacion" Type="DateTime" Precision="3" />
+    <Property Name="idRol" Type="Int32" />
+    <Property Name="idPersona" Type="Int32" />
+    <NavigationProperty Name="Roles" Relationship="InnovaModel.FK__Roles__idUser__605D434C" FromRole="Usuario" ToRole="Roles" />
+    <NavigationProperty Name="Roles1" Relationship="InnovaModel.FK__Usuario__idRol__7BD05397" FromRole="Usuario" ToRole="Roles" />
+    <NavigationProperty Name="Persona" Relationship="InnovaModel.FK__Usuario__idPerso__7CC477D0" FromRole="Usuario" ToRole="Persona" />
+    <Property Name="idPerfil" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__AlumnoEmp__idAlu__42CCE065">
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="0..1" />
+    <End Type="InnovaModel.AlumnoEmpadronado" Role="AlumnoEmpadronado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="idAlumno" />
+      </Principal>
+      <Dependent Role="AlumnoEmpadronado">
+        <PropertyRef Name="idAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Integrant__idAlu__2BB470E3">
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="0..1" />
+    <End Type="InnovaModel.Integrante" Role="Integrante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="idAlumno" />
+      </Principal>
+      <Dependent Role="Integrante">
+        <PropertyRef Name="idAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_10">
+    <End Type="InnovaModel.Sede" Role="Sede" Multiplicity="0..1" />
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sede">
+        <PropertyRef Name="idSede" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="idSede" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_12">
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="0..1" />
+    <End Type="InnovaModel.ExpedienteAdmision" Role="ExpedienteAdmision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="idAlumno" />
+      </Principal>
+      <Dependent Role="ExpedienteAdmision">
+        <PropertyRef Name="idAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_14">
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="0..1" />
+    <End Type="InnovaModel.Matricula" Role="Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="idAlumno" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="idAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_7">
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_8">
+    <End Type="InnovaModel.Apoderado" Role="Apoderado" Multiplicity="0..1" />
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apoderado">
+        <PropertyRef Name="idApoderado" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="idApoderado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parentesco">
+    <End Type="InnovaModel.Parentesco" Role="Parentesco" Multiplicity="0..1" />
+    <End Type="InnovaModel.Apoderado" Role="Apoderado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parentesco">
+        <PropertyRef Name="idParentesco" />
+      </Principal>
+      <Dependent Role="Apoderado">
+        <PropertyRef Name="idParentesco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_6">
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="InnovaModel.Apoderado" Role="Apoderado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Apoderado">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConvocatoriaArea">
+    <End Type="InnovaModel.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="InnovaModel.Convocatoria" Role="Convocatoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="idArea" />
+      </Principal>
+      <Dependent Role="Convocatoria">
+        <PropertyRef Name="idArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Puesto_Area">
+    <End Type="InnovaModel.Area" Role="Area" Multiplicity="1" />
+    <End Type="InnovaModel.Puesto" Role="Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="idArea" />
+      </Principal>
+      <Dependent Role="Puesto">
+        <PropertyRef Name="idArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_50">
+    <End Type="InnovaModel.Cronograma" Role="Cronograma" Multiplicity="0..1" />
+    <End Type="InnovaModel.Proceso" Role="Proceso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cronograma">
+        <PropertyRef Name="idCronograma" />
+      </Principal>
+      <Dependent Role="Proceso">
+        <PropertyRef Name="idCronograma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_TipoDocumentoI">
+    <End Type="InnovaModel.DocumentoIdentidad" Role="DocumentoIdentidad" Multiplicity="0..1" />
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoIdentidad">
+        <PropertyRef Name="idDocumentoIdentidad" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="tipoDocumentoIdentidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_13">
+    <End Type="InnovaModel.Proceso" Role="Proceso" Multiplicity="0..1" />
+    <End Type="InnovaModel.Matricula" Role="Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proceso">
+        <PropertyRef Name="idProceso" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="idProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_18">
+    <End Type="InnovaModel.Seccion" Role="Seccion" Multiplicity="0..1" />
+    <End Type="InnovaModel.Matricula" Role="Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seccion">
+        <PropertyRef Name="idSeccion" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="idSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_23">
+    <End Type="InnovaModel.Grado" Role="Grado" Multiplicity="0..1" />
+    <End Type="InnovaModel.Seccion" Role="Seccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grado">
+        <PropertyRef Name="IdGrado" />
+      </Principal>
+      <Dependent Role="Seccion">
+        <PropertyRef Name="idGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AprobacionAgenda_Agenda_FK">
+    <End Type="InnovaModel.Agenda" Role="Agenda" Multiplicity="1" />
+    <End Type="InnovaModel.AprobacionAgenda" Role="AprobacionAgenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agenda">
+        <PropertyRef Name="idAgenda" />
+      </Principal>
+      <Dependent Role="AprobacionAgenda">
+        <PropertyRef Name="idAgenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Calendario_Agenda_FK">
+    <End Type="InnovaModel.Agenda" Role="Agenda" Multiplicity="1" />
+    <End Type="InnovaModel.Calendario" Role="Calendario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agenda">
+        <PropertyRef Name="idAgenda" />
+      </Principal>
+      <Dependent Role="Calendario">
+        <PropertyRef Name="idAgenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Feriado_Agenda_FK">
+    <End Type="InnovaModel.Agenda" Role="Agenda" Multiplicity="1" />
+    <End Type="InnovaModel.Feriado" Role="Feriado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agenda">
+        <PropertyRef Name="idAgenda" />
+      </Principal>
+      <Dependent Role="Feriado">
+        <PropertyRef Name="idAgenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AprobacionCalendario_Calendario_FK">
+    <End Type="InnovaModel.Calendario" Role="Calendario" Multiplicity="1" />
+    <End Type="InnovaModel.AprobacionCalendario" Role="AprobacionCalendario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendario">
+        <PropertyRef Name="idCalendario" />
+      </Principal>
+      <Dependent Role="AprobacionCalendario">
+        <PropertyRef Name="idCalendario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AprobacionSolicitudActividad_SolicitudActividad_FK">
+    <End Type="InnovaModel.SolicitudActividad" Role="SolicitudActividad" Multiplicity="1" />
+    <End Type="InnovaModel.AprobacionSolicitudActividad" Role="AprobacionSolicitudActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudActividad">
+        <PropertyRef Name="idSolicitudActividad" />
+      </Principal>
+      <Dependent Role="AprobacionSolicitudActividad">
+        <PropertyRef Name="idSolicitudActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_151">
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="InnovaModel.ActividadPlanAsignatura" Role="ActividadPlanAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="ActividadPlanAsignatura">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_9">
+    <End Type="InnovaModel.PlanAsignatura" Role="PlanAsignatura" Multiplicity="1" />
+    <End Type="InnovaModel.ActividadPlanAsignatura" Role="ActividadPlanAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanAsignatura">
+        <PropertyRef Name="idPlanAsignatura" />
+      </Principal>
+      <Dependent Role="ActividadPlanAsignatura">
+        <PropertyRef Name="idPlanAsignatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_141">
+    <End Type="InnovaModel.PlanProyectoPedagogico" Role="PlanProyectoPedagogico" Multiplicity="1" />
+    <End Type="InnovaModel.ActividadPlanProyectoPedagogico" Role="ActividadPlanProyectoPedagogico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanProyectoPedagogico">
+        <PropertyRef Name="idProyectoPedagogico" />
+      </Principal>
+      <Dependent Role="ActividadPlanProyectoPedagogico">
+        <PropertyRef Name="idProyectoPedagogico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_161">
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="InnovaModel.ActividadPlanProyectoPedagogico" Role="ActividadPlanProyectoPedagogico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="ActividadPlanProyectoPedagogico">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meta_PlanAsignatura">
+    <End Type="InnovaModel.PlanAsignatura" Role="PlanAsignatura" Multiplicity="1" />
+    <End Type="InnovaModel.Meta" Role="Meta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanAsignatura">
+        <PropertyRef Name="idPlanAsignatura" />
+      </Principal>
+      <Dependent Role="Meta">
+        <PropertyRef Name="idPlanAsignatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_111">
+    <End Type="InnovaModel.PeriodoAcademico" Role="PeriodoAcademico" Multiplicity="1" />
+    <End Type="InnovaModel.PlanProyectoPedagogico" Role="PlanProyectoPedagogico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PeriodoAcademico">
+        <PropertyRef Name="idPeriodoAcademico" />
+      </Principal>
+      <Dependent Role="PlanProyectoPedagogico">
+        <PropertyRef Name="idPeriodoAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_21">
+    <End Type="InnovaModel.PeriodoAcademico" Role="PeriodoAcademico" Multiplicity="1" />
+    <End Type="InnovaModel.PlanArea" Role="PlanArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PeriodoAcademico">
+        <PropertyRef Name="idPeriodoAcademico" />
+      </Principal>
+      <Dependent Role="PlanArea">
+        <PropertyRef Name="idPeriodoAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_3">
+    <End Type="InnovaModel.PlanEstudio" Role="PlanEstudio" Multiplicity="1" />
+    <End Type="InnovaModel.PlanArea" Role="PlanArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanEstudio">
+        <PropertyRef Name="idPlanEstudio" />
+      </Principal>
+      <Dependent Role="PlanArea">
+        <PropertyRef Name="idPlanEstudio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_4">
+    <End Type="InnovaModel.Grado" Role="Grado" Multiplicity="1" />
+    <End Type="InnovaModel.PlanArea" Role="PlanArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grado">
+        <PropertyRef Name="IdGrado" />
+      </Principal>
+      <Dependent Role="PlanArea">
+        <PropertyRef Name="idGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_51">
+    <End Type="InnovaModel.AreaCurricular" Role="AreaCurricular" Multiplicity="1" />
+    <End Type="InnovaModel.PlanArea" Role="PlanArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreaCurricular">
+        <PropertyRef Name="IdAreaCurricular" />
+      </Principal>
+      <Dependent Role="PlanArea">
+        <PropertyRef Name="idAreaCurricular" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_61">
+    <End Type="InnovaModel.PlanArea" Role="PlanArea" Multiplicity="1" />
+    <End Type="InnovaModel.PlanAsignatura" Role="PlanAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanArea">
+        <PropertyRef Name="idPlanArea" />
+      </Principal>
+      <Dependent Role="PlanAsignatura">
+        <PropertyRef Name="idPlanArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_71">
+    <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="1" />
+    <End Type="InnovaModel.PlanAsignatura" Role="PlanAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="PlanAsignatura">
+        <PropertyRef Name="idCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_81">
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="InnovaModel.PlanAsignatura" Role="PlanAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="PlanAsignatura">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_101">
+    <End Type="InnovaModel.PlanEstudio" Role="PlanEstudio" Multiplicity="1" />
+    <End Type="InnovaModel.PlanProyectoPedagogico" Role="PlanProyectoPedagogico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanEstudio">
+        <PropertyRef Name="idPlanEstudio" />
+      </Principal>
+      <Dependent Role="PlanProyectoPedagogico">
+        <PropertyRef Name="idPlanEstudio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_121">
+    <End Type="InnovaModel.AreaCurricular" Role="AreaCurricular" Multiplicity="1" />
+    <End Type="InnovaModel.PlanProyectoPedagogico" Role="PlanProyectoPedagogico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreaCurricular">
+        <PropertyRef Name="IdAreaCurricular" />
+      </Principal>
+      <Dependent Role="PlanProyectoPedagogico">
+        <PropertyRef Name="idAreaCurricular" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_171">
+    <End Type="InnovaModel.Grado" Role="Grado" Multiplicity="1" />
+    <End Type="InnovaModel.PlanProyectoPedagogico" Role="PlanProyectoPedagogico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grado">
+        <PropertyRef Name="IdGrado" />
+      </Principal>
+      <Dependent Role="PlanProyectoPedagogico">
+        <PropertyRef Name="idGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Actividad__idPla__6AA5C795">
+    <End Type="InnovaModel.PlanGobierno" Role="PlanGobierno" Multiplicity="0..1" />
+    <End Type="InnovaModel.ActividadAcademicaPlan" Role="ActividadAcademicaPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanGobierno">
+        <PropertyRef Name="idplan" />
+      </Principal>
+      <Dependent Role="ActividadAcademicaPlan">
+        <PropertyRef Name="idPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Observaci__idact__6E765879">
+    <End Type="InnovaModel.ActividadAcademicaPlan" Role="ActividadAcademicaPlan" Multiplicity="0..1" />
+    <End Type="InnovaModel.Observacion" Role="Observacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadAcademicaPlan">
+        <PropertyRef Name="idactPlan" />
+      </Principal>
+      <Dependent Role="Observacion">
+        <PropertyRef Name="idactPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SubActivi__idact__6B99EBCE">
+    <End Type="InnovaModel.ActividadAcademicaPlan" Role="ActividadAcademicaPlan" Multiplicity="0..1" />
+    <End Type="InnovaModel.SubActividad" Role="SubActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadAcademicaPlan">
+        <PropertyRef Name="idactPlan" />
+      </Principal>
+      <Dependent Role="SubActividad">
+        <PropertyRef Name="idactPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Actividad__idPla__7DB89C09">
+    <End Type="InnovaModel.PlanGobierno" Role="PlanGobierno" Multiplicity="0..1" />
+    <End Type="InnovaModel.ActividadPropuesta" Role="ActividadPropuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanGobierno">
+        <PropertyRef Name="idplan" />
+      </Principal>
+      <Dependent Role="ActividadPropuesta">
+        <PropertyRef Name="idPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Observaci__idAct__705EA0EB">
+    <End Type="InnovaModel.ActividadPropuesta" Role="ActividadPropuesta" Multiplicity="0..1" />
+    <End Type="InnovaModel.Observacion" Role="Observacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadPropuesta">
+        <PropertyRef Name="idactividadPropuesta" />
+      </Principal>
+      <Dependent Role="Observacion">
+        <PropertyRef Name="idActividadPropuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SubActivi__idAct__5D4BCC77">
+    <End Type="InnovaModel.ActividadPropuesta" Role="ActividadPropuesta" Multiplicity="0..1" />
+    <End Type="InnovaModel.SubActividad" Role="SubActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadPropuesta">
+        <PropertyRef Name="idactividadPropuesta" />
+      </Principal>
+      <Dependent Role="SubActividad">
+        <PropertyRef Name="idActividadPropuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AlumnoEmp__idPro__66D536B1">
+    <End Type="InnovaModel.DetalleProceso" Role="DetalleProceso" Multiplicity="0..1" />
+    <End Type="InnovaModel.AlumnoEmpadronado" Role="AlumnoEmpadronado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleProceso">
+        <PropertyRef Name="idProceso" />
+      </Principal>
+      <Dependent Role="AlumnoEmpadronado">
+        <PropertyRef Name="idProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Asesor__idPerson__55DFB4D9">
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="InnovaModel.Asesor" Role="Asesor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Asesor">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PartidoPo__idAse__5B988E2F">
+    <End Type="InnovaModel.Asesor" Role="Asesor" Multiplicity="0..1" />
+    <End Type="InnovaModel.PartidoPostulante" Role="PartidoPostulante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asesor">
+        <PropertyRef Name="idAsesor" />
+      </Principal>
+      <Dependent Role="PartidoPostulante">
+        <PropertyRef Name="idAsesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Integrant__idCar__2D9CB955">
+    <End Type="InnovaModel.Cargo" Role="Cargo" Multiplicity="0..1" />
+    <End Type="InnovaModel.Integrante" Role="Integrante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="idCargo" />
+      </Principal>
+      <Dependent Role="Integrante">
+        <PropertyRef Name="idCargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetallePr__idPer__62108194">
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="InnovaModel.DetalleProceso" Role="DetalleProceso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="DetalleProceso">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanGobie__idPro__64ECEE3F">
+    <End Type="InnovaModel.DetalleProceso" Role="DetalleProceso" Multiplicity="0..1" />
+    <End Type="InnovaModel.PlanGobierno" Role="PlanGobierno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleProceso">
+        <PropertyRef Name="idProceso" />
+      </Principal>
+      <Dependent Role="PlanGobierno">
+        <PropertyRef Name="idProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Voto__idProceso__65E11278">
+    <End Type="InnovaModel.DetalleProceso" Role="DetalleProceso" Multiplicity="0..1" />
+    <End Type="InnovaModel.Voto" Role="Voto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleProceso">
+        <PropertyRef Name="idProceso" />
+      </Principal>
+      <Dependent Role="Voto">
+        <PropertyRef Name="idProceso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Instrumen__idPla__63F8CA06">
+    <End Type="InnovaModel.PlanGobierno" Role="PlanGobierno" Multiplicity="0..1" />
+    <End Type="InnovaModel.Instrumento" Role="Instrumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanGobierno">
+        <PropertyRef Name="idplan" />
+      </Principal>
+      <Dependent Role="Instrumento">
+        <PropertyRef Name="idPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Observaci__idIns__6F6A7CB2">
+    <End Type="InnovaModel.Instrumento" Role="Instrumento" Multiplicity="0..1" />
+    <End Type="InnovaModel.Observacion" Role="Observacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instrumento">
+        <PropertyRef Name="idInstrumento" />
+      </Principal>
+      <Dependent Role="Observacion">
+        <PropertyRef Name="idInstrumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Integrant__idPar__6C8E1007">
+    <End Type="InnovaModel.PartidoPostulante" Role="PartidoPostulante" Multiplicity="0..1" />
+    <End Type="InnovaModel.Integrante" Role="Integrante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartidoPostulante">
+        <PropertyRef Name="idPartido" />
+      </Principal>
+      <Dependent Role="Integrante">
+        <PropertyRef Name="idPartido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanGobie__idPar__6D823440">
+    <End Type="InnovaModel.PartidoPostulante" Role="PartidoPostulante" Multiplicity="0..1" />
+    <End Type="InnovaModel.PlanGobierno" Role="PlanGobierno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartidoPostulante">
+        <PropertyRef Name="idPartido" />
+      </Principal>
+      <Dependent Role="PlanGobierno">
+        <PropertyRef Name="idPartido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Voto__idPartido__6304A5CD">
+    <End Type="InnovaModel.PartidoPostulante" Role="PartidoPostulante" Multiplicity="0..1" />
+    <End Type="InnovaModel.Voto" Role="Voto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartidoPostulante">
+        <PropertyRef Name="idPartido" />
+      </Principal>
+      <Dependent Role="Voto">
+        <PropertyRef Name="idPartido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Roles__idUser__605D434C">
+    <End Type="InnovaModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+    <End Type="InnovaModel.Roles" Role="Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__idRol__7BD05397">
+    <End Type="InnovaModel.Roles" Role="Roles" Multiplicity="0..1" />
+    <End Type="InnovaModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="idrol" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CurriculaBaseCompetencia_AreaCurricular">
-    <End Type="InnovaModel.AreaCurricular" Role="AreaCurricular" Multiplicity="0..1" />
+    <End Type="InnovaModel.AreaCurricular" Role="AreaCurricular" Multiplicity="1" />
     <End Type="InnovaModel.CurriculaBaseCompetencia" Role="CurriculaBaseCompetencia" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AreaCurricular">
@@ -233,6 +2242,18 @@
         <PropertyRef Name="IdAreaCurricular" />
       </Principal>
       <Dependent Role="Curso">
+        <PropertyRef Name="IdAreaCurricular" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanEstudiosBase_AreaCurricular">
+    <End Type="InnovaModel.AreaCurricular" Role="AreaCurricular" Multiplicity="1" />
+    <End Type="InnovaModel.PlanEstudiosBase" Role="PlanEstudiosBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreaCurricular">
+        <PropertyRef Name="IdAreaCurricular" />
+      </Principal>
+      <Dependent Role="PlanEstudiosBase">
         <PropertyRef Name="IdAreaCurricular" />
       </Dependent>
     </ReferentialConstraint>
@@ -261,18 +2282,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DetalleCurricula_Competencia">
-    <End Type="InnovaModel.Competencia" Role="Competencia" Multiplicity="1" />
-    <End Type="InnovaModel.DetalleCurricula" Role="DetalleCurricula" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Competencia">
-        <PropertyRef Name="IdCompetencia" />
-      </Principal>
-      <Dependent Role="DetalleCurricula">
-        <PropertyRef Name="IdCompetencia" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Curricula_CurriculaBase">
     <End Type="InnovaModel.CurriculaBase" Role="CurriculaBase" Multiplicity="0..1" />
     <End Type="InnovaModel.Curricula" Role="Curricula" Multiplicity="*" />
@@ -282,18 +2291,6 @@
       </Principal>
       <Dependent Role="Curricula">
         <PropertyRef Name="IdCurriculaBase" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Curricula_Nivel">
-    <End Type="InnovaModel.Nivel" Role="Nivel" Multiplicity="0..1" />
-    <End Type="InnovaModel.Curricula" Role="Curricula" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Nivel">
-        <PropertyRef Name="IdNivel" />
-      </Principal>
-      <Dependent Role="Curricula">
-        <PropertyRef Name="IdNivel" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -321,15 +2318,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PlanEstudiosBase_CurriculaBaseCompetencia">
-    <End Type="InnovaModel.CurriculaBaseCompetencia" Role="CurriculaBaseCompetencia" Multiplicity="1" />
+  <Association Name="FK_PlanEstudiosBase_CurriculaBase">
+    <End Type="InnovaModel.CurriculaBase" Role="CurriculaBase" Multiplicity="1" />
     <End Type="InnovaModel.PlanEstudiosBase" Role="PlanEstudiosBase" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CurriculaBaseCompetencia">
-        <PropertyRef Name="IdCurriculaBaseCompetencia" />
+      <Principal Role="CurriculaBase">
+        <PropertyRef Name="IdCurriculaBase" />
       </Principal>
       <Dependent Role="PlanEstudiosBase">
-        <PropertyRef Name="IdCurriculaBaseCompetencia" />
+        <PropertyRef Name="IdCurriculaBase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Curso_Empleado">
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="Curso">
+        <PropertyRef Name="IdEmpleado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -345,15 +2354,111 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PlanEstudiosBase_Curso">
+  <Association Name="FK_CursoTema_Curso">
     <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="1" />
-    <End Type="InnovaModel.PlanEstudiosBase" Role="PlanEstudiosBase" Multiplicity="*" />
+    <End Type="InnovaModel.CursoTema" Role="CursoTema" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Curso">
         <PropertyRef Name="IdCurso" />
       </Principal>
-      <Dependent Role="PlanEstudiosBase">
+      <Dependent Role="CursoTema">
         <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurricula_Curso">
+    <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="0..1" />
+    <End Type="InnovaModel.DetalleCurricula" Role="DetalleCurricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="DetalleCurricula">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurricula_Empleado">
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+    <End Type="InnovaModel.DetalleCurricula" Role="DetalleCurricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="DetalleCurricula">
+        <PropertyRef Name="IdCoordinador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurriculaCalificacion_DetalleCurricula">
+    <End Type="InnovaModel.DetalleCurricula" Role="DetalleCurricula" Multiplicity="0..1" />
+    <End Type="InnovaModel.DetalleCurriculaCalificacion" Role="DetalleCurriculaCalificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleCurricula">
+        <PropertyRef Name="IdDetalleCurricula" />
+      </Principal>
+      <Dependent Role="DetalleCurriculaCalificacion">
+        <PropertyRef Name="IdDetalleCurricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurriculaProfesor_DetalleCurricula">
+    <End Type="InnovaModel.DetalleCurricula" Role="DetalleCurricula" Multiplicity="0..1" />
+    <End Type="InnovaModel.DetalleCurriculaProfesor" Role="DetalleCurriculaProfesor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleCurricula">
+        <PropertyRef Name="IdDetalleCurricula" />
+      </Principal>
+      <Dependent Role="DetalleCurriculaProfesor">
+        <PropertyRef Name="IdDetalleCurricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurriculaTema_DetalleCurricula">
+    <End Type="InnovaModel.DetalleCurricula" Role="DetalleCurricula" Multiplicity="1" />
+    <End Type="InnovaModel.DetalleCurriculaTema" Role="DetalleCurriculaTema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleCurricula">
+        <PropertyRef Name="IdDetalleCurricula" />
+      </Principal>
+      <Dependent Role="DetalleCurriculaTema">
+        <PropertyRef Name="IdDetalleCurricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurriculaCalificacion_TipoCalificación">
+    <End Type="InnovaModel.TipoCalificación" Role="TipoCalificación" Multiplicity="0..1" />
+    <End Type="InnovaModel.DetalleCurriculaCalificacion" Role="DetalleCurriculaCalificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCalificación">
+        <PropertyRef Name="IdTipoCalificación" />
+      </Principal>
+      <Dependent Role="DetalleCurriculaCalificacion">
+        <PropertyRef Name="IdTipoCalificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurriculaProfesor_Empleado">
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+    <End Type="InnovaModel.DetalleCurriculaProfesor" Role="DetalleCurriculaProfesor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="DetalleCurriculaProfesor">
+        <PropertyRef Name="IdProfesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCurriculaTema_Unidad">
+    <End Type="InnovaModel.Unidad" Role="Unidad" Multiplicity="1" />
+    <End Type="InnovaModel.DetalleCurriculaTema" Role="DetalleCurriculaTema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidad">
+        <PropertyRef Name="IdUnidad" />
+      </Principal>
+      <Dependent Role="DetalleCurriculaTema">
+        <PropertyRef Name="IdUnidad" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -369,8 +2474,260 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DocenteCurso">
+  <Association Name="FK_PlanEstudiosBase_Grado">
+    <End Type="InnovaModel.Grado" Role="Grado" Multiplicity="1" />
+    <End Type="InnovaModel.PlanEstudiosBase" Role="PlanEstudiosBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grado">
+        <PropertyRef Name="IdGrado" />
+      </Principal>
+      <Dependent Role="PlanEstudiosBase">
+        <PropertyRef Name="IdGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Banco">
+    <End Type="InnovaModel.Banco" Role="Banco" Multiplicity="0..1" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banco">
+        <PropertyRef Name="idBanco" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="idBanco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidato_Persona">
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="InnovaModel.Candidato" Role="Candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Candidato">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CandidatoEstado">
+    <End Type="InnovaModel.EstadoCandidato" Role="EstadoCandidato" Multiplicity="0..1" />
+    <End Type="InnovaModel.Candidato" Role="Candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoCandidato">
+        <PropertyRef Name="idEstadoCandidato" />
+      </Principal>
+      <Dependent Role="Candidato">
+        <PropertyRef Name="idEstadoCandidato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoCandidato">
+    <End Type="InnovaModel.Candidato" Role="Candidato" Multiplicity="0..1" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidato">
+        <PropertyRef Name="idCandidato" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="idCandidato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Empleado">
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="InnovaModel.Contrato" Role="Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Puesto">
+    <End Type="InnovaModel.Puesto" Role="Puesto" Multiplicity="1" />
+    <End Type="InnovaModel.Contrato" Role="Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="idPuesto" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContratoConvocatoria">
+    <End Type="InnovaModel.Convocatoria" Role="Convocatoria" Multiplicity="0..1" />
+    <End Type="InnovaModel.Contrato" Role="Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Convocatoria">
+        <PropertyRef Name="idConvocatoria" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="idConvocatoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContratoTipo">
+    <End Type="InnovaModel.TipoContrato" Role="TipoContrato" Multiplicity="0..1" />
+    <End Type="InnovaModel.Contrato" Role="Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoContrato">
+        <PropertyRef Name="idTipoContrato" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="idTipoContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Convocatoria_Puesto">
+    <End Type="InnovaModel.Puesto" Role="Puesto" Multiplicity="0..1" />
+    <End Type="InnovaModel.Convocatoria" Role="Convocatoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="idPuesto" />
+      </Principal>
+      <Dependent Role="Convocatoria">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConvocatoriaDesarrollo">
+    <End Type="InnovaModel.Desarrollo" Role="Desarrollo" Multiplicity="0..1" />
+    <End Type="InnovaModel.Convocatoria" Role="Convocatoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Desarrollo">
+        <PropertyRef Name="idDesarrollo" />
+      </Principal>
+      <Dependent Role="Convocatoria">
+        <PropertyRef Name="idDesarrollo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConvocatoriaTipoPuesto">
+    <End Type="InnovaModel.TipoPuesto" Role="TipoPuesto" Multiplicity="0..1" />
+    <End Type="InnovaModel.Convocatoria" Role="Convocatoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPuesto">
+        <PropertyRef Name="idTipoPuesto" />
+      </Principal>
+      <Dependent Role="Convocatoria">
+        <PropertyRef Name="idTipoPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Persona">
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoEstado">
+    <End Type="InnovaModel.EstadoEmpleado" Role="EstadoEmpleado" Multiplicity="0..1" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoEmpleado">
+        <PropertyRef Name="idEstadoEmpleado" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="idEstadoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoFondo">
+    <End Type="InnovaModel.FondoPensiones" Role="FondoPensiones" Multiplicity="0..1" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FondoPensiones">
+        <PropertyRef Name="idFondoPensiones" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="idFondoPensiones" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoNivelEstudios">
+    <End Type="InnovaModel.NivelEstudio" Role="NivelEstudio" Multiplicity="0..1" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NivelEstudio">
+        <PropertyRef Name="idNivelEstudios" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="idNivelEstudios" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoSeguro">
+    <End Type="InnovaModel.Seguro" Role="Seguro" Multiplicity="0..1" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seguro">
+        <PropertyRef Name="idSeguro" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="idSeguro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonaEstadoCivil">
+    <End Type="InnovaModel.EstadoCivil" Role="EstadoCivil" Multiplicity="0..1" />
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoCivil">
+        <PropertyRef Name="idEstadoCivil" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="idEstadoCivil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__idPerso__7CC477D0">
+    <End Type="InnovaModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="InnovaModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PuestoTipo">
+    <End Type="InnovaModel.TipoPuesto" Role="TipoPuesto" Multiplicity="0..1" />
+    <End Type="InnovaModel.Puesto" Role="Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPuesto">
+        <PropertyRef Name="idTipoPuesto" />
+      </Principal>
+      <Dependent Role="Puesto">
+        <PropertyRef Name="idTipoPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CursoDocente">
     <End Type="InnovaModel.Curso" Role="Curso" Multiplicity="*" />
-    <End Type="InnovaModel.Docente" Role="Docente" Multiplicity="*" />
+    <End Type="InnovaModel.Empleado" Role="Empleado" Multiplicity="*" />
+  </Association>
+  <Association Name="R_Grado">
+    <End Type="InnovaModel.Grado" Role="Grado" Multiplicity="0..1" />
+    <End Type="InnovaModel.Alumno" Role="Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grado">
+        <PropertyRef Name="IdGrado" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="idGrado" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>
