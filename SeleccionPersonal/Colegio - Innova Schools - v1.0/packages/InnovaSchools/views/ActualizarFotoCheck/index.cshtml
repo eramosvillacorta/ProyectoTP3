@@ -1,0 +1,268 @@
+﻿@model InnovaSchools.Models.ActualizarFotoCheckViewModel
+
+@using PagedList.Mvc;
+@using InnovaSchools.Util
+
+@{
+    ViewBag.Title = "Consultar Fotocheck";
+}
+<div class="jumbotron">
+    <h4>CONSULTAR FOTOCHECK</h4>
+    <hr />
+    <form class="form-horizontal">
+        <div class="form-inline">
+            <div class="form-group">
+                @Html.LabelFor(model => model.fecha_inicio, htmlAttributes: new { @class = "control-label", @style = "width:170px;" })
+                @Html.TextBox("ddlFecha_inicio", "", new { @class = "date-picker" })
+                @Html.ValidationMessageFor(model => model.fecha_inicio, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.fecha_fin, htmlAttributes: new { @class = "control-label", @style = "width:200px;" })
+                @Html.TextBox("ddlFecha_fin", "", new { @class = "date-picker" })
+                @Html.ValidationMessageFor(model => model.fecha_fin, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.nroContrato, htmlAttributes: new { @class = "control-label", @style = "width:170px;" })
+                @Html.TextBoxFor(x => x.nroContrato, new { @id = "txtNroContrato", @class = "form-control input-sm", @style = "width:175px;", @maxlength = "15" })
+            </div>
+        </div>        
+        <div class="form-inline">
+            <div class="form-group">
+                @Html.Label("Tipo Documento", htmlAttributes: new { @id = "ddlTipoDocumento", @class = "control-label", @style = "width:170px;" })
+                @Html.DropDownListFor(m => m.SelectedDocumentoIdentidadId, new SelectList(Model.DocumentoIdentidads, "Value", "Text", "0"), "--Seleccionar--", new { @class = "form-control input-sm", @style = "width:175px; " })
+                @Html.ValidationMessageFor(m => m.SelectedDocumentoIdentidadId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.documentoIdentidad, htmlAttributes: new { @class = "control-label", @style = "width:200px;" })
+                @Html.TextBoxFor(x => x.documentoIdentidad, new { @id = "txtDocumentoIdentidad", @class = "form-control input-sm", @style = "width:175px;", @maxlength = "8" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label", @style = "width:170px;" })
+                @Html.TextBoxFor(x => x.nombre, new { @id = "txtNombre", @class = "form-control input-sm", @style = "width:175px;", @maxlength = "15" })
+            </div>                        
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                @Html.LabelFor(model => model.apellido_paterno, htmlAttributes: new { @class = "control-label", @style = "width:170px;" })
+                @Html.TextBoxFor(x => x.apellido_paterno, new { @id = "txtApPaterno", @class = "form-control input-sm", @style = "width:175px;", @maxlength = "15" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.apellido_materno, htmlAttributes: new { @class = "control-label", @style = "width:200px;" })
+                @Html.TextBoxFor(x => x.apellido_materno, new { @id = "txtApMaterno", @class = "form-control input-sm", @style = "width:175px;", @maxlength = "30" })
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                @Html.Label("Puesto", htmlAttributes: new { @id = "ddlPuesto", @class = "control-label", @style = "width:170px;" })
+                @Html.DropDownListFor(m => m.SelectedPuestoId, new SelectList(Model.Puestos, "Value", "Text", "0"), "--Seleccionar--", new { @class = "form-control input-sm", @style = "width:175px; " })
+                @Html.ValidationMessageFor(m => m.SelectedPuestoId)
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label", @style = "width:195px;" })
+                <input type="button" id="btn-buscar" value="Buscar" class="btn btn-primary btn-sm" />
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="form-horizontal">
+    <div class="form-group" id="divIndexDetail">
+            @Html.Partial("_lstActualizarFotoCheck")
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '<Ant',
+                nextText: 'Sig>',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+
+            $("#ddlFecha_inicio").datepicker({
+                onClose: function (selectedDate) {
+                    $("#ddlFecha_fin").datepicker("option", "minDate", selectedDate);
+                },
+            });
+
+            $("#ddlFecha_fin").datepicker({
+                onClose: function (selectedDate) {
+                    $("#ddlFecha_inicio").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+            $("#ddlFecha_inicio").datepicker({ dateFormat: "dd/mm/yy" }).mask("99/99/9999");
+            $("#ddlFecha_fin").datepicker({ dateFormat: "dd/mm/yy" }).mask("99/99/9999");
+        });
+        $(".input-sm").keypress(function (key) {
+            window.console.log(key.charCode)
+            if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
+                && (key.charCode < 65 || key.charCode > 90) //letras minusculas
+                && (key.charCode != 45) //retroceso
+                && (key.charCode != 241) //ñ
+                 && (key.charCode != 209) //Ñ
+                 && (key.charCode != 32) //espacio
+                 && (key.charCode != 225) //á
+                 && (key.charCode != 233) //é
+                 && (key.charCode != 237) //í
+                 && (key.charCode != 243) //ó
+                 && (key.charCode != 250) //ú
+                 && (key.charCode != 193) //Á
+                 && (key.charCode != 201) //É
+                 && (key.charCode != 205) //Í
+                 && (key.charCode != 211) //Ó
+                 && (key.charCode != 218) //Ú
+                )
+                return false;
+        });
+        $("#txtNroContrato").on("keydown", numericTextBox);
+        $("#txtDocumentoIdentidad").on("keydown", numericTextBox);
+        function numericTextBox(e) {
+            if (
+                e.keyCode == 8 // backspace
+                || e.keyCode == 9 // tab
+                || e.keyCode == 13 // enter
+                || e.keyCode == 27 // escape
+                || e.keyCode == 46 // delete
+                || (e.keyCode >= 35 && e.keyCode <= 39) // end, home, left arrow, up arrow, right arrow
+            ) {
+                return;
+            }
+            else {
+                if (!((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105))) {
+                    // not 0-9, numpad 0-9
+                    e.preventDefault();
+                    return;
+                }
+                else {
+                    var keyCode = e.keyCode;
+                    if (keyCode >= 96 && keyCode <= 105) {
+                        keyCode -= 48;
+                    }
+                    var value = $(this).val();
+                    value += String.fromCharCode(keyCode);
+                    value = parseInt(value, 10)
+                    var maxNumber = $(this).data("maxnumber");
+                    if (maxNumber) {
+                        maxNumber = parseInt(maxNumber);
+                        if (value > maxNumber) {
+                            e.preventDefault();
+                        }
+                    }
+                }
+            }
+        }
+        $(function () {
+            $("#SelectedTipoDocumentoId").change(function () {
+                var vIdTipoDocumento = $('#SelectedTipoDocumentoId').val();
+                //if (vIdTipoDocumento == 0) {
+                //    WarningMessage("Debe seleccionar una Entidad Bancaría");
+                //    return;
+                //}
+                switch (vIdTipoDocumento) {
+                    case '1':
+                        $("#txtDocumentoIdentidad").val('');
+                        $("#txtDocumentoIdentidad").attr('maxlength', '8');
+                        return;
+                    case '2':
+                        $("#txtDocumentoIdentidad").val('');
+                        $("#txtDocumentoIdentidad").attr("maxlength", "12");
+                        return;
+                    case '3':
+                        $("#txtDocumentoIdentidad").val('');
+                        $("#txtDocumentoIdentidad").attr('maxlength', 12);
+                        return;
+                }
+            });
+        });
+        $("#btn-buscar").on("click", function () {
+            var vFechaInicioVal = $('#ddlFecha_inicio').val();
+            //if (vFechaInicioVal == "") {
+            //    WarningMessage("Debe ingresar una Fecha de Inicio");
+            //    return;
+            //}
+            var vFechaFinVal = $('#ddlFecha_fin').val();
+            //if (vFechaFinVal == "") {
+            //    WarningMessage("Debe ingresar una Fecha de Fin");
+            //    return;
+            //}
+            var vNroContratoVal = $('#txtNroContrato').val();
+
+            var vTipoDocumentoVal = $('#ddlTipoDocumento').val();
+            //if (vPuestoVal == 0) {
+            //    WarningMessage("Debe seleccionar un puesto");
+            //    return;
+            //}
+            vTipoDocumentoVal = vTipoDocumentoVal !== "" ? parseInt(vTipoDocumentoVal) : 0;
+            var vDocumentoIdentidadVal = $('#txtDocumentoIdentidad').val();
+            var vNombreVal = $('#txtNombre').val();
+
+            var vApePaternoVal = $('#txtApPaterno').val();
+            var vApeMaternoVal = $('#txtApMaterno').val();
+
+
+            var vPuestoVal = $('#SelectedPuestoId').val();
+            //if (vPuestoVal == 0) {
+            //    WarningMessage("Debe seleccionar un puesto");
+            //    return;
+            //}
+            vPuestoVal = vPuestoVal !== "" ? parseInt(vPuestoVal) : 0;
+
+            $('#ddlFecha_inicio').val('');
+            $('#ddlFecha_fin').val('');
+            $('#txtNroContrato').val('');
+            $('#ddlTipoDocumento').val('');
+            $('#txtDocumentoIdentidad').val('');
+            $('#txtNombre').val('');
+            $('#txtApPaterno').val('');
+            $('#txtApMaterno').val('');
+            $('#SelectedPuestoId').val('');
+
+            $.ajax({
+                url: "/ActualizarFotoCheck/lstEmpleados",
+                data: {
+                    'pFechaInicio': vFechaInicioVal, 'pFechaFin': vFechaFinVal, 'pNroContrato': vNroContratoVal, 'pIdTipoDocumento': vTipoDocumentoVal,
+                    'pDocumentoIdentidad': vDocumentoIdentidadVal, 'pNombre': vNombreVal, 'pApePaterno': vApePaternoVal, 'pApeMaterno': vApeMaternoVal,
+                    'pIdPuesto': vPuestoVal
+                },
+                async: false,
+                success: function (data) {
+                    $("#divIndexDetail").html(data);
+                },
+                error: function (ex) {
+                    console.log(ex);
+                }
+            });
+        });
+    </script>
+ }
