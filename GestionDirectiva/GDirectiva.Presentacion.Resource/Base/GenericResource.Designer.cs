@@ -106,6 +106,15 @@ namespace GDirectiva.Presentacion.Resource.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imprimir.
+        /// </summary>
+        public static string BotonImprimir {
+            get {
+                return ResourceManager.GetString("BotonImprimir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Limpiar.
         /// </summary>
         public static string BotonLimpiar {

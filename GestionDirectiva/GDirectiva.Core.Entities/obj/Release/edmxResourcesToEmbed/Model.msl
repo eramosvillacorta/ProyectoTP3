@@ -407,5 +407,30 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="PA_PLAN_PROYECTO_PEDAGOGICO_EXISTE" FunctionName="DB_INNOVASCHOOLSModel.Store.PA_PLAN_PROYECTO_PEDAGOGICO_EXISTE" />
+    <FunctionImportMapping FunctionImportName="PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA" FunctionName="DB_INNOVASCHOOLSModel.Store.PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_INNOVASCHOOLSModel.PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result">
+          <ScalarProperty Name="ID_ACTIVIDADPLANASIGNATURA" ColumnName="ID_ACTIVIDADPLANASIGNATURA" />
+          <ScalarProperty Name="ACTIVIDAD" ColumnName="ACTIVIDAD" />
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="NOMBRE_EMPLEADO" ColumnName="NOMBRE_EMPLEADO" />
+          <ScalarProperty Name="CORREO_EMPLEADO" ColumnName="CORREO_EMPLEADO" />
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+          <ScalarProperty Name="ID_PLANASIGNATURAMETA" ColumnName="ID_PLANASIGNATURAMETA" />
+          <ScalarProperty Name="META" ColumnName="META" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA" FunctionName="DB_INNOVASCHOOLSModel.Store.PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_INNOVASCHOOLSModel.PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result">
+          <ScalarProperty Name="FECHAINICIO" ColumnName="FECHAINICIO" />
+          <ScalarProperty Name="FECHAFIN" ColumnName="FECHAFIN" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -63,6 +63,19 @@ namespace GDirectiva.Presentacion.Core.Controllers.General
             return Json(proceso);
         }
 
+        public JsonResult ObtenerResumenPlanAsignatura(int pId_Plan_Asignatura)
+        {
+            var bl_PlanAsignatura_Actividad = new BL_PlanAsignatura_Actividad();
+            var proceso = bl_PlanAsignatura_Actividad.ResumenActividadPlanAsignatura(pId_Plan_Asignatura);
+            return Json(proceso);
+        }
+
+        public JsonResult BuscarActividades(int pId_Plan_Asignatura)
+        {
+            var bl_PlanAsignatura_Actividad = new BL_PlanAsignatura_Actividad();
+            var proceso = bl_PlanAsignatura_Actividad.ListarActividadPlanAsignatura2(pId_Plan_Asignatura);
+            return Json(proceso);
+        }
         #endregion
     }
 }

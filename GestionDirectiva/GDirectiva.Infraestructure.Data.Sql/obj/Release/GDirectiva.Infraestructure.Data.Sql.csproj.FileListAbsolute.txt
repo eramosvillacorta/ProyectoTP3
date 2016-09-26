@@ -9,3 +9,14 @@ D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\bin\Release\EntityFramework.Sq
 D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\obj\Release\GDirectiva.Infraestructure.Data.Sql.csprojResolveAssemblyReference.cache
 D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\obj\Release\GDirectiva.Infraestructure.Data.Sql.dll
 D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\obj\Release\GDirectiva.Infraestructure.Data.Sql.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\GDirectiva.Infraestructure.Data.Sql.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\GDirectiva.Infraestructure.Data.Sql.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\EntityFramework.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\EntityFramework.SqlServer.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\GDirectiva.Core.Entities.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\GDirectiva.Core.Entities.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\EntityFramework.xml
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Release\EntityFramework.SqlServer.xml
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\obj\Release\GDirectiva.Infraestructure.Data.Sql.csprojResolveAssemblyReference.cache
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\obj\Release\GDirectiva.Infraestructure.Data.Sql.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\obj\Release\GDirectiva.Infraestructure.Data.Sql.pdb

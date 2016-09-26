@@ -350,5 +350,23 @@ namespace GDirectiva.Core.Entities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PA_PLAN_PROYECTO_PEDAGOGICO_EXISTE", iD_PERIODOACADEMICOParameter, iD_AREAParameter, iD_PLANESTUDIOParameter, iD_GRADOParameter);
         }
+    
+        public virtual ObjectResult<PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result> PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA(Nullable<int> iD_PLANASIGNATURA)
+        {
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result>("PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA", iD_PLANASIGNATURAParameter);
+        }
+    
+        public virtual ObjectResult<PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result> PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA(Nullable<int> iD_PLANASIGNATURA)
+        {
+            var iD_PLANASIGNATURAParameter = iD_PLANASIGNATURA.HasValue ?
+                new ObjectParameter("ID_PLANASIGNATURA", iD_PLANASIGNATURA) :
+                new ObjectParameter("ID_PLANASIGNATURA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result>("PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA", iD_PLANASIGNATURAParameter);
+        }
     }
 }

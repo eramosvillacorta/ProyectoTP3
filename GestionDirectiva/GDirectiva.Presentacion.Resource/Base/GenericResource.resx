@@ -132,6 +132,9 @@
   <data name="BotonGrabar" xml:space="preserve">
     <value>Grabar</value>
   </data>
+  <data name="BotonImprimir" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
   <data name="BotonLimpiar" xml:space="preserve">
     <value>Limpiar</value>
   </data>

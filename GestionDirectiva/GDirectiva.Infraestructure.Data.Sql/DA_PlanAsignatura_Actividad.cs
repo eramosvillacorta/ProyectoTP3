@@ -19,5 +19,24 @@ namespace GDirectiva.Infraestructure.Data.Sql
                 return objeto;
             }
         }
+        public List<PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result> ReporteListarActividadPlanAsignatura(int planAsignaturaId)
+        {
+            using (DB_INNOVASCHOOLSEntities contexto = new DB_INNOVASCHOOLSEntities())
+            {
+                List<PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result> objeto = new List<PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result>();
+                objeto = contexto.PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA(planAsignaturaId).ToList();
+                return objeto;
+            }
+        }
+
+        public PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result ReporteResumenActividadPlanAsignatura(int planAsignaturaId)
+        {
+            using (DB_INNOVASCHOOLSEntities contexto = new DB_INNOVASCHOOLSEntities())
+            {
+                PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result objeto = new PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result();
+                objeto = contexto.PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA(planAsignaturaId).FirstOrDefault();
+                return objeto;
+            }
+        }
     }
 }

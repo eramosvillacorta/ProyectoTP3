@@ -70,6 +70,15 @@ namespace GDirectiva.Presentacion.Resource.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Actividades.
+        /// </summary>
+        public static string EtiquetaActividades {
+            get {
+                return ResourceManager.GetString("EtiquetaActividades", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Curso.
         /// </summary>
         public static string EtiquetaAsignatura {
@@ -138,6 +147,15 @@ namespace GDirectiva.Presentacion.Resource.General {
         public static string EtiquetaResultadosBusqueda {
             get {
                 return ResourceManager.GetString("EtiquetaResultadosBusqueda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resumen cronograma.
+        /// </summary>
+        public static string EtiquetaResumen {
+            get {
+                return ResourceManager.GetString("EtiquetaResumen", resourceCulture);
             }
         }
         

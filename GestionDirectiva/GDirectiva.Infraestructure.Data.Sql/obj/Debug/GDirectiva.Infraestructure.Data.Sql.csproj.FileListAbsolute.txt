@@ -31,3 +31,14 @@ D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\bin\Debug\EntityFramework.SqlS
 D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\obj\Debug\GDirectiva.Infraestructure.Data.Sql.csprojResolveAssemblyReference.cache
 D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\obj\Debug\GDirectiva.Infraestructure.Data.Sql.dll
 D:\CodeGitHub\GDirectiva.Infraestructure.Data.Sql\obj\Debug\GDirectiva.Infraestructure.Data.Sql.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\GDirectiva.Infraestructure.Data.Sql.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\GDirectiva.Infraestructure.Data.Sql.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\EntityFramework.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\EntityFramework.SqlServer.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\GDirectiva.Core.Entities.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\GDirectiva.Core.Entities.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\EntityFramework.xml
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\bin\Debug\EntityFramework.SqlServer.xml
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\obj\Debug\GDirectiva.Infraestructure.Data.Sql.csprojResolveAssemblyReference.cache
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\obj\Debug\GDirectiva.Infraestructure.Data.Sql.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Infraestructure.Data.Sql\obj\Debug\GDirectiva.Infraestructure.Data.Sql.pdb

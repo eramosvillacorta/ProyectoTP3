@@ -37,3 +37,16 @@ D:\CodeGitHub\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Core.Entities.pdb
 D:\CodeGitHub\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Cross.Core.pdb
 D:\CodeGitHub\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Infraestructure.Data.Sql.pdb
 D:\CodeGitHub\GDirectiva.Domain.Main\obj\Debug\GDirectiva.Domain.Main.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Domain.Main.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Domain.Main.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Core.Entities.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Cross.Core.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Infraestructure.Data.Sql.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\EntityFramework.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\log4net.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Core.Entities.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Cross.Core.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\bin\Debug\GDirectiva.Infraestructure.Data.Sql.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\obj\Debug\GDirectiva.Domain.Main.csprojResolveAssemblyReference.cache
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\obj\Debug\GDirectiva.Domain.Main.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Domain.Main\obj\Debug\GDirectiva.Domain.Main.pdb

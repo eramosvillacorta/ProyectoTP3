@@ -409,6 +409,12 @@
   <Function Name="PA_PLAN_PROYECTO_PEDAGOGICO_SEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gd">
     <Parameter Name="PlanProyectoPedagogicoId" Type="int" Mode="In" />
   </Function>
+  <Function Name="PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gd">
+    <Parameter Name="ID_PLANASIGNATURA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gd">
+    <Parameter Name="ID_PLANASIGNATURA" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="DB_INNOVASCHOOLSModelStoreContainer">
     <EntitySet Name="ActividadPlanAsignatura" EntityType="Self.ActividadPlanAsignatura" Schema="gd" store:Type="Tables" />
     <EntitySet Name="ActividadPlanProyectoPedagogico" EntityType="Self.ActividadPlanProyectoPedagogico" Schema="gd" store:Type="Tables" />

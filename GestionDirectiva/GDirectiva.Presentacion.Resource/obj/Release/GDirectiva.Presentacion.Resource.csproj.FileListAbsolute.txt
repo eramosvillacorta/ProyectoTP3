@@ -11,3 +11,17 @@ D:\CodeGitHub\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentaci
 D:\CodeGitHub\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.dll
 D:\CodeGitHub\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.pdb
 D:\CodeGitHub\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.General.PlanProyectoPedagogicoResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\bin\Release\GDirectiva.Presentacion.Resource.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\bin\Release\GDirectiva.Presentacion.Resource.pdb
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.csprojResolveAssemblyReference.cache
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.Base.GenericResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.General.ReporteCumplimientoResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.General.PlanProyectoPedagogicoResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.General.PlanEstudioResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.General.PlanAsignaturaCronogramaResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.General.PlanAreaResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.General.PlanAsignaturaResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.Mensaje.MensajeResource.resources
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.csproj.GenerateResource.Cache
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.dll
+D:\ProyectoTP3\GestionDirectiva\GDirectiva.Presentacion.Resource\obj\Release\GDirectiva.Presentacion.Resource.pdb

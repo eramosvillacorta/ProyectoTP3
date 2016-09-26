@@ -512,6 +512,12 @@
       <Parameter Name="ID_PLANESTUDIO" Mode="In" Type="Int32" />
       <Parameter Name="ID_GRADO" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA" ReturnType="Collection(DB_INNOVASCHOOLSModel.PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result)">
+      <Parameter Name="ID_PLANASIGNATURA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA" ReturnType="Collection(DB_INNOVASCHOOLSModel.PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result)">
+      <Parameter Name="ID_PLANASIGNATURA" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="PA_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result">
     <Property Type="Int64" Name="RegistrosPagina" Nullable="true" />
@@ -694,5 +700,22 @@
     <Property Type="Int32" Name="ID_GRADO" Nullable="true" />
     <Property Type="Int32" Name="ID_AREA" Nullable="true" />
     <Property Type="String" Name="DESCRIPCION_PLANPROYECTOPEDAGOGICO" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="PA_REPORTE_ACTIVIDAD_PLAN_ASIGNATURA_LISTA_Result">
+    <Property Type="Int32" Name="ID_ACTIVIDADPLANASIGNATURA" Nullable="false" />
+    <Property Type="String" Name="ACTIVIDAD" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="ID_EMPLEADO" Nullable="true" />
+    <Property Type="String" Name="NOMBRE_EMPLEADO" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="CORREO_EMPLEADO" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="FECHAINICIO" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAFIN" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="PORCENTAJE" Nullable="false" />
+    <Property Type="Int32" Name="ID_PLANASIGNATURAMETA" Nullable="false" />
+    <Property Type="String" Name="META" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="PA_REPORTE_RESUMEN_ACTIVIDAD_PLAN_ASIGNATURA_Result">
+    <Property Type="DateTime" Name="FECHAINICIO" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FECHAFIN" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="PORCENTAJE" Nullable="true" />
   </ComplexType>
 </Schema>

@@ -80,8 +80,8 @@
                         <li><a href='@Url.Content("~/PlanArea")'>Plan de Área</a></li>
                         <li><a href='@Url.Content("~/PlanAsignatura")'>Plan de Asignatura</a></li>
                         <li><a href='@Url.Content("~/PlanAsignaturaCronograma")'>Cronograma de Plan de Asignatura</a></li>
-                        <li><a href='@Url.Content("~/PlanProyectoPedagogico")'>Plan de Proyecto Pedagógico</a></li>
-                        <li><a href='@Url.Content("~/PlanProyectoPedagogico")'>Reporte Plan Asignatura</a></li>
+                        <li><a href='@Url.Content("~/ReportePlanAsignatura")'>Reporte Plan Asignatura</a></li>
+                        <li><a href='@Url.Content("~/PlanProyectoPedagogico")'>Plan de Proyecto Pedagógico</a></li>                        
                     </ul>
                 </li>
                 <li>@Html.ActionLink("Gestión Apoyo Académico", "Modulo3", "Home")</li>
@@ -169,6 +169,7 @@
         GDirectiva.Presentacion.Base.GenericResource.EtiquetaSeleccionar = '@Html.Raw(GenericResource.EtiquetaSeleccionar)';
         GDirectiva.Presentacion.Base.GenericResource.GridAcciones = '@Html.Raw(GenericResource.GridAcciones)';
         GDirectiva.Presentacion.Base.GenericResource.EtiquetaCalendario = '@Html.Raw(GenericResource.EtiquetaCalendario)';
+        GDirectiva.Presentacion.Base.GenericResource.EtiquetaReporte = '@Html.Raw(GenericResource.EtiquetaReporte)';
 
         ns('GDirectiva.Presentacion.Web.Global.Format');
         GDirectiva.Presentacion.Web.Global.Format.Date = "dd/mm/yy";
