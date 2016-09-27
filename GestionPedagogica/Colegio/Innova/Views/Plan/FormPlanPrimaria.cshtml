@@ -1,0 +1,167 @@
+﻿<script src="@Url.Content("~/Scripts/jquery.form.js")"></script>
+
+@{
+    var IdCurriculaBaseForm = ViewBag.IdCurricula is int ? (int)ViewBag.IdCurricula : 0;
+    var AnioForm = ViewBag.Anio is int ? (int)ViewBag.Anio : 0;
+    var Plan = ViewBag.Plan as Innova.Models.PlanPrimariaModel;
+    var listaArea = ViewBag.listaArea as SelectList;
+}
+
+@{ using (Html.BeginForm("RegistrarPlanPrimaria", "Plan", FormMethod.Post, new { enctype = "multipart/form-data", id = "formRegistrarPlanPrimaria", required = "required", }))
+ {
+    @Html.Hidden("hIdCurriculaBase", IdCurriculaBaseForm)
+    @Html.Hidden("hAnio", AnioForm)
+    @Html.Hidden("hOperacion", Plan != null ? "1" : "0")
+    
+     if (Plan != null)
+     {
+        <div class="row">
+            <div class="form-group col-sm-12">
+                @Html.Label("lblArea", "Area")
+                @Html.DropDownList("ddlArea", listaArea, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado1", "1°")
+                @Html.TextBox("txtGrado1", Plan.HorasGrado1, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado2", "2°")
+                @Html.TextBox("txtGrado2", Plan.HorasGrado2, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado3", "3°")
+                @Html.TextBox("txtGrado3", Plan.HorasGrado3, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado4", "4°")
+                @Html.TextBox("txtGrado4", Plan.HorasGrado4, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado5", "5°")
+                @Html.TextBox("txtGrado5", Plan.HorasGrado5, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado6", "6°")
+                @Html.TextBox("txtGrado6", Plan.HorasGrado6, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+        </div>
+     }
+     else
+     {
+        <div class="row">
+            <div class="form-group col-sm-12">
+                @Html.Label("lblArea", "Area")
+                @Html.DropDownList("ddlArea", listaArea, "[Seleccionar]", new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado1", "1°")
+                @Html.TextBox("txtGrado1", null, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado2", "2°")
+                @Html.TextBox("txtGrado2", null, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado3", "3°")
+                @Html.TextBox("txtGrado3", null, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado4", "4°")
+                @Html.TextBox("txtGrado4", null, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado5", "5°")
+                @Html.TextBox("txtGrado5", null, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+            <div class="form-group col-sm-2">
+                @Html.Label("lblGrado6", "6°")
+                @Html.TextBox("txtGrado6", null, new { @class = "form-control solo-numero", required = "required", maxlength = "20" })
+            </div>
+        </div>
+     }
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <button class="btn btn-primary" type="submit" id="btnGuardarPlan" onclick="return fc_ValidarRegistro()">GRABAR</button>
+            <button data-dismiss="modal" class="btn btn-primary" type="button">CANCELAR</button>
+        </div>
+    </div>
+ }}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".solo-numero").keyup(function () {
+            this.value = (this.value + '').replace(/[^0-9]/g, '');
+        });
+    });
+
+    function fc_ValidarRegistro(){
+        var grado1 = $('#txtGrado1').val();
+        var grado2 = $('#txtGrado2').val();
+        var grado3 = $('#txtGrado3').val();
+        var grado4 = $('#txtGrado4').val();
+        var grado5 = $('#txtGrado5').val();
+        var grado6 = $('#txtGrado6').val();
+
+        if($('#ddlArea').val()==""){
+            alert('Seleccione área curricular');
+            return false;
+        } else if(grado1=="" || isNaN(grado1)){
+            alert('Ingresar hora de Grado 1');
+            return false;
+        } else if(grado2=="" || isNaN(grado2)){
+            alert('Ingresar hora de Grado 2');
+            return false;
+        } else if(grado3=="" || isNaN(grado3)){
+            alert('Ingresar hora de Grado 3');
+            return false;
+        } else if(grado4=="" || isNaN(grado4)){
+            alert('Ingresar hora de Grado 4');
+            return false;
+        } else if(grado5=="" || isNaN(grado5)){
+            alert('Ingresar hora de Grado 5');
+            return false;
+        } else if(grado6=="" || isNaN(grado6)){
+            alert('Ingresar hora de Grado 6');
+            return false;
+        }
+
+        if(parseFloat(grado1)+parseFloat(grado2)+parseFloat(grado3)+parseFloat(grado4)+parseFloat(grado5)+parseFloat(grado6)<=0){
+            alert('El total de las horas no puede ser menor o igual a cero');
+            return false;
+        }
+
+        if(!confirm('¿Está seguro de grabar los datos?'))
+            return false;
+        else
+            return true;
+    }
+
+    $("#formRegistrarPlanPrimaria").ajaxForm(function (result) {
+        var obj = jQuery.parseJSON(result);
+        if (obj.exito) {
+            alert("Grabado correctamente");
+            $('#PlanPrimariaPopup').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+
+            $.post('@Url.Action("PlanPrimaria", "Plan")?vParam1=' + @IdCurriculaBaseForm + '&vParam2=' + @AnioForm, function (data) {
+                if (data != null) {
+                    $('#idBusquedaPrimaria').html(data);
+                    $('#idBusquedaPrimaria').slideDown("slow");
+                }
+            });
+        } else {
+            if(obj.mensaje!="")
+                alert(obj.mensaje);
+            else
+                alert("Lo sentimos hubo un inconveniente en el registro del plan de primaria");
+        }
+    });
+
+</script>

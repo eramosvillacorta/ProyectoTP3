@@ -1,0 +1,61 @@
+﻿@using System.Collections.Generic;
+@using System.Linq;
+@using Innova.Models;
+
+@model List<Curricula>
+
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr class="active">
+            <th>Codigo</th>
+            <th>Año</th>
+            <th>Curricula Base</th>
+            <th>Elaborado Por</th>
+            <th>Fecha Aprobación</th>
+            <th>Fecha Rechazo</th>
+            <th>Estado</th>
+            <th>Motivo Rechazo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr><td colspan="9">No se encontraron registros.</td></tr>
+        }
+        else
+        {
+            foreach (Curricula item in Model)
+            {
+                string fechaAprobacion = item.FechaAprobacion.Value == DateTime.MinValue ? "" : item.FechaAprobacion.Value.ToShortDateString();
+                string fechaRechazo = item.FechaRechazo.Value == DateTime.MinValue ? "" : item.FechaRechazo.Value.ToShortDateString();
+
+                string estado = "";
+                switch (item.Estado)
+                {
+                    case 1: estado = "Incompleto"; break;
+                    case 2: estado = "Completo"; break;
+                    case 3: estado = "En Revisión"; break;
+                    case 4: estado = "Aprobado"; break;
+                    case 5: estado = "Rechazado"; break;
+                }
+
+                <tr>
+                    <td data-value="@item.IdCurricula">@item.Codigo</td>
+                    <td>@item.Año</td>
+                    <td>@item.CurriculaBase.NumeroResolucion</td>
+                    <td>@item.NoUsuarioCreacion</td>
+                    <td>@fechaAprobacion</td>
+                    <td>@fechaRechazo</td>
+                    <td>@estado</td>
+                    <td>@item.MotivoRechazo</td>
+                    <td>
+                        <a class="btn btn-xs btn-info" target="_blank" href="@Url.Content("~/VerCurricula/Index?key="+item.IdCurricula.ToString())">
+                            <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

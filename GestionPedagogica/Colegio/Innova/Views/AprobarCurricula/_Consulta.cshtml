@@ -1,0 +1,75 @@
+﻿@using Innova.Models;
+
+@{
+    List<SelectListItem> listaEstado = new List<SelectListItem>();
+
+    listaEstado.Add(new SelectListItem() { Text = "Seleccione", Value = "0", Selected = true });
+    listaEstado.Add(new SelectListItem() { Text = "Aprobado", Value = "4" });
+    listaEstado.Add(new SelectListItem() { Text = "Rechazado", Value = "5" });
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Criterios de Busqueda</div>
+            <div class="panel-body form-horizontal">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="txtBusCod" class="col-lg-4 control-label text-right">Codigo:</label>
+                            <div class="col-lg-8">@Html.TextBox("txtBusCod", "", new { @class = "form-control input-sm" })</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="txtBusAñoInicio" class="col-lg-1 control-label text-right">Año:</label>
+                            <div class="col-lg-5">@Html.TextBox("txtBusAnhoInicio", DateTime.Now.AddYears(-2).Year.ToString(), new { @class = "form-control input-sm" })</div>
+                            <label for="txtBusAñoFin" class="col-lg-1 control-label text-right">al</label>
+                            <div class="col-lg-5">@Html.TextBox("txtBusAnhoFin", DateTime.Now.AddYears(2).Year.ToString(), new { @class = "form-control input-sm" })</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom:10px">
+    <div class="col-lg-12 text-right">
+        <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
+        <button type="button" id="btnLimpiar" class="btn btn-primary">Limpiar</button>
+    </div>
+</div>
+<div class="row">
+    <div id="pnlLista" class="col-lg-12">
+    </div>
+</div>
+
+
+<div class="modal fade" id="pnlCambiarEstado" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cambiar Estado</h4>
+            </div>
+            <div class="modal-body form-horizontal">
+                @Html.Hidden("txhIdCurricula", "0")
+                <div class="form-group">
+                    <label for="ddlEstado" class="col-lg-3 control-label text-right">Estado:</label>
+                    <div class="col-lg-6">@Html.TextBox("txtCodigo", "", new { @class = "form-control input-sm", disabled = "disabled" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="ddlEstado" class="col-lg-3 control-label text-right">Estado:</label>
+                    <div class="col-lg-6">@Html.DropDownList("ddlEstado", listaEstado, new { @class = "form-control input-sm" })</div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMotivo" class="col-lg-3 control-label text-right">Motivo:</label>
+                    <div class="col-lg-6">@Html.TextArea("txtMotivo", "", new { @class = "form-control input-sm", rows = 3 })</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnGuardarEstado" class="btn btn-primary" type="button">Aceptar</button>
+                <button data-dismiss="modal" class="btn btn-primary" type="button">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

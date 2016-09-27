@@ -1,0 +1,139 @@
+﻿@{
+    var IdCurricula = ViewBag.IdCurricula;
+    bool boCurriculaBaseAsignada = ViewBag.boCurriculaBaseAsignada;
+    var listaPrimaria = ViewBag.ListaPrimaria as List<Innova.Models.PlanPrimariaModel>;
+}
+
+@if (!boCurriculaBaseAsignada)
+{
+    <button class="btn btn-primary btn-right" type="submit" id="btnNuevoPlanPrimaria" style="align-content:flex-end">
+        Agregar Area Curricular
+    </button>
+}
+<br /><br />
+<table id="tb_PlanPrimaria" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Area Curricular</th>
+            <th>1° Grado</th>
+            <th>2° Grado</th>
+            <th>3° Grado</th>
+            <th>4° Grado</th>
+            <th>5° Grado</th>
+            <th>6° Grado</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            System.Diagnostics.Debug.Assert(listaPrimaria != null, "lista != null");
+        }
+        @foreach (var item in listaPrimaria)
+        {
+            <tr class="filaBase" pidplan="@(item.idAreaCurricular)" ph1="@(item.HorasGrado1)" ph2="@(item.HorasGrado2)" ph3="@(item.HorasGrado3)" ph4="@(item.HorasGrado4)" ph5="@(item.HorasGrado5)" ph6="@(item.HorasGrado6)">
+                <td>
+                    <div>
+                        @item.DescAreaCurricular
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado1
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado2
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado3
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado4
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado5
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado6
+                    </div>
+                </td>
+                <td>
+                    @if (!boCurriculaBaseAsignada)
+                    {
+                        <div class="EditarPlanPrimaria" data-toggle="tooltip" data-placement="top" title="Editar">
+                            <img src="~/Content/Images/editar.png" alt="Detalles de Curricula Base" />
+                        </div>
+                    }
+                </td>
+                <td>
+                    @if (!boCurriculaBaseAsignada)
+                    {
+                        <div class="EliminarPlanPrimaria" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                            <img src="~/Content/Images/detalles.png" alt="Competencia Capacidad Area" />
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+<script type="text/javascript">
+    $("#btnNuevoPlanPrimaria").on("click", function () {
+        $.post('@Url.Action("FormPlanPrimaria", "Plan")?vParam1=' + @IdCurricula, function (data) {
+            if (data != null) {
+                $('#PlanPrimariaPopup').find('.modal-body').html(data);
+                $('#PlanPrimariaPopup').modal('show');
+            }
+        });
+    });
+
+    $(".EditarPlanPrimaria").on("click", function () {
+        var id = $(this).parents(".filaBase").attr("pidPlan");
+        var ser = { };
+        ser.idAreaCurricular= id;
+
+        $.post('@Url.Action("FormPlanPrimaria", "Plan")?vParam1=' + @(IdCurricula), ser , function (data) {
+            if (data != null) {
+                $('#PlanPrimariaPopup').find('.modal-title').html('Acutalizar Plan Primaria');
+                $('#PlanPrimariaPopup').find('.modal-body').html(data);
+                $('#PlanPrimariaPopup').modal('show');
+            }
+        });
+    });
+
+
+    $(".EliminarPlanPrimaria").on("click", function () {
+        if (!confirm('¿Está seguro de Eliminar el Área Curricular seleccionada?')) return false;
+
+        var id = $(this).parents(".filaBase").attr("pidPlan");
+        var ser = { };
+        ser.idAreaCurricular = id;
+        ser.idNivel = 1;
+
+        $.post('@Url.Action("EliminarPlan", "Plan")?vParam1=' + @(IdCurricula), ser , function (data) {
+            if (data != null) {
+                $.post('@Url.Action("PlanPrimaria", "Plan")?vParam1=' + @(IdCurricula) + '&vParam2=0', function (data) {
+                    if (data != null) {
+                        $('#idBusquedaPrimaria').html(data);
+                        $('#idBusquedaPrimaria').slideDown("slow");
+                    }
+                });
+            }
+        });
+    });
+</script>

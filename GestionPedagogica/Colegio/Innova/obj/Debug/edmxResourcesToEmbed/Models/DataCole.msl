@@ -1,9 +1,541 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="InnovaModelStoreContainer" CdmEntityContainer="InnovaEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="InnovaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alumno">
+      <EntityTypeMapping TypeName="InnovaModel.Alumno">
+        <MappingFragment StoreEntitySet="Alumno">
+          <ScalarProperty Name="idGrado" ColumnName="idGrado" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="idApoderado" ColumnName="idApoderado" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Apoderado">
+      <EntityTypeMapping TypeName="InnovaModel.Apoderado">
+        <MappingFragment StoreEntitySet="Apoderado">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="telefono_2" ColumnName="telefono_2" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="idParentesco" ColumnName="idParentesco" />
+          <ScalarProperty Name="idApoderado" ColumnName="idApoderado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="InnovaModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cronograma">
+      <EntityTypeMapping TypeName="InnovaModel.Cronograma">
+        <MappingFragment StoreEntitySet="Cronograma">
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="idCronograma" ColumnName="idCronograma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentoIdentidad">
+      <EntityTypeMapping TypeName="InnovaModel.DocumentoIdentidad">
+        <MappingFragment StoreEntitySet="DocumentoIdentidad">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idDocumentoIdentidad" ColumnName="idDocumentoIdentidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpedienteAdmision">
+      <EntityTypeMapping TypeName="InnovaModel.ExpedienteAdmision">
+        <MappingFragment StoreEntitySet="ExpedienteAdmision">
+          <ScalarProperty Name="codigoExpediente" ColumnName="codigoExpediente" />
+          <ScalarProperty Name="resultRM_RV" ColumnName="resultRM_RV" />
+          <ScalarProperty Name="resultBloqueMatCiencias" ColumnName="resultBloqueMatCiencias" />
+          <ScalarProperty Name="resultBloqueLetras" ColumnName="resultBloqueLetras" />
+          <ScalarProperty Name="resultEvaPsico" ColumnName="resultEvaPsico" />
+          <ScalarProperty Name="obsPsicologicas" ColumnName="obsPsicologicas" />
+          <ScalarProperty Name="resultInfocorp" ColumnName="resultInfocorp" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="idExpedienteAdmision" ColumnName="idExpedienteAdmision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matricula">
+      <EntityTypeMapping TypeName="InnovaModel.Matricula">
+        <MappingFragment StoreEntitySet="Matricula">
+          <ScalarProperty Name="idSeccion" ColumnName="idSeccion" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="idProceso" ColumnName="idProceso" />
+          <ScalarProperty Name="fechaMatricula" ColumnName="fechaMatricula" />
+          <ScalarProperty Name="idMatricula" ColumnName="idMatricula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parentesco">
+      <EntityTypeMapping TypeName="InnovaModel.Parentesco">
+        <MappingFragment StoreEntitySet="Parentesco">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idParentesco" ColumnName="idParentesco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proceso">
+      <EntityTypeMapping TypeName="InnovaModel.Proceso">
+        <MappingFragment StoreEntitySet="Proceso">
+          <ScalarProperty Name="idCronograma" ColumnName="idCronograma" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="idProceso" ColumnName="idProceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seccion">
+      <EntityTypeMapping TypeName="InnovaModel.Seccion">
+        <MappingFragment StoreEntitySet="Seccion">
+          <ScalarProperty Name="idGrado" ColumnName="idGrado" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idSeccion" ColumnName="idSeccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sede">
+      <EntityTypeMapping TypeName="InnovaModel.Sede">
+        <MappingFragment StoreEntitySet="Sede">
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agenda">
+      <EntityTypeMapping TypeName="InnovaModel.Agenda">
+        <MappingFragment StoreEntitySet="Agenda">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="FechaTerminoEscolar" ColumnName="FechaTerminoEscolar" />
+          <ScalarProperty Name="fechaInicioEscolar" ColumnName="fechaInicioEscolar" />
+          <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+          <ScalarProperty Name="fechaApertura" ColumnName="fechaApertura" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idAgenda" ColumnName="idAgenda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ambiente">
+      <EntityTypeMapping TypeName="InnovaModel.Ambiente">
+        <MappingFragment StoreEntitySet="Ambiente">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idAmbiente" ColumnName="idAmbiente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AprobacionAgenda">
+      <EntityTypeMapping TypeName="InnovaModel.AprobacionAgenda">
+        <MappingFragment StoreEntitySet="AprobacionAgenda">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idAgenda" ColumnName="idAgenda" />
+          <ScalarProperty Name="idAprobacion" ColumnName="idAprobacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AprobacionCalendario">
+      <EntityTypeMapping TypeName="InnovaModel.AprobacionCalendario">
+        <MappingFragment StoreEntitySet="AprobacionCalendario">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idCalendario" ColumnName="idCalendario" />
+          <ScalarProperty Name="idAprobacionCalendario" ColumnName="idAprobacionCalendario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AprobacionSolicitudActividad">
+      <EntityTypeMapping TypeName="InnovaModel.AprobacionSolicitudActividad">
+        <MappingFragment StoreEntitySet="AprobacionSolicitudActividad">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idSolicitudActividad" ColumnName="idSolicitudActividad" />
+          <ScalarProperty Name="idAprobacionSolicitudActividad" ColumnName="idAprobacionSolicitudActividad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendario">
+      <EntityTypeMapping TypeName="InnovaModel.Calendario">
+        <MappingFragment StoreEntitySet="Calendario">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="idAgenda" ColumnName="idAgenda" />
+          <ScalarProperty Name="idCalendario" ColumnName="idCalendario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feriado">
+      <EntityTypeMapping TypeName="InnovaModel.Feriado">
+        <MappingFragment StoreEntitySet="Feriado">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="repetitivo" ColumnName="repetitivo" />
+          <ScalarProperty Name="fechaTermino" ColumnName="fechaTermino" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="idAgenda" ColumnName="idAgenda" />
+          <ScalarProperty Name="idFeriado" ColumnName="idFeriado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SolicitudActividad">
+      <EntityTypeMapping TypeName="InnovaModel.SolicitudActividad">
+        <MappingFragment StoreEntitySet="SolicitudActividad">
+          <ScalarProperty Name="fecModificacion" ColumnName="fecModificacion" />
+          <ScalarProperty Name="usuModificacion" ColumnName="usuModificacion" />
+          <ScalarProperty Name="fecCreacion" ColumnName="fecCreacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+          <ScalarProperty Name="idSolicitudActividad" ColumnName="idSolicitudActividad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActividadPlanAsignatura">
+      <EntityTypeMapping TypeName="InnovaModel.ActividadPlanAsignatura">
+        <MappingFragment StoreEntitySet="ActividadPlanAsignatura">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idPlanAsignatura" ColumnName="idPlanAsignatura" />
+          <ScalarProperty Name="porcentajeAvance" ColumnName="porcentajeAvance" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="actividad" ColumnName="actividad" />
+          <ScalarProperty Name="idActividadPlanAsignatura" ColumnName="idActividadPlanAsignatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActividadPlanProyectoPedagogico">
+      <EntityTypeMapping TypeName="InnovaModel.ActividadPlanProyectoPedagogico">
+        <MappingFragment StoreEntitySet="ActividadPlanProyectoPedagogico">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idProyectoPedagogico" ColumnName="idProyectoPedagogico" />
+          <ScalarProperty Name="porcentajeAvance" ColumnName="porcentajeAvance" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="actividad" ColumnName="actividad" />
+          <ScalarProperty Name="idActividadProyectoPedagogico" ColumnName="idActividadProyectoPedagogico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Meta">
+      <EntityTypeMapping TypeName="InnovaModel.Meta">
+        <MappingFragment StoreEntitySet="Meta">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idPlanAsignatura" ColumnName="idPlanAsignatura" />
+          <ScalarProperty Name="idMeta" ColumnName="idMeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeriodoAcademico">
+      <EntityTypeMapping TypeName="InnovaModel.PeriodoAcademico">
+        <MappingFragment StoreEntitySet="PeriodoAcademico">
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="periodo" ColumnName="periodo" />
+          <ScalarProperty Name="idPeriodoAcademico" ColumnName="idPeriodoAcademico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanArea">
+      <EntityTypeMapping TypeName="InnovaModel.PlanArea">
+        <MappingFragment StoreEntitySet="PlanArea">
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idAreaCurricular" ColumnName="idAreaCurricular" />
+          <ScalarProperty Name="idGrado" ColumnName="idGrado" />
+          <ScalarProperty Name="idPlanEstudio" ColumnName="idPlanEstudio" />
+          <ScalarProperty Name="idPeriodoAcademico" ColumnName="idPeriodoAcademico" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="requisitos" ColumnName="requisitos" />
+          <ScalarProperty Name="criterios" ColumnName="criterios" />
+          <ScalarProperty Name="objetivos" ColumnName="objetivos" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idPlanArea" ColumnName="idPlanArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanAsignatura">
+      <EntityTypeMapping TypeName="InnovaModel.PlanAsignatura">
+        <MappingFragment StoreEntitySet="PlanAsignatura">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+          <ScalarProperty Name="idPlanArea" ColumnName="idPlanArea" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="metodologia" ColumnName="metodologia" />
+          <ScalarProperty Name="idPlanAsignatura" ColumnName="idPlanAsignatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanEstudio">
+      <EntityTypeMapping TypeName="InnovaModel.PlanEstudio">
+        <MappingFragment StoreEntitySet="PlanEstudio">
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="requisitos" ColumnName="requisitos" />
+          <ScalarProperty Name="objetivos" ColumnName="objetivos" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idPlanEstudio" ColumnName="idPlanEstudio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanProyectoPedagogico">
+      <EntityTypeMapping TypeName="InnovaModel.PlanProyectoPedagogico">
+        <MappingFragment StoreEntitySet="PlanProyectoPedagogico">
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idGrado" ColumnName="idGrado" />
+          <ScalarProperty Name="idAreaCurricular" ColumnName="idAreaCurricular" />
+          <ScalarProperty Name="idPeriodoAcademico" ColumnName="idPeriodoAcademico" />
+          <ScalarProperty Name="idPlanEstudio" ColumnName="idPlanEstudio" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="objetivos" ColumnName="objetivos" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idProyectoPedagogico" ColumnName="idProyectoPedagogico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActividadAcademicaPlan">
+      <EntityTypeMapping TypeName="InnovaModel.ActividadAcademicaPlan">
+        <MappingFragment StoreEntitySet="ActividadAcademicaPlan">
+          <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+          <ScalarProperty Name="idactividad" ColumnName="idactividad" />
+          <ScalarProperty Name="idactPlan" ColumnName="idactPlan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActividadPropuesta">
+      <EntityTypeMapping TypeName="InnovaModel.ActividadPropuesta">
+        <MappingFragment StoreEntitySet="ActividadPropuesta">
+          <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fechaTermino" ColumnName="fechaTermino" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idactividadPropuesta" ColumnName="idactividadPropuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlumnoEmpadronado">
+      <EntityTypeMapping TypeName="InnovaModel.AlumnoEmpadronado">
+        <MappingFragment StoreEntitySet="AlumnoEmpadronado">
+          <ScalarProperty Name="claveAcceso" ColumnName="claveAcceso" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="idProceso" ColumnName="idProceso" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="añoescolar" ColumnName="añoescolar" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="codalumnoempadronado" ColumnName="codalumnoempadronado" />
+          <ScalarProperty Name="idalumnoempadronado" ColumnName="idalumnoempadronado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asesor">
+      <EntityTypeMapping TypeName="InnovaModel.Asesor">
+        <MappingFragment StoreEntitySet="Asesor">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idAsesor" ColumnName="idAsesor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargo">
+      <EntityTypeMapping TypeName="InnovaModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="anoAcademico" ColumnName="anoAcademico" />
+          <ScalarProperty Name="tipoCargo" ColumnName="tipoCargo" />
+          <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleProceso">
+      <EntityTypeMapping TypeName="InnovaModel.DetalleProceso">
+        <MappingFragment StoreEntitySet="DetalleProceso">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="nombreProceso" ColumnName="nombreProceso" />
+          <ScalarProperty Name="idProceso" ColumnName="idProceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instrumento">
+      <EntityTypeMapping TypeName="InnovaModel.Instrumento">
+        <MappingFragment StoreEntitySet="Instrumento">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+          <ScalarProperty Name="Objetivo" ColumnName="Objetivo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="idInstrumento" ColumnName="idInstrumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Integrante">
+      <EntityTypeMapping TypeName="InnovaModel.Integrante">
+        <MappingFragment StoreEntitySet="Integrante">
+          <ScalarProperty Name="idPartido" ColumnName="idPartido" />
+          <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="idIntegrante" ColumnName="idIntegrante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Observacion">
+      <EntityTypeMapping TypeName="InnovaModel.Observacion">
+        <MappingFragment StoreEntitySet="Observacion">
+          <ScalarProperty Name="idactPlan" ColumnName="idactPlan" />
+          <ScalarProperty Name="idActividadPropuesta" ColumnName="idActividadPropuesta" />
+          <ScalarProperty Name="idInstrumento" ColumnName="idInstrumento" />
+          <ScalarProperty Name="NivelObservacion" ColumnName="NivelObservacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="idObservacion" ColumnName="idObservacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParametroTiempo">
+      <EntityTypeMapping TypeName="InnovaModel.ParametroTiempo">
+        <MappingFragment StoreEntitySet="ParametroTiempo">
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="Proceso" ColumnName="Proceso" />
+          <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartidoPostulante">
+      <EntityTypeMapping TypeName="InnovaModel.PartidoPostulante">
+        <MappingFragment StoreEntitySet="PartidoPostulante">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+          <ScalarProperty Name="idAsesor" ColumnName="idAsesor" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="idPartido" ColumnName="idPartido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanGobierno">
+      <EntityTypeMapping TypeName="InnovaModel.PlanGobierno">
+        <MappingFragment StoreEntitySet="PlanGobierno">
+          <ScalarProperty Name="idPartido" ColumnName="idPartido" />
+          <ScalarProperty Name="idProceso" ColumnName="idProceso" />
+          <ScalarProperty Name="codAlumno" ColumnName="codAlumno" />
+          <ScalarProperty Name="FechaAprob" ColumnName="FechaAprob" />
+          <ScalarProperty Name="Objetivo" ColumnName="Objetivo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+          <ScalarProperty Name="idplan" ColumnName="idplan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="InnovaModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idrol" ColumnName="idrol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubActividad">
+      <EntityTypeMapping TypeName="InnovaModel.SubActividad">
+        <MappingFragment StoreEntitySet="SubActividad">
+          <ScalarProperty Name="idactPlan" ColumnName="idactPlan" />
+          <ScalarProperty Name="idActividadPropuesta" ColumnName="idActividadPropuesta" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="SubActividadID" ColumnName="SubActividadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voto">
+      <EntityTypeMapping TypeName="InnovaModel.Voto">
+        <MappingFragment StoreEntitySet="Voto">
+          <ScalarProperty Name="idProceso" ColumnName="idProceso" />
+          <ScalarProperty Name="idPartido" ColumnName="idPartido" />
+          <ScalarProperty Name="FechaVoto" ColumnName="FechaVoto" />
+          <ScalarProperty Name="EstadoVoto" ColumnName="EstadoVoto" />
+          <ScalarProperty Name="idVoto" ColumnName="idVoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="AreaCurricular">
       <EntityTypeMapping TypeName="InnovaModel.AreaCurricular">
         <MappingFragment StoreEntitySet="AreaCurricular">
+          <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+          <ScalarProperty Name="Horas" ColumnName="Horas" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="IdAreaCurricular" ColumnName="IdAreaCurricular" />
         </MappingFragment>
@@ -31,9 +563,18 @@
     <EntitySetMapping Name="Curricula">
       <EntityTypeMapping TypeName="InnovaModel.Curricula">
         <MappingFragment StoreEntitySet="Curricula">
+          <ScalarProperty Name="MotivoRechazo" ColumnName="MotivoRechazo" />
+          <ScalarProperty Name="IdUsuarioRechazo" ColumnName="IdUsuarioRechazo" />
+          <ScalarProperty Name="IdUsuarioAprobacion" ColumnName="IdUsuarioAprobacion" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaRechazo" ColumnName="FechaRechazo" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
           <ScalarProperty Name="IdCurriculaBase" ColumnName="IdCurriculaBase" />
-          <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
           <ScalarProperty Name="IdCurricula" ColumnName="IdCurricula" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -62,29 +603,66 @@
     <EntitySetMapping Name="Curso">
       <EntityTypeMapping TypeName="InnovaModel.Curso">
         <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
           <ScalarProperty Name="IdAreaCurricular" ColumnName="IdAreaCurricular" />
           <ScalarProperty Name="IdGrado" ColumnName="IdGrado" />
-          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Sumilla" ColumnName="Sumilla" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
           <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursoTema">
+      <EntityTypeMapping TypeName="InnovaModel.CursoTema">
+        <MappingFragment StoreEntitySet="CursoTema">
+          <ScalarProperty Name="EstTemario" ColumnName="EstTemario" />
+          <ScalarProperty Name="Temario" ColumnName="Temario" />
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="IdCursoTema" ColumnName="IdCursoTema" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DetalleCurricula">
       <EntityTypeMapping TypeName="InnovaModel.DetalleCurricula">
         <MappingFragment StoreEntitySet="DetalleCurricula">
-          <ScalarProperty Name="IdCompetencia" ColumnName="IdCompetencia" />
+          <ScalarProperty Name="HrsAsignadas" ColumnName="HrsAsignadas" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="IdCoordinador" ColumnName="IdCoordinador" />
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
           <ScalarProperty Name="IdDetalleCurricula" ColumnName="IdDetalleCurricula" />
           <ScalarProperty Name="IdCurricula" ColumnName="IdCurricula" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Docente">
-      <EntityTypeMapping TypeName="InnovaModel.Docente">
-        <MappingFragment StoreEntitySet="Docente">
-          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-          <ScalarProperty Name="IdDocente" ColumnName="IdDocente" />
+    <EntitySetMapping Name="DetalleCurriculaCalificacion">
+      <EntityTypeMapping TypeName="InnovaModel.DetalleCurriculaCalificacion">
+        <MappingFragment StoreEntitySet="DetalleCurriculaCalificacion">
+          <ScalarProperty Name="ValorCalificacion" ColumnName="ValorCalificacion" />
+          <ScalarProperty Name="IdTipoCalificacion" ColumnName="IdTipoCalificacion" />
+          <ScalarProperty Name="IdDetalleCurricula" ColumnName="IdDetalleCurricula" />
+          <ScalarProperty Name="IdDetalleCurriculaCalificacion" ColumnName="IdDetalleCurriculaCalificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleCurriculaProfesor">
+      <EntityTypeMapping TypeName="InnovaModel.DetalleCurriculaProfesor">
+        <MappingFragment StoreEntitySet="DetalleCurriculaProfesor">
+          <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
+          <ScalarProperty Name="IdDetalleCurricula" ColumnName="IdDetalleCurricula" />
+          <ScalarProperty Name="IdDetalleCurriculaProfesor" ColumnName="IdDetalleCurriculaProfesor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleCurriculaTema">
+      <EntityTypeMapping TypeName="InnovaModel.DetalleCurriculaTema">
+        <MappingFragment StoreEntitySet="DetalleCurriculaTema">
+          <ScalarProperty Name="IdCompetencia" ColumnName="IdCompetencia" />
+          <ScalarProperty Name="IdCursoTema" ColumnName="IdCursoTema" />
+          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+          <ScalarProperty Name="IdDetalleCurriculaTema" ColumnName="IdDetalleCurriculaTema" />
+          <ScalarProperty Name="IdDetalleCurricula" ColumnName="IdDetalleCurricula" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -98,12 +676,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Nivel">
-      <EntityTypeMapping TypeName="InnovaModel.Nivel">
-        <MappingFragment StoreEntitySet="Nivel">
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+    <EntitySetMapping Name="Parametro">
+      <EntityTypeMapping TypeName="InnovaModel.Parametro">
+        <MappingFragment StoreEntitySet="Parametro">
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+          <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -111,29 +689,258 @@
       <EntityTypeMapping TypeName="InnovaModel.PlanEstudiosBase">
         <MappingFragment StoreEntitySet="PlanEstudiosBase">
           <ScalarProperty Name="Horas" ColumnName="Horas" />
-          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
-          <ScalarProperty Name="IdCurriculaBaseCompetencia" ColumnName="IdCurriculaBaseCompetencia" />
+          <ScalarProperty Name="IdAreaCurricular" ColumnName="IdAreaCurricular" />
+          <ScalarProperty Name="IdGrado" ColumnName="IdGrado" />
+          <ScalarProperty Name="IdCurriculaBase" ColumnName="IdCurriculaBase" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="InnovaModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
+    <EntitySetMapping Name="TipoCalificación">
+      <EntityTypeMapping TypeName="InnovaModel.TipoCalificación">
+        <MappingFragment StoreEntitySet="TipoCalificación">
+          <ScalarProperty Name="NomTipoCalificación" ColumnName="NomTipoCalificación" />
+          <ScalarProperty Name="IdTipoCalificación" ColumnName="IdTipoCalificación" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="DocenteCurso" TypeName="InnovaModel.DocenteCurso" StoreEntitySet="DocenteCurso">
-      <EndProperty Name="Docente">
-        <ScalarProperty Name="IdDocente" ColumnName="IdDocente" />
+    <EntitySetMapping Name="Unidad">
+      <EntityTypeMapping TypeName="InnovaModel.Unidad">
+        <MappingFragment StoreEntitySet="Unidad">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banco">
+      <EntityTypeMapping TypeName="InnovaModel.Banco">
+        <MappingFragment StoreEntitySet="Banco">
+          <ScalarProperty Name="prefijoCuenta" ColumnName="prefijoCuenta" />
+          <ScalarProperty Name="nombreBanco" ColumnName="nombreBanco" />
+          <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Candidato">
+      <EntityTypeMapping TypeName="InnovaModel.Candidato">
+        <MappingFragment StoreEntitySet="Candidato">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="rutaImgTituloProfesional" ColumnName="rutaImgTituloProfesional" />
+          <ScalarProperty Name="rutaImgDeclaracionJurada" ColumnName="rutaImgDeclaracionJurada" />
+          <ScalarProperty Name="rutaImgAntecedentesPoliciales" ColumnName="rutaImgAntecedentesPoliciales" />
+          <ScalarProperty Name="rutaImgAntecedentesPenales" ColumnName="rutaImgAntecedentesPenales" />
+          <ScalarProperty Name="rutaImgDni" ColumnName="rutaImgDni" />
+          <ScalarProperty Name="idEstadoCandidato" ColumnName="idEstadoCandidato" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idCandidato" ColumnName="idCandidato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contrato">
+      <EntityTypeMapping TypeName="InnovaModel.Contrato">
+        <MappingFragment StoreEntitySet="Contrato">
+          <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+          <ScalarProperty Name="idContrato" ColumnName="idContrato" />
+          <ScalarProperty Name="idTipoContrato" ColumnName="idTipoContrato" />
+          <ScalarProperty Name="salario" ColumnName="salario" />
+          <ScalarProperty Name="fechaFinContrato" ColumnName="fechaFinContrato" />
+          <ScalarProperty Name="fechaInicioContrato" ColumnName="fechaInicioContrato" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Convocatoria">
+      <EntityTypeMapping TypeName="InnovaModel.Convocatoria">
+        <MappingFragment StoreEntitySet="Convocatoria">
+          <ScalarProperty Name="idDesarrollo" ColumnName="idDesarrollo" />
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+          <ScalarProperty Name="idTipoPuesto" ColumnName="idTipoPuesto" />
+          <ScalarProperty Name="fechaVencimientoDocumento" ColumnName="fechaVencimientoDocumento" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="conocimiento" ColumnName="conocimiento" />
+          <ScalarProperty Name="anoExperiencia" ColumnName="anoExperiencia" />
+          <ScalarProperty Name="tipoConvocatoria" ColumnName="tipoConvocatoria" />
+          <ScalarProperty Name="numeroVacantes" ColumnName="numeroVacantes" />
+          <ScalarProperty Name="fechaFinPublicacion" ColumnName="fechaFinPublicacion" />
+          <ScalarProperty Name="fechaInicioPublicacion" ColumnName="fechaInicioPublicacion" />
+          <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConvocatoriaCandidato">
+      <EntityTypeMapping TypeName="InnovaModel.ConvocatoriaCandidato">
+        <MappingFragment StoreEntitySet="ConvocatoriaCandidato">
+          <ScalarProperty Name="idCandidato" ColumnName="idCandidato" />
+          <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Desarrollo">
+      <EntityTypeMapping TypeName="InnovaModel.Desarrollo">
+        <MappingFragment StoreEntitySet="Desarrollo">
+          <ScalarProperty Name="descripcionDesarrollo" ColumnName="descripcionDesarrollo" />
+          <ScalarProperty Name="idDesarrollo" ColumnName="idDesarrollo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="InnovaModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="codigoFotocheck" ColumnName="codigoFotocheck" />
+          <ScalarProperty Name="cuentaBanco" ColumnName="cuentaBanco" />
+          <ScalarProperty Name="idNivelEstudios" ColumnName="idNivelEstudios" />
+          <ScalarProperty Name="idEstadoEmpleado" ColumnName="idEstadoEmpleado" />
+          <ScalarProperty Name="idSeguro" ColumnName="idSeguro" />
+          <ScalarProperty Name="idFondoPensiones" ColumnName="idFondoPensiones" />
+          <ScalarProperty Name="idCandidato" ColumnName="idCandidato" />
+          <ScalarProperty Name="contactoEmergencia" ColumnName="contactoEmergencia" />
+          <ScalarProperty Name="telefonoEmergencia" ColumnName="telefonoEmergencia" />
+          <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoCandidato">
+      <EntityTypeMapping TypeName="InnovaModel.EstadoCandidato">
+        <MappingFragment StoreEntitySet="EstadoCandidato">
+          <ScalarProperty Name="estadoCandidato1" ColumnName="estadoCandidato" />
+          <ScalarProperty Name="idEstadoCandidato" ColumnName="idEstadoCandidato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoCivil">
+      <EntityTypeMapping TypeName="InnovaModel.EstadoCivil">
+        <MappingFragment StoreEntitySet="EstadoCivil">
+          <ScalarProperty Name="estadoCivil1" ColumnName="estadoCivil" />
+          <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoEmpleado">
+      <EntityTypeMapping TypeName="InnovaModel.EstadoEmpleado">
+        <MappingFragment StoreEntitySet="EstadoEmpleado">
+          <ScalarProperty Name="estadoEmpleado1" ColumnName="estadoEmpleado" />
+          <ScalarProperty Name="idEstadoEmpleado" ColumnName="idEstadoEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FondoPensiones">
+      <EntityTypeMapping TypeName="InnovaModel.FondoPensiones">
+        <MappingFragment StoreEntitySet="FondoPensiones">
+          <ScalarProperty Name="fondoPensiones1" ColumnName="fondoPensiones" />
+          <ScalarProperty Name="idFondoPensiones" ColumnName="idFondoPensiones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nacionalidad">
+      <EntityTypeMapping TypeName="InnovaModel.Nacionalidad">
+        <MappingFragment StoreEntitySet="Nacionalidad">
+          <ScalarProperty Name="nacionalidad1" ColumnName="nacionalidad" />
+          <ScalarProperty Name="idNacionalidad" ColumnName="idNacionalidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NivelEstudio">
+      <EntityTypeMapping TypeName="InnovaModel.NivelEstudio">
+        <MappingFragment StoreEntitySet="NivelEstudio">
+          <ScalarProperty Name="gradoEstudio" ColumnName="gradoEstudio" />
+          <ScalarProperty Name="idNivelEstudios" ColumnName="idNivelEstudios" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="InnovaModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
+          <ScalarProperty Name="nroHijos" ColumnName="nroHijos" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="documentoIdentidad" ColumnName="documentoIdentidad" />
+          <ScalarProperty Name="tipoDocumentoIdentidad" ColumnName="tipoDocumentoIdentidad" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+          <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puesto">
+      <EntityTypeMapping TypeName="InnovaModel.Puesto">
+        <MappingFragment StoreEntitySet="Puesto">
+          <ScalarProperty Name="idTipoPuesto" ColumnName="idTipoPuesto" />
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+          <ScalarProperty Name="funcion" ColumnName="funcion" />
+          <ScalarProperty Name="descripcionPuesto" ColumnName="descripcionPuesto" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seguro">
+      <EntityTypeMapping TypeName="InnovaModel.Seguro">
+        <MappingFragment StoreEntitySet="Seguro">
+          <ScalarProperty Name="descripcionSeguro" ColumnName="descripcionSeguro" />
+          <ScalarProperty Name="idSeguro" ColumnName="idSeguro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoContrato">
+      <EntityTypeMapping TypeName="InnovaModel.TipoContrato">
+        <MappingFragment StoreEntitySet="TipoContrato">
+          <ScalarProperty Name="descripcionContrato" ColumnName="descripcionContrato" />
+          <ScalarProperty Name="idTipoContrato" ColumnName="idTipoContrato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPuesto">
+      <EntityTypeMapping TypeName="InnovaModel.TipoPuesto">
+        <MappingFragment StoreEntitySet="TipoPuesto">
+          <ScalarProperty Name="descripcionPuesto" ColumnName="descripcionPuesto" />
+          <ScalarProperty Name="idTipoPuesto" ColumnName="idTipoPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="InnovaModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="FecModificacion" ColumnName="FecModificacion" />
+          <ScalarProperty Name="UsuModificacion" ColumnName="UsuModificacion" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+          <ScalarProperty Name="UsuCreacion" ColumnName="UsuCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+          <ScalarProperty Name="IdPregunta" ColumnName="IdPregunta" />
+          <ScalarProperty Name="UPassword" ColumnName="UPassword" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CursoDocente" TypeName="InnovaModel.CursoDocente" StoreEntitySet="CursoDocente">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
       </EndProperty>
       <EndProperty Name="Curso">
-        <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+        <ScalarProperty Name="IdCurso" ColumnName="idCurso" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Nivel">
+      <EntityTypeMapping TypeName="IsTypeOf(InnovaModel.Nivel)">
+        <MappingFragment StoreEntitySet="Nivel">
+          <ScalarProperty Name="temarioNivel" ColumnName="temarioNivel" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

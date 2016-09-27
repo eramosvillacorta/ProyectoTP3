@@ -1,0 +1,30 @@
+﻿@{
+    var IdCurriculabase = ViewBag.IdCurriculabase as string;
+    var Anio = ViewBag.Anio as string;
+}
+<div class="form-inline">
+    <div class="form-group">
+        @Html.Label("lblCodCurBase", "Código Currícula Base")<br />
+        @Html.TextBox("txtCodCurriculaBase", IdCurriculabase, new { @class = "form-control solo-numero", maxlength = "4", disabled = "disabled" })
+    </div>
+    <div class="form-group">
+        @Html.Label("lblAnio", "Año")<br />
+        @Html.TextBox("txtAnio", Anio, new { @class = "form-control solo-numero", maxlength = "4", disabled = "disabled" })
+    </div>
+
+    <div class="form-group">
+        <br />
+        <button class="btn btn-primary" type="button" id="btnBusquedaBase">
+            Volver
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#btnBusquedaBase").click(function () {
+        var Root = window.location.origin + '@Url.Action("Index", "CurriculaBase")';
+        window.location.href = Root;
+    });
+
+});
+</script>

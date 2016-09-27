@@ -1,0 +1,130 @@
+﻿@{
+    var IdCurricula = ViewBag.IdCurricula;
+    bool boCurriculaBaseAsignada = ViewBag.boCurriculaBaseAsignada;
+    var listaSecundaria = ViewBag.ListaSecundaria as List<Innova.Models.PlanSecundariaModel>;
+}
+
+@if (!boCurriculaBaseAsignada)
+{
+    <button class="btn btn-primary btn-right" type="submit" id="btnNuevoPlanSecundaria" style="align-content:flex-end">
+        Agregar Area Curricular
+    </button>
+}
+<br /><br />
+<table id="tb_PlanSecundaria" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Area Curricular</th>
+            <th>1° Grado</th>
+            <th>2° Grado</th>
+            <th>3° Grado</th>
+            <th>4° Grado</th>
+            <th>5° Grado</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            System.Diagnostics.Debug.Assert(listaSecundaria != null, "lista != null");
+        }
+        @foreach (var item in listaSecundaria)
+        {
+            <tr class="filaBase" pidplan="@(item.idAreaCurricular)">
+                <td>
+                    <div>
+                        @item.DescAreaCurricular
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado1
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado2
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado3
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado4
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @item.HorasGrado5
+                    </div>
+                </td>
+                <td>
+                    @if (!boCurriculaBaseAsignada)
+                    {
+                        <div class="EditarPlanSecundaria" data-toggle="tooltip" data-placement="top" title="Editar">
+                            <img src="~/Content/Images/editar.png" alt="Detalles de Curricula Base" />
+                        </div>
+                    }
+                </td>
+                <td>
+                    @if (!boCurriculaBaseAsignada)
+                    {
+                        <div class="EliminarPlanSecundaria" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                            <img src="~/Content/Images/detalles.png" alt="Competencia Capacidad Area" />
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+<script type="text/javascript">
+    $("#btnNuevoPlanSecundaria").on("click", function () {
+        $.post('@Url.Action("FormPlanSecundaria", "Plan")?vParam1=' + @IdCurricula, function (data) {
+            if (data != null) {
+                $('#PlanSecundariaPopup').find('.modal-body').html(data);
+                $('#PlanSecundariaPopup').modal('show');
+            }
+        });
+    });
+
+    $(".EditarPlanSecundaria").on("click", function () {
+        var id = $(this).parents(".filaBase").attr("pidPlan");
+        var ser = { };
+        ser.idAreaCurricular = id;
+        $.post('@Url.Action("FormPlanSecundaria", "Plan")?vParam1=' + @(IdCurricula), ser , function (data) {
+            if (data != null) {
+                $('#PlanSecundariaPopup').find('.modal-title').html('Acutalizar Plan Secundaria');
+                $('#PlanSecundariaPopup').find('.modal-body').html(data);
+                $('#PlanSecundariaPopup').modal('show');
+            }
+        });
+    });
+
+    $(".EliminarPlanSecundaria").on("click", function () {
+        if (!confirm('¿Está seguro de Eliminar el Área Curricular seleccionada?')) return false;
+
+        var id = $(this).parents(".filaBase").attr("pidPlan");
+        var ser = { };
+        ser.idAreaCurricular = id;
+        ser.idNivel = 2;
+
+        $.post('@Url.Action("EliminarPlan", "Plan")?vParam1=' + @(IdCurricula), ser , function (data) {
+            if (data != null) {
+                $.post('@Url.Action("PlanSecundaria", "Plan")?vParam1=' + @(IdCurricula) + '&vParam2=0', function (data) {
+                    if (data != null) {
+                        $('#idBusquedaSecundaria').html(data);
+                        $('#idBusquedaSecundaria').slideDown("slow");
+                    }
+                });
+            }
+        });
+    });
+</script>
