@@ -79,6 +79,15 @@ namespace GDirectiva.Presentacion.Resource.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Documento Plan Asignatura.
+        /// </summary>
+        public static string EtiquetaDocumento {
+            get {
+                return ResourceManager.GetString("EtiquetaDocumento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
         public static string EtiquetaEstado {

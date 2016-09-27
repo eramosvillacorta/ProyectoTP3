@@ -123,6 +123,9 @@
   <data name="EtiquetaAsignatura" xml:space="preserve">
     <value>Curso</value>
   </data>
+  <data name="EtiquetaDocumento" xml:space="preserve">
+    <value>Documento Plan Asignatura</value>
+  </data>
   <data name="EtiquetaEstado" xml:space="preserve">
     <value>Estado</value>
   </data>
